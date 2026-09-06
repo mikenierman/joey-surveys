@@ -48,7 +48,7 @@ export default function JoeyApp() {
   const [v, setV] = useState(freshVisit());
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({ done: 0, todo: 0, total: 0 });
-
+  const [, setToast] = useState('');
   useEffect(() => {
     const user = localStorage.getItem('joey_user');
     const type = localStorage.getItem('joey_user_type');
