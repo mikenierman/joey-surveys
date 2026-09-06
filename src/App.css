@@ -507,6 +507,9 @@ body {
   max-width: 600px;
 }
 
+.visit-content {
+  padding-bottom: 150px;
+}
 .submit-btn {
   width: 100%;
   font-size: 15px;
