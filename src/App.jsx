@@ -46,7 +46,6 @@ export default function JoeyApp() {
   const [search, setSearch] = useState('');
   const [activeStore, setActiveStore] = useState(null);
   const [v, setV] = useState(freshVisit());
-  const [toast, setToast] = useState('');
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({ done: 0, todo: 0, total: 0 });
 
@@ -60,7 +59,7 @@ export default function JoeyApp() {
       else setView('route');
       loadData();
     }
-  }, []);
+  }, [loadData]);
 
   const loadData = async () => {
     try {
