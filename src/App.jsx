@@ -57,7 +57,6 @@ export default function JoeyApp() {
       setUserType(type);
       if (type === 'admin') setView('admin');
       else setView('route');
-      loadData();
     }
   }, []);
 
