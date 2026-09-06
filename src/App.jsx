@@ -59,7 +59,7 @@ export default function JoeyApp() {
       else setView('route');
       loadData();
     }
-  }, []);
+  }, [loadData]);
 
   const loadData = async () => {
     try {
