@@ -25,6 +25,8 @@ npm start
 
 Also polished for a smoother demo: faster store load if Supabase is down, visit opens without waiting on GPS, Stock/Fix only skip when JOEY is confirmed missing, closed/refused exception path, demo rep capped to a short route.
 
+**GPS (live field):** captures lat/lng with a high-accuracy attempt + fallback; retries before submit if still missing; flags `GPS_UNAVAILABLE` when no fix, and `LOCATION_MISMATCH` only when the store has coordinates and the phone is >500m away. Run `npm run geocode:stores` once to bake Census lat/lng into `stores.json` (then re-import to Supabase).
+
 **Not in this preview:** route offer/e-sign, pay tiers/settlement, full qualify queue, POG image assets from JOEY.
 
 ---

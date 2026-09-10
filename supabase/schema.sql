@@ -14,8 +14,14 @@ create table if not exists public.stores (
   rep_name text,
   assigned_to text,
   closing boolean default false,
+  lat double precision,
+  lng double precision,
   created_at timestamptz default now()
 );
+
+-- If stores table already exists, add coordinates:
+-- alter table public.stores add column if not exists lat double precision;
+-- alter table public.stores add column if not exists lng double precision;
 
 create index if not exists stores_assigned_to_idx on public.stores (assigned_to);
 create index if not exists stores_business_unit_idx on public.stores (business_unit);

@@ -13,7 +13,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "import:stores": "node scripts/import-stores.cjs"
+    "import:stores": "node scripts/import-stores.cjs",
+    "geocode:stores": "node scripts/geocode-stores.cjs"
   },
   "eslintConfig": {
     "extends": [

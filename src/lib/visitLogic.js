@@ -52,8 +52,12 @@ export function freshVisit() {
     exception: null,
     exceptionNote: '',
     startedAt: new Date().toISOString(),
-    locationMismatch: false,
     gps: null,
+    gpsStatus: 'pending',
+    gpsUnavailable: false,
+    locationMismatch: false,
+    gpsDistanceM: null,
+    gpsError: null,
   };
 }
 
@@ -73,7 +77,14 @@ export function visitFlags(v) {
   }
   if (v.priceVisible === 'no') f.push('PRICE_NOT_VISIBLE');
   if (v.priceOk === 'no') f.push('PRICING');
+  // Missing GPS ≠ mismatch. Only flag mismatch when proximity check failed.
   if (v.locationMismatch) f.push('LOCATION_MISMATCH');
+  else if (
+    v.gpsUnavailable ||
+    (!v.gps && v.gpsStatus && v.gpsStatus !== 'pending' && v.gpsStatus !== 'ok')
+  ) {
+    f.push('GPS_UNAVAILABLE');
+  }
   return f;
 }
 

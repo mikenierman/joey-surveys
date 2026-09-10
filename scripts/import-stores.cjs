@@ -49,6 +49,8 @@ const stores = JSON.parse(
   rep_name: s.rep_name || null,
   assigned_to: (s.assigned_to || '').toLowerCase() || null,
   closing: Boolean(s.closing),
+  lat: Number.isFinite(Number(s.lat)) ? Number(s.lat) : null,
+  lng: Number.isFinite(Number(s.lng)) ? Number(s.lng) : null,
 }));
 
 const supabase = createClient(url, key);

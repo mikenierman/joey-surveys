@@ -946,6 +946,80 @@ body {
   background: var(--line);
 }
 
+.geo-banner {
+  margin: 10px 16px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--line);
+  background: var(--card);
+  color: var(--ink-2);
+  font-size: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.geo-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.geo-banner-text strong {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.geo-banner-text span {
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.geo-banner.geo-ok {
+  border-color: #86efac;
+  background: var(--green-soft);
+  color: #166534;
+}
+
+.geo-banner.geo-ok .geo-banner-text strong {
+  color: #14532d;
+}
+
+.geo-banner.geo-info {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.geo-banner.geo-info .geo-banner-text strong {
+  color: #1e3a8a;
+}
+
+.geo-banner.geo-warn {
+  border-color: #fdba74;
+  background: var(--orange-soft);
+  color: #9a3412;
+}
+
+.geo-banner.geo-warn .geo-banner-text strong {
+  color: #9a3412;
+}
+
+.geo-retry {
+  flex-shrink: 0;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .geo-warn {
   margin: 10px 16px 0;
   padding: 10px 12px;

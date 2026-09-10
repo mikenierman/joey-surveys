@@ -18,12 +18,17 @@ import {
   validateVisit,
   visitFlags,
 } from './lib/visitLogic';
+import {
+  GPS_STATUS,
+  captureGps,
+  evaluateLocation,
+  locationBannerCopy,
+} from './lib/gps';
 
 const DEMO_PASSWORD = 'demo';
 const DEMO_ADMIN = 'mike@direct2retailers.com';
 const DEMO_REP = 'mikenierman@gmail.com';
 const DEMO_ROUTE_SIZE = 18;
-const GPS_TIMEOUT_MS = 2000;
 
 function displayName(email) {
   const local = (email || '').split('@')[0] || 'Rep';
@@ -52,41 +57,18 @@ function demoRouteStores(allStores) {
   return [...gc, ...rest].slice(0, DEMO_ROUTE_SIZE);
 }
 
-function captureGps(timeoutMs = GPS_TIMEOUT_MS) {
-  return new Promise((resolve) => {
-    if (!navigator.geolocation) {
-      resolve({ gps: null, locationMismatch: true });
-      return;
-    }
-    let settled = false;
-    const finish = (result) => {
-      if (settled) return;
-      settled = true;
-      resolve(result);
-    };
-    const timer = setTimeout(() => {
-      finish({ gps: null, locationMismatch: true });
-    }, timeoutMs);
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        clearTimeout(timer);
-        finish({
-          gps: {
-            lat: pos.coords.latitude,
-            lng: pos.coords.longitude,
-            accuracy: pos.coords.accuracy,
-            at: new Date().toISOString(),
-          },
-          locationMismatch: false,
-        });
-      },
-      () => {
-        clearTimeout(timer);
-        finish({ gps: null, locationMismatch: true });
-      },
-      { enableHighAccuracy: true, timeout: timeoutMs, maximumAge: 0 }
-    );
-  });
+function applyGpsResult(setV, store, capture) {
+  const evaluated = evaluateLocation(capture, store);
+  setV((prev) => ({
+    ...prev,
+    gps: evaluated.gps,
+    gpsStatus: evaluated.gpsStatus,
+    gpsUnavailable: evaluated.gpsUnavailable,
+    locationMismatch: evaluated.locationMismatch,
+    gpsDistanceM: evaluated.gpsDistanceM,
+    gpsError: evaluated.gpsError,
+  }));
+  return evaluated;
 }
 
 export default function JoeyApp() {
@@ -210,6 +192,20 @@ export default function JoeyApp() {
     setActiveStore(null);
   };
 
+  const refreshVisitGps = useCallback(
+    async (store = activeStore) => {
+      if (!store) return null;
+      setV((prev) => ({
+        ...prev,
+        gpsStatus: GPS_STATUS.PENDING,
+        gpsError: null,
+      }));
+      const capture = await captureGps();
+      return applyGpsResult(setV, store, capture);
+    },
+    [activeStore]
+  );
+
   const startVisit = (store) => {
     if (storeIsDone(store, visits, cycleKey)) {
       showToast('Already submitted this cycle');
@@ -218,9 +214,7 @@ export default function JoeyApp() {
     setActiveStore(store);
     setV(freshVisit());
     setView('check');
-    captureGps().then(({ gps, locationMismatch }) => {
-      setV((prev) => ({ ...prev, gps, locationMismatch }));
-    });
+    captureGps().then((capture) => applyGpsResult(setV, store, capture));
   };
 
   const handleSubmit = async () => {
@@ -231,15 +225,33 @@ export default function JoeyApp() {
     }
     setLoading(true);
     try {
-      const flags = visitFlags(v);
-      const isException = v.exception === 'closed' || v.exception === 'inaccessible';
-      const isRefusal = v.exception === 'refused';
-      const followup = flags.length > 0 || v.followReq === 'yes' || isException || isRefusal;
+      let visitState = v;
+      // One last GPS attempt if we still don't have coordinates
+      if (!v.gps || v.gpsStatus === GPS_STATUS.PENDING) {
+        const evaluated = await refreshVisitGps(activeStore);
+        if (evaluated) {
+          visitState = {
+            ...v,
+            gps: evaluated.gps,
+            gpsStatus: evaluated.gpsStatus,
+            gpsUnavailable: evaluated.gpsUnavailable,
+            locationMismatch: evaluated.locationMismatch,
+            gpsDistanceM: evaluated.gpsDistanceM,
+            gpsError: evaluated.gpsError,
+          };
+        }
+      }
+      const flags = visitFlags(visitState);
+      const isException =
+        visitState.exception === 'closed' || visitState.exception === 'inaccessible';
+      const isRefusal = visitState.exception === 'refused';
+      const followup =
+        flags.length > 0 || visitState.followReq === 'yes' || isException || isRefusal;
       const photo_urls = {};
-      Object.entries(v.photos).forEach(([k, photo]) => {
+      Object.entries(visitState.photos).forEach(([k, photo]) => {
         if (photo?.dataUrl) photo_urls[k] = photo.dataUrl;
       });
-      const survey_data = { ...v, photos: undefined };
+      const survey_data = { ...visitState, photos: undefined };
       const payload = {
         store_number: String(activeStore.site_number),
         store_city: activeStore.city,
@@ -257,7 +269,7 @@ export default function JoeyApp() {
         flags,
         survey_data,
         photo_urls,
-        gps: v.gps,
+        gps: visitState.gps,
       };
       const { synced } = await submitVisit(payload);
       showToast(
@@ -312,6 +324,7 @@ export default function JoeyApp() {
         activeStore={activeStore}
         validate={() => validateVisit(v)}
         onSubmit={handleSubmit}
+        onRetryGps={() => refreshVisitGps(activeStore)}
         onBack={() => {
           setView('route');
           setActiveStore(null);
@@ -347,6 +360,29 @@ export default function JoeyApp() {
 function Toast({ toast }) {
   if (!toast) return null;
   return <div className="toast show">{toast}</div>;
+}
+
+function LocationBanner({ v, onRetry }) {
+  const copy = locationBannerCopy(v);
+  const busy = v?.gpsStatus === GPS_STATUS.PENDING;
+  const showRetry =
+    !busy &&
+    v?.gpsStatus !== GPS_STATUS.OK &&
+    typeof onRetry === 'function';
+
+  return (
+    <div className={`geo-banner geo-${copy.tone}`}>
+      <div className="geo-banner-text">
+        <strong>{copy.title}</strong>
+        <span>{copy.body}</span>
+      </div>
+      {showRetry ? (
+        <button type="button" className="geo-retry" onClick={onRetry}>
+          Retry GPS
+        </button>
+      ) : null}
+    </div>
+  );
 }
 
 function LoginView({ onLogin, loading, toast }) {
@@ -672,7 +708,17 @@ function PhotoCapture({ id, label, photo, onCapture, onClear }) {
   );
 }
 
-function CheckView({ v, setV, activeStore, validate, onSubmit, onBack, loading, toast }) {
+function CheckView({
+  v,
+  setV,
+  activeStore,
+  validate,
+  onSubmit,
+  onRetryGps,
+  onBack,
+  loading,
+  toast,
+}) {
   const [showEscape, setShowEscape] = useState(false);
 
   const setF = (field, val) => {
@@ -847,12 +893,7 @@ function CheckView({ v, setV, activeStore, validate, onSubmit, onBack, loading, 
         </div>
       ) : null}
 
-      {v.locationMismatch ? (
-        <div className="geo-warn">
-          Location unavailable or mismatched — visit will be flagged for review (not
-          blocked).
-        </div>
-      ) : null}
+      <LocationBanner v={v} onRetry={onRetryGps} />
 
       {isExceptionPath ? (
         <div className="visit-content">
@@ -1478,6 +1519,22 @@ function AdminDashboard({
               </li>
               <li>Follow-up: {selectedVisit.followup ? 'Yes' : 'No'}</li>
               <li>Flags: {(selectedVisit.flags || []).join(', ') || '—'}</li>
+              <li>
+                GPS:{' '}
+                {selectedVisit.gps?.lat != null
+                  ? `${Number(selectedVisit.gps.lat).toFixed(5)}, ${Number(
+                      selectedVisit.gps.lng
+                    ).toFixed(5)}${
+                      selectedVisit.gps.accuracy != null
+                        ? ` (±${Math.round(selectedVisit.gps.accuracy)}m)`
+                        : ''
+                    }${
+                      selectedVisit.gps.distanceM != null
+                        ? ` · ${selectedVisit.gps.distanceM}m from store`
+                        : ''
+                    }`
+                  : sd.gpsStatus || 'unavailable'}
+              </li>
               <li>Note: {sd.followNote || '—'}</li>
             </ul>
           </div>
