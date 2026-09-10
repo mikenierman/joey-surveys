@@ -1,7 +1,7 @@
 import { dataUrlToBlob, PHOTO_SLOT_IDS, uploadVisitPhotos } from './photos';
 
 describe('photos helpers', () => {
-  test('PHOTO_SLOT_IDS has p1–p9', () => {
+  test('PHOTO_SLOT_IDS matches prototype slots', () => {
     expect(PHOTO_SLOT_IDS).toEqual([
       'p1',
       'p2',
@@ -10,7 +10,6 @@ describe('photos helpers', () => {
       'p5',
       'p6',
       'p7',
-      'p8',
       'p9',
     ]);
   });

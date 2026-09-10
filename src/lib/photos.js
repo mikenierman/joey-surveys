@@ -1,7 +1,7 @@
 import { supabase } from './data';
 
 export const PHOTO_BUCKET = 'visit-photos';
-export const PHOTO_SLOT_IDS = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9'];
+export const PHOTO_SLOT_IDS = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p9'];
 
 export function dataUrlToBlob(dataUrl) {
   const m = String(dataUrl || '').match(/^data:([^;]+);base64,(.+)$/);

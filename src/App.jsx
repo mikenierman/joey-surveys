@@ -14,7 +14,8 @@ import {
   compressImageFile,
   currentCycleKey,
   freshVisit,
-  requiredPhotoGroups,
+  formatLastVisitChip,
+  requiredPhotoDefs,
   validateVisit,
   visitFlags,
 } from './lib/visitLogic';
@@ -333,6 +334,7 @@ export default function JoeyApp() {
         v={v}
         setV={setV}
         activeStore={activeStore}
+        visits={visits}
         validate={() => validateVisit(v)}
         onSubmit={handleSubmit}
         onRetryGps={() => refreshVisitGps(activeStore)}
@@ -724,6 +726,7 @@ function CheckView({
   v,
   setV,
   activeStore,
+  visits,
   validate,
   onSubmit,
   onRetryGps,
@@ -789,22 +792,6 @@ function CheckView({
     });
   };
 
-  const toggleExt = (key) => {
-    setV((prev) => {
-      const extPos = { ...prev.extPos };
-      if (key === 'none') {
-        const on = !extPos.none;
-        return {
-          ...prev,
-          extPos: { sign: false, strike: false, bollards: false, other: false, none: on },
-        };
-      }
-      extPos[key] = !extPos[key];
-      extPos.none = false;
-      return { ...prev, extPos };
-    });
-  };
-
   const setPos = (id, val) => {
     setV((prev) => ({
       ...prev,
@@ -819,6 +806,18 @@ function CheckView({
   const validationError = validate();
   const phaseStatuses = PHASES.map((p) => ({ ...p, status: p.st(v) }));
   const isExceptionPath = !!v.exception;
+  const visitDateLabel = new Date().toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+  const startedLabel = v.startedAt
+    ? `Started ${new Date(v.startedAt).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      })}`
+    : 'Started —';
+  const lastVisitChip = formatLastVisitChip(activeStore, visits);
 
   return (
     <div className="check-view">
@@ -829,8 +828,15 @@ function CheckView({
         </button>
         <div className="check-header-main">
           <h1>Merch Visit</h1>
-          <p className="check-subtitle">
-            CK #{activeStore?.site_number} · {activeStore?.city}, {activeStore?.state}
+          <p className="check-store-line">
+            CIRCLE K #{activeStore?.site_number}
+            {activeStore?.address
+              ? ` / ${String(activeStore.address).toUpperCase()}`
+              : ''}
+            {activeStore?.city
+              ? `, ${String(activeStore.city).toUpperCase()}`
+              : ''}
+            {activeStore?.zip ? ` ${activeStore.zip}` : ''}
           </p>
         </div>
         <button
@@ -927,12 +933,15 @@ function CheckView({
       ) : (
       <div className="visit-content">
         <div className="meta-row">
-          <span className="meta-chip">POG {activeStore?.pog_set || '—'}</span>
+          <span className="meta-chip">{visitDateLabel}</span>
+          <span className="meta-chip">{startedLabel}</span>
+          <span className="meta-chip">POG Set {activeStore?.pog_set || '—'}</span>
           <span className="meta-chip">
             {activeStore?.reset_date
               ? `Reset ${activeStore.reset_date}`
               : activeStore?.reset_note || 'Reset n/a'}
           </span>
+          <span className="meta-chip">{lastVisitChip}</span>
           {activeStore?.closing ? (
             <span className="meta-chip warn">Store closing</span>
           ) : null}
@@ -1183,11 +1192,10 @@ function CheckView({
         {/* 05 POS */}
         <div className="phase-card">
           <PhaseHead phase={PHASES[4]} status={PHASES[4].st(v)} />
-          <div className="q">What happened with each POS item?</div>
           {POS_ITEMS.map((item) => (
             <div className="pos-item" key={item.id}>
               <span className="pi-name">{item.name}</span>
-              <span className="pi-size">{item.size}</span>
+              {item.size ? <span className="pi-size">{item.size}</span> : null}
               <div className="pills grid2">
                 {POS_OPTS.map((o) => (
                   <Pill
@@ -1204,28 +1212,6 @@ function CheckView({
               </div>
             </div>
           ))}
-          <div className="q">
-            What exterior POS is on the store?
-            <small>Tap all that apply</small>
-          </div>
-          <div className="pills">
-            {[
-              ['sign', 'Door sign'],
-              ['strike', 'Door strike'],
-              ['bollards', 'Bollards'],
-              ['other', 'Other'],
-              ['none', 'None'],
-            ].map(([key, label]) => (
-              <Pill
-                key={key}
-                on={v.extPos[key]}
-                cls={key === 'none' ? 'on' : 'on-good'}
-                onClick={() => toggleExt(key)}
-              >
-                {label}
-              </Pill>
-            ))}
-          </div>
         </div>
 
         {/* 06 Educate */}
@@ -1311,36 +1297,27 @@ function CheckView({
         {/* 07 Photos */}
         <div className="phase-card">
           <PhaseHead phase={PHASES[6]} status={PHASES[6].st(v)} />
-          <div className="q">
-            Required photos
-            <small>
-              {v.present === 'yes'
-                ? 'Shoot after facing, removing plastic, and filling from backstock. In-app camera only.'
-                : 'Computed from your answers. In-app camera only.'}
-            </small>
-          </div>
-          {requiredPhotoGroups(v).map((g) => (
-            <div key={g.name}>
-              <div className="photo-group">{g.name.toUpperCase()}</div>
-              <div className="photo-row">
-                {g.defs.map((d) => (
-                  <PhotoCapture
-                    key={d.id}
-                    id={d.id}
-                    label={d.label}
-                    photo={v.photos[d.id]}
-                    onCapture={(id, photo) =>
-                      setV((p) => ({ ...p, photos: { ...p.photos, [id]: photo } }))
-                    }
-                    onClear={(id) =>
-                      setV((p) => ({ ...p, photos: { ...p.photos, [id]: null } }))
-                    }
-                  />
-                ))}
+          <div className="q">Required photos</div>
+          {requiredPhotoDefs(v).map((d) => (
+            <div className="photo-sec" key={d.id}>
+              <div className="photo-sec-info">
+                <div className="ps-title">{d.title}</div>
+                {d.desc ? <div className="ps-desc">{d.desc}</div> : null}
               </div>
+              <PhotoCapture
+                id={d.id}
+                label={d.title}
+                photo={v.photos[d.id]}
+                onCapture={(id, photo) =>
+                  setV((p) => ({ ...p, photos: { ...p.photos, [id]: photo } }))
+                }
+                onClear={(id) =>
+                  setV((p) => ({ ...p, photos: { ...p.photos, [id]: null } }))
+                }
+              />
             </div>
           ))}
-          <div className="q">Do they need an order?</div>
+          <div className="q">Does the store need to order JOEY inventory?</div>
           <YesNo value={v.orderPlaced} onChange={(val) => setF('orderPlaced', val)} />
           {flags.length > 0 ? (
             <>

@@ -177,7 +177,6 @@ export function exportVisitsCsv(stores, visits) {
     'photo_p5',
     'photo_p6',
     'photo_p7',
-    'photo_p8',
     'photo_p9',
   ];
   const lines = [headers.join(',')];
@@ -190,7 +189,7 @@ export function exportVisitsCsv(stores, visits) {
     const v = bySite.get(String(s.site_number));
     const sd = v?.survey_data || {};
     const photos = v?.photo_urls || {};
-    const photoSlots = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9'];
+    const photoSlots = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p9'];
     const status = v
       ? v.status === 'pending_sync'
         ? 'Completed (pending sync)'

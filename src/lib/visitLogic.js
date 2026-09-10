@@ -1,12 +1,12 @@
 export const POS_ITEMS = [
-  { id: 'sign', name: 'Door Sign', size: '22.5 x 22.5' },
-  { id: 'strike', name: 'Door Strike', size: '22.5 x 6' },
-  { id: 'strip', name: 'Shelf / Channel Strip', size: '22.5 x 2 or 11 x 2' },
+  { id: 'door', name: 'Was there a Door Sign / Strike / Push Pull?', size: '' },
+  { id: 'strip', name: 'Was there a Shelf / Channel Strip?', size: '' },
+  { id: 'bollard', name: 'Was there a Bollard placed outside the store?', size: '' },
 ];
 
 export const POS_OPTS = [
-  { val: 'installed', label: 'Installed' },
   { val: 'present', label: 'Already there' },
+  { val: 'installed', label: 'Rep installed' },
   { val: 'declined', label: 'Store declined' },
   { val: 'notprovided', label: 'Not provided' },
 ];
@@ -29,8 +29,7 @@ export function freshVisit() {
     unc: null,
     uncNote: '',
     orderPlaced: null,
-    pos: { sign: null, strike: null, strip: null },
-    extPos: { sign: false, strike: false, bollards: false, other: false, none: false },
+    pos: { door: null, strip: null, bollard: null },
     educated: null,
     leaveBehind: null,
     reorderTags: null,
@@ -44,7 +43,6 @@ export function freshVisit() {
       p5: null,
       p6: null,
       p7: null,
-      p8: null,
       p9: null,
     },
     followReq: null,
@@ -72,12 +70,11 @@ export function visitFlags(v) {
   }
   if (v.backstock === 'yes' && v.replenished === 'no') f.push('NOT_REPLENISHED');
   if (v.unc === 'yes') f.push('UNCORRECTED');
-  if (['sign', 'strike', 'strip'].some((k) => v.pos[k] === 'declined')) {
+  if (['door', 'strip', 'bollard'].some((k) => v.pos?.[k] === 'declined')) {
     f.push('POS_DECLINED');
   }
   if (v.priceVisible === 'no') f.push('PRICE_NOT_VISIBLE');
-  if (v.priceOk === 'no') f.push('PRICING');
-  // Missing GPS ≠ mismatch. Only flag mismatch when proximity check failed.
+  if (v.priceOk === 'no') f.push('PRICE_ISSUE');
   if (v.locationMismatch) f.push('LOCATION_MISMATCH');
   else if (
     v.gpsUnavailable ||
@@ -88,43 +85,62 @@ export function visitFlags(v) {
   return f;
 }
 
-export function requiredPhotoGroups(v) {
-  const groups = [];
-  const shelf = [
-    { id: 'p1', label: v.present === 'no' ? 'Backbar, JOEY absent' : 'Full backbar' },
+/** Photo slots matching the approved Claude route+check prototype. */
+export function requiredPhotoDefs(v) {
+  const defs = [
+    {
+      id: 'p1',
+      title: 'Full backbar',
+      desc:
+        v.present === 'no'
+          ? 'Take a photo of the entire store backbar, showing JOEY absent.'
+          : "Take a photo of the entire store backbar, showing JOEY's place in the backbar.",
+    },
+    {
+      id: 'p2',
+      title: 'Zoom shelf 1',
+      desc: 'Pull out the shelf and take a top down photo, showing stock levels.',
+    },
+    {
+      id: 'p3',
+      title: 'Zoom shelf 2',
+      desc: 'Pull out the shelf and take a top down photo, showing stock levels.',
+    },
+    {
+      id: 'p4',
+      title: 'JOEY close up',
+      desc:
+        'After all fixes, take a photo of the JOEY SKUs from the front. Tip: ensure the JOEY logo is horizontal.',
+    },
+    {
+      id: 'p5',
+      title: 'POS: Door',
+      desc: 'Take a photo of the Door Sign / Strike / Push Pull on the door.',
+    },
+    {
+      id: 'p6',
+      title: 'POS: Shelf / Channel Strip',
+      desc: 'Take a photo of the Shelf / Channel Strip with pricing and promo visible.',
+    },
+    {
+      id: 'p9',
+      title: 'Exterior',
+      desc: 'Take a photo of the front of the store, with the Bollard if possible.',
+    },
   ];
-  if (v.present === 'yes') {
-    shelf.push({ id: 'p2', label: 'Zoom shelf 1' });
-    shelf.push({ id: 'p3', label: 'Zoom shelf 2' });
-    shelf.push({ id: 'p4', label: 'Full set close up, after fixes and fill' });
-  }
-  groups.push({ name: 'Shelf', defs: shelf });
-
-  const pos = [];
-  if (v.pos.sign === 'installed' || v.pos.sign === 'present') {
-    pos.push({ id: 'p8', label: 'Door sign' });
-  }
-  if (v.pos.strike === 'installed' || v.pos.strike === 'present') {
-    pos.push({ id: 'p5', label: 'Door strike' });
-  }
-  if (v.pos.strip === 'installed' || v.pos.strip === 'present') {
-    pos.push({ id: 'p6', label: 'Shelf / channel strip, pricing visible' });
-  }
-  if (pos.length > 0) groups.push({ name: 'POS', defs: pos });
-
-  groups.push({
-    name: 'Exterior',
-    defs: [{ id: 'p9', label: 'Exterior, showing outside POS' }],
-  });
-
   if (v.unc === 'yes') {
-    groups.push({ name: 'Issue', defs: [{ id: 'p7', label: 'Documented issue' }] });
+    defs.push({
+      id: 'p7',
+      title: 'Documented issue',
+      desc: 'Take a photo of what you could not fix.',
+    });
   }
-  return groups;
+  return defs;
 }
 
-export function requiredPhotoDefs(v) {
-  return requiredPhotoGroups(v).reduce((acc, g) => acc.concat(g.defs), []);
+/** @deprecated Prefer requiredPhotoDefs — kept for any callers expecting groups. */
+export function requiredPhotoGroups(v) {
+  return [{ name: 'Photos', defs: requiredPhotoDefs(v).map((d) => ({ id: d.id, label: d.title })) }];
 }
 
 function phaseCheckin(v) {
@@ -166,16 +182,10 @@ function phaseFix(v) {
 }
 
 function phasePos(v) {
-  const vals = [v.pos.sign, v.pos.strike, v.pos.strip];
-  const answered = vals.filter((x) => x !== null).length;
-  const extAny =
-    v.extPos.sign ||
-    v.extPos.strike ||
-    v.extPos.bollards ||
-    v.extPos.other ||
-    v.extPos.none;
-  if (answered === 0 && !extAny) return 'todo';
-  if (answered < 3 || !extAny) return 'part';
+  const vals = [v.pos?.door, v.pos?.strip, v.pos?.bollard];
+  const answered = vals.filter((x) => x !== null && x !== undefined).length;
+  if (answered === 0) return 'todo';
+  if (answered < 3) return 'part';
   return 'done';
 }
 
@@ -252,12 +262,30 @@ export function compressImageFile(file, maxSide = 1280, quality = 0.72) {
         resolve({
           dataUrl: canvas.toDataURL('image/jpeg', quality),
           capturedAt: new Date().toISOString(),
-          width: w,
-          height: h,
         });
       };
       img.src = reader.result;
     };
     reader.readAsDataURL(file);
   });
+}
+
+/** Format a prior visit date for the Last visit chip. */
+export function formatLastVisitChip(store, visits = []) {
+  const raw = store?.last_visit || store?.lastVisit || null;
+  if (raw) return `Last visit ${raw}`;
+  const site = String(store?.site_number || '');
+  const prior = (visits || [])
+    .filter((x) => String(x.store_number) === site)
+    .map((x) => new Date(x.visit_date || x.created_at))
+    .filter((d) => !Number.isNaN(d.getTime()))
+    .sort((a, b) => b - a);
+  if (prior[0]) {
+    return `Last visit ${prior[0].toLocaleDateString('en-US', {
+      month: 'numeric',
+      day: 'numeric',
+      year: '2-digit',
+    })}`;
+  }
+  return 'First visit';
 }
