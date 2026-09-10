@@ -22,6 +22,10 @@ Production-ready survey app for D2R field reps conducting JOEY nicotine pouch me
    ```
 4. `npm start`
 
+## Stores data
+
+Stores load from `public/data/stores.json` at runtime. To upsert into Supabase, apply `supabase/schema.sql` then run `npm run import:stores` (requires env credentials; network/DNS to Supabase must be available).
+
 ## Demo Accounts
 
 - Rep: `mikenierman@gmail.com / demo`
