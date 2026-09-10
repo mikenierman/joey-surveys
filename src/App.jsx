@@ -735,6 +735,7 @@ function CheckView({
   toast,
 }) {
   const [showEscape, setShowEscape] = useState(false);
+  const [refSheet, setRefSheet] = useState(null); // 'pog' | 'sell' | null
 
   const setF = (field, val) => {
     setV((prev) => {
@@ -951,7 +952,7 @@ function CheckView({
         <div className="phase-card">
           <PhaseHead phase={PHASES[0]} status={PHASES[0].st(v)} />
           <div className="q">
-            Introduce yourself, then ask these questions.
+            Introduce yourself to the manager or clerk, then ask these questions.
             <small>Do this before you touch the shelf.</small>
           </div>
           <div className="q">Are customers asking for JOEY?</div>
@@ -1007,16 +1008,20 @@ function CheckView({
         {/* 02 Find it */}
         <div className="phase-card">
           <PhaseHead phase={PHASES[1]} status={PHASES[1].st(v)} />
-          <div className="q">Has the store been reset?</div>
-          <YesNo value={v.reset} onChange={(val) => setF('reset', val)} />
-          <div className="q">
-            Is JOEY present in the nicotine set?
-            <small>Compare to POG set {activeStore?.pog_set}</small>
-          </div>
+          <div className="q">Is JOEY present in the backbar?</div>
           <YesNo value={v.present} onChange={(val) => setF('present', val)} />
+          <button
+            type="button"
+            className="ref-btn"
+            onClick={() => setRefSheet('pog')}
+          >
+            View POG Set {activeStore?.pog_set || '—'}
+          </button>
           {v.present === 'yes' ? (
             <>
-              <div className="q">JOEY facings and out of stock</div>
+              <div className="q">
+                How many JOEY facings are there, and how many are out of stock?
+              </div>
               <div className="stepper-row">
                 <Stepper
                   label="JOEY facings"
@@ -1032,7 +1037,7 @@ function CheckView({
               {v.oos > v.facings ? (
                 <div className="st-err">OUT OF STOCK CANNOT EXCEED FACINGS</div>
               ) : null}
-              <div className="q">Where does JOEY sit on the shelf?</div>
+              <div className="q">Where does JOEY sit on the backbar?</div>
               <div className="pills">
                 {[
                   ['top', 'Top third'],
@@ -1053,8 +1058,8 @@ function CheckView({
           ) : null}
           {v.present === 'no' ? (
             <div className="skip-note">
-              JOEY missing from the set. Stock and fixes are skipped; grab the backbar
-              photo and flag follow-up.
+              JOEY missing from the set. Stock and fixes are skipped; grab the backbar photo
+              below and flag it for follow-up.
             </div>
           ) : null}
         </div>
@@ -1217,6 +1222,9 @@ function CheckView({
         {/* 06 Educate */}
         <div className="phase-card">
           <PhaseHead phase={PHASES[5]} status={PHASES[5].st(v)} />
+          <button type="button" className="ref-btn" onClick={() => setRefSheet('sell')}>
+            Open JOEY sell sheet
+          </button>
           <div className="q">Did you educate the manager or clerk on JOEY?</div>
           <YesNo value={v.educated} onChange={(val) => setF('educated', val)} />
           <div className="q">Did you leave a leave-behind sheet?</div>
@@ -1342,7 +1350,10 @@ function CheckView({
             <>
               <div className="q">
                 Is follow-up required?
-                <small>Anything JOEY or Circle K needs to act on</small>
+                <small>
+                  Anything JOEY or Circle K needs to act on, like a register or pricing
+                  system issue
+                </small>
               </div>
               <div className="pills grid2">
                 <Pill
@@ -1401,6 +1412,52 @@ function CheckView({
         </button>
         <div className="submit-hint">{validationError || 'Ready to submit'}</div>
       </div>
+
+      {refSheet ? (
+        <div
+          className="ref-veil"
+          role="presentation"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setRefSheet(null);
+          }}
+        >
+          <div className="ref-sheet" role="dialog" aria-modal="true">
+            <div className="ref-sheet-top">
+              <h2>
+                {refSheet === 'pog'
+                  ? `POG Set ${activeStore?.pog_set || '—'}`
+                  : 'JOEY sell sheet'}
+              </h2>
+              <button type="button" className="ref-close" onClick={() => setRefSheet(null)}>
+                Close
+              </button>
+            </div>
+            {refSheet === 'pog' ? (
+              <div className="ref-body">
+                <p>
+                  Reference planogram for this store&apos;s POG set{' '}
+                  <strong>{activeStore?.pog_set || '—'}</strong>
+                  {activeStore?.business_unit
+                    ? ` · ${activeStore.business_unit}`
+                    : ''}
+                  .
+                </p>
+                <p className="muted">
+                  JOEY-provided POG page images will appear here once supplied. Until then,
+                  use this set number to match the physical backbar.
+                </p>
+              </div>
+            ) : (
+              <div className="ref-body">
+                <p>Use the JOEY sell sheet while educating the manager or clerk.</p>
+                <p className="muted">
+                  JOEY-provided sell sheet pages will appear here once supplied.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
@@ -1501,7 +1558,6 @@ function AdminDashboard({
             <h3>Visit survey</h3>
             <ul className="detail-list">
               <li>Present: {sd.present ?? '—'}</li>
-              <li>Reset: {sd.reset ?? '—'}</li>
               <li>
                 Facings / OOS: {sd.facings ?? '—'} / {sd.oos ?? '—'}
               </li>

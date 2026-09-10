@@ -17,7 +17,6 @@ export function freshVisit() {
     selling: null,
     usesPouches: null,
     pouchInfo: null,
-    reset: null,
     present: null,
     facings: 0,
     oos: 0,
@@ -85,7 +84,7 @@ export function visitFlags(v) {
   return f;
 }
 
-/** Photo slots matching the approved Claude route+check prototype. */
+/** Photo slots matching the Claude route+check prototype (all listed shots required). */
 export function requiredPhotoDefs(v) {
   const defs = [
     {
@@ -152,8 +151,7 @@ function phaseCheckin(v) {
 }
 
 function phaseFind(v) {
-  if (v.reset === null && v.present === null) return 'todo';
-  if (v.reset === null || v.present === null) return 'part';
+  if (v.present === null) return 'todo';
   if (v.present === 'yes' && (v.facings < 1 || v.oos > v.facings || v.shelfPos === null)) {
     return 'part';
   }
