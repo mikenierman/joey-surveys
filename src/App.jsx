@@ -5,7 +5,6 @@ import {
   loadVisits,
   storeIsDone,
   submitVisit,
-  exportVisitsCsv,
 } from './lib/data';
 import {
   PHASES,
@@ -26,6 +25,7 @@ import {
   locationBannerCopy,
 } from './lib/gps';
 import { uploadVisitPhotos } from './lib/photos';
+import ReviewPortal from './components/ReviewPortal';
 
 const DEMO_PASSWORD = 'demo';
 const DEMO_ADMIN = 'mike@direct2retailers.com';
@@ -96,8 +96,6 @@ export default function JoeyApp() {
   const [bootLoading, setBootLoading] = useState(false);
   const [toast, setToast] = useState('');
   const [selectedVisit, setSelectedVisit] = useState(null);
-  const [adminFollowOnly, setAdminFollowOnly] = useState(false);
-  const [adminSearch, setAdminSearch] = useState('');
   const cycleKey = currentCycleKey();
 
   const showToast = useCallback((msg) => {
@@ -304,22 +302,16 @@ export default function JoeyApp() {
 
   if (view === 'admin' || view === 'client') {
     return (
-      <AdminDashboard
+      <ReviewPortal
         mode={view === 'client' ? 'client' : 'admin'}
         visits={visits}
         stores={stores}
-        stats={stats}
-        myStores={myStores}
         cycleKey={cycleKey}
         dataSource={dataSource}
         onLogout={handleLogout}
         onBackToRoute={() => setView('route')}
         selectedVisit={selectedVisit}
         setSelectedVisit={setSelectedVisit}
-        followOnly={adminFollowOnly}
-        setFollowOnly={setAdminFollowOnly}
-        search={adminSearch}
-        setSearch={setAdminSearch}
         toast={toast}
         showToast={showToast}
         bootLoading={bootLoading}
@@ -1458,254 +1450,6 @@ function CheckView({
           </div>
         </div>
       ) : null}
-    </div>
-  );
-}
-
-function AdminDashboard({
-  mode = 'admin',
-  visits,
-  stores,
-  cycleKey,
-  dataSource,
-  onLogout,
-  onBackToRoute,
-  selectedVisit,
-  setSelectedVisit,
-  followOnly,
-  setFollowOnly,
-  search,
-  setSearch,
-  toast,
-  showToast,
-  bootLoading,
-  onRefresh,
-}) {
-  const isClient = mode === 'client';
-  const doneSites = useMemo(() => {
-    const set = new Set();
-    visits.forEach((v) => {
-      if (
-        (v.cycle_key || currentCycleKey(new Date(v.visit_date || v.created_at))) ===
-          cycleKey &&
-        ['submitted', 'qualified', 'in_review', 'pending_sync', 'exception'].includes(
-          v.status || 'submitted'
-        )
-      ) {
-        set.add(String(v.store_number));
-      }
-    });
-    return set;
-  }, [visits, cycleKey]);
-
-  const completed = doneSites.size;
-  const total = stores.length;
-  const followups = visits.filter((v) => v.followup).length;
-  const pct = total ? Math.round((100 * completed) / total) : 0;
-
-  const filteredVisits = useMemo(() => {
-    const q = search.trim().toLowerCase();
-    return visits.filter((v) => {
-      if (followOnly && !v.followup) return false;
-      if (!q) return true;
-      return (
-        String(v.store_number).includes(q) ||
-        (v.store_city || '').toLowerCase().includes(q) ||
-        (v.rep_name || '').toLowerCase().includes(q) ||
-        (v.submitted_by || '').toLowerCase().includes(q)
-      );
-    });
-  }, [visits, followOnly, search]);
-
-  const downloadCsv = () => {
-    const csv = exportVisitsCsv(stores, visits);
-    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = isClient
-      ? `joey-client-export-${cycleKey}.csv`
-      : `joey-circlek-${cycleKey}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-    showToast('CSV downloaded');
-  };
-
-  if (selectedVisit) {
-    const sd = selectedVisit.survey_data || {};
-    const photos = selectedVisit.photo_urls || {};
-    return (
-      <div className="admin-view">
-        <Toast toast={toast} />
-        <div className="admin-header">
-          <div>
-            <button type="button" className="linkish" onClick={() => setSelectedVisit(null)}>
-              ← Back to list
-            </button>
-            <h1>CK #{selectedVisit.store_number}</h1>
-            <p className="admin-sub">
-              {selectedVisit.store_address}, {selectedVisit.store_city}{' '}
-              {selectedVisit.store_state} · {selectedVisit.rep_name}
-              {isClient ? ' · Client portal (read-only)' : ''}
-            </p>
-          </div>
-          <button type="button" onClick={onLogout}>
-            Sign out
-          </button>
-        </div>
-        <div className="detail-grid">
-          <div className="detail-card">
-            <h3>Visit survey</h3>
-            <ul className="detail-list">
-              <li>Present: {sd.present ?? '—'}</li>
-              <li>
-                Facings / OOS: {sd.facings ?? '—'} / {sd.oos ?? '—'}
-              </li>
-              <li>Shelf: {sd.shelf ?? '—'}</li>
-              <li>Replenished: {sd.replenished ?? '—'}</li>
-              <li>Educated: {sd.educated ?? '—'}</li>
-              <li>
-                Price: {sd.priceVisible ?? '—'} / {sd.priceOk ?? '—'}
-              </li>
-              <li>Follow-up: {selectedVisit.followup ? 'Yes' : 'No'}</li>
-              <li>Flags: {(selectedVisit.flags || []).join(', ') || '—'}</li>
-              <li>
-                GPS:{' '}
-                {selectedVisit.gps?.lat != null
-                  ? `${Number(selectedVisit.gps.lat).toFixed(5)}, ${Number(
-                      selectedVisit.gps.lng
-                    ).toFixed(5)}${
-                      selectedVisit.gps.accuracy != null
-                        ? ` (±${Math.round(selectedVisit.gps.accuracy)}m)`
-                        : ''
-                    }${
-                      selectedVisit.gps.distanceM != null
-                        ? ` · ${selectedVisit.gps.distanceM}m from store`
-                        : ''
-                    }`
-                  : sd.gpsStatus || 'unavailable'}
-              </li>
-              <li>Note: {sd.followNote || '—'}</li>
-            </ul>
-          </div>
-          <div className="detail-card">
-            <h3>Photos</h3>
-            <p className="muted" style={{ marginBottom: 10, fontSize: 12 }}>
-              Shown with this visit — export includes photo links.
-            </p>
-            <div className="admin-photos">
-              {Object.keys(photos).length === 0 ? (
-                <p className="muted">No photos</p>
-              ) : (
-                Object.entries(photos).map(([k, src]) => (
-                  <a key={k} href={src} target="_blank" rel="noreferrer" className="admin-photo">
-                    <img src={src} alt={k} />
-                    <span>{k}</span>
-                  </a>
-                ))
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="admin-view">
-      <Toast toast={toast} />
-      <div className="admin-header">
-        <div>
-          <h1>{isClient ? 'JOEY Client Portal' : 'JOEY Circle K Review'}</h1>
-          <p className="admin-sub">
-            {isClient
-              ? `${cycleKey} · Visits with survey + photos · Export ready`
-              : `${cycleKey} · ${dataSource || 'data'} · store-matched deliverable`}
-          </p>
-        </div>
-        <div className="header-buttons">
-          {!isClient ? (
-            <button type="button" className="admin-btn" onClick={onBackToRoute}>
-              Route
-            </button>
-          ) : null}
-          <button type="button" className="admin-btn" onClick={onRefresh}>
-            Refresh
-          </button>
-          <button type="button" className="admin-btn solid" onClick={downloadCsv}>
-            Export CSV
-          </button>
-          <button type="button" onClick={onLogout}>
-            Sign out
-          </button>
-        </div>
-      </div>
-
-      <div className="admin-grid">
-        <div className="stat-card">
-          <div className="stat-value">{completed}</div>
-          <div className="stat-label">Completed</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value">{Math.max(0, total - completed)}</div>
-          <div className="stat-label">Not completed</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value">{pct}%</div>
-          <div className="stat-label">Completion</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value">{followups}</div>
-          <div className="stat-label">Follow-ups</div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-value">{total}</div>
-          <div className="stat-label">{isClient ? 'Program stores' : 'Assigned stores'}</div>
-        </div>
-      </div>
-
-      <div className="admin-toolbar">
-        <input
-          className="search-input"
-          type="search"
-          placeholder="Search site, city, or rep"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-        <button
-          type="button"
-          className={`filter-tab ${followOnly ? 'active' : ''}`}
-          onClick={() => setFollowOnly(!followOnly)}
-        >
-          Follow-up only
-        </button>
-      </div>
-
-      <div className="recent-visits">
-        <h2>Submissions ({filteredVisits.length})</h2>
-        {bootLoading ? <div className="no-results">Loading…</div> : null}
-        {filteredVisits.length === 0 ? (
-          <div className="no-results">No submissions yet</div>
-        ) : (
-          filteredVisits.map((v) => (
-            <button
-              type="button"
-              key={v.id || `${v.store_number}-${v.created_at}`}
-              className="visit-row clickable"
-              onClick={() => setSelectedVisit(v)}
-            >
-              <span>CK #{v.store_number}</span>
-              <span>{v.rep_name}</span>
-              <span>{v.followup ? 'FOLLOW-UP' : 'OK'}</span>
-              <span>
-                {v.visit_date || v.created_at
-                  ? new Date(v.visit_date || v.created_at).toLocaleDateString()
-                  : '—'}
-              </span>
-            </button>
-          ))
-        )}
-      </div>
     </div>
   );
 }
