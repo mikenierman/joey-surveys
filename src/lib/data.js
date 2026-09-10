@@ -169,6 +169,16 @@ export function exportVisitsCsv(stores, visits) {
     'educated',
     'price_ok',
     'follow_note',
+    'photo_count',
+    'photo_p1',
+    'photo_p2',
+    'photo_p3',
+    'photo_p4',
+    'photo_p5',
+    'photo_p6',
+    'photo_p7',
+    'photo_p8',
+    'photo_p9',
   ];
   const lines = [headers.join(',')];
   const esc = (x) => {
@@ -179,6 +189,8 @@ export function exportVisitsCsv(stores, visits) {
   for (const s of stores) {
     const v = bySite.get(String(s.site_number));
     const sd = v?.survey_data || {};
+    const photos = v?.photo_urls || {};
+    const photoSlots = ['p1', 'p2', 'p3', 'p4', 'p5', 'p6', 'p7', 'p8', 'p9'];
     const status = v
       ? v.status === 'pending_sync'
         ? 'Completed (pending sync)'
@@ -211,6 +223,8 @@ export function exportVisitsCsv(stores, visits) {
       sd.educated ?? '',
       sd.priceOk ?? sd.priceVisible ?? '',
       sd.followNote ?? '',
+      Object.keys(photos).length,
+      ...photoSlots.map((id) => photos[id] || ''),
     ];
     lines.push(row.map(esc).join(','));
   }

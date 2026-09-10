@@ -24,10 +24,12 @@ import {
   evaluateLocation,
   locationBannerCopy,
 } from './lib/gps';
+import { uploadVisitPhotos } from './lib/photos';
 
 const DEMO_PASSWORD = 'demo';
 const DEMO_ADMIN = 'mike@direct2retailers.com';
 const DEMO_REP = 'mikenierman@gmail.com';
+const DEMO_CLIENT = 'joey@joeypouches.com';
 const DEMO_ROUTE_SIZE = 18;
 
 function displayName(email) {
@@ -40,8 +42,15 @@ function displayName(email) {
 function roleForEmail(email) {
   const e = (email || '').toLowerCase();
   if (e === DEMO_ADMIN) return 'admin';
+  if (e === DEMO_CLIENT || e.endsWith('@joeypouches.com')) return 'client';
   if (e.includes('manager')) return 'manager';
   return 'rep';
+}
+
+function homeViewForRole(role) {
+  if (role === 'admin' || role === 'manager') return 'admin';
+  if (role === 'client') return 'client';
+  return 'route';
 }
 
 /** Stable ~18-store demo slice for Mike (Grand Canyon first, then by site). */
@@ -118,7 +127,7 @@ export default function JoeyApp() {
     if (user && type) {
       setCurrentUser(JSON.parse(user));
       setUserType(type);
-      setView(type === 'admin' ? 'admin' : 'route');
+      setView(homeViewForRole(type));
       refreshData();
     }
   }, [refreshData]);
@@ -126,7 +135,7 @@ export default function JoeyApp() {
   const myStores = useMemo(() => {
     if (!currentUser) return [];
     const email = (currentUser.email || '').toLowerCase();
-    if (userType === 'admin' || userType === 'manager') {
+    if (userType === 'admin' || userType === 'manager' || userType === 'client') {
       return stores;
     }
     if (email === DEMO_REP) {
@@ -175,7 +184,7 @@ export default function JoeyApp() {
       localStorage.setItem('joey_user_type', role);
       setCurrentUser(userObj);
       setUserType(role);
-      setView(role === 'admin' ? 'admin' : 'route');
+      setView(homeViewForRole(role));
       await refreshData();
       showToast(`Welcome, ${userObj.name}`);
     } finally {
@@ -247,9 +256,10 @@ export default function JoeyApp() {
       const isRefusal = visitState.exception === 'refused';
       const followup =
         flags.length > 0 || visitState.followReq === 'yes' || isException || isRefusal;
-      const photo_urls = {};
-      Object.entries(visitState.photos).forEach(([k, photo]) => {
-        if (photo?.dataUrl) photo_urls[k] = photo.dataUrl;
+      const { photo_urls } = await uploadVisitPhotos({
+        cycleKey,
+        storeNumber: activeStore.site_number,
+        photos: visitState.photos,
       });
       const survey_data = { ...visitState, photos: undefined };
       const payload = {
@@ -291,9 +301,10 @@ export default function JoeyApp() {
     return <LoginView onLogin={handleLogin} loading={loading} toast={toast} />;
   }
 
-  if (view === 'admin') {
+  if (view === 'admin' || view === 'client') {
     return (
       <AdminDashboard
+        mode={view === 'client' ? 'client' : 'admin'}
         visits={visits}
         stores={stores}
         stats={stats}
@@ -427,6 +438,7 @@ function LoginView({ onLogin, loading, toast }) {
           <p>Demo accounts (password: demo)</p>
           <code>{DEMO_REP}</code>
           <code>{DEMO_ADMIN}</code>
+          <code>{DEMO_CLIENT}</code>
         </div>
       </div>
     </div>
@@ -1417,6 +1429,7 @@ function CheckView({
 }
 
 function AdminDashboard({
+  mode = 'admin',
   visits,
   stores,
   cycleKey,
@@ -1434,6 +1447,7 @@ function AdminDashboard({
   bootLoading,
   onRefresh,
 }) {
+  const isClient = mode === 'client';
   const doneSites = useMemo(() => {
     const set = new Set();
     visits.forEach((v) => {
@@ -1475,7 +1489,9 @@ function AdminDashboard({
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `joey-circlek-${cycleKey}.csv`;
+    a.download = isClient
+      ? `joey-client-export-${cycleKey}.csv`
+      : `joey-circlek-${cycleKey}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     showToast('CSV downloaded');
@@ -1496,6 +1512,7 @@ function AdminDashboard({
             <p className="admin-sub">
               {selectedVisit.store_address}, {selectedVisit.store_city}{' '}
               {selectedVisit.store_state} · {selectedVisit.rep_name}
+              {isClient ? ' · Client portal (read-only)' : ''}
             </p>
           </div>
           <button type="button" onClick={onLogout}>
@@ -1504,7 +1521,7 @@ function AdminDashboard({
         </div>
         <div className="detail-grid">
           <div className="detail-card">
-            <h3>Survey</h3>
+            <h3>Visit survey</h3>
             <ul className="detail-list">
               <li>Present: {sd.present ?? '—'}</li>
               <li>Reset: {sd.reset ?? '—'}</li>
@@ -1540,6 +1557,9 @@ function AdminDashboard({
           </div>
           <div className="detail-card">
             <h3>Photos</h3>
+            <p className="muted" style={{ marginBottom: 10, fontSize: 12 }}>
+              Shown with this visit — export includes photo links.
+            </p>
             <div className="admin-photos">
               {Object.keys(photos).length === 0 ? (
                 <p className="muted">No photos</p>
@@ -1563,15 +1583,19 @@ function AdminDashboard({
       <Toast toast={toast} />
       <div className="admin-header">
         <div>
-          <h1>JOEY Circle K Review</h1>
+          <h1>{isClient ? 'JOEY Client Portal' : 'JOEY Circle K Review'}</h1>
           <p className="admin-sub">
-            {cycleKey} · {dataSource || 'data'} · store-matched deliverable
+            {isClient
+              ? `${cycleKey} · Visits with survey + photos · Export ready`
+              : `${cycleKey} · ${dataSource || 'data'} · store-matched deliverable`}
           </p>
         </div>
         <div className="header-buttons">
-          <button type="button" className="admin-btn" onClick={onBackToRoute}>
-            Route
-          </button>
+          {!isClient ? (
+            <button type="button" className="admin-btn" onClick={onBackToRoute}>
+              Route
+            </button>
+          ) : null}
           <button type="button" className="admin-btn" onClick={onRefresh}>
             Refresh
           </button>
@@ -1603,7 +1627,7 @@ function AdminDashboard({
         </div>
         <div className="stat-card">
           <div className="stat-value">{total}</div>
-          <div className="stat-label">Assigned stores</div>
+          <div className="stat-label">{isClient ? 'Program stores' : 'Assigned stores'}</div>
         </div>
       </div>
 
