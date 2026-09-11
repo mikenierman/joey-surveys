@@ -88,10 +88,10 @@ export default function ReviewPortal({
             <div className="rp-logos">
               <img
                 className="rp-logo-d2r"
-                src="/branding/d2r-logo.svg"
+                src="/branding/d2r-logo.png"
                 alt="D2R Direct to Retailers"
               />
-              <img className="rp-logo-joey" src="/branding/joey-logo.svg" alt="JOEY" />
+              <img className="rp-logo-joey" src="/branding/joey-logo.png" alt="JOEY" />
             </div>
             <div className="rp-titleblock">
               <h1>JOEY × Circle K Merchandising</h1>

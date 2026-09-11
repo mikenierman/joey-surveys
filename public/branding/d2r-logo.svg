@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 116" role="img" aria-label="D2R Direct to Retailers">
-  <!-- Color mark: three rounded chevrons pointing upper-right -->
-  <g transform="translate(8 10)">
-    <path fill="#F88818" d="M22 58c-3-3-3-8 0-11L52 12c3-4 9-4 12 0l30 35c3 3 3 8 0 11s-8 3-11 0L58 36c-1-2-4-2-5 0L33 58c-3 3-8 3-11 0z"/>
-    <path fill="#0098F8" d="M58 42c-3-3-3-8 0-11L88-4c3-4 9-4 12 0l30 35c3 3 3 8 0 11s-8 3-11 0L94 20c-1-2-4-2-5 0L69 42c-3 3-8 3-11 0z" transform="translate(0 18)"/>
-    <path fill="#00B048" d="M18 78c-4-4-4-11 0-15L62 12c4-5 12-5 16 0l44 51c4 4 4 11 0 15s-11 4-15 0L70 44c-2-2-5-2-7 0L33 78c-4 4-11 4-15 0z" transform="translate(8 8) scale(1.15)"/>
-  </g>
-  <text x="128" y="78" fill="#1C1917" font-family="Arial Black, Helvetica Neue, Arial, sans-serif" font-size="56" font-style="italic" font-weight="800" letter-spacing="-2">D2R</text>
-</svg>
