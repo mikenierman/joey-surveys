@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "scaffold": true,
+    "source": "twin-scaffold",
+    "note": "Payout rule definitions — inferred from live /admin/payouts/rules until export",
+    "capturedAt": "2026-09-16T20:00:00Z"
+  },
+  "rules": [
+    {
+      "id": "rule-biweekly-standard",
+      "name": "biweekly-standard",
+      "label": "Biweekly ACH (standard reps)",
+      "type": "schedule",
+      "method": "ach",
+      "cadence": "every 2 weeks on Friday",
+      "minAmount": 25,
+      "active": true,
+      "repCount": 142
+    },
+    {
+      "id": "rule-merch-bonus",
+      "name": "merch-bonus",
+      "label": "Merch visit bonus (Q3 JOEY/Circle K)",
+      "type": "program",
+      "method": "ach",
+      "cadence": "end of quarter",
+      "minAmount": 0,
+      "active": true,
+      "repCount": 18
+    },
+    {
+      "id": "rule-manual-review",
+      "name": "manual-review",
+      "label": "Manual review / hold",
+      "type": "hold",
+      "method": "check",
+      "cadence": "on approval",
+      "minAmount": 0,
+      "active": true,
+      "repCount": 3
+    },
+    {
+      "id": "rule-wire-large",
+      "name": "wire-large",
+      "label": "Wire transfer (>$5k net)",
+      "type": "threshold",
+      "method": "wire",
+      "cadence": "on settlement close",
+      "minAmount": 5000,
+      "active": false,
+      "repCount": 0
+    }
+  ]
+}

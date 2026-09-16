@@ -1,0 +1,30 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/inventory/refresh",
+    "capturedAt": "2026-09-16T19:42:55.519Z",
+    "source": "live-scrape+vault-structured",
+    "title": "Brand levels",
+    "brands": 17,
+    "levels": 2905,
+    "summary": "17 brand(s), 2905 inventory level(s). Pulls on hand and available straight from Shopify."
+  },
+  "brands": [
+    { "brand": "ALP", "services": 32, "levels": 834, "lastRefresh": null },
+    { "brand": "Bangers", "services": 17, "levels": 88, "lastRefresh": null },
+    { "brand": "Dialed Gum", "services": 4, "levels": 6, "lastRefresh": null },
+    { "brand": "Dime Bags", "services": 25, "levels": 381, "lastRefresh": null },
+    { "brand": "Fireball", "services": 3, "levels": 3, "lastRefresh": null },
+    { "brand": "FÜM", "services": 15, "levels": 194, "lastRefresh": null },
+    { "brand": "Joey", "services": 3, "levels": 53, "lastRefresh": null },
+    { "brand": "K Bar", "services": 2, "levels": 0, "lastRefresh": null },
+    { "brand": "Lucy (New!)", "services": 25, "levels": 447, "lastRefresh": null },
+    { "brand": "McBee Farms", "services": 5, "levels": 24, "lastRefresh": null },
+    { "brand": "Mini Melt", "services": 2, "levels": 0, "lastRefresh": null },
+    { "brand": "My Instant IV", "services": 10, "levels": 32, "lastRefresh": null },
+    { "brand": "Newtrition", "services": 1, "levels": 0, "lastRefresh": null },
+    { "brand": "Rebel", "services": 1, "levels": 0, "lastRefresh": null },
+    { "brand": "Sesh", "services": 26, "levels": 647, "lastRefresh": null },
+    { "brand": "TRĒ House", "services": 1, "levels": 15, "lastRefresh": null },
+    { "brand": "X Mood Drinks", "services": 26, "levels": 181, "lastRefresh": null }
+  ]
+}

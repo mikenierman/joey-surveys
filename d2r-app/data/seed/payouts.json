@@ -1,0 +1,123 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/payouts",
+    "capturedAt": "2026-09-16T20:00:00Z",
+    "source": "twin-scaffold",
+    "note": "Rep payout runs — inferred from approved commissions until live export",
+    "count": 11,
+    "headers": ["ID", "Rep", "Method", "Amount", "Status", "Run date", "Rule"]
+  },
+  "payouts": [
+    {
+      "id": "pay-2026-09-20-adam",
+      "rep": "Adam Scott",
+      "method": "ach",
+      "amount": 515.75,
+      "status": "scheduled",
+      "runDate": "2026-09-20",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-adam-alp"]
+    },
+    {
+      "id": "pay-2026-09-05-bobby",
+      "rep": "Bobby Patel",
+      "method": "ach",
+      "amount": 188.0,
+      "status": "paid",
+      "runDate": "2026-09-05",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q2-bobby-joey"]
+    },
+    {
+      "id": "pay-hold-unknown",
+      "rep": "Hold - Unknown",
+      "method": "check",
+      "amount": 50.0,
+      "status": "on_hold",
+      "runDate": null,
+      "rule": "manual-review",
+      "commissionIds": ["com-2026q3-hold-unknown"]
+    },
+    {
+      "id": "pay-2026-09-20-neal",
+      "rep": "Neal Batson",
+      "method": "ach",
+      "amount": 892.0,
+      "status": "scheduled",
+      "runDate": "2026-09-20",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-neal-alp"]
+    },
+    {
+      "id": "pay-2026-09-05-morgan",
+      "rep": "Morgan Williams",
+      "method": "ach",
+      "amount": 742.0,
+      "status": "paid",
+      "runDate": "2026-09-05",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q2-morgan-alp"]
+    },
+    {
+      "id": "pay-2026-09-20-michael",
+      "rep": "Michael Nierman",
+      "method": "ach",
+      "amount": 2104.0,
+      "status": "processing",
+      "runDate": "2026-09-18",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-michael-joey"]
+    },
+    {
+      "id": "pay-2026-09-20-shay",
+      "rep": "Shay Schnoor",
+      "method": "ach",
+      "amount": 315.2,
+      "status": "scheduled",
+      "runDate": "2026-09-20",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-shay-fum"]
+    },
+    {
+      "id": "pay-2026-09-05-denisa",
+      "rep": "Denisa Keiper",
+      "method": "ach",
+      "amount": 556.25,
+      "status": "paid",
+      "runDate": "2026-09-05",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-denisa-alp"]
+    },
+    {
+      "id": "pay-2026-q3-merch-michael",
+      "rep": "Michael Nierman",
+      "method": "ach",
+      "amount": 850.0,
+      "status": "scheduled",
+      "runDate": "2026-09-30",
+      "rule": "merch-bonus",
+      "commissionIds": []
+    },
+    {
+      "id": "pay-failed-nick",
+      "rep": "Nick Guerrieri",
+      "method": "ach",
+      "amount": 178.5,
+      "status": "failed",
+      "runDate": "2026-09-12",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q3-nick-bangers"],
+      "notes": "ACH routing rejected — rep to update bank info"
+    },
+    {
+      "id": "pay-2026-07-adam",
+      "rep": "Adam Scott",
+      "method": "ach",
+      "amount": 95.25,
+      "status": "paid",
+      "runDate": "2026-07-05",
+      "rule": "biweekly-standard",
+      "commissionIds": ["com-2026q2-adam-joey"]
+    }
+  ]
+}

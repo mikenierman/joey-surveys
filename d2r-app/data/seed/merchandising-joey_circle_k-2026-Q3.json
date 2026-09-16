@@ -1,0 +1,347 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T19:40:54.647Z",
+    "count": 41,
+    "period": "2026-Q3",
+    "programKey": "joey_circle_k",
+    "source": "live-scrape",
+    "url": "https://app.direct2retailers.com/admin/merchandising"
+  },
+  "periods": [
+    "2026-Q3",
+    "2026-Q2",
+    "2026-Q1",
+    "2025-Q4",
+    "2025-Q3"
+  ],
+  "reps": [
+    {
+      "assigned": 263,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Adam Scott",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 20,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Andrew O'Leary",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 73,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Chris Simpson",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 50,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Clay Patterson",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 197,
+      "completePct": "2%",
+      "completed": 3,
+      "rep": "Daniel Kelly",
+      "unpaidVisits": 3,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 38,
+      "completePct": "61%",
+      "completed": 23,
+      "rep": "Denisa Keiper",
+      "unpaidVisits": 23,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 30,
+      "completePct": "3%",
+      "completed": 1,
+      "rep": "Dennis Escobar",
+      "unpaidVisits": 1,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 13,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Emily Vesnic",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 1,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Erica Novak",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 14,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Ethan Adels",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 26,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Faysal Gharwal",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 3,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Gary Jurkowski",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 47,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Jaime Rutherford",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 141,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "James Mullen",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 53,
+      "completePct": "2%",
+      "completed": 1,
+      "rep": "Jerry Derigo",
+      "unpaidVisits": 1,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 85,
+      "completePct": "16%",
+      "completed": 14,
+      "rep": "Joseph Lardie",
+      "unpaidVisits": 14,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 13,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "John Milliman",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 78,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "John Proben",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 23,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Jon Schulte",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 91,
+      "completePct": "14%",
+      "completed": 13,
+      "rep": "Jordan Johnson",
+      "unpaidVisits": 13,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 124,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Julian Lara",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 91,
+      "completePct": "9%",
+      "completed": 8,
+      "rep": "Kevin Galbreath",
+      "unpaidVisits": 8,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 145,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Kevin Patel",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 1,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Luis Colon",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 83,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Martha Beasley",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 37,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Masood Gharwal",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 16,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Miguel Edwards",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 3,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Morgan Williams",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 12,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Nichole Jones",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 77,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Pancho Alvarez",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 2,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Rocio Sanchez Meschke",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 8,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Ronnie Watson",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 2,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Ryan Moore",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 13,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Scott Hanslip",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 26,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Soliman Sayedi",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 187,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Stephen Hagler",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 2,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Susan Sinard",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 24,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Tim Hallowell",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 36,
+      "completePct": "0%",
+      "completed": 0,
+      "rep": "Tracey Willmer",
+      "unpaidVisits": 0,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 157,
+      "completePct": "21%",
+      "completed": 33,
+      "rep": "Vern Tunnell",
+      "unpaidVisits": 34,
+      "withinWindow": 0
+    },
+    {
+      "assigned": 122,
+      "completePct": "2%",
+      "completed": 2,
+      "rep": "Zohaeb Jilani",
+      "unpaidVisits": 2,
+      "withinWindow": 0
+    }
+  ]
+}

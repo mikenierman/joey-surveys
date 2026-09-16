@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/commissions",
+    "capturedAt": "2026-09-16T20:00:00Z",
+    "source": "twin-scaffold",
+    "note": "Derived from ledger reps + store brands until live commission export",
+    "count": 14,
+    "headers": ["ID", "Rep", "Brand", "Period", "Amount", "Status", "Updated"]
+  },
+  "commissions": [
+    {
+      "id": "com-2026q3-adam-alp",
+      "rep": "Adam Scott",
+      "brand": "ALP",
+      "period": "2026-Q3",
+      "amount": 420.5,
+      "status": "pending_review",
+      "updatedAt": "2026-09-14",
+      "orderCount": 12,
+      "rate": "8%"
+    },
+    {
+      "id": "com-2026q3-morgan-joey",
+      "rep": "Morgan Williams",
+      "brand": "JOEY",
+      "period": "2026-Q3",
+      "amount": 1248.75,
+      "status": "pending_review",
+      "updatedAt": "2026-09-15",
+      "orderCount": 47,
+      "rate": "10%"
+    },
+    {
+      "id": "com-2026q3-neal-alp",
+      "rep": "Neal Batson",
+      "brand": "ALP",
+      "period": "2026-Q3",
+      "amount": 892.0,
+      "status": "approved",
+      "updatedAt": "2026-09-13",
+      "orderCount": 31,
+      "rate": "8%"
+    },
+    {
+      "id": "com-2026q3-shay-fum",
+      "rep": "Shay Schnoor",
+      "brand": "FÜM",
+      "period": "2026-Q3",
+      "amount": 315.2,
+      "status": "approved",
+      "updatedAt": "2026-09-12",
+      "orderCount": 8,
+      "rate": "12%"
+    },
+    {
+      "id": "com-2026q3-michael-joey",
+      "rep": "Michael Nierman",
+      "brand": "JOEY",
+      "period": "2026-Q3",
+      "amount": 2104.0,
+      "status": "approved",
+      "updatedAt": "2026-09-11",
+      "orderCount": 62,
+      "rate": "10%",
+      "notes": "Circle K program — merch bonus pending"
+    },
+    {
+      "id": "com-2026q3-nick-bangers",
+      "rep": "Nick Guerrieri",
+      "brand": "Bangers",
+      "period": "2026-Q3",
+      "amount": 178.5,
+      "status": "pending_review",
+      "updatedAt": "2026-09-16",
+      "orderCount": 5,
+      "rate": "8%"
+    },
+    {
+      "id": "com-2026q3-denisa-alp",
+      "rep": "Denisa Keiper",
+      "brand": "ALP",
+      "period": "2026-Q3",
+      "amount": 556.25,
+      "status": "approved",
+      "updatedAt": "2026-09-10",
+      "orderCount": 19,
+      "rate": "8%"
+    },
+    {
+      "id": "com-2026q2-adam-joey",
+      "rep": "Adam Scott",
+      "brand": "JOEY",
+      "period": "2026-Q2",
+      "amount": 95.25,
+      "status": "paid",
+      "updatedAt": "2026-07-02",
+      "orderCount": 3,
+      "rate": "10%"
+    },
+    {
+      "id": "com-2026q2-bobby-joey",
+      "rep": "Bobby Patel",
+      "brand": "JOEY",
+      "period": "2026-Q2",
+      "amount": 188.0,
+      "status": "paid",
+      "updatedAt": "2026-07-05",
+      "orderCount": 6,
+      "rate": "10%"
+    },
+    {
+      "id": "com-2026q2-morgan-alp",
+      "rep": "Morgan Williams",
+      "brand": "ALP",
+      "period": "2026-Q2",
+      "amount": 742.0,
+      "status": "paid",
+      "updatedAt": "2026-07-08",
+      "orderCount": 28,
+      "rate": "8%"
+    },
+    {
+      "id": "com-2026q3-bobby-joey",
+      "rep": "Bobby Patel",
+      "brand": "JOEY",
+      "period": "2026-Q3",
+      "amount": 188.0,
+      "status": "approved",
+      "updatedAt": "2026-09-10",
+      "orderCount": 6,
+      "rate": "10%"
+    },
+    {
+      "id": "com-2026q3-hold-unknown",
+      "rep": "Hold - Unknown",
+      "brand": "ALP",
+      "period": "2026-Q3",
+      "amount": 50.0,
+      "status": "rejected",
+      "updatedAt": "2026-09-08",
+      "orderCount": 1,
+      "rate": "—",
+      "notes": "Rep assignment mismatch — routed to manual review"
+    },
+    {
+      "id": "com-2026q3-neal-joey",
+      "rep": "Neal Batson",
+      "brand": "JOEY",
+      "period": "2026-Q3",
+      "amount": 1105.5,
+      "status": "pending_review",
+      "updatedAt": "2026-09-16",
+      "orderCount": 38,
+      "rate": "10%"
+    },
+    {
+      "id": "com-2026q3-shay-alp",
+      "rep": "Shay Schnoor",
+      "brand": "ALP",
+      "period": "2026-Q3",
+      "amount": 64.0,
+      "status": "pending_review",
+      "updatedAt": "2026-09-16",
+      "orderCount": 2,
+      "rate": "8%"
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/orders",
+    "capturedAt": "2026-09-16T19:44:27.932Z",
+    "source": "live-scrape",
+    "page": 1,
+    "pagesHint": "1\n2\n3\nMore pages\n1034",
+    "approxPages": 1034,
+    "count": 20
+  },
+  "headers": [
+    "PO Number",
+    "Store",
+    "Account",
+    "Customer",
+    "Location",
+    "Fulfillment",
+    "ETA",
+    "Total",
+    "Sales Rep",
+    "Created"
+  ],
+  "orders": [
+    {
+      "PO Number": "D2R-21939",
+      "Store": "Lucy (New!)",
+      "Account": "Arena Plaza",
+      "Customer": "Gilbert Arenas",
+      "Location": "1401 South Main Street, Muldrow, OK",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$77.00",
+      "Sales Rep": "Shay Schnoor",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21939",
+          "h": "/orders/d0e37f34-47a0-4230-86c7-3bbb6349e160"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21851",
+      "Store": "FÜM",
+      "Account": "Smoke on the water",
+      "Customer": "Garrick Stroud",
+      "Location": "201 Janesville Street, Oregon, WI",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$888.35",
+      "Sales Rep": "Dennis Escobar",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21851",
+          "h": "/orders/da257158-e410-41e4-a71d-ebb105cca7c0"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21938",
+      "Store": "McBee Farms",
+      "Account": "Teele square Market",
+      "Customer": "Sahil Patel",
+      "Location": "1122 Broadway, Somerville, MA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$63.00",
+      "Sales Rep": "Michael Fisher",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21938",
+          "h": "/orders/d97cd919-87fc-4a02-bdf0-e85e1ec60192"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21937",
+      "Store": "FÜM",
+      "Account": "The Cloud",
+      "Customer": "Susan Griffen",
+      "Location": "10425 South Parker Road, Parker, CO",
+      "Fulfillment": "Unfulfilled",
+      "ETA": "-",
+      "Total": "$279.93",
+      "Sales Rep": "Ryan Moore",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21937",
+          "h": "/orders/29ed561e-69b3-4d50-a72e-3a6ef0f3e274"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21936",
+      "Store": "FÜM",
+      "Account": "Al’s Quick Stop #9",
+      "Customer": "Sunny Dontknow",
+      "Location": "457 North Hunter Highway, Drums, PA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$136.97",
+      "Sales Rep": "Janine Vicalvi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21936",
+          "h": "/orders/9b30e74f-406f-4ea6-93ca-36d41ce2c492"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-20278",
+      "Store": "FÜM",
+      "Account": "Mohammad Alsayeb",
+      "Customer": "Mohammad Alsayeb",
+      "Location": "640 Railroad Dr, Norwood Young America, MN",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$122.48",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-20278",
+          "h": "/orders/eea2cbf9-b9d6-4217-8b21-7334afa76a58"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21934",
+      "Store": "FÜM",
+      "Account": "WSM Group",
+      "Customer": "Wayand Hassas",
+      "Location": "3510 124th Avenue Northwest, Coon Rapids, MN",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$1,687.23",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21934",
+          "h": "/orders/8b95519e-b5ca-49e0-a852-fc96a987187d"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21935",
+      "Store": "ALP",
+      "Account": "Jr market # 5",
+      "Customer": "Bert Harrell",
+      "Location": "4498 Lookout Road, Virginia Beach, VA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$63.00",
+      "Sales Rep": "Morgan Williams",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21935",
+          "h": "/orders/88319694-5f9c-4449-a3c5-fbe3135b6f7a"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21418",
+      "Store": "X Mood Drinks",
+      "Account": "WSM Group",
+      "Customer": "Wayand Hassas",
+      "Location": "3510 124th Avenue Northwest, Coon Rapids, MN",
+      "Fulfillment": "Unfulfilled",
+      "ETA": "-",
+      "Total": "$24.00",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21418",
+          "h": "/orders/ead710c7-92f9-4b8e-aa65-7466e03b1eee"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21615",
+      "Store": "X Mood Drinks",
+      "Account": "Top Star Market Shakopee Gas Food Tobacco Minnesota MN",
+      "Customer": "Mohammed Moe",
+      "Location": "615 Marschall Road, Shakopee, MN",
+      "Fulfillment": "Unfulfilled",
+      "ETA": "-",
+      "Total": "$48.00",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21615",
+          "h": "/orders/f1502e18-fc54-4515-a45e-ed5036e917b8"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21617",
+      "Store": "X Mood Drinks",
+      "Account": "Shorewood Smoke Shop",
+      "Customer": "Hazem Shore",
+      "Location": "23710 MN-7, Excelsior, MN",
+      "Fulfillment": "Unfulfilled",
+      "ETA": "-",
+      "Total": "$48.00",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21617",
+          "h": "/orders/30dab062-ea68-4363-bd96-f1d8db4b25e0"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21620",
+      "Store": "X Mood Drinks",
+      "Account": "Wyoming Smoke Shop",
+      "Customer": "Fahim Mo",
+      "Location": "5211 E Viking Blvd, Wyoming, MN",
+      "Fulfillment": "Unfulfilled",
+      "ETA": "-",
+      "Total": "$24.00",
+      "Sales Rep": "Soliman Sayedi",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21620",
+          "h": "/orders/10a8120b-555f-4d83-9bfe-3cc171bd920b"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21933",
+      "Store": "Lucy (New!)",
+      "Account": "Woody’s Smoke Shop",
+      "Customer": "Miranda Adam",
+      "Location": "3644 Carpenter Road, Ypsilanti, MI",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$115.50",
+      "Sales Rep": "Neal Batson",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21933",
+          "h": "/orders/24918cd1-8ba5-47c6-aaef-7e34d1640faa"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21932",
+      "Store": "FÜM",
+      "Account": "Woody’s Smoke Shop",
+      "Customer": "Miranda Adam",
+      "Location": "3644 Carpenter Road, Ypsilanti, MI",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$187.47",
+      "Sales Rep": "Neal Batson",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21932",
+          "h": "/orders/e0a04294-23c3-4b25-8614-5e4e72477584"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21931",
+      "Store": "ALP",
+      "Account": "Jr market # 5",
+      "Customer": "Bert Harrell",
+      "Location": "920 Mediterranean Avenue, Virginia Beach, VA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$336.00",
+      "Sales Rep": "Morgan Williams",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21931",
+          "h": "/orders/5444ec7d-5008-43e9-8eca-b5415f3f38ae"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21929",
+      "Store": "McBee Farms",
+      "Account": "Mobil Joes Market",
+      "Customer": "Jay Patel",
+      "Location": "338 Squire Road, Revere, MA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$189.00",
+      "Sales Rep": "Michael Fisher",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21929",
+          "h": "/orders/41726b62-95a4-4eb8-b202-f6deaa60f70c"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21928",
+      "Store": "ALP",
+      "Account": "Luckie’s Pony Keg",
+      "Customer": "Trey Morgan",
+      "Location": "8600 Blue Ash Road, Cincinnati, OH",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$105.00",
+      "Sales Rep": "Joseph Lardie",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21928",
+          "h": "/orders/c3ef2f59-6b4f-46fc-b1c4-596a18a65895"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21926",
+      "Store": "Lucy (New!)",
+      "Account": "Sunoco",
+      "Customer": "Mihir Patel",
+      "Location": "4180 William Penn Hwy, Murrysville, PA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$38.50",
+      "Sales Rep": "Chris Heibert",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21926",
+          "h": "/orders/77e1d668-8799-4e45-95be-45703663fb06"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21925",
+      "Store": "ALP",
+      "Account": "Sunoco",
+      "Customer": "Mihir Patel",
+      "Location": "4180 William Penn Hwy, Murrysville, PA",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$860.00",
+      "Sales Rep": "Chris Heibert",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21925",
+          "h": "/orders/c5ac4765-df7d-4d35-8abe-a5dba7c6fd43"
+        }
+      ]
+    },
+    {
+      "PO Number": "D2R-21927",
+      "Store": "McBee Farms",
+      "Account": "Lake Asbury",
+      "Customer": "Tony Rahal",
+      "Location": "2879 Henley Road, Green Cove Springs, FL",
+      "Fulfillment": "Fulfilled",
+      "ETA": "-",
+      "Total": "$189.00",
+      "Sales Rep": "Vern Tunnell",
+      "Created": "9/16/2026",
+      "_links": [
+        {
+          "t": "D2R-21927",
+          "h": "/orders/d9242ae6-c46b-499e-afd3-de92bec1e1f7"
+        }
+      ]
+    }
+  ]
+}

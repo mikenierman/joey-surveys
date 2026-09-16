@@ -1,0 +1,354 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/inventory/transfers",
+    "capturedAt": "2026-09-16T19:43:30.580Z",
+    "source": "live-scrape",
+    "page": 1,
+    "pagesHint": "1\n2\n3\nMore pages\n21",
+    "count": 20
+  },
+  "headers": [
+    "Transfer ID",
+    "Store",
+    "Warehouse",
+    "Status",
+    "Items",
+    "Approved",
+    "Created",
+    "Actions"
+  ],
+  "transfers": [
+    {
+      "Transfer ID": "9903431f",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "NEW",
+      "Items": "12 items (396 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve",
+      "_links": [
+        {
+          "t": "9903431f",
+          "h": "/inventory/transfers/9903431f-fe01-40e3-ae96-9927c7a29278"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "8e1784be",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Vicki Van Sipe",
+      "Status": "NEW",
+      "Items": "10 items (180 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve",
+      "_links": [
+        {
+          "t": "8e1784be",
+          "h": "/inventory/transfers/8e1784be-b742-46ff-a416-2afaf4e0935d"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0055",
+      "Store": "Dime Bags",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "IN_PROGRESS",
+      "Items": "16 items (465 units)",
+      "Approved": "Approved",
+      "Created": "9/15/2026",
+      "Actions": "Receive",
+      "_links": [
+        {
+          "t": "#T0055",
+          "h": "/inventory/transfers/6b308d13-0e55-4eea-898d-8569473f905c"
+        },
+        {
+          "t": "Receive",
+          "h": "/inventory/transfers/6b308d13-0e55-4eea-898d-8569473f905c/receive"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "a8cdc93d",
+      "Store": "ALP",
+      "Warehouse": "D2R - Kevin Galbreath",
+      "Status": "NEW",
+      "Items": "22 items (396 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve",
+      "_links": [
+        {
+          "t": "a8cdc93d",
+          "h": "/inventory/transfers/a8cdc93d-ec67-4465-a365-e63aa828c2a5"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0007",
+      "Store": "McBee Farms",
+      "Warehouse": "D2R - Vernon Tunnel",
+      "Status": "READY_TO_SHIP",
+      "Items": "6 items (72 units)",
+      "Approved": "Approved",
+      "Created": "9/14/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0007",
+          "h": "/inventory/transfers/6c402f52-47b2-4c51-91e9-09ea4c44a01f"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0048",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Nicolas Guerrieri",
+      "Status": "READY_TO_SHIP",
+      "Items": "4 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0048",
+          "h": "/inventory/transfers/e4c21287-4ab0-4350-b912-4c17c86f42e5"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0054",
+      "Store": "Dime Bags",
+      "Warehouse": "D2R - Tommy Joseph",
+      "Status": "READY_TO_SHIP",
+      "Items": "17 items (972 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0054",
+          "h": "/inventory/transfers/62d15141-d33c-436a-8245-b932181e8c0b"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0067",
+      "Store": "ALP",
+      "Warehouse": "D2R - Chris Heibert",
+      "Status": "READY_TO_SHIP",
+      "Items": "17 items (365 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0067",
+          "h": "/inventory/transfers/77fdafba-5086-446c-b1a3-18e053419115"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0066",
+      "Store": "ALP",
+      "Warehouse": "D2R - Neal Batson",
+      "Status": "READY_TO_SHIP",
+      "Items": "15 items (396 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0066",
+          "h": "/inventory/transfers/82454dac-8ce5-4410-820f-e2467a9242c1"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0022",
+      "Store": "FÜM",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "IN_PROGRESS",
+      "Items": "6 items (52 units)",
+      "Approved": "Approved",
+      "Created": "9/10/2026",
+      "Actions": "Receive",
+      "_links": [
+        {
+          "t": "#T0022",
+          "h": "/inventory/transfers/d707e0b5-5d76-4b6e-98c7-83c1e09721b9"
+        },
+        {
+          "t": "Receive",
+          "h": "/inventory/transfers/d707e0b5-5d76-4b6e-98c7-83c1e09721b9/receive"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0065",
+      "Store": "ALP",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "READY_TO_SHIP",
+      "Items": "21 items (684 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0065",
+          "h": "/inventory/transfers/5a56768b-cfe8-4fa7-beb0-151e5fcf63c4"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0063",
+      "Store": "ALP",
+      "Warehouse": "D2R - James Mullen",
+      "Status": "READY_TO_SHIP",
+      "Items": "4 items (72 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0063",
+          "h": "/inventory/transfers/aef0cada-af70-4a4b-9f66-182741f55341"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0064",
+      "Store": "ALP",
+      "Warehouse": "D2R - Stephen Hagler",
+      "Status": "READY_TO_SHIP",
+      "Items": "33 items (607 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0064",
+          "h": "/inventory/transfers/ca90eb04-c685-4120-8cc1-bb00d2f20f30"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0049",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Chris Pidruzny",
+      "Status": "READY_TO_SHIP",
+      "Items": "5 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/8/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0049",
+          "h": "/inventory/transfers/7c36d7d8-fa38-4223-917c-6c0b29e7e3f3"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0047",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "READY_TO_SHIP",
+      "Items": "19 items (428 units)",
+      "Approved": "Approved",
+      "Created": "9/8/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0047",
+          "h": "/inventory/transfers/dc0af0f6-8702-4303-9524-eafa1d7927c3"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0006",
+      "Store": "McBee Farms",
+      "Warehouse": "D2R - Mike Fisher",
+      "Status": "TRANSFERRED",
+      "Items": "6 items (30 units)",
+      "Approved": "Approved",
+      "Created": "9/7/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0006",
+          "h": "/inventory/transfers/86759956-429a-44a5-8008-8f1585e7e0ab"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0046",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Chris Heibert",
+      "Status": "READY_TO_SHIP",
+      "Items": "11 items (135 units)",
+      "Approved": "Approved",
+      "Created": "9/6/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0046",
+          "h": "/inventory/transfers/350c0fd9-808d-47f1-9622-884e7c4e331e"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0035",
+      "Store": "X Mood Drinks",
+      "Warehouse": "D2R - Mike Fisher",
+      "Status": "READY_TO_SHIP",
+      "Items": "1 item (24 units)",
+      "Approved": "Approved",
+      "Created": "9/4/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0035",
+          "h": "/inventory/transfers/ff62aa9b-dab1-4c7a-bfce-90820fdaa2c7"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0045",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Vernon Tunnel",
+      "Status": "IN_PROGRESS",
+      "Items": "5 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/3/2026",
+      "Actions": "Receive",
+      "_links": [
+        {
+          "t": "#T0045",
+          "h": "/inventory/transfers/d8752e95-2a9d-47e0-bae4-8cdc24e11044"
+        },
+        {
+          "t": "Receive",
+          "h": "/inventory/transfers/d8752e95-2a9d-47e0-bae4-8cdc24e11044/receive"
+        }
+      ]
+    },
+    {
+      "Transfer ID": "#T0062",
+      "Store": "ALP",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "READY_TO_SHIP",
+      "Items": "16 items (624 units)",
+      "Approved": "Approved",
+      "Created": "9/3/2026",
+      "Actions": "",
+      "_links": [
+        {
+          "t": "#T0062",
+          "h": "/inventory/transfers/a145d46a-c9c1-4c67-9729-f963c5d81940"
+        }
+      ]
+    }
+  ]
+}
