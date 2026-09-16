@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "qc:twin-smoke": "node scripts/qc-twin-smoke.mjs",
-    "verify:webhook": "node scripts/verify-webhook-hmac.mjs"
+    "verify:webhook": "node scripts/verify-webhook-hmac.mjs",
+    "automation:brand-levels": "node scripts/run-brand-levels-refresh.mjs",
+    "automation:inventory-sync": "node scripts/run-inventory-sync.mjs"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.9.4",

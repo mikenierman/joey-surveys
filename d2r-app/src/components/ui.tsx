@@ -2,7 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { ADMIN_NAV_GROUPS, REP_NAV, type NavGroup, type NavLink } from '@/lib/nav';
+import {
+  ADMIN_NAV_GROUPS,
+  REP_NAV,
+  pendingLaneTitle,
+  type NavGroup,
+  type NavLink,
+} from '@/lib/nav';
 import type { DevUser } from '@/lib/auth';
 
 function linkActive(pathname: string, href: string): boolean {
@@ -121,12 +127,14 @@ function RepTopNav() {
 }
 
 export function PendingLane({ path }: { path: string }) {
+  const title = pendingLaneTitle(path);
   return (
     <div className="rounded-xl border border-dashed border-amber-400/80 bg-amber-50 px-6 py-10 text-center">
       <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">
         Offline twin — pending lane
       </div>
-      <h1 className="mt-3 text-xl font-semibold text-stone-900">{path}</h1>
+      <h1 className="mt-3 text-xl font-semibold text-stone-900">{title}</h1>
+      <p className="mt-1 font-mono text-xs text-stone-500">{path}</p>
       <p className="mx-auto mt-2 max-w-md text-sm text-stone-600">
         This live admin route is mapped in the site map but not owned by a domain
         lane yet. Nav link is wired; content lands when the owning sandbox lane
