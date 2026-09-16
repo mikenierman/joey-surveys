@@ -1,0 +1,470 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T19:38:00Z",
+    "url": "https://app.direct2retailers.com/admin/inventory/ledgers",
+    "title": "Ledger performance",
+    "source": "live-scrape"
+  },
+  "summary": {
+    "valueHeld": "$892,447",
+    "unpricedItemsExcluded": 425,
+    "unitsHeld": 97149,
+    "sellThrough": "20%",
+    "quiet8PlusDays": {
+      "count": "47 of 53",
+      "description": "No sale and no arrival in over a week"
+    }
+  },
+  "reps": [
+    {
+      "rep": "Michael Nierman",
+      "valueHeld": "$82,499",
+      "unitsHeld": 15232,
+      "unitsSoldAllTime": 2009,
+      "sellThrough": "12%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "8 days ago"
+    },
+    {
+      "rep": "Morgan Williams",
+      "valueHeld": "$78,622",
+      "unitsHeld": 5685,
+      "unitsSoldAllTime": 2396,
+      "sellThrough": "24%",
+      "soldLast7d": "113 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Neal Batson",
+      "valueHeld": "$60,684",
+      "unitsHeld": 3779,
+      "unitsSoldAllTime": 4954,
+      "sellThrough": "42%",
+      "soldLast7d": "430 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Nick Guerrieri",
+      "valueHeld": "$51,781",
+      "unitsHeld": 3899,
+      "unitsSoldAllTime": 1292,
+      "sellThrough": "18%",
+      "soldLast7d": "47 in 7d",
+      "lastSale": "5 days ago"
+    },
+    {
+      "rep": "Denisa Keiper",
+      "valueHeld": "$47,735",
+      "unitsHeld": 4479,
+      "unitsSoldAllTime": 4916,
+      "sellThrough": "36%",
+      "soldLast7d": "160 in 7d",
+      "lastSale": "Yesterday"
+    },
+    {
+      "rep": "Dennis Escobar",
+      "valueHeld": "$37,170",
+      "unitsHeld": 5171,
+      "unitsSoldAllTime": 2073,
+      "sellThrough": "29%",
+      "soldLast7d": "26 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Joseph Lardie",
+      "valueHeld": "$37,050",
+      "unitsHeld": 3329,
+      "unitsSoldAllTime": 768,
+      "sellThrough": "13%",
+      "soldLast7d": "20 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Brian Phillips",
+      "valueHeld": "$36,853",
+      "unitsHeld": 3719,
+      "unitsSoldAllTime": 59,
+      "sellThrough": "1%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "15 days ago"
+    },
+    {
+      "rep": "Shay Schnoor",
+      "valueHeld": "$31,104",
+      "unitsHeld": 2082,
+      "unitsSoldAllTime": 1343,
+      "sellThrough": "39%",
+      "soldLast7d": "10 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Chris Pidruzny",
+      "valueHeld": "$29,316",
+      "unitsHeld": 3580,
+      "unitsSoldAllTime": 746,
+      "sellThrough": "12%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "18 days ago"
+    },
+    {
+      "rep": "Chris Heibert",
+      "valueHeld": "$27,423",
+      "unitsHeld": 2818,
+      "unitsSoldAllTime": 2217,
+      "sellThrough": "32%",
+      "soldLast7d": "219 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Brian Bianchi",
+      "valueHeld": "$25,976",
+      "unitsHeld": 3564,
+      "unitsSoldAllTime": 5722,
+      "sellThrough": "35%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "13 days ago"
+    },
+    {
+      "rep": "Gary Jurkowski",
+      "valueHeld": "$25,674",
+      "unitsHeld": 4535,
+      "unitsSoldAllTime": 373,
+      "sellThrough": "8%",
+      "soldLast7d": "4 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Zohaeb Jilani",
+      "valueHeld": "$25,480",
+      "unitsHeld": 2971,
+      "unitsSoldAllTime": 270,
+      "sellThrough": "4%",
+      "soldLast7d": "58 in 7d",
+      "lastSale": "Yesterday"
+    },
+    {
+      "rep": "James Mullen",
+      "valueHeld": "$21,583",
+      "unitsHeld": 2984,
+      "unitsSoldAllTime": 377,
+      "sellThrough": "4%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "13 days ago"
+    },
+    {
+      "rep": "Brent King",
+      "valueHeld": "$19,519",
+      "unitsHeld": 1838,
+      "unitsSoldAllTime": 616,
+      "sellThrough": "14%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "1 month ago"
+    },
+    {
+      "rep": "Emily Vesnic",
+      "valueHeld": "$17,902",
+      "unitsHeld": 3313,
+      "unitsSoldAllTime": 388,
+      "sellThrough": "6%",
+      "soldLast7d": "5 in 7d",
+      "lastSale": "6 days ago"
+    },
+    {
+      "rep": "Joe Van Wart",
+      "valueHeld": "$16,153",
+      "unitsHeld": 2448,
+      "unitsSoldAllTime": 53,
+      "sellThrough": "2%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "1 month ago"
+    },
+    {
+      "rep": "Vicki Van Sipe",
+      "valueHeld": "$15,007",
+      "unitsHeld": 2613,
+      "unitsSoldAllTime": 848,
+      "sellThrough": "16%",
+      "soldLast7d": "2 in 7d",
+      "lastSale": "4 days ago"
+    },
+    {
+      "rep": "Scott Hanslip",
+      "valueHeld": "$14,685",
+      "unitsHeld": 2358,
+      "unitsSoldAllTime": 81,
+      "sellThrough": "1%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "8 days ago"
+    },
+    {
+      "rep": "Kevin Galbreath",
+      "valueHeld": "$13,799",
+      "unitsHeld": 2084,
+      "unitsSoldAllTime": 716,
+      "sellThrough": "15%",
+      "soldLast7d": "60 in 7d",
+      "lastSale": "4 days ago"
+    },
+    {
+      "rep": "Adam Scott",
+      "valueHeld": "$13,568",
+      "unitsHeld": 579,
+      "unitsSoldAllTime": 317,
+      "sellThrough": "35%",
+      "soldLast7d": "157 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Tommy Joseph",
+      "valueHeld": "$12,161",
+      "unitsHeld": 727,
+      "unitsSoldAllTime": 262,
+      "sellThrough": "26%",
+      "soldLast7d": "200 in 7d",
+      "lastSale": "3 days ago"
+    },
+    {
+      "rep": "Vern Tunnell",
+      "valueHeld": "$11,193",
+      "unitsHeld": 590,
+      "unitsSoldAllTime": 244,
+      "sellThrough": "29%",
+      "soldLast7d": "42 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Luis Colon",
+      "valueHeld": "$9,758",
+      "unitsHeld": 1043,
+      "unitsSoldAllTime": 351,
+      "sellThrough": "25%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "15 days ago"
+    },
+    {
+      "rep": "Jerry Derigo",
+      "valueHeld": "$9,448",
+      "unitsHeld": 420,
+      "unitsSoldAllTime": 102,
+      "sellThrough": "20%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "1 month ago"
+    },
+    {
+      "rep": "Brian Schlautman",
+      "valueHeld": "$9,013",
+      "unitsHeld": 2253,
+      "unitsSoldAllTime": 0,
+      "sellThrough": "0%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "Never sold"
+    },
+    {
+      "rep": "Bobby Patel",
+      "valueHeld": "$8,340",
+      "unitsHeld": 408,
+      "unitsSoldAllTime": 44,
+      "sellThrough": "10%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "1 month ago"
+    },
+    {
+      "rep": "Chris Simpson",
+      "valueHeld": "$8,184",
+      "unitsHeld": 823,
+      "unitsSoldAllTime": 779,
+      "sellThrough": "49%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "20 days ago"
+    },
+    {
+      "rep": "Molly Flynn",
+      "valueHeld": "$7,697",
+      "unitsHeld": 394,
+      "unitsSoldAllTime": 454,
+      "sellThrough": "54%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "13 days ago"
+    },
+    {
+      "rep": "Marc Stevens",
+      "valueHeld": "$7,647",
+      "unitsHeld": 378,
+      "unitsSoldAllTime": 56,
+      "sellThrough": "13%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "21 days ago"
+    },
+    {
+      "rep": "Miguel Edwards",
+      "valueHeld": "$7,507",
+      "unitsHeld": 245,
+      "unitsSoldAllTime": 40,
+      "sellThrough": "14%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "26 days ago"
+    },
+    {
+      "rep": "Christine Van Wart",
+      "valueHeld": "$7,384",
+      "unitsHeld": 1531,
+      "unitsSoldAllTime": 102,
+      "sellThrough": "3%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "2 months ago"
+    },
+    {
+      "rep": "Bunty Patel",
+      "valueHeld": "$7,333",
+      "unitsHeld": 258,
+      "unitsSoldAllTime": 6,
+      "sellThrough": "2%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "2 months ago"
+    },
+    {
+      "rep": "Kevin Patel",
+      "valueHeld": "$7,091",
+      "unitsHeld": 416,
+      "unitsSoldAllTime": 144,
+      "sellThrough": "26%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "21 days ago"
+    },
+    {
+      "rep": "Sean Allen",
+      "valueHeld": "$6,996",
+      "unitsHeld": 256,
+      "unitsSoldAllTime": 125,
+      "sellThrough": "29%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "15 days ago"
+    },
+    {
+      "rep": "Stephen Hagler",
+      "valueHeld": "$6,895",
+      "unitsHeld": 788,
+      "unitsSoldAllTime": 2065,
+      "sellThrough": "72%",
+      "soldLast7d": "62 in 7d",
+      "lastSale": "6 days ago"
+    },
+    {
+      "rep": "Soliman Sayedi",
+      "valueHeld": "$6,675",
+      "unitsHeld": 253,
+      "unitsSoldAllTime": 4,
+      "sellThrough": "2%",
+      "soldLast7d": "29 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Edward Kim",
+      "valueHeld": "$6,410",
+      "unitsHeld": 307,
+      "unitsSoldAllTime": 271,
+      "sellThrough": "47%",
+      "soldLast7d": "120 in 7d",
+      "lastSale": "4 days ago"
+    },
+    {
+      "rep": "Brad Kirkman",
+      "valueHeld": "$5,485",
+      "unitsHeld": 269,
+      "unitsSoldAllTime": 165,
+      "sellThrough": "38%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "11 days ago"
+    },
+    {
+      "rep": "Michael Fisher",
+      "valueHeld": "$4,473",
+      "unitsHeld": 690,
+      "unitsSoldAllTime": 772,
+      "sellThrough": "21%",
+      "soldLast7d": "16 in 7d",
+      "lastSale": "Today"
+    },
+    {
+      "rep": "Erica Novak",
+      "valueHeld": "$3,507",
+      "unitsHeld": 427,
+      "unitsSoldAllTime": 0,
+      "sellThrough": "0%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "Never sold"
+    },
+    {
+      "rep": "Dana Mares",
+      "valueHeld": "$2,880",
+      "unitsHeld": 172,
+      "unitsSoldAllTime": 68,
+      "sellThrough": "24%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "15 days ago"
+    },
+    {
+      "rep": "Ryan Sage",
+      "valueHeld": "$2,728",
+      "unitsHeld": 833,
+      "unitsSoldAllTime": 86,
+      "sellThrough": "9%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "4 months ago"
+    },
+    {
+      "rep": "Kelly O'Connor",
+      "valueHeld": "$2,338",
+      "unitsHeld": 238,
+      "unitsSoldAllTime": 129,
+      "sellThrough": "18%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "3 months ago"
+    },
+    {
+      "rep": "Tyler King",
+      "valueHeld": "$768",
+      "unitsHeld": 192,
+      "unitsSoldAllTime": 160,
+      "sellThrough": "45%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "3 months ago"
+    },
+    {
+      "rep": "Ryan Cox",
+      "valueHeld": "$672",
+      "unitsHeld": 44,
+      "unitsSoldAllTime": 52,
+      "sellThrough": "54%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "15 days ago"
+    },
+    {
+      "rep": "Patrick Orr",
+      "valueHeld": "$280",
+      "unitsHeld": 70,
+      "unitsSoldAllTime": 0,
+      "sellThrough": "0%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "Never sold"
+    },
+    {
+      "rep": "Ethan Adels",
+      "valueHeld": "—",
+      "unitsHeld": 24,
+      "unitsSoldAllTime": 0,
+      "sellThrough": "0%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "Never sold"
+    },
+    {
+      "rep": "Sefa Kirici",
+      "valueHeld": "—",
+      "unitsHeld": 40,
+      "unitsSoldAllTime": 108,
+      "sellThrough": "36%",
+      "soldLast7d": "0 in 7d",
+      "lastSale": "3 months ago"
+    }
+  ]
+}

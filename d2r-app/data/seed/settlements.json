@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/settlements",
+    "capturedAt": "2026-09-16T20:00:00Z",
+    "source": "twin-scaffold",
+    "note": "Brand settlement batches — inferred until live export",
+    "count": 8,
+    "headers": ["ID", "Period", "Brand", "Gross", "Adjustments", "Net", "Status", "Created"]
+  },
+  "settlements": [
+    {
+      "id": "set-2026-09-alp-a",
+      "period": "2026-09-01/2026-09-15",
+      "brand": "ALP",
+      "gross": 12400,
+      "adjustments": -120,
+      "net": 12280,
+      "status": "preview",
+      "createdAt": "2026-09-15",
+      "orderCount": 89,
+      "commissionTotal": 2840.5
+    },
+    {
+      "id": "set-2026-09-joey-a",
+      "period": "2026-09-01/2026-09-15",
+      "brand": "JOEY",
+      "gross": 18650,
+      "adjustments": -340,
+      "net": 18310,
+      "status": "preview",
+      "createdAt": "2026-09-15",
+      "orderCount": 142,
+      "commissionTotal": 4210.0
+    },
+    {
+      "id": "set-2026-08-joey-b",
+      "period": "2026-08-01/2026-08-31",
+      "brand": "JOEY",
+      "gross": 8900,
+      "adjustments": 0,
+      "net": 8900,
+      "status": "closed",
+      "createdAt": "2026-09-02",
+      "orderCount": 67,
+      "commissionTotal": 1980.0
+    },
+    {
+      "id": "set-2026-08-alp-b",
+      "period": "2026-08-01/2026-08-31",
+      "brand": "ALP",
+      "gross": 11200,
+      "adjustments": -85,
+      "net": 11115,
+      "status": "closed",
+      "createdAt": "2026-09-02",
+      "orderCount": 78,
+      "commissionTotal": 2456.0
+    },
+    {
+      "id": "set-2026-09-fum-a",
+      "period": "2026-09-01/2026-09-15",
+      "brand": "FÜM",
+      "gross": 3200,
+      "adjustments": 0,
+      "net": 3200,
+      "status": "preview",
+      "createdAt": "2026-09-14",
+      "orderCount": 24,
+      "commissionTotal": 384.0
+    },
+    {
+      "id": "set-2026-08-bangers-b",
+      "period": "2026-08-01/2026-08-31",
+      "brand": "Bangers",
+      "gross": 1450,
+      "adjustments": -25,
+      "net": 1425,
+      "status": "closed",
+      "createdAt": "2026-09-03",
+      "orderCount": 11,
+      "commissionTotal": 116.0
+    },
+    {
+      "id": "set-2026-09-bangers-a",
+      "period": "2026-09-01/2026-09-15",
+      "brand": "Bangers",
+      "gross": 980,
+      "adjustments": 0,
+      "net": 980,
+      "status": "open",
+      "createdAt": "2026-09-16",
+      "orderCount": 7,
+      "commissionTotal": 78.4
+    },
+    {
+      "id": "set-2026-q3-joey-merch",
+      "period": "2026-Q3 (merch program)",
+      "brand": "JOEY",
+      "gross": 4200,
+      "adjustments": 0,
+      "net": 4200,
+      "status": "open",
+      "createdAt": "2026-09-16",
+      "orderCount": 0,
+      "commissionTotal": 0,
+      "notes": "Circle K visit bonus pool — not order-linked"
+    }
+  ]
+}

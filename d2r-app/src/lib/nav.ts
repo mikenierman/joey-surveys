@@ -41,11 +41,41 @@ export const PENDING_ADMIN_PATHS: string[] = [
 // Note: /admin/pulse/{goals,health,scores} owned by pulse lane — not pending.
 // Inventory levels/warehouses/businesses/transfers owned by inventory lanes.
 
+/** Live H1 / sidebar labels for pending-lane chrome (match SITE-MAP.md). */
+export const PENDING_LANE_TITLES: Record<string, string> = {
+  '/admin/accounts': 'Accounts',
+  '/admin/contacts': 'Contacts',
+  '/admin/locations': 'Locations',
+  '/admin/locations/import': 'Import locations',
+  '/admin/sales-status': 'Sales status',
+  '/admin/rep-assignments/relationships': 'Relationships',
+  '/admin/merchandising/stores': 'Merchandising stores',
+  '/admin/inventory/transfers/terms': 'Transfer terms',
+  '/admin/shopify/apps': 'Shopify apps',
+  '/admin/shopify/test': 'Shopify test',
+  '/admin/payments': 'Payments',
+  '/admin/deposits': 'Deposits',
+  '/admin/receipts': 'Receipts',
+  '/admin/emails': 'Emails',
+  '/admin/files': 'Files',
+  '/admin/diagnostics/order-timeline': 'Order timeline',
+};
+
 export function isPendingAdminPath(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/';
   return PENDING_ADMIN_PATHS.some(
     (p) => path === p || path.startsWith(`${p}/`)
   );
+}
+
+export function pendingLaneTitle(pathname: string): string {
+  const path = pathname.replace(/\/$/, '') || '/';
+  if (PENDING_LANE_TITLES[path]) return PENDING_LANE_TITLES[path];
+  const prefix = PENDING_ADMIN_PATHS.find(
+    (p) => path === p || path.startsWith(`${p}/`)
+  );
+  if (prefix && PENDING_LANE_TITLES[prefix]) return PENDING_LANE_TITLES[prefix];
+  return path;
 }
 
 /**
