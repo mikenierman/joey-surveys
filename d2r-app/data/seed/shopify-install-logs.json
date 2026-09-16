@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "source": "offline-seed",
+    "note": "Sample install / auth / scope-health events for admin UI. Runtime appends go to data/runtime/install-logs.json (gitignored).",
+    "capturedAt": "2026-09-16T20:00:00.000Z"
+  },
+  "logs": [
+    {
+      "id": "install-seed-001",
+      "timestamp": "2026-09-10T14:22:00.000Z",
+      "shopDomain": "alp-nutrition.myshopify.com",
+      "event": "install",
+      "status": "ok",
+      "scopesSummary": "32 / 32",
+      "note": "Seed: app install recorded healthy"
+    },
+    {
+      "id": "install-seed-002",
+      "timestamp": "2026-09-12T09:05:00.000Z",
+      "shopDomain": "rebelsuppsfl.myshopify.com",
+      "event": "scope_health",
+      "status": "error",
+      "scopesSummary": "27 / 32",
+      "note": "Seed: missing scopes after app bump"
+    },
+    {
+      "id": "install-seed-003",
+      "timestamp": "2026-09-14T16:40:00.000Z",
+      "shopDomain": "airglobal-2.myshopify.com",
+      "event": "auth",
+      "status": "skipped",
+      "scopesSummary": "0 / 32",
+      "note": "Seed: Not installed — auth probe skipped"
+    },
+    {
+      "id": "install-seed-004",
+      "timestamp": "2026-09-15T11:18:00.000Z",
+      "shopDomain": "lucy-new.myshopify.com",
+      "event": "scope_health",
+      "status": "ok",
+      "scopesSummary": "32 / 32",
+      "note": "Seed: Lucy (New!) healthy probe"
+    },
+    {
+      "id": "install-seed-005",
+      "timestamp": "2026-09-16T08:00:00.000Z",
+      "shopDomain": "ongo-energy-spray.myshopify.com",
+      "event": "uninstall",
+      "status": "ok",
+      "scopesSummary": "0 / 32",
+      "note": "Seed: unreachable / uninstall signal"
+    }
+  ]
+}

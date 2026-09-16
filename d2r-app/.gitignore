@@ -1,0 +1,17 @@
+# Runtime persistence (large / sensitive payloads) — never commit
+/data/webhook-events/
+/data/sync/
+/data/runtime/
+
+# Env files
+.env*
+!.env.example
+
+# Next / deps (full app gitignore lives with package root when present)
+/node_modules
+/.next/
+/out/
+.DS_Store
+*.pem
+*.tsbuildinfo
+next-env.d.ts
