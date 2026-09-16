@@ -20,12 +20,12 @@ Rollback: revert docs commit; smoke script removal if needed.
 
 ---
 
-## Wave 1 — Nav / shell
+## Wave 1 — Nav / shell (**CRITICAL PATH — merge first**)
 
-| Order | Branch example | Unlocks |
-|-------|----------------|---------|
-| 1.1 | `sandbox/shell/nav-and-admin-layout` | Correct admin/rep links for all later pages |
-| 1.2 | `sandbox/shell/dev-auth-login` | Audit login without Clerk for local twin |
+| Order | Branch (actual tip) | Unlocks |
+|-------|---------------------|---------|
+| 1.1 | `sandbox/shell/nav-and-admin-layout` @ `7368dbc` | Grouped ADMIN_NAV, pending-lane middleware, AppShell — **merge before all domain lanes** |
+| 1.2 | `sandbox/shell/dev-auth-login` (planned) | Audit login without Clerk for local twin |
 
 **Do not** let domain PRs rewrite `nav.ts` — open a shell follow-up instead.
 

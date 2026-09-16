@@ -1,0 +1,179 @@
+{
+  "meta": {
+    "domain": "reports",
+    "generatedAt": "2026-09-16T20:00:00Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "routeCount": 5,
+    "sources": [
+      "ops/SITE-MAP.md",
+      "ops/SITE-MAP-INTERACTIONS.json",
+      "exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+      "exports/2026-09-16/from-vault-baseline-2026-09-13/routes/admin_reports-signedout.html",
+      "d2r-app/src/app/admin/reports/**"
+    ],
+    "browserScrapeThisPass": false,
+    "browserBlocker": "no authenticated session; no live report-runner JSON in exports",
+    "interactionFidelity": "inferred-from-site-map-plus-twin-stubs"
+  },
+  "clusterNav": [
+    { "href": "/admin/reports", "label": "Reports hub" },
+    { "href": "/admin/reports/brand-sales", "label": "Brand sales" },
+    { "href": "/admin/reports/rep-sales", "label": "Rep sales" },
+    { "href": "/admin/reports/inventory-reports", "label": "Inventory reports" },
+    { "href": "/admin/reports/commissions", "label": "Commissions" }
+  ],
+  "routes": [
+    {
+      "path": "/admin/reports",
+      "title": "Reports hub",
+      "purpose": "Links to sales, inventory, and commission report runners",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "signedOutHtml": "admin_reports-signedout.html",
+      "twinPage": "d2r-app/src/app/admin/reports/page.tsx",
+      "links": [
+        "/admin/reports/brand-sales",
+        "/admin/reports/rep-sales",
+        "/admin/reports/inventory-reports",
+        "/admin/reports/commissions"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Twin is a stub link list; live hub chrome not scraped",
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports/rep-sales",
+      "title": "Rep sales report",
+      "purpose": "Sales and movement metrics by sales rep",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred + twin-proxy",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/reports/rep-sales/page.tsx",
+      "links": ["/admin/reports"],
+      "buttons": ["Run", "Export"],
+      "comboboxes": [
+        { "name": "rep", "optionsHint": "All + individual reps", "sampleValue": "All" },
+        { "name": "period", "optionsHint": "All / quarter / custom", "sampleValue": "All" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "repSalesLiveHint",
+          "headersHint": ["Rep", "Revenue", "Orders"]
+        },
+        {
+          "name": "repSalesTwinProxy",
+          "headers": ["Rep", "Sell-through", "Sold 7d", "Last sale", "Value held"],
+          "source": "ledger-performance.json"
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Twin proxies ledger performance until live rep-sales capture",
+      "dataDeps": ["ledger-performance.json"]
+    },
+    {
+      "path": "/admin/reports/brand-sales",
+      "title": "Brand sales report",
+      "purpose": "Sales and held-value rollups by brand",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred + twin-proxy",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/reports/brand-sales/page.tsx",
+      "links": ["/admin/reports"],
+      "buttons": ["Run", "Export"],
+      "comboboxes": [
+        { "name": "brand", "optionsHint": "All + brand stores", "sampleValue": "All" },
+        { "name": "period", "sampleValue": "All" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brandSalesLiveHint",
+          "headersHint": ["Brand", "Revenue", "Orders", "Units"]
+        },
+        {
+          "name": "brandSalesTwinProxy",
+          "headers": ["Brand", "Value held (rollup)", "Units held", "Rep rows"],
+          "source": "ledger-by-rep-brand.json"
+        }
+      ],
+      "summaryCards": [
+        { "label": "Value held", "source": "ledger-performance summary" },
+        { "label": "Sell-through", "source": "ledger-performance summary" },
+        { "label": "Units held", "source": "ledger-performance summary" }
+      ],
+      "pagination": null,
+      "notes": "Consignment ledger stand-in until Shopify order sync / live export",
+      "dataDeps": ["ledger-by-rep-brand.json", "ledger-performance.json"]
+    },
+    {
+      "path": "/admin/reports/commissions",
+      "title": "Commissions report",
+      "purpose": "Commission analytics distinct from commission run queue",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred + twin-proxy",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/reports/commissions/page.tsx",
+      "links": ["/admin/reports", "/admin/commissions"],
+      "buttons": ["Run", "Export"],
+      "comboboxes": [
+        { "name": "period", "sampleValue": "All" },
+        { "name": "rep", "sampleValue": "All" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "commissionsByBrandTwin",
+          "headers": ["Brand", "Lines", "Total"],
+          "source": "commissions.json"
+        }
+      ],
+      "summaryCards": [
+        { "label": "Lines" },
+        { "label": "Q3 total" },
+        { "label": "Brands" }
+      ],
+      "pagination": null,
+      "notes": "Seed scaffold shared with payouts lane; no live finance capture",
+      "dataDeps": ["commissions.json"]
+    },
+    {
+      "path": "/admin/reports/inventory-reports",
+      "title": "Inventory reports",
+      "purpose": "Inventory analytics / export runner by warehouse and brand",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred + twin-proxy",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/reports/inventory-reports/page.tsx",
+      "links": ["/admin/reports", "/admin/inventory/ledgers"],
+      "buttons": ["Run", "Export"],
+      "comboboxes": [
+        { "name": "warehouse", "sampleValue": "All" },
+        { "name": "brand", "sampleValue": "All" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "inventoryReportsTwinProxy",
+          "headers": ["SKU", "On hand", "Available", "Committed"],
+          "source": "inventory-sample.json"
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "ALP/Adam Scott sample only; live runner columns unknown",
+      "dataDeps": ["inventory-sample.json"]
+    }
+  ]
+}

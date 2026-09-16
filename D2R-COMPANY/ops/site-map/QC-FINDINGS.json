@@ -1,0 +1,93 @@
+{
+  "generatedAt": "2026-09-16T20:05:00Z",
+  "gates": {
+    "tsc": "mixed-mid-flight",
+    "lint": "pass",
+    "qcTwinSmoke": "fail",
+    "qcTwinSmokeMissing": [
+      "src/app/admin/inventory/transfers/page.tsx",
+      "src/app/admin/warehouses/page.tsx",
+      "src/app/admin/orders/page.tsx",
+      "src/app/admin/payouts/page.tsx",
+      "src/app/admin/commissions/page.tsx",
+      "src/app/admin/settlements/page.tsx",
+      "src/app/admin/reports/page.tsx"
+    ]
+  },
+  "domainQc": [
+    {
+      "domain": "pulse-dashboard",
+      "verdict": "pass",
+      "refs": [
+        "domains/pulse-dashboard/MAP.md",
+        "domains/pulse-dashboard/interactions.json",
+        "domains/pulse-dashboard/TWIN-STATUS.md",
+        "d2r-app/src/lib/data.ts#getPulseSignalKpis",
+        "d2r-app/src/app/admin/pulse/signals/page.tsx",
+        "d2r-app/data/seed/pulse-signals.json"
+      ],
+      "notes": "KPI dict parity; goals/health/scores stub-only"
+    },
+    {
+      "domain": "payouts",
+      "verdict": "pass-conditional",
+      "refs": [
+        "domains/payouts/MAP.md",
+        "domains/payouts/TWIN-STATUS.md",
+        "sandbox/payouts/reports-shell@edaf36d"
+      ],
+      "notes": "Scaffold OK; no live finance capture; payments/deposits/receipts missing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "QC-PAGINATION",
+      "severity": "high",
+      "domain": "cross-cutting",
+      "issue": "Orders (~1034p), transfers (~21p), assignments (~227p / 11k+) only page-1 samples",
+      "status": "open"
+    },
+    {
+      "id": "QC-BROWSER",
+      "severity": "high",
+      "domain": "cross-cutting",
+      "issue": "Authenticated browser CDP parent-only / empty for agents — do not invent credentials; fidelity remains inferred",
+      "status": "open"
+    },
+    {
+      "id": "QC-SCHEMA-DUAL",
+      "severity": "low",
+      "domain": "cross-cutting",
+      "issue": "Domains emit both ROUTES.json and interactions.json — prefer ROUTES.json as merge source",
+      "status": "open"
+    },
+    {
+      "id": "QC-HDR-stores-case",
+      "severity": "low",
+      "domain": "shopify-brands",
+      "issue": "Twin may label Shop domain vs live Shop Domain",
+      "status": "open"
+    },
+    {
+      "id": "QC-SMOKE-MIDFLIGHT",
+      "severity": "medium",
+      "domain": "twin",
+      "issue": "qc-twin-smoke FAIL — 7 required pages absent on mid-flight checkout",
+      "status": "open"
+    },
+    {
+      "id": "QC-006",
+      "severity": "medium",
+      "domain": "shopify-brands",
+      "issue": "Shopify health table on twin",
+      "status": "cleared"
+    },
+    {
+      "id": "QC-MAPPER-STATUS",
+      "severity": "medium",
+      "domain": "multi",
+      "issue": "Domains had packs but awaiting-first-pass disposition",
+      "status": "cleared"
+    }
+  ]
+}

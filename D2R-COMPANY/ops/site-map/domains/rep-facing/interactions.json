@@ -1,0 +1,648 @@
+{
+  "meta": {
+    "domain": "rep-facing",
+    "generatedAt": "2026-09-16T20:00:00.000Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "twinApp": "d2r-app/",
+    "interactionSource": "route-discovery + sibling-domain-captures + twin-source",
+    "browserScrapeThisPass": false,
+    "browserBlocker": "Clerk login required; no authenticated rep session in this agent",
+    "routeDiscovery": "exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+    "siteMap": "ops/SITE-MAP.md § Nav tree (rep-facing)",
+    "overlapNote": "Deep table/schema ownership stays in inventory, merchandising, orders, crm-assignments packs; this file indexes rep URLs and twin status"
+  },
+  "crossDomainPacks": [
+    {
+      "domain": "inventory",
+      "path": "../inventory/",
+      "repPaths": [
+        "/inventory",
+        "/inventory/ledgers",
+        "/inventory/performance",
+        "/inventory/transfers",
+        "/inventory/transfers/create",
+        "/inventory/transfers/preview"
+      ]
+    },
+    {
+      "domain": "merchandising",
+      "path": "../merchandising/",
+      "repPaths": ["/merchandising"]
+    },
+    {
+      "domain": "orders",
+      "path": "../orders/",
+      "repPaths": ["/orders", "/orders/drafts", "/orders/:uuid"]
+    },
+    {
+      "domain": "crm-assignments",
+      "path": "../crm-assignments/",
+      "repPaths": ["/retail-stores", "/stores", "/locations/sales-status"],
+      "notes": "Admin retail-stores / assignments are source of truth; rep routes are thin mirrors"
+    }
+  ],
+  "nav": {
+    "liveRep": [
+      "/inventory",
+      "/inventory/ledgers",
+      "/inventory/performance",
+      "/inventory/transfers",
+      "/merchandising",
+      "/orders",
+      "/orders/drafts",
+      "/stores",
+      "/retail-stores",
+      "/locations/sales-status"
+    ],
+    "twinRep": [
+      "/inventory",
+      "/inventory/transfers",
+      "/orders",
+      "/merchandising"
+    ]
+  },
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home / entry",
+      "purpose": "Role-based redirect after session check",
+      "coverage": "stub-in-twin",
+      "interactionSource": "twin-source",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/page.tsx",
+      "twinParity": "partial",
+      "links": [
+        { "href": "/login", "label": "Login", "context": "unauthenticated" },
+        { "href": "/admin/dashboard", "label": "Admin dashboard", "context": "admin/manager" },
+        { "href": "/admin/merchandising", "label": "Client merch", "context": "client role" },
+        { "href": "/merchandising", "label": "Field merchandising", "context": "rep default" }
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Live uses Clerk session; twin uses getSessionUser + DEV_AUTH"
+    },
+    {
+      "path": "/login",
+      "title": "Login",
+      "purpose": "Authentication gate",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/login/page.tsx",
+      "twinParity": "partial",
+      "links": [{ "href": "/signup", "label": "Sign up", "context": "live Clerk; may be invite-gated" }],
+      "buttons": [
+        { "label": "Continue", "confirmed": false },
+        { "label": "Sign in", "confirmed": false }
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "login",
+          "fields": ["email", "password"],
+          "notes": "Live Clerk hosted; twin DEV_AUTH demo users"
+        }
+      ],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Signed-out routes redirect here with redirect_url query"
+    },
+    {
+      "path": "/signup",
+      "title": "Signup",
+      "purpose": "Account creation (usually invite-gated)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [{ "href": "/login", "label": "Sign in" }],
+      "buttons": [{ "label": "Sign up", "confirmed": false }],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "signup",
+          "fields": ["email", "password"],
+          "confirmed": false
+        }
+      ],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "May be disabled in production"
+    },
+    {
+      "path": "/inventory",
+      "title": "Rep inventory",
+      "purpose": "Rep view of on-hand consignment stock",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "relatedLiveCapture": "inventory-ALP-AdamScott-live.json",
+      "ownerDomain": "inventory",
+      "twinPage": "d2r-app/src/app/inventory/page.tsx",
+      "twinParity": "partial",
+      "links": [
+        { "href": "/inventory/ledgers", "label": "Ledgers" },
+        { "href": "/inventory/transfers", "label": "Transfers" },
+        { "href": "/inventory/performance", "label": "Performance" },
+        { "href": "/admin/inventory", "label": "Admin levels", "context": "admin role" }
+      ],
+      "buttons": [
+        { "label": "Transfer", "confirmed": false },
+        { "label": "Request stock", "confirmed": false }
+      ],
+      "comboboxes": [
+        { "name": "brand", "confirmed": false }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "levels",
+          "headers": [
+            "Product",
+            "Variant",
+            "SKU",
+            "On hand",
+            "Available",
+            "Committed"
+          ],
+          "headersHintLive": [
+            "Product",
+            "Variant",
+            "SKU",
+            "On hand",
+            "Available",
+            "Committed",
+            "Incoming",
+            "Reserved",
+            "Damaged"
+          ],
+          "notes": "Twin uses subset of admin Levels columns; seed is ALP/Adam Scott sample"
+        }
+      ],
+      "pagination": null,
+      "dataDeps": ["inventory-sample.json"],
+      "notes": "See ../inventory/ for full admin levels capture and filters"
+    },
+    {
+      "path": "/inventory/ledgers",
+      "title": "Rep ledgers",
+      "purpose": "Rep-facing ledger / value-held view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "relatedLiveCapture": "ledger-performance-live.json",
+      "ownerDomain": "inventory",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [{ "href": "/inventory", "label": "Inventory" }],
+      "buttons": [{ "label": "Export", "confirmed": false }],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "ledger",
+          "headersHint": [
+            "Rep",
+            "Value held",
+            "Units",
+            "Sold all time",
+            "Sell-through",
+            "Sold 7d",
+            "Last sale"
+          ],
+          "confirmed": false,
+          "notes": "Headers from admin ledgers capture; rep view may be self-scoped"
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Twin admin ledgers exist; rep route page not built"
+    },
+    {
+      "path": "/inventory/performance",
+      "title": "Rep inventory performance",
+      "purpose": "Rep sell-through / brand performance view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "inventory",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [{ "href": "/inventory", "label": "Inventory" }],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "performance",
+          "headersHint": [
+            "Rep",
+            "Brand",
+            "Status",
+            "Value held",
+            "Units",
+            "Sold all time",
+            "Sell-through",
+            "Sold 7d",
+            "Last sale"
+          ],
+          "confirmed": false
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Admin twin at /admin/inventory/performance; rep mirror missing"
+    },
+    {
+      "path": "/inventory/transfers",
+      "title": "Rep transfers",
+      "purpose": "Rep transfer list (admin Transfer ID often deep-links here)",
+      "coverage": "stub-in-twin",
+      "interactionSource": "live-capture",
+      "liveCapture": "transfers-page1-live.json",
+      "ownerDomain": "inventory",
+      "twinPage": "d2r-app/src/app/inventory/transfers/page.tsx",
+      "twinParity": "partial",
+      "links": [
+        { "href": "/inventory/transfers/create", "label": "Create" },
+        { "href": "/inventory/transfers/preview", "label": "Preview" },
+        { "href": "/admin/inventory/transfers", "label": "Admin transfers", "context": "admin" }
+      ],
+      "buttons": [
+        { "label": "Create", "confirmed": false },
+        { "label": "Approve", "confirmed": false, "notes": "status-gated; live on admin list" },
+        { "label": "Receive", "confirmed": false }
+      ],
+      "comboboxes": [
+        { "name": "status", "confirmed": false }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "transfers",
+          "headers": [
+            "Transfer ID",
+            "Store",
+            "Warehouse",
+            "Status",
+            "Items",
+            "Approved",
+            "Created"
+          ],
+          "notes": "Twin omits Actions column; read-only"
+        }
+      ],
+      "pagination": {
+        "live": "~21 pages",
+        "twin": "page-1 seed only"
+      },
+      "dataDeps": ["transfers.json"],
+      "notes": "Detail /inventory/transfers/:uuid not in twin"
+    },
+    {
+      "path": "/inventory/transfers/create",
+      "title": "Create transfer",
+      "purpose": "Rep create transfer form",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "inventory",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [{ "href": "/inventory/transfers", "label": "Back to list" }],
+      "buttons": [
+        { "label": "Submit", "confirmed": false },
+        { "label": "Cancel", "confirmed": false }
+      ],
+      "comboboxes": [
+        { "name": "from", "confirmed": false },
+        { "name": "to", "confirmed": false },
+        { "name": "sku", "confirmed": false }
+      ],
+      "forms": [
+        {
+          "name": "createTransfer",
+          "fields": ["from", "to", "sku", "qty"],
+          "confirmed": false
+        }
+      ],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Route in URLS.txt; no form scrape"
+    },
+    {
+      "path": "/inventory/transfers/preview",
+      "title": "Transfer preview",
+      "purpose": "Preview transfer before confirm",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "inventory",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [{ "href": "/inventory/transfers", "label": "Transfers" }],
+      "buttons": [
+        { "label": "Confirm", "confirmed": false },
+        { "label": "Back", "confirmed": false }
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Route in URLS.txt"
+    },
+    {
+      "path": "/merchandising",
+      "title": "Field merchandising (rep)",
+      "purpose": "Rep field visit entry — live iframe; twin offline rollup + optional iframe",
+      "coverage": "stub-in-twin",
+      "interactionSource": "field-app-source + sibling-pack",
+      "liveCapture": null,
+      "relatedLiveCapture": "merchandising-joey_circle_k-2026-Q3-live.json",
+      "ownerDomain": "merchandising",
+      "twinPage": "d2r-app/src/app/merchandising/page.tsx",
+      "twinParity": "strong-offline",
+      "embed": {
+        "envVar": "NEXT_PUBLIC_MERCH_APP_URL",
+        "iframePermissions": ["geolocation", "camera", "microphone"]
+      },
+      "queryParams": [
+        { "name": "period", "example": "2026-Q3" }
+      ],
+      "links": [
+        { "href": "/admin/merchandising", "label": "Admin rollup", "context": "admin/manager" }
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "repRollupSelf",
+          "headers": [
+            "Rep",
+            "Assigned",
+            "Completed",
+            "Within window",
+            "Complete %",
+            "Unpaid visits"
+          ],
+          "notes": "Twin shows matched rep row from vault seed; live shell is iframe"
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [
+        "merchandising-joey_circle_k-2026-Q3.json",
+        "merchandising-joey_circle_k-2026-Q2.json"
+      ],
+      "notes": "Full visit UX documented in ../merchandising/interactions.json embeddedViews"
+    },
+    {
+      "path": "/orders",
+      "title": "Rep orders",
+      "purpose": "Rep PO list filtered to sales rep",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "relatedLiveCapture": "orders-page1-live.json",
+      "ownerDomain": "orders",
+      "twinPage": "d2r-app/src/app/orders/page.tsx",
+      "twinParity": "partial",
+      "links": [
+        { "href": "/orders/drafts", "label": "Drafts" },
+        { "href": "/orders/:uuid", "label": "Order detail", "context": "PO Number link" },
+        { "href": "/admin/orders", "label": "Admin orders", "context": "admin" }
+      ],
+      "buttons": [
+        { "label": "Create order", "confirmed": false, "twin": "disabled stub" }
+      ],
+      "comboboxes": [
+        { "name": "status", "confirmed": false, "twin": "visual stub" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "orders",
+          "headers": [
+            "PO Number",
+            "Store",
+            "Account",
+            "Customer",
+            "Location",
+            "Fulfillment",
+            "ETA",
+            "Total",
+            "Sales Rep",
+            "Created"
+          ],
+          "notes": "Headers from admin page-1 live capture"
+        }
+      ],
+      "pagination": {
+        "live": "~1034 pages admin; rep scope unknown",
+        "twin": "page-1 seed filtered by Sales Rep"
+      },
+      "dataDeps": ["orders.json"],
+      "notes": "See ../orders/TWIN-STATUS.md"
+    },
+    {
+      "path": "/orders/drafts",
+      "title": "Rep order drafts",
+      "purpose": "Rep draft PO list",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "orders",
+      "twinPage": "d2r-app/src/app/orders/drafts/page.tsx",
+      "twinParity": "stub",
+      "links": [{ "href": "/orders", "label": "Orders" }],
+      "buttons": [
+        { "label": "Submit draft", "confirmed": false }
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "drafts",
+          "headersHint": ["Draft", "Store", "Rep", "Updated"],
+          "confirmed": false
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No live drafts capture; twin empty/stub"
+    },
+    {
+      "path": "/orders/:uuid",
+      "title": "Order detail (shared)",
+      "purpose": "PO detail from list click",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "orders",
+      "twinPage": "d2r-app/src/app/orders/[id]/page.tsx",
+      "twinParity": "stub",
+      "links": [{ "href": "/orders", "label": "Back to orders" }],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": ["orders.json"],
+      "notes": "Line items / timeline not implemented; resolves from page-1 seed _links"
+    },
+    {
+      "path": "/retail-stores",
+      "title": "Rep retail stores",
+      "purpose": "Rep door list (≠ Shopify brand stores)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "crm-assignments",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [
+        { "href": "/stores", "label": "Stores" },
+        { "href": "/locations/sales-status", "label": "Sales status" },
+        { "href": "/admin/retail-stores", "label": "Admin retail stores", "context": "admin twin is derived stub" }
+      ],
+      "buttons": [],
+      "comboboxes": [
+        { "name": "search", "confirmed": false }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "doors",
+          "headersHint": ["Store", "City", "State", "Account", "Rep"],
+          "confirmed": false
+        }
+      ],
+      "pagination": {
+        "hint": "may mirror ~11k assignment scale",
+        "confirmed": false
+      },
+      "dataDeps": [],
+      "notes": "No live row dump; see ../crm-assignments/"
+    },
+    {
+      "path": "/stores",
+      "title": "Rep stores",
+      "purpose": "Rep-facing store list (CRM doors, not /admin/stores Shopify registry)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "crm-assignments",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [
+        { "href": "/retail-stores", "label": "Retail stores" }
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Disambiguate from shopify-brands /admin/stores"
+    },
+    {
+      "path": "/locations/sales-status",
+      "title": "Location sales status (rep)",
+      "purpose": "Rep update/view sales status for locations",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "ownerDomain": "crm-assignments",
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [
+        { "href": "/admin/sales-status", "label": "Admin sales status" }
+      ],
+      "buttons": [
+        { "label": "Update", "confirmed": false }
+      ],
+      "comboboxes": [
+        { "name": "status", "confirmed": false }
+      ],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Route in URLS.txt only"
+    },
+    {
+      "path": "/test/dashboard",
+      "title": "Test dashboard",
+      "purpose": "Internal test route",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinParity": "missing",
+      "links": [],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Dev/test only — out of cutover scope"
+    },
+    {
+      "path": "/admin",
+      "title": "Admin root",
+      "purpose": "Redirects to dashboard",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinParity": "redirect-only",
+      "links": [
+        { "href": "/admin/dashboard", "label": "Dashboard" }
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Owned for discovery completeness; pulse-dashboard owns /admin/dashboard"
+    }
+  ],
+  "crossLinks": [
+    {
+      "from": "/inventory",
+      "to": "../inventory/",
+      "via": "owner pack for levels/transfers data"
+    },
+    {
+      "from": "/merchandising",
+      "to": "../merchandising/",
+      "via": "owner pack for program rollup + field embed"
+    },
+    {
+      "from": "/orders",
+      "to": "../orders/",
+      "via": "owner pack for PO headers + drafts"
+    },
+    {
+      "from": "/retail-stores",
+      "to": "../crm-assignments/",
+      "via": "admin doors + assignments"
+    },
+    {
+      "from": "/admin/inventory/transfers",
+      "to": "/inventory/transfers/:uuid",
+      "via": "live Transfer ID deep-link to rep detail path"
+    }
+  ]
+}

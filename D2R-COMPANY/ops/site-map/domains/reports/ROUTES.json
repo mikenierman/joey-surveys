@@ -1,0 +1,153 @@
+{
+  "domain": "reports",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T20:00:00.000Z",
+  "mapper": {
+    "agent": "reports-mapper",
+    "status": "map-pack-complete"
+  },
+  "twinBuilder": {
+    "agent": "reports-twin-builder",
+    "status": "stub-in-twin-seed-proxies"
+  },
+  "ownedPaths": [
+    "/admin/reports",
+    "/admin/reports/brand-sales",
+    "/admin/reports/rep-sales",
+    "/admin/reports/inventory-reports",
+    "/admin/reports/commissions"
+  ],
+  "routes": [
+    {
+      "path": "/admin/reports",
+      "title": "Reports hub",
+      "purpose": "Links to sales/inventory/commission reports",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports/brand-sales",
+        "/admin/reports/rep-sales",
+        "/admin/reports/inventory-reports",
+        "/admin/reports/commissions"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Signed-out HTML only; twin is link list",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "reports",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-stub"
+    },
+    {
+      "path": "/admin/reports/brand-sales",
+      "title": "Brand sales report",
+      "purpose": "Sales by brand",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": ["/admin/reports"],
+      "buttons": ["Export", "Run"],
+      "comboboxes": [{ "name": "brand" }, { "name": "period" }],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brandSales",
+          "headersHint": ["Brand", "Revenue", "Orders", "Units"]
+        }
+      ],
+      "notes": "Twin uses ledger brand rollup proxy",
+      "pagination": null,
+      "dataDeps": ["ledger-by-rep-brand.json", "ledger-performance.json"],
+      "domain": "reports",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-seed-proxy"
+    },
+    {
+      "path": "/admin/reports/rep-sales",
+      "title": "Rep sales report",
+      "purpose": "Sales by rep",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": ["/admin/reports"],
+      "buttons": ["Export", "Run"],
+      "comboboxes": [{ "name": "rep" }, { "name": "period" }],
+      "forms": [],
+      "tables": [
+        {
+          "name": "repSales",
+          "headersHint": ["Rep", "Revenue", "Orders"]
+        }
+      ],
+      "notes": "Twin uses ledger-performance proxy",
+      "pagination": null,
+      "dataDeps": ["ledger-performance.json"],
+      "domain": "reports",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-seed-proxy"
+    },
+    {
+      "path": "/admin/reports/inventory-reports",
+      "title": "Inventory reports",
+      "purpose": "Inventory analytics exports",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": ["/admin/reports", "/admin/inventory/ledgers"],
+      "buttons": ["Export", "Run"],
+      "comboboxes": [{ "name": "warehouse" }, { "name": "brand" }],
+      "forms": [],
+      "tables": [
+        {
+          "name": "inventoryReports",
+          "headersHint": ["SKU", "On hand", "Available", "Committed"]
+        }
+      ],
+      "notes": "Twin uses inventory-sample proxy",
+      "pagination": null,
+      "dataDeps": ["inventory-sample.json"],
+      "domain": "reports",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-seed-proxy"
+    },
+    {
+      "path": "/admin/reports/commissions",
+      "title": "Commissions report",
+      "purpose": "Commission analytics",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": ["/admin/reports", "/admin/commissions"],
+      "buttons": ["Export", "Run"],
+      "comboboxes": [{ "name": "period" }, { "name": "rep" }],
+      "forms": [],
+      "tables": [
+        {
+          "name": "commissionsByBrand",
+          "headersHint": ["Brand", "Lines", "Total"]
+        }
+      ],
+      "notes": "Twin uses commissions.json; payouts owns run queue",
+      "pagination": null,
+      "dataDeps": ["commissions.json"],
+      "domain": "reports",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-seed-proxy"
+    }
+  ],
+  "qc": {
+    "accepted": true,
+    "lastReviewedAt": "2026-09-16",
+    "blockingIssues": [],
+    "notes": "Map pack complete; live header QC still blocked on authenticated scrape"
+  }
+}
