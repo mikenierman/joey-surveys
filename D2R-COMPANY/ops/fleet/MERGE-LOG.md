@@ -56,18 +56,18 @@ All conflicts were `IMPROVEMENTS-BACKLOG.md` add/add. Resolution pattern: keep i
 
 No source conflicts on merch/inventory page files (disjoint adds). Prefer live column parity already encoded in sandbox tips.
 
-### Registered — not merged yet
+### Registered — not merged yet (historical at end of wave 2–4)
 
 | Branch | Tip | When to merge |
 |--------|-----|---------------|
-| `sandbox/shopify/stores-and-health` | `65619d7` | Shopify wave **first** (may partially overlap files already landed via ledgers tip — expect content conflicts). |
-| `sandbox/shopify/webhooks-automation-logs` | `a0da9c7` | Shopify wave **after** `stores-and-health`. HMAC → runtime ops/install logs; admin install+automation UI; POST automations; CLI; gitignored `data/runtime/*`. Parent lineage from stores-and-health. **Not pushed. Do not merge during data/merch/inventory.** |
+| `sandbox/shopify/stores-and-health` | `65619d7` | ~~Shopify wave first~~ → **done in wave 3** (already ancestor). |
+| `sandbox/shopify/webhooks-automation-logs` | `a0da9c7` | ~~after stores-and-health~~ → **merged in wave 3** (`5dd189a`). |
 
-See `BRANCH-MATRIX.md` / `MERGE-ORDER.md` wave 6.4.
+See Wave 3 section below for outcomes.
 
-### Still deferred (later waves)
+### Still deferred (at end of wave 2–4 — later cleared in wave 3)
 
-Orders, pulse, payouts, CRM, reports, rep-facing map-pack, link-crawl QA — leave on sandbox tips. Full `stores-and-health` + `webhooks-automation-logs` wait for shopify wave even though ledgers pre-landed some shopify paths.
+Orders, pulse, payouts, CRM, reports, link-crawl QA were still on sandbox tips after wave 2–4. **Cleared in Wave 3** (except optional `sandbox/rep-facing/map-pack`).
 
 ### QC — `node scripts/qc-twin-smoke.mjs` (tip `2b76e3a`)
 
@@ -85,12 +85,65 @@ Cleared vs wave 1: all seeds, login, merch (admin+rep), inventory cluster, wareh
 
 **PASS** (exit 0). Auth/data foundation unblocks shell + merged domain pages.
 
-### Wave 3 / next recommendation
+### Wave 3 / next recommendation (superseded — see Wave 3 below)
 
-1. **Orders wave** (`sandbox/orders/admin-list-sample` `a3dfd19`) — clears admin/rep orders smoke misses; disjoint from shopify.
-2. **Pulse + payouts + CRM + reports** — clear remaining smoke pages.
-3. **Shopify wave (serialize):** merge `sandbox/shopify/stores-and-health` (`65619d7`) first (expect conflicts with ledgers-prelanded shopify paths), **then** `sandbox/shopify/webhooks-automation-logs` (`a0da9c7`). Do **not** merge webhooks before stores-and-health.
-4. Optional: root `page.tsx` + `admin/dashboard` from pulse sandbox (`9aeb28f`).
+---
+
+## Wave 3 — 2026-09-16 (orders → shopify → pulse/CRM/payouts → link-crawl QA)
+
+| Field | Value |
+|-------|-------|
+| Integration tip | `fb3495c` |
+| Worktree | `/private/tmp/d2r-merch-integration` |
+| Base (start of wave 3) | `eb39d09` |
+
+### Merged
+
+| Branch | Tip | Result |
+|--------|-----|--------|
+| `sandbox/orders/admin-list-sample` | `a3dfd19` | Merge → `cd73d5f`. Admin orders list + drafts + live headers via `getOrdersSnapshot()`. Backlog add/add: **kept ours** (already contained Orders section). |
+| `sandbox/shopify/stores-and-health` | `65619d7` | **Already ancestor** of tip (via ledgers preland) — `git merge` → Already up to date. Health table + stores retained. |
+| `sandbox/shopify/webhooks-automation-logs` | `a0da9c7` | Merge → `5dd189a`. HMAC webhooks, ops/install logs, automation stubs, CLI scripts. Conflicts: `.env.example` (union placeholders + `CRON_SECRET`); backlog (kept inventory sections + webhooks append-log row). **No secrets committed.** |
+| `sandbox/pulse/dashboard-signals` | `9aeb28f` | Merge → `8c8c189`. Admin dashboard + pulse cluster. Backlog: kept ours, appended Pulse section. |
+| `sandbox/crm/users-and-assignments` | `9e37b1b` | Merge → `c389414`. Users + rep-assignments pages. Backlog: kept ours (CRM section already present). |
+| `sandbox/payouts/reports-shell` | `edaf36d` | Merge → `89c746c`. Payouts/commissions/settlements/reports shells. Backlog: kept ours + appended unique payouts tip sections. |
+| `sandbox/qa/link-crawl-build` | `65b3ad4` | Registered in `BRANCH-MATRIX.md` (`e7a6099`), then merge → `fb3495c`. Cut from older `3499bc3`. **Prefer** `LINK-AUDIT.md` + `PENDING_LANE_TITLES` / PendingLane; **kept ours** on wave2/3 domain page conflicts (businesses, commissions, payouts, settlements, stores, inventory/transfers). Union `.gitignore` + `package.json` automation scripts. |
+
+### Conflicts (link-crawl)
+
+| Path | Resolution |
+|------|------------|
+| Domain `page.tsx` add/add (8 files) | **Kept ours** (newer wave 2/3 parity). |
+| `d2r-app/.gitignore` | Union Next defaults + runtime ignore paths. |
+| `d2r-app/package.json` | Union scripts (webhook verify + automation runners). |
+
+### Registered earlier this wave
+
+| Branch | Tip | Note |
+|--------|-----|------|
+| `sandbox/qa/link-crawl-build` | `65b3ad4` | Now **merged**. Not pushed. |
+
+### Still deferred
+
+| Branch | Tip | Notes |
+|--------|-----|-------|
+| `sandbox/rep-facing/map-pack` | `4c845fa` | Rep-facing map pack (optional peripheral). |
+| Finance/CRM PendingLane stubs | — | accounts/contacts/locations/payments/deposits/receipts/etc. stay PendingLane until owning lanes ship tables. |
+
+### QC — `node scripts/qc-twin-smoke.mjs` (tip `fb3495c`)
+
+**PASS** (exit 0) — 21/21 seeds, 23/23 pages.
+
+### QC — `npx tsc --noEmit` (tip `fb3495c`)
+
+**PASS** (exit 0).
+
+### Remaining gaps (non-smoke)
+
+- PendingLane stubs still intentional for unmapped admin finance/CRM chrome (`LINK-AUDIT.md`).
+- Rep-facing map-pack not merged.
+- Live export dir optional for smoke (absent locally).
+- No push; no secrets.
 
 ---
 
