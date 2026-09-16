@@ -1,0 +1,199 @@
+{
+  "updatedAt": "2026-09-16T20:05:00Z",
+  "board": [
+    {
+      "domain": "crm-assignments",
+      "paths": 12,
+      "twinPages": 4,
+      "captured": 3,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0
+    },
+    {
+      "domain": "inventory",
+      "paths": 8,
+      "twinPages": 7,
+      "captured": 5,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0
+    },
+    {
+      "domain": "merchandising",
+      "paths": 2,
+      "twinPages": 1,
+      "captured": 1,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0
+    },
+    {
+      "domain": "orders",
+      "paths": 3,
+      "twinPages": 2,
+      "captured": 1,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0
+    },
+    {
+      "domain": "payouts",
+      "paths": 10,
+      "twinPages": 7,
+      "captured": 0,
+      "mapper": "complete",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "qc-pass-conditional",
+      "emptyInferredAdmin": 1,
+      "qcNote": "Scaffold shells OK; no live finance capture; payments/deposits/receipts missing"
+    },
+    {
+      "domain": "pulse-dashboard",
+      "paths": 6,
+      "twinPages": 3,
+      "captured": 1,
+      "mapper": "complete",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "qc-pass",
+      "emptyInferredAdmin": 0,
+      "qcNote": "KPI dict parity PASS; goals/health/scores stub-only"
+    },
+    {
+      "domain": "rep-facing",
+      "paths": 17,
+      "twinPages": 7,
+      "captured": 0,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0,
+      "twinNote": "Pack green; twin yellow — missing ledgers/stores/create routes"
+    },
+    {
+      "domain": "reports",
+      "paths": 5,
+      "twinPages": 5,
+      "captured": 0,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 1,
+      "twinNote": "Pack green; twin yellow — seed proxies, no live report capture"
+    },
+    {
+      "domain": "shopify-brands",
+      "paths": 4,
+      "twinPages": 2,
+      "captured": 2,
+      "mapper": "ready-for-qc",
+      "twinBuilder": "ready-for-qc",
+      "files": [
+        "IMPROVEMENTS.md",
+        "MAP.md",
+        "README.md",
+        "ROUTES.json",
+        "TWIN-NOTES.md",
+        "TWIN-STATUS.md",
+        "interactions.json"
+      ],
+      "disposition": "ready-for-qc-review",
+      "emptyInferredAdmin": 0
+    }
+  ],
+  "gates": {
+    "tsc": "mixed-mid-flight",
+    "lint": "pass",
+    "qcTwinSmoke": "fail",
+    "qcTwinSmokeMissing": [
+      "src/app/admin/inventory/transfers/page.tsx",
+      "src/app/admin/warehouses/page.tsx",
+      "src/app/admin/orders/page.tsx",
+      "src/app/admin/payouts/page.tsx",
+      "src/app/admin/commissions/page.tsx",
+      "src/app/admin/settlements/page.tsx",
+      "src/app/admin/reports/page.tsx"
+    ]
+  },
+  "openIssues": [
+    "QC-PAGINATION",
+    "QC-BROWSER",
+    "QC-SCHEMA-DUAL"
+  ]
+}

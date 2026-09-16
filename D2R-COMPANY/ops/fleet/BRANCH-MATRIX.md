@@ -9,68 +9,88 @@
 
 Integration target (until cutover): prefer merging sandboxes into `main` only via reviewed PR after QC gates, or into a temporary `integration/twin-parity` if Traffic Controller opens one. **Do not push directly to `main`.**
 
----
+**Merge order (critical path):** see [`MERGE-ORDER.md`](./MERGE-ORDER.md) —
 
-## Active / planned sandboxes
+```
+Wave 1 shell → data → merch → inventory → orders → shopify → pulse → payouts → CRM → reports
+```
 
-| Branch | Single issue | Lane | Allowed paths (summary) | Rollback | Merge after |
-|--------|--------------|------|-------------------------|----------|-------------|
-| `sandbox/traffic-controller` | Fleet docs + QC smoke harness | 0 Traffic | `ops/fleet/**`, backlog, `qc-twin-smoke.mjs` | `git revert` or delete branch | — (docs anytime) |
-| `sandbox/shell/nav-and-admin-layout` | Align ADMIN_NAV/REP_NAV + admin layout with SITE-MAP | 1 Shell | nav, layouts, ui, auth shell | delete branch / revert | — (wave 1) |
-| `sandbox/shell/dev-auth-login` | Offline DEV_AUTH login parity for audit | 1 Shell | login, api/auth, auth.ts | delete / revert | shell/nav |
-| `sandbox/data/seed-shape-normalize` | Fix seed loaders to live shapes (items vs rows, users, pulse, transfers) | 2 Data | `data.ts`, `store.ts`, seeds | revert (high impact — first) | shell |
-| `sandbox/data/ingest-live-2026-09-16` | Re-ingest live captures into seeds without UI drift | 2 Data | scripts + seed JSON only | delete / revert | seed-shape |
-| `sandbox/merchandising/admin-table-headers` | Admin merch table = live Q3 headers + seed | 3 Merch | admin/merchandising, merch components, merch seeds | delete / revert | data loaders |
-| `sandbox/merchandising/period-switcher` | Period combobox parity (Q2–Q5) | 3 Merch | merch-period-switcher, merchandising lib/pages | delete / revert | admin-table-headers |
-| `sandbox/merchandising/rep-field-page` | Rep `/merchandising` seed-backed | 3 Merch | app/merchandising | delete / revert | period-switcher |
-| `sandbox/inventory/levels-table` | `/admin/inventory` live headers from seed | 4 Inv | admin/inventory/page, inventory-sample | delete / revert | data loaders |
-| `sandbox/inventory/ledgers-table` | Ledgers/performance from ledger-performance seed | 4 Inv | ledgers + performance pages | delete / revert | levels-table |
-| `sandbox/inventory/transfers-table` | Transfers live headers + API list shape | 4 Inv | transfers pages + api/transfers | delete / revert | ledgers |
-| `sandbox/inventory/warehouses-table` | Warehouses columns Address/ZIP/Created | 4 Inv | warehouses page + seed | delete / revert | transfers |
-| `sandbox/inventory/brand-levels-refresh` | `/admin/inventory/refresh` from brand-levels seed | 4 Inv | refresh page | delete / revert | warehouses |
-| `sandbox/inventory/audit-stub` | Audit route stub matching mapped UI | 4 Inv | audit page | delete / revert | brand-levels |
-| `sandbox/orders/admin-po-table` | Admin orders PO columns = live | 5 Orders | admin/orders, orders-table, orders seed | delete / revert | inventory wave start OK in parallel after data |
-| `sandbox/orders/drafts-and-detail` | Drafts list + `/orders/[id]` seed detail | 5 Orders | drafts, [id], create-order-form | delete / revert | admin-po-table |
-| `sandbox/orders/rep-orders-parity` | Rep `/orders` mirrors admin columns | 5 Orders | app/orders | delete / revert | drafts-and-detail |
-| `sandbox/shopify/health-table` | Shopify health 9/29 table from seed (planned name) | 6 Shopify | admin/shopify, shopify seeds | delete / revert | orders (or parallel after data) |
-| `sandbox/shopify/stores-and-health` | **Actual tip `65619d7`** — Brand stores + Shopify health from vault seeds | 6 Shopify | admin/shopify, admin/stores, shopify seeds, shopify.ts | delete / revert | data loaders; before webhooks |
-| `sandbox/shopify/brand-stores-registry` | `/admin/stores` from stores seed (planned; may be covered by stores-and-health) | 6 Shopify | admin/stores | delete / revert | health-table / stores-and-health |
-| `sandbox/shopify/sync-status-stub` | Sync/status API stubs offline-safe | 6 Shopify | api/shopify, shopify.ts | delete / revert | brand-stores |
-| `sandbox/shopify/webhooks-automation-logs` | **Registered tip `a0da9c7`** — HMAC webhook → runtime ops/install logs; `/admin/shopify` install+automation UI; POST automations (brand-levels / inventory-sync / scope-health); CLI scripts; gitignored `data/runtime/*`. Parent: `stores-and-health`. **Not pushed.** | 6 Shopify | api/webhooks, admin/shopify logs UI, automations routes, scripts, `.gitignore` runtime | delete / revert | **AFTER** `sandbox/shopify/stores-and-health` (`65619d7`) |
-| `sandbox/pulse/signals-kpis` | `/admin/pulse/signals` live KPI shape | 7 Pulse | pulse pages, pulse components, seed | delete / revert | shopify optional |
-| `sandbox/pulse/dashboard-hub` | Dashboard cards from available seeds | 7 Pulse | admin/dashboard | delete / revert | signals-kpis |
-| `sandbox/payouts/tables-seed` | Payouts/rules/commissions/settlements seed tables | 8 Payouts | payouts/commissions/settlements pages + seeds | delete / revert | pulse |
-| `sandbox/crm/users-table` | Users Name/Email/Role live headers | 9 CRM | users page, add-user-form, users seed | delete / revert | payouts |
-| `sandbox/crm/rep-assignments-page1` | Assignments page-1 columns from seed | 9 CRM | rep-assignments, assignments seed | delete / revert | users-table |
-| `sandbox/crm/retail-stores-stub` | Retail stores / businesses listing | 9 CRM | retail-stores, businesses (coord inventory if shared) | delete / revert | rep-assignments |
-| `sandbox/reports/hub-and-runners` | Reports hub + four runners seed-backed stubs | 10 Reports | admin/reports/** | delete / revert | crm |
-| `sandbox/qa/link-crawl-build` | **Registered tip `65b3ad4`** — nav 1:1 crawlable audit; `LINK-AUDIT.md`; 21 restored routes; 16 intentional `PendingLane` stubs. Cut from older integration `3499bc3` (not current tip). **tsc + qc-twin-smoke PASS on branch tip. Not pushed.** | 11 QA | `LINK-AUDIT.md`, PendingLane titles, restored route stubs, root/`orders`/`inventory` shells | delete / revert | **AFTER** wave 3 domain merges (orders → shopify → pulse/CRM/payouts). Prefer link-audit + PendingLane titles; keep newer wave2/3 domain pages on conflict. |
+**`sandbox/shell/nav-and-admin-layout` (`7368dbc`) is MERGE WAVE 1 — merge before domain lanes.**
+
+**Naming drift:** agents used `sandbox/merch/*` (not `sandbox/merchandising/*`). Treat planned `sandbox/merchandising/*` rows as superseded by completed `sandbox/merch/*` tips.
 
 ---
 
-## Rollback command cheatsheet
+## Completed sandboxes (local-only tips — not pushed)
+
+| # | Branch | Tip SHA | Single issue | Merge wave | Conflict vs shared tree | Rollback (unmerged) |
+|---|--------|---------|--------------|------------|-------------------------|---------------------|
+| 1 | `sandbox/shell/nav-and-admin-layout` | `7368dbc` | Grouped ADMIN_NAV, pending-lane middleware (16 routes), AppShell | **1 · first** | High — nav/layout shared | `git branch -D sandbox/shell/nav-and-admin-layout` · or `git revert 7368dbc` |
+| 2 | `sandbox/traffic-controller` | `89b722f` | Fleet docs + QC smoke (`257090a` base) | 0 · anytime | Low — docs/scripts | `git branch -D sandbox/traffic-controller` · or revert tip |
+| 3 | `sandbox/data/foundation` | `24617d9` | Auth/data/store + 21 seeds + scaffolding | 2 | Medium — shared libs | `git revert 24617d9` |
+| 4 | `sandbox/inventory/admin-levels-table` | `00b0784` | `/admin/inventory` live headers + Adjust stub | 4 | High — inventory page | `git branch -D …` · `git revert 00b0784` |
+| 5 | `sandbox/inventory/warehouses-businesses` | `2813564` | `/admin/warehouses` + `/admin/businesses` | 4 | High | `git revert 2813564` |
+| 6 | `sandbox/inventory/ledgers-brand-levels` | `cc76792` | Ledgers + refresh/brand-levels (cleaned seed) | 4 | High | `git revert cc76792` |
+| 7 | `sandbox/inventory/transfers-admin` | `bd00d64` | Transfers admin + rep mirror (feature `5a23801`) | 4 | High | `git revert bd00d64` (or `5a23801` for page-only) |
+| 8 | `sandbox/merch/admin-q3-table` | `af91c3a` | Admin merch Q3 table + period switcher | 3 | High | `git revert af91c3a` |
+| 9 | `sandbox/merch/rep-facing-shell` | `28b1aa6` | Offline `/merchandising` list/status shell | 3 | High | `git revert 28b1aa6` |
+| 10 | `sandbox/orders/admin-list-sample` | `a3dfd19` | Admin orders live headers + page1/~1034 banner, drafts stub | 5 | High | `git revert a3dfd19` |
+| 11 | `sandbox/shopify/stores-and-health` | `65619d7` | `/admin/stores` + `/admin/shopify` health 9/29 | 6 | High | `git revert 65619d7` |
+| 12 | `sandbox/shopify/webhooks-automation-logs` | `a0da9c7` | HMAC webhooks + ops/install logs + automations | 6 | Medium — api/webhooks + shopify UI | `git revert a0da9c7` |
+| 13 | `sandbox/pulse/dashboard-signals` | `9aeb28f` | Dashboard + pulse signals/goals/scores/health stubs | 7 | High — also depends on `@/lib/data` / PulseKpiGrid (shell/data) | `git revert 9aeb28f` · **merge after shell+data** |
+| 14 | `sandbox/payouts/reports-shell` | `edaf36d` | Commissions/payouts/settlements/reports offline shells | 8 | High | `git revert edaf36d` |
+| 15 | `sandbox/crm/users-and-assignments` | `9e37b1b` | Users (189) + rep-assignments sample + 11314 banner | 9 | High | `git revert 9e37b1b` |
+| 16 | `sandbox/qa/link-crawl-build` | `65b3ad4` | LINK-AUDIT + 16 PendingLane stubs + restored routes | 11 QA | High — prefer audit titles; keep wave2/3 pages | `git revert 65b3ad4` |
+| 17 | `sandbox/rep-facing/map-pack` | `4c845fa` | Rep-facing + reports map packs + fleet registry/QC board | docs | Low — docs only | `git branch -D sandbox/rep-facing/map-pack` · `git revert 4c845fa` |
+
+### Drop / audit cheatsheet
 
 ```bash
-# Unmerged sandbox — discard local work
-git checkout main
+git checkout main   # or any non-sandbox branch
 git branch -D sandbox/<area>/<single-issue>
 
-# Merged via merge commit
-git revert -m 1 <merge-commit-sha>
+# Or keep branch, undo tip:
+git checkout sandbox/<area>/<single-issue>
+git revert <tip-sha> --no-edit
 
-# Merged as single squash commit
-git revert <squash-commit-sha>
-
-# List files touched by a sandbox (conflict audit)
-git log main..sandbox/<area>/<single-issue> --name-only --pretty=format:
+# Conflict audit before merge:
+git show <tip-sha> --name-only
 ```
+
+**QC rule:** Do not cherry-pick both a sandbox tip and the shared-tree copy of the same `page.tsx`. Prefer one lineage; document the loser in [`RECONCILE-STATUS.md`](./RECONCILE-STATUS.md).
+
+Many tips also touch `D2R-COMPANY/ops/IMPROVEMENTS-BACKLOG.md` — expect docs-only merge conflicts.
+
+---
+
+## Planned / superseded names
+
+| Planned name | Status |
+|--------------|--------|
+| `sandbox/merchandising/admin-table-headers` | **Superseded** by `sandbox/merch/admin-q3-table` (`af91c3a`) |
+| `sandbox/merchandising/period-switcher` | **Folded** into `af91c3a` |
+| `sandbox/merchandising/rep-field-page` | Prefer `sandbox/merch/rep-facing-shell` (`28b1aa6`) |
+| `sandbox/inventory/levels-table` | Prefer `sandbox/inventory/admin-levels-table` (`00b0784`) |
+| `sandbox/inventory/warehouses-table` | Prefer `sandbox/inventory/warehouses-businesses` (`2813564`) |
+| `sandbox/inventory/ledgers-table` / `brand-levels-refresh` | Prefer `sandbox/inventory/ledgers-brand-levels` (`cc76792`) |
+| `sandbox/inventory/transfers-table` | Prefer `sandbox/inventory/transfers-admin` (`bd00d64`) |
+| `sandbox/orders/admin-po-table` | Prefer `sandbox/orders/admin-list-sample` (`a3dfd19`) |
+| `sandbox/shopify/health-table` + `brand-stores-registry` | Prefer `sandbox/shopify/stores-and-health` (`65619d7`) |
+| `sandbox/pulse/signals-kpis` + `dashboard-hub` | Prefer `sandbox/pulse/dashboard-signals` (`9aeb28f`) |
+| `sandbox/payouts/tables-seed` | Prefer `sandbox/payouts/reports-shell` (`edaf36d`) |
+| `sandbox/crm/users-table` + `rep-assignments-page1` | Prefer `sandbox/crm/users-and-assignments` (`9e37b1b`) |
+| `sandbox/reports/hub-and-runners` | Pages often on `edaf36d`; map pack under `domains/reports/` |
+| `sandbox/shell/dev-auth-login` | Still planned (partially covered by data/foundation DEV_AUTH) |
+| `sandbox/data/seed-shape-normalize` | Still planned (wave 2) |
+| `sandbox/data/ingest-live-2026-09-16` | Still planned (wave 2) |
 
 ---
 
 ## Parallelism rules
 
-- **Safe parallel:** different lanes with disjoint path globs (e.g. merchandising + reports).
+- **Safe parallel:** different lanes with disjoint path globs (e.g. merch + reports docs).
 - **Serialize:** any two branches both touching `data.ts`, `nav.ts`, or the same `page.tsx`.
-- **Data first:** UI table PRs that depend on live-shaped seeds must wait for `sandbox/data/seed-shape-normalize` (or rebase onto it).
+- **Shell first:** domain PRs must not rewrite `nav.ts` — open a shell follow-up.
+- **Data first:** UI table PRs that depend on live-shaped seeds wait for wave 2 (or rebase onto shared loaders).
 
 See [`MERGE-ORDER.md`](./MERGE-ORDER.md) for wave dependencies.

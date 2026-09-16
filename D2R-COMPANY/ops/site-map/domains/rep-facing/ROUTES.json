@@ -1,0 +1,522 @@
+{
+  "domain": "rep-facing",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T20:05:00.000Z",
+  "mapper": {
+    "agent": "rep-facing-mapper",
+    "status": "ready-for-qc"
+  },
+  "twinBuilder": {
+    "agent": "rep-facing-twin-builder",
+    "status": "exists-needs-qc",
+    "notes": "Pages live under inventory/merchandising/orders lanes; see TWIN-STATUS.md"
+  },
+  "ownedPaths": [
+    "/",
+    "/login",
+    "/signup",
+    "/inventory",
+    "/inventory/ledgers",
+    "/inventory/performance",
+    "/inventory/transfers",
+    "/inventory/transfers/create",
+    "/inventory/transfers/preview",
+    "/merchandising",
+    "/orders",
+    "/orders/drafts",
+    "/retail-stores",
+    "/stores",
+    "/locations/sales-status",
+    "/test/dashboard",
+    "/admin"
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home / entry",
+      "purpose": "Entry redirect to login or dashboard",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/login",
+        "/admin/dashboard"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Signed-out redirects to Clerk login",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/login",
+      "title": "Login",
+      "purpose": "Clerk authentication",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/signup"
+      ],
+      "buttons": [
+        "Continue",
+        "Sign in"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "login",
+          "fields": [
+            "email",
+            "password"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "Clerk hosted UI",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/signup",
+      "title": "Signup",
+      "purpose": "Account creation (usually invite-gated)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/login"
+      ],
+      "buttons": [
+        "Sign up"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "signup",
+          "fields": [
+            "email",
+            "password"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "May be disabled for production",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/inventory",
+      "title": "Rep inventory",
+      "purpose": "Rep view of on-hand stock",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/inventory/ledgers",
+        "/inventory/transfers",
+        "/inventory/performance"
+      ],
+      "buttons": [
+        "Transfer",
+        "Request stock"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "levels",
+          "headersHint": [
+            "Product",
+            "SKU",
+            "On hand",
+            "Available"
+          ]
+        }
+      ],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/inventory/ledgers",
+      "title": "Rep ledgers",
+      "purpose": "Rep-facing ledger view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/inventory/performance",
+      "title": "Rep inventory performance",
+      "purpose": "Rep sell-through view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/inventory/transfers",
+      "title": "Rep transfers",
+      "purpose": "Rep transfer list",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/inventory/transfers/create",
+        "/inventory/transfers/preview"
+      ],
+      "buttons": [
+        "Create"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/inventory/transfers/create",
+      "title": "Create transfer",
+      "purpose": "Rep create transfer form",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory/transfers"
+      ],
+      "buttons": [
+        "Submit",
+        "Cancel"
+      ],
+      "comboboxes": [
+        {
+          "name": "from"
+        },
+        {
+          "name": "to"
+        },
+        {
+          "name": "sku"
+        }
+      ],
+      "forms": [
+        {
+          "name": "createTransfer",
+          "fields": [
+            "from",
+            "to",
+            "sku",
+            "qty"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/inventory/transfers/preview",
+      "title": "Transfer preview",
+      "purpose": "Preview transfer before submit",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory/transfers"
+      ],
+      "buttons": [
+        "Confirm",
+        "Back"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/merchandising",
+      "title": "Field merchandising",
+      "purpose": "Rep field visit / survey embed",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/merchandising"
+      ],
+      "buttons": [
+        "Start visit",
+        "Submit"
+      ],
+      "comboboxes": [
+        {
+          "name": "store"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "forms": [
+        {
+          "name": "visit",
+          "fields": [
+            "answers",
+            "photos"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "Often external merch app; twin iframes MERCH_APP_URL",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/orders",
+      "title": "Rep orders",
+      "purpose": "Rep order list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/orders/drafts",
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Create order"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "Detail paths /orders/:uuid seen in admin scrape",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/orders/drafts",
+      "title": "Rep order drafts",
+      "purpose": "Rep drafts",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/orders"
+      ],
+      "buttons": [
+        "Submit draft"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/retail-stores",
+      "title": "Rep retail stores",
+      "purpose": "Rep door list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/stores",
+        "/locations/sales-status"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/stores",
+      "title": "Rep stores",
+      "purpose": "Rep-facing store list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/retail-stores"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/locations/sales-status",
+      "title": "Location sales status (rep)",
+      "purpose": "Rep sales status for locations",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/sales-status"
+      ],
+      "buttons": [
+        "Update"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/test/dashboard",
+      "title": "Test dashboard",
+      "purpose": "Internal test route",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Dev/test only",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin",
+      "title": "Admin root",
+      "purpose": "Redirects to dashboard",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/dashboard"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "rep-facing",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": []
+  }
+}

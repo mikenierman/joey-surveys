@@ -67,7 +67,7 @@ See Wave 3 section below for outcomes.
 
 ### Still deferred (at end of wave 2–4 — later cleared in wave 3)
 
-Orders, pulse, payouts, CRM, reports, link-crawl QA were still on sandbox tips after wave 2–4. **Cleared in Wave 3** (except optional `sandbox/rep-facing/map-pack`).
+Orders, pulse, payouts, CRM, reports, link-crawl QA were still on sandbox tips after wave 2–4. **Cleared in Wave 3**; map-pack merged post–wave 3.
 
 ### QC — `node scripts/qc-twin-smoke.mjs` (tip `2b76e3a`)
 
@@ -123,11 +123,10 @@ Cleared vs wave 1: all seeds, login, merch (admin+rep), inventory cluster, wareh
 |--------|-----|------|
 | `sandbox/qa/link-crawl-build` | `65b3ad4` | Now **merged**. Not pushed. |
 
-### Still deferred
+### Still deferred (at end of domain merges)
 
 | Branch | Tip | Notes |
 |--------|-----|-------|
-| `sandbox/rep-facing/map-pack` | `4c845fa` | Rep-facing map pack (optional peripheral). |
 | Finance/CRM PendingLane stubs | — | accounts/contacts/locations/payments/deposits/receipts/etc. stay PendingLane until owning lanes ship tables. |
 
 ### QC — `node scripts/qc-twin-smoke.mjs` (tip `fb3495c`)
@@ -141,9 +140,33 @@ Cleared vs wave 1: all seeds, login, merch (admin+rep), inventory cluster, wareh
 ### Remaining gaps (non-smoke)
 
 - PendingLane stubs still intentional for unmapped admin finance/CRM chrome (`LINK-AUDIT.md`).
-- Rep-facing map-pack not merged.
 - Live export dir optional for smoke (absent locally).
 - No push; no secrets.
+
+---
+
+## Post–wave 3 — map-pack + integration-ready — 2026-09-16
+
+| Field | Value |
+|-------|-------|
+| Integration tip (pre-docs) | `03bd68c` |
+| Worktree | `/private/tmp/d2r-merch-integration` |
+
+### Merged
+
+| Branch | Tip | Result |
+|--------|-----|--------|
+| `sandbox/rep-facing/map-pack` | `4c845fa` | Docs-only merge. Site-map packs for `rep-facing` + `reports`, `RECONCILE-STATUS.md`, QC board/findings. Conflict: `BRANCH-MATRIX.md` — kept map-pack completed-sandboxes layout; added wave-3 tips (`data/foundation`, webhooks, link-crawl) + tip `4c845fa`. `MERGE-ORDER.md` auto-merged. |
+
+### Still deferred
+
+| Item | Notes |
+|------|-------|
+| 16 PendingLane stubs | Intentional — rebuild later from `PENDING_ADMIN_PATHS` / `LINK-AUDIT.md`. |
+
+### Docs
+
+- `INTEGRATION-READY.md` — checkout, `npm run dev`, smoke, rollback, stubs, webhooks/install-log paths.
 
 ---
 
