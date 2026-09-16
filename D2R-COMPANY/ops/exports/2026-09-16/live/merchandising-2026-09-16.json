@@ -1,0 +1,350 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:40.781Z",
+    "url": "https://app.direct2retailers.com/admin/merchandising",
+    "title": "Direct2Retailers",
+    "module": "/admin/merchandising",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Rep",
+      "Assigned",
+      "Completed",
+      "Within window",
+      "Complete",
+      "Unpaid visits"
+    ]
+  },
+  "rowCount": 41,
+  "rows": [
+    {
+      "Rep": "Adam Scott",
+      "Assigned": "263",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Andrew O'Leary",
+      "Assigned": "20",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Chris Simpson",
+      "Assigned": "73",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Clay Patterson",
+      "Assigned": "50",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Daniel Kelly",
+      "Assigned": "197",
+      "Completed": "3",
+      "Within window": "0",
+      "Complete": "2%",
+      "Unpaid visits": "3"
+    },
+    {
+      "Rep": "Denisa Keiper",
+      "Assigned": "38",
+      "Completed": "24",
+      "Within window": "0",
+      "Complete": "63%",
+      "Unpaid visits": "24"
+    },
+    {
+      "Rep": "Dennis Escobar",
+      "Assigned": "30",
+      "Completed": "1",
+      "Within window": "0",
+      "Complete": "3%",
+      "Unpaid visits": "1"
+    },
+    {
+      "Rep": "Emily Vesnic",
+      "Assigned": "13",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Erica Novak",
+      "Assigned": "1",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Ethan Adels",
+      "Assigned": "14",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Faysal Gharwal",
+      "Assigned": "26",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Gary Jurkowski",
+      "Assigned": "3",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Jaime Rutherford",
+      "Assigned": "47",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "James Mullen",
+      "Assigned": "141",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Jerry Derigo",
+      "Assigned": "53",
+      "Completed": "1",
+      "Within window": "0",
+      "Complete": "2%",
+      "Unpaid visits": "1"
+    },
+    {
+      "Rep": "Joseph Lardie",
+      "Assigned": "85",
+      "Completed": "15",
+      "Within window": "0",
+      "Complete": "18%",
+      "Unpaid visits": "15"
+    },
+    {
+      "Rep": "John Milliman",
+      "Assigned": "13",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "John Proben",
+      "Assigned": "78",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Jon Schulte",
+      "Assigned": "23",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Jordan Johnson",
+      "Assigned": "91",
+      "Completed": "13",
+      "Within window": "0",
+      "Complete": "14%",
+      "Unpaid visits": "13"
+    },
+    {
+      "Rep": "Julian Lara",
+      "Assigned": "124",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Kevin Galbreath",
+      "Assigned": "91",
+      "Completed": "8",
+      "Within window": "0",
+      "Complete": "9%",
+      "Unpaid visits": "8"
+    },
+    {
+      "Rep": "Kevin Patel",
+      "Assigned": "145",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Luis Colon",
+      "Assigned": "1",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Martha Beasley",
+      "Assigned": "83",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Masood Gharwal",
+      "Assigned": "37",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Miguel Edwards",
+      "Assigned": "16",
+      "Completed": "1",
+      "Within window": "0",
+      "Complete": "6%",
+      "Unpaid visits": "1"
+    },
+    {
+      "Rep": "Morgan Williams",
+      "Assigned": "3",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Nichole Jones",
+      "Assigned": "12",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Pancho Alvarez",
+      "Assigned": "77",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Rocio Sanchez Meschke",
+      "Assigned": "2",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Ronnie Watson",
+      "Assigned": "8",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Ryan Moore",
+      "Assigned": "2",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Scott Hanslip",
+      "Assigned": "13",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Soliman Sayedi",
+      "Assigned": "26",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Stephen Hagler",
+      "Assigned": "187",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Susan Sinard",
+      "Assigned": "2",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Tim Hallowell",
+      "Assigned": "24",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Tracey Willmer",
+      "Assigned": "36",
+      "Completed": "0",
+      "Within window": "0",
+      "Complete": "0%",
+      "Unpaid visits": "0"
+    },
+    {
+      "Rep": "Vern Tunnell",
+      "Assigned": "157",
+      "Completed": "33",
+      "Within window": "0",
+      "Complete": "21%",
+      "Unpaid visits": "34"
+    },
+    {
+      "Rep": "Zohaeb Jilani",
+      "Assigned": "122",
+      "Completed": "2",
+      "Within window": "0",
+      "Complete": "2%",
+      "Unpaid visits": "2"
+    }
+  ],
+  "bodyTextPreview": "Merchandising\n\nRoute completion for 2026-Q3. The bonus window closes 30 days after the period starts.\n\n2026-Q3\n2026-Q2\n2026-Q1\n2025-Q4\n2025-Q3\nRep\tAssigned\tCompleted\tWithin window\tComplete\tUnpaid visits\t\nAdam Scott\t263\t0\t0\t0%\t0\tPay\nAndrew O'Leary\t20\t0\t0\t0%\t0\tPay\nChris Simpson\t73\t0\t0\t0%\t0\tPay\nClay Patterson\t50\t0\t0\t0%\t0\tPay\nDaniel Kelly\t197\t3\t0\t2%\t3\tPay\nDenisa Keiper\t38\t24\t0\t63%\t24\tPay\nDennis Escobar\t30\t1\t0\t3%\t1\tPay\nEmily Vesnic\t13\t0\t0\t0%\t0\tPay\nErica Novak\t1\t0\t0\t0%\t0\tPay\nEthan Adels\t14\t0\t0\t0%\t0\tPay\nFaysal Gharwal\t26\t0\t0\t0%\t0\tPay\nGary Jurkowski\t3\t0\t0\t0%\t0\tPay\nJaime Rutherford\t47\t0\t0\t0%\t0\tPay\nJames Mullen\t141\t0\t0\t0%\t0\tPay\nJerry Derigo\t53\t1\t0\t2%\t1\tPay\nJoseph Lardie\t85\t15\t0\t18%\t15\tPay\nJohn Milliman\t13\t0\t0\t0%\t0\tPay\nJohn Proben\t78\t0\t0\t0%\t0\tPay\nJon Schulte\t23\t0\t0\t0%\t0\tPay\nJordan Johnson\t91\t13\t0\t14%\t13\tPay\nJulian Lara\t124\t0\t0\t0%\t0\tPay\nKevin Galbreath\t91\t8\t0\t9%\t8\tPay\nKevin Patel\t145\t0\t0\t0%\t0\tPay\nLuis Colon\t1\t0\t0\t0%\t0\tPay\nMartha Beasley\t83\t0\t0\t0%\t0\tPay\nMasood Gharwal\t37\t0\t0\t0%\t0\tPay\nMiguel Edwards\t16\t1\t0\t6%\t1\tPay\nMorgan Williams\t3\t0\t0\t0%\t0\tPay\nNichole Jones\t12\t0\t0\t0%\t0\tPay\nPancho Alvarez\t77\t0\t0\t0%\t0\tPay\nRocio Sanchez Meschke\t2\t0\t0\t0%\t0\tPay\nRonnie Watson\t8\t0\t0\t0%\t0\tPay\nRyan Moore\t2\t0\t0\t0%\t0\tPay\nScott Hanslip\t13\t0\t0\t0%\t0\tPay\nSoliman Sayedi\t26\t0\t0\t0%\t0\tPay\nStephen Hagler\t187\t0\t0\t0%\t0\tPay\nSusan Sinard\t2\t0\t0\t0%\t0\tPay\nTim Hallowell\t24\t0\t0\t0%\t0\tPay\nTracey Willmer\t36\t0\t0\t0%\t0\tPay\nVern Tunnell\t157\t33\t0\t21%\t34\tPay\nZohaeb Jilani\t122\t2\t0\t2%\t2\tPay"
+}

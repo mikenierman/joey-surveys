@@ -1,0 +1,378 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:27.956Z",
+    "url": "https://app.direct2retailers.com/admin/businesses",
+    "title": "Direct2Retailers",
+    "module": "/admin/businesses",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Sales Rep",
+      "Business Name",
+      "Address",
+      "Created",
+      "Actions"
+    ]
+  },
+  "rowCount": 51,
+  "rows": [
+    {
+      "Sales Rep": "Blaza Alvarez",
+      "Business Name": "KACM Holdings LLC",
+      "Address": "2221 East Union Hills Drive, 157, Phoenix, AZ, 85024, US",
+      "Created": "8/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Nick Schnoor",
+      "Business Name": "Okie Energy Consulting LLC",
+      "Address": "5151 West 51st Street, Tulsa, OK, 74107, US",
+      "Created": "8/20/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Kelly O'Connor",
+      "Business Name": "AmeriLand Energy Consultants, LLC",
+      "Address": "624 Canemount Lane, Coppell, TX, 75019, US",
+      "Created": "7/15/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Dana Mares",
+      "Business Name": "DMD Sales & Distribution",
+      "Address": "13834 Boquita Drive, Del Mar, CA, 92014, US",
+      "Created": "7/9/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Brad Kirkman",
+      "Business Name": "Big Happy Sales LLC",
+      "Address": "115 West 5th Avenue, Derry, PA, 15627, US",
+      "Created": "6/10/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Joe Van Wart",
+      "Business Name": "Quality Distribution & Retail Services",
+      "Address": "595 Winthrop Street, Taunton, MA, 02780, US",
+      "Created": "6/4/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Christine Van Wart",
+      "Business Name": "Naturally Modern Inc",
+      "Address": "495 Newbury Street, Danvers, MA, 01923, US",
+      "Created": "6/4/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Sefa Kirici",
+      "Business Name": "Loofa LLC",
+      "Address": "901 West Lake Avenue, Peoria, IL, 61614, US",
+      "Created": "6/2/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Edward Kim",
+      "Business Name": "SmartMarket Distribution",
+      "Address": "389 Main Street, unit 520, Hackensack, NJ, 07601, US",
+      "Created": "6/2/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Margaret Avellar",
+      "Business Name": "Great Oaks Distribution LLC",
+      "Address": "1330 Chapala Street, Santa Barbara, CA, 93101, US",
+      "Created": "5/28/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Brian Schlautman",
+      "Business Name": "KBS Distribution",
+      "Address": "239 East Main Avenue, Lumberton, MS, 39455, US",
+      "Created": "5/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Brian Bianchi",
+      "Business Name": "Brian Bianchi",
+      "Address": "8703 Van Emmon Road, Yorkville, IL, 60560, US",
+      "Created": "5/14/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Chris Pidruzny",
+      "Business Name": "Red Bell Direct LLC",
+      "Address": "1487 State Highway 248, Branson, MO, 65616, US",
+      "Created": "5/11/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Ryan Cox",
+      "Business Name": "RAC Global LLC",
+      "Address": "4004 Adeline Street, Emeryville, CA, 94608, US",
+      "Created": "5/8/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Michael Fisher",
+      "Business Name": "East Coast Relay LLC",
+      "Address": "27 Farrington Avenue, Saugus, MA, 01906, US",
+      "Created": "4/17/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Rachel Willander",
+      "Business Name": "Punch Social LLC",
+      "Address": "2380 East Geronimo Street, Chandler, AZ, 85225, US",
+      "Created": "4/15/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Kalyn Sherow",
+      "Business Name": "Kalyn Sherow LLC",
+      "Address": "505 Saddlebrook Court, Myrtle Beach, SC, 29588, US",
+      "Created": "4/9/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Thomas Sullens",
+      "Business Name": "Sullink Supply LLC",
+      "Address": "7539 West John Cabot Road, Glendale, AZ, 85308, US",
+      "Created": "4/2/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Pete Ambrosino",
+      "Business Name": "Guided Voyage LLC",
+      "Address": "1805 76th Street Northwest, Bradenton, FL, 34209, US",
+      "Created": "3/30/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Gary Jurkowski",
+      "Business Name": "Jurkowski Enterprise",
+      "Address": "3950 Deep Rock Road, Richmond, VA, 23233, US",
+      "Created": "3/29/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Vicki Van Sipe",
+      "Business Name": "Feel Free Tonics LLC",
+      "Address": "41999 Ann Arbor Road, Plymouth, MI, 48170, US",
+      "Created": "3/28/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Chris Simpson",
+      "Business Name": "Feel Free NC",
+      "Address": "5220 Halcott Court, Raleigh, NC, 27613, US",
+      "Created": "3/25/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Shay Schnoor",
+      "Business Name": "Okie Energy Consulting LLC",
+      "Address": "5151 West 51st Street, Tulsa, OK, 74107, US",
+      "Created": "3/24/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Zohaeb Jilani",
+      "Business Name": "TDLR LLC",
+      "Address": "2312 South Division Avenue, Orlando, FL, 32805, US",
+      "Created": "3/7/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Luke Berthold",
+      "Business Name": "Luke Berthold LLC",
+      "Address": "550 Frontage Road, Northfield, IL, 60093, US",
+      "Created": "3/3/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "James Mullen",
+      "Business Name": "Mission Sales LLC",
+      "Address": "1518 105th Lane Northwest, Coon Rapids, MN, 55433, US",
+      "Created": "2/27/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Patrick Orr",
+      "Business Name": "Patrick Orr",
+      "Address": "890 Alpine Drive, Brighton, MI, 48116, US",
+      "Created": "2/27/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Eric Miller",
+      "Business Name": "Sterling Distribution, LLC",
+      "Address": "820 East Boundary Avenue, York, PA, 17403, US",
+      "Created": "2/19/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Brent King",
+      "Business Name": "FeelFreeKing LLC",
+      "Address": "1250 Executive Place, Geneva, IL, 60134, US",
+      "Created": "2/19/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Luis Colon",
+      "Business Name": "L&KC Distributor LLC",
+      "Address": "2716 South Meadow Drive, Fort Worth, TX, 76133, US",
+      "Created": "2/19/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Ronnie Watson",
+      "Business Name": "Defiant Distribution",
+      "Address": "2921 Madeira Street, Post Falls, ID, 83854, US",
+      "Created": "2/10/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Sasha Orr",
+      "Business Name": "D2R Inc",
+      "Address": "890 Alpine Drive, Brighton, MI, 48116, US",
+      "Created": "2/5/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Brent King",
+      "Business Name": "Brent King",
+      "Address": "1786 Allen Drive, Geneva, IL, 60134, US",
+      "Created": "2/5/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Nick Guerrieri",
+      "Business Name": "Avito LLC",
+      "Address": "10501 North 116th Street, Scottsdale, AZ, 85259, US",
+      "Created": "2/4/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Denisa Keiper",
+      "Business Name": "DPK Distributing LLC",
+      "Address": "65 Plantation Drive, Clayton, NC, 27527, US",
+      "Created": "2/4/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Molly Flynn",
+      "Business Name": "Feel Free in Buff LLC",
+      "Address": "411 Schultz Road, Elma, NY, 14059, US",
+      "Created": "2/3/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Joe Dimucci",
+      "Business Name": "DiMucci LLC",
+      "Address": "1 River Road, Templeton, MA, 01436, US",
+      "Created": "1/29/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Kevin Galbreath",
+      "Business Name": "Frozen Fun, LLC",
+      "Address": "863 Fortress Boulevard, Murfreesboro, TN, 37128, US",
+      "Created": "1/28/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Chris Heibert",
+      "Business Name": "Feel Free 412 LLC",
+      "Address": "75 South 26th Street, 401, Pittsburgh, PA, 15203, US",
+      "Created": "1/23/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Scott Hanslip",
+      "Business Name": "Scott Hanslip Consulting Group LLC",
+      "Address": "545 South Federal Highway, Deerfield Beach, FL, 33441, US",
+      "Created": "1/23/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Morgan Williams",
+      "Business Name": "MHW LLC",
+      "Address": "500 Pacific Avenue, Unit 304, Virginia Beach, VA, 23451, US",
+      "Created": "1/22/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Adam Scott",
+      "Business Name": "Motoman Enterprises",
+      "Address": "275 South 1850 East, Springville, UT, 84663, US",
+      "Created": "1/22/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Vern Tunnell",
+      "Business Name": "VLT Distributing",
+      "Address": "12719 Guernsey Street, Jacksonville, FL, 32226, US",
+      "Created": "1/22/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Patrick Orr",
+      "Business Name": "Direct 2 Retailers",
+      "Address": "890 Alpine Drive, Brighton, MI, 48116, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Miguel Edwards",
+      "Business Name": "Cascadia Consumer Goods",
+      "Address": "1315 Northwest Wall Street, Bend, OR, 97702, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Jordan Johnson",
+      "Business Name": "Dynamite Distribution LLC",
+      "Address": "27300 Cloverland Drive, Lacombe, LA, 70445, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Neal Batson",
+      "Business Name": "Elite Sales",
+      "Address": "236 Girard Avenue, Royal Oak, MI, 48073, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Bunty Patel",
+      "Business Name": "NELATONICS",
+      "Address": "2715 West Deborah Drive, Monroe, LA, 71201, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Jerry Derigo",
+      "Business Name": "JSF Distribution",
+      "Address": "2108 Kaliste Saloom Road, Lafayette, LA, 70508, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Michael Nierman",
+      "Business Name": "Direct 2 Retailers, Inc.",
+      "Address": "890 Alpine Drive, Brighton, MI, 48116, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    },
+    {
+      "Sales Rep": "Emily Vesnic",
+      "Business Name": "Blue Glass Bottle LLC",
+      "Address": "890 Alpine Drive, Brighton, MI, 48116, US",
+      "Created": "1/21/2026",
+      "Actions": ""
+    }
+  ],
+  "bodyTextPreview": "Businesses\nAdmin\n\nRep business records for invoices and receipts\n\n+ Add Business\nSales Rep\tBusiness Name\tAddress\tCreated\tActions\nBlaza Alvarez\tKACM Holdings LLC\t2221 East Union Hills Drive, 157, Phoenix, AZ, 85024, US\t8/21/2026\t\n\nNick Schnoor\tOkie Energy Consulting LLC\t5151 West 51st Street, Tulsa, OK, 74107, US\t8/20/2026\t\n\nKelly O'Connor\tAmeriLand Energy Consultants, LLC\t624 Canemount Lane, Coppell, TX, 75019, US\t7/15/2026\t\n\nDana Mares\tDMD Sales & Distribution\t13834 Boquita Drive, Del Mar, CA, 92014, US\t7/9/2026\t\n\nBrad Kirkman\tBig Happy Sales LLC\t115 West 5th Avenue, Derry, PA, 15627, US\t6/10/2026\t\n\nJoe Van Wart\tQuality Distribution & Retail Services\t595 Winthrop Street, Taunton, MA, 02780, US\t6/4/2026\t\n\nChristine Van Wart\tNaturally Modern Inc\t495 Newbury Street, Danvers, MA, 01923, US\t6/4/2026\t\n\nSefa Kirici\tLoofa LLC\t901 West Lake Avenue, Peoria, IL, 61614, US\t6/2/2026\t\n\nEdward Kim\tSmartMarket Distribution\t389 Main Street, unit 520, Hackensack, NJ, 07601, US\t6/2/2026\t\n\nMargaret Avellar\tGreat Oaks Distribution LLC\t1330 Chapala Street, Santa Barbara, CA, 93101, US\t5/28/2026\t\n\nBrian Schlautman\tKBS Distribution\t239 East Main Avenue, Lumberton, MS, 39455, US\t5/21/2026\t\n\nBrian Bianchi\tBrian Bianchi\t8703 Van Emmon Road, Yorkville, IL, 60560, US\t5/14/2026\t\n\nChris Pidruzny\tRed Bell Direct LLC\t1487 State Highway 248, Branson, MO, 65616, US\t5/11/2026\t\n\nRyan Cox\tRAC Global LLC\t4004 Adeline Street, Emeryville, CA, 94608, US\t5/8/2026\t\n\nMichael Fisher\tEast Coast Relay LLC\t27 Farrington Avenue, Saugus, MA, 01906, US\t4/17/2026\t\n\nRachel Willander\tPunch Social LLC\t2380 East Geronimo Street, Chandler, AZ, 85225, US\t4/15/2026\t\n\nKalyn Sherow\tKalyn Sherow LLC\t505 Saddlebrook Court, Myrtle Beach, SC, 29588, US\t4/9/2026\t\n\nThomas Sullens\tSullink Supply LLC\t7539 West John Cabot Road, Glendale, AZ, 85308, US\t4/2/2026\t\n\nPete Ambrosino\tGuided Voyage LLC\t1805 76th Street Northwest, Bradenton, FL, 34209, US\t3/30/2026\t\n\nGary Jurkowski\tJurkowski Enterprise\t3950 Deep Rock Road, Richmond, VA, 23233, US\t3/29/2026\t\n\nVicki Van Sipe\tFeel Free Tonics LLC\t41999 Ann Arbor Road, Plymouth, MI, 48170, US\t3/28/2026\t\n\nChris Simpson\tFeel Free NC\t5220 Halcott Court, Raleigh, NC, 27613, US\t3/25/2026\t\n\nShay Schnoor\tOkie Energy Consulting LLC\t5151 West 51st Street, Tulsa, OK, 74107, US\t3/24/2026\t\n\nZohaeb Jilani\tTDLR LLC\t2312 South Division Avenue, Orlando, FL, 32805, US\t3/7/2026\t\n\nLuke Berthold\tLuke Berthold LLC\t550 Frontage Road, Northfield, IL, 60093, US\t3/3/2026\t\n\nJames Mullen\tMission Sales LLC\t1518 105th Lane Northwest, Coon Rapids, MN, 55433, US\t2/27/2026\t\n\nPatrick Orr\tPatrick Orr\t890 Alpine Drive, Brighton, MI, 48116, US\t2/27/2026\t\n\nEric Miller\tSterling Distribution, LLC\t820 East Boundary Avenue, York, PA, 17403, US\t2/19/2026\t\n\nBrent King\tFeelFreeKing LLC\t1250 Executive Place, Geneva, IL, 60134, US\t2/19/2026\t\n\nLuis Colon\tL&KC Distributor LLC\t2716 South Meadow Drive, Fort Worth, TX, 76133, US\t2/19/2026\t\n\nRonnie Watson\tDefiant Distribution\t2921 Madeira Street, Post Falls, ID, 83854, US\t2/10/2026\t\n\nSasha Orr\tD2R Inc\t890 Alpine Drive, Brighton, MI, 48116, US\t2/5/2026\t\n\nBrent King\tBrent King\t1786 Allen Drive, Geneva, IL, 60134, US\t2/5/2026\t\n\nNick Guerrieri\tAvito LLC\t10501 North 116th Street, Scottsdale, AZ, 85259, US\t2/4/2026\t\n\nDenisa Keiper\tDPK Distributing LLC\t65 Plantation Drive, Clayton, NC, 27527, US\t2/4/2026\t\n\nMolly Flynn\tFeel Free in Buff LLC\t411 Schultz Road, Elma, NY, 14059, US\t2/3/2026\t\n\nJoe Dimucci\tDiMucci LLC\t1 River Road, Templeton, MA, 01436, US\t1/29/2026\t\n\nKevin Galbreath\tFrozen Fun, LLC\t863 Fortress Boulevard, Murfreesboro, TN, 37128, US\t1/28/2026\t\n\nChris Heibert\tFeel Free 412 LLC\t75 South 26th Street, 401, Pittsburgh, PA, 15203, US\t1/23/2026\t\n\nScott Hanslip\tScott Hanslip Consulting Group LLC\t545 South Federal Highway, Deerfield Beach, FL, 33441, US\t1/23/2026\t\n\nMorgan Williams\tMHW LLC\t500 Pacific Avenue, Unit 304, Virginia Beach, VA, 23451, US\t1/22/2026\t\n\nAdam Scott\tMotoman Enterprises\t275 South 1850 East, Springville, UT, 84663, US\t1/22/2026\t\n\nVern Tunnell\tVL"
+}

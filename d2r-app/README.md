@@ -2,6 +2,14 @@
 
 Company-owned rebuild of `app.direct2retailers.com` (Next.js). Clean-room — no CTO source.
 
+## Architecture: merch as a D2R function
+
+The JOEY field merch app (repo root / `joey-surveys`) is **not** a competing product. It is meant to live **inside D2R as an embedded module**:
+
+- Twin owns admin merchandising + rep shell routes under `/merchandising` (and related admin paths).
+- The full visit engine can run embedded via iframe (`NEXT_PUBLIC_MERCH_APP_URL`) today, or later as in-app routes under `/merchandising` — keep both apps; do not delete the merch field app.
+- Coexistence: root CRA merch app + `d2r-app/` twin share this monorepo on purpose.
+
 ## Quick start
 
 ```bash

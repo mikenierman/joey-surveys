@@ -1,0 +1,2290 @@
+{
+  "meta": {
+    "generatedAt": "2026-09-16T19:54:06.907883+00:00",
+    "source": "URLS.txt + live JSON captures 2026-09-16 + twin code inventory",
+    "liveApp": "https://app.direct2retailers.com",
+    "browserScrapeThisPass": false,
+    "browserBlocker": "cursor-ide-browser tabs empty; no authenticated session in this agent",
+    "routeCount": 67,
+    "interactionFidelity": "inferred-from-captures-and-routes",
+    "trafficController": true,
+    "schemaVersion": "1.0.0",
+    "domainPackageRoot": "D2R-COMPANY/ops/site-map/domains"
+  },
+  "nav": {
+    "admin": [
+      "/admin/dashboard",
+      "/admin/inventory",
+      "/admin/inventory/ledgers",
+      "/admin/inventory/transfers",
+      "/admin/warehouses",
+      "/admin/merchandising",
+      "/admin/shopify",
+      "/admin/orders",
+      "/admin/reports",
+      "/admin/commissions",
+      "/admin/settlements",
+      "/admin/payouts",
+      "/admin/pulse",
+      "/admin/users",
+      "/admin/businesses",
+      "/admin/stores",
+      "/admin/rep-assignments",
+      "/admin/accounts",
+      "/admin/contacts",
+      "/admin/retail-stores",
+      "/admin/locations"
+    ],
+    "rep": [
+      "/inventory",
+      "/inventory/transfers",
+      "/merchandising",
+      "/orders",
+      "/retail-stores",
+      "/stores"
+    ]
+  },
+  "routes": [
+    {
+      "path": "/",
+      "title": "Home / entry",
+      "purpose": "Entry redirect to login or dashboard",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/login",
+        "/admin/dashboard"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Signed-out redirects to Clerk login",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/login",
+      "title": "Login",
+      "purpose": "Clerk authentication",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/signup"
+      ],
+      "buttons": [
+        "Continue",
+        "Sign in"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "login",
+          "fields": [
+            "email",
+            "password"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "Clerk hosted UI",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/signup",
+      "title": "Signup",
+      "purpose": "Account creation (usually invite-gated)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/login"
+      ],
+      "buttons": [
+        "Sign up"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "signup",
+          "fields": [
+            "email",
+            "password"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "May be disabled for production",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/inventory",
+      "title": "Inventory",
+      "purpose": "Consignment on-hand by warehouse/brand",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "inventory-ALP-AdamScott-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/ledgers",
+        "/admin/inventory/transfers",
+        "/admin/inventory/refresh",
+        "/admin/inventory/audit",
+        "/admin/inventory/performance"
+      ],
+      "buttons": [
+        "Export",
+        "Refresh levels",
+        "Search"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand/store",
+          "optionsHint": "ALP and other brand stores"
+        },
+        {
+          "name": "warehouse",
+          "optionsHint": "rep warehouses"
+        }
+      ],
+      "forms": [
+        {
+          "name": "filters",
+          "fields": [
+            "brand",
+            "warehouse",
+            "search"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "levels",
+          "headers": [
+            "Product",
+            "Variant",
+            "SKU",
+            "On hand",
+            "Available",
+            "Committed",
+            "Incoming",
+            "Reserved",
+            "Damaged"
+          ]
+        }
+      ],
+      "notes": "Live sample ALP@AdamScott only; pagination/filter iteration needed for full dump",
+      "pagination": null,
+      "dataDeps": [
+        "inventory-ALP-AdamScott-live.json"
+      ]
+    },
+    {
+      "path": "/admin/inventory/audit",
+      "title": "Inventory audit",
+      "purpose": "Audit trail / discrepancy review for inventory levels",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/inventory"
+      ],
+      "buttons": [
+        "Export",
+        "Filter"
+      ],
+      "comboboxes": [
+        {
+          "name": "warehouse"
+        },
+        {
+          "name": "brand"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "audit",
+          "headersHint": [
+            "When",
+            "SKU",
+            "Warehouse",
+            "Delta",
+            "Actor"
+          ]
+        }
+      ],
+      "notes": "Route discovered in bundles; no live row capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/inventory/ledgers",
+      "title": "Inventory ledgers / performance",
+      "purpose": "Rep-level value held, sell-through, quiet stock",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "ledger-performance-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/inventory/performance"
+      ],
+      "buttons": [
+        "Export",
+        "Expand"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand",
+          "optionsHint": "all brands"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "reps",
+          "headers": [
+            "Rep",
+            "Value held",
+            "Units held",
+            "Sell-through",
+            "Sold last 7d",
+            "Last sale"
+          ]
+        }
+      ],
+      "notes": "Captured summary + 50 reps",
+      "pagination": null,
+      "dataDeps": [
+        "ledger-performance-live.json"
+      ]
+    },
+    {
+      "path": "/admin/inventory/performance",
+      "title": "Inventory performance",
+      "purpose": "Performance analytics sibling to ledgers",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/ledgers"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "performance",
+          "headersHint": [
+            "Rep",
+            "Metrics\u2026"
+          ]
+        }
+      ],
+      "notes": "Likely shares ledger performance data; no separate scrape",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/inventory/refresh",
+      "title": "Inventory refresh / brand levels",
+      "purpose": "Trigger/view Shopify inventory level refresh status per brand",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "brand-levels-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Refresh all",
+        "Refresh brand"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brands",
+          "headers": [
+            "Brand",
+            "Levels",
+            "Last refresh"
+          ]
+        }
+      ],
+      "notes": "17 brands / 2905 levels summary captured; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "brand-levels-live.json"
+      ]
+    },
+    {
+      "path": "/admin/inventory/transfers",
+      "title": "Transfers",
+      "purpose": "Warehouse/store inventory transfer list + approve workflow",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "transfers-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/transfers/terms",
+        "/inventory/transfers/create"
+      ],
+      "buttons": [
+        "Create transfer",
+        "Approve",
+        "Reject",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "warehouse"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "transfers",
+          "headers": [
+            "Transfer ID",
+            "Store",
+            "Warehouse",
+            "Status",
+            "Items",
+            "Approved",
+            "Created",
+            "Actions"
+          ]
+        }
+      ],
+      "notes": "Page 1 of ~21 captured (~20 rows)",
+      "pagination": "approx 21 pages (20/page sample)",
+      "dataDeps": [
+        "transfers-page1-live.json"
+      ]
+    },
+    {
+      "path": "/admin/inventory/transfers/terms",
+      "title": "Transfer terms",
+      "purpose": "Terms/conditions for transfers",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/inventory/transfers"
+      ],
+      "buttons": [
+        "Save",
+        "Cancel"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "terms",
+          "fields": [
+            "body"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/merchandising",
+      "title": "Merchandising admin",
+      "purpose": "Program/period rollup of rep visit completion",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "merchandising-joey_circle_k-2026-Q3-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/merchandising/stores",
+        "/merchandising"
+      ],
+      "buttons": [
+        "Export",
+        "Pay visits"
+      ],
+      "comboboxes": [
+        {
+          "name": "program",
+          "optionsHint": "joey_circle_k etc"
+        },
+        {
+          "name": "period",
+          "options": [
+            "2026-Q3",
+            "2026-Q2",
+            "2026-Q1",
+            "2025-Q4",
+            "2025-Q3"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "reps",
+          "headers": [
+            "Rep",
+            "Assigned",
+            "Completed",
+            "Within window",
+            "Complete %",
+            "Unpaid visits"
+          ]
+        }
+      ],
+      "notes": "Joey/Circle K Q3 captured (41 reps)",
+      "pagination": null,
+      "dataDeps": [
+        "merchandising-joey_circle_k-2026-Q3-live.json"
+      ]
+    },
+    {
+      "path": "/admin/merchandising/stores",
+      "title": "Merchandising stores",
+      "purpose": "Store-level merch assignment/status",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/merchandising",
+        "/admin/retail-stores"
+      ],
+      "buttons": [
+        "Export",
+        "Assign"
+      ],
+      "comboboxes": [
+        {
+          "name": "program"
+        },
+        {
+          "name": "period"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "stores",
+          "headersHint": [
+            "Store",
+            "Rep",
+            "Status",
+            "Last visit"
+          ]
+        }
+      ],
+      "notes": "No live row capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/orders",
+      "title": "Orders",
+      "purpose": "Brand-routed PO list with fulfillment status",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "orders-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/orders/drafts",
+        "/orders"
+      ],
+      "buttons": [
+        "Create order",
+        "Export",
+        "Filter"
+      ],
+      "comboboxes": [
+        {
+          "name": "fulfillment"
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "salesRep"
+        },
+        {
+          "name": "dateRange"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "orders",
+          "headers": [
+            "PO Number",
+            "Store",
+            "Account",
+            "Customer",
+            "Location",
+            "Fulfillment",
+            "ETA",
+            "Total",
+            "Sales Rep",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "Page 1 of ~1034; detail links to /orders/:id",
+      "pagination": "approx 1034 pages (20/page sample)",
+      "dataDeps": [
+        "orders-page1-live.json"
+      ]
+    },
+    {
+      "path": "/admin/orders/drafts",
+      "title": "Order drafts",
+      "purpose": "Unsubmitted / draft POs",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Submit",
+        "Delete draft"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "drafts",
+          "headersHint": [
+            "Draft",
+            "Store",
+            "Rep",
+            "Updated"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports",
+      "title": "Reports hub",
+      "purpose": "Links to sales/inventory/commission reports",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports/brand-sales",
+        "/admin/reports/rep-sales",
+        "/admin/reports/inventory-reports",
+        "/admin/reports/commissions"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports/brand-sales",
+      "title": "Brand sales report",
+      "purpose": "Sales by brand",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports"
+      ],
+      "buttons": [
+        "Export",
+        "Run"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brandSales",
+          "headersHint": [
+            "Brand",
+            "Revenue",
+            "Orders",
+            "Units"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports/commissions",
+      "title": "Commissions report",
+      "purpose": "Commission analytics",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports",
+        "/admin/commissions"
+      ],
+      "buttons": [
+        "Export",
+        "Run"
+      ],
+      "comboboxes": [
+        {
+          "name": "period"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports/inventory-reports",
+      "title": "Inventory reports",
+      "purpose": "Inventory analytics exports",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports",
+        "/admin/inventory/ledgers"
+      ],
+      "buttons": [
+        "Export",
+        "Run"
+      ],
+      "comboboxes": [
+        {
+          "name": "warehouse"
+        },
+        {
+          "name": "brand"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/reports/rep-sales",
+      "title": "Rep sales report",
+      "purpose": "Sales by rep",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/reports"
+      ],
+      "buttons": [
+        "Export",
+        "Run"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "repSales",
+          "headersHint": [
+            "Rep",
+            "Revenue",
+            "Orders"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin",
+      "title": "Admin root",
+      "purpose": "Redirects to dashboard",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/dashboard"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/accounts",
+      "title": "Accounts (CRM)",
+      "purpose": "Retail account records",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/contacts",
+        "/admin/businesses",
+        "/admin/retail-stores"
+      ],
+      "buttons": [
+        "Add account",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "accounts",
+          "headersHint": [
+            "Account",
+            "Rep",
+            "City",
+            "State",
+            "Status"
+          ]
+        }
+      ],
+      "notes": "No live capture; CRM module",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/businesses",
+      "title": "Businesses",
+      "purpose": "Legal/business entities linked to reps",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "businesses-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/accounts",
+        "/admin/contacts"
+      ],
+      "buttons": [
+        "Add business",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "salesRep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "businesses",
+          "headers": [
+            "Sales Rep",
+            "Business Name",
+            "Address",
+            "Created",
+            "Actions"
+          ]
+        }
+      ],
+      "notes": "51 businesses captured; detail /admin/businesses/:id; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "businesses-live.json"
+      ]
+    },
+    {
+      "path": "/admin/commissions",
+      "title": "Commissions",
+      "purpose": "Commission runs and status",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/commissions/review",
+        "/admin/reports/commissions",
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Calculate",
+        "Export",
+        "Approve"
+      ],
+      "comboboxes": [
+        {
+          "name": "period"
+        },
+        {
+          "name": "brand"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "commissions",
+          "headersHint": [
+            "ID",
+            "Rep",
+            "Brand",
+            "Period",
+            "Amount",
+            "Status"
+          ]
+        }
+      ],
+      "notes": "Twin has demo seed only",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/commissions/review",
+      "title": "Commission review",
+      "purpose": "Approve/adjust commission lines",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/commissions"
+      ],
+      "buttons": [
+        "Approve",
+        "Reject",
+        "Adjust"
+      ],
+      "comboboxes": [
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/contacts",
+      "title": "Contacts",
+      "purpose": "People at accounts/businesses",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/accounts",
+        "/admin/businesses"
+      ],
+      "buttons": [
+        "Add contact",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "account"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "contacts",
+          "headersHint": [
+            "Name",
+            "Email",
+            "Phone",
+            "Account",
+            "Role"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/dashboard",
+      "title": "Admin dashboard",
+      "purpose": "Ops overview KPIs and quick links",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/orders",
+        "/admin/merchandising",
+        "/admin/pulse"
+      ],
+      "buttons": [
+        "Refresh"
+      ],
+      "comboboxes": [
+        {
+          "name": "dateRange",
+          "optionsHint": "preset ranges"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "activity",
+          "headersHint": [
+            "Event",
+            "Actor",
+            "When"
+          ]
+        }
+      ],
+      "notes": "Full KPI capture not dumped; UI mapped from nav + twin",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/deposits",
+      "title": "Deposits",
+      "purpose": "Bank/deposit tracking",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/payments",
+        "/admin/receipts"
+      ],
+      "buttons": [
+        "Record deposit",
+        "Reconcile"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/diagnostics/order-timeline",
+      "title": "Order timeline diagnostics",
+      "purpose": "Debug order event timeline",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Lookup"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "lookup",
+          "fields": [
+            "orderId"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "events",
+          "headersHint": [
+            "Time",
+            "Event",
+            "Detail"
+          ]
+        }
+      ],
+      "notes": "Internal diagnostic",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/emails",
+      "title": "Emails",
+      "purpose": "Outbound email log / templates",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [
+        "Resend",
+        "Preview"
+      ],
+      "comboboxes": [
+        {
+          "name": "template"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/files",
+      "title": "Files",
+      "purpose": "Uploaded file browser",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [
+        "Upload",
+        "Download",
+        "Delete"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/locations",
+      "title": "Locations",
+      "purpose": "Retail location master list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations/import",
+        "/admin/retail-stores",
+        "/admin/sales-status"
+      ],
+      "buttons": [
+        "Add location",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "locations",
+          "headersHint": [
+            "Name",
+            "Address",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "No live capture; related to assignments scale",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/locations/import",
+      "title": "Locations import",
+      "purpose": "CSV/bulk location import",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations"
+      ],
+      "buttons": [
+        "Upload",
+        "Validate",
+        "Commit"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "import",
+          "fields": [
+            "file"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/payments",
+      "title": "Payments",
+      "purpose": "Payment records",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/deposits",
+        "/admin/receipts",
+        "/admin/payouts"
+      ],
+      "buttons": [
+        "Record payment",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "method"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/payouts",
+      "title": "Payouts",
+      "purpose": "Rep payout runs",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts/rules",
+        "/admin/settlements",
+        "/admin/commissions"
+      ],
+      "buttons": [
+        "Run payouts",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "method"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "payouts",
+          "headersHint": [
+            "ID",
+            "Rep",
+            "Method",
+            "Amount",
+            "Status",
+            "Run date",
+            "Rule"
+          ]
+        }
+      ],
+      "notes": "Twin demo seed only",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/payouts/rules",
+      "title": "Payout rules",
+      "purpose": "Configure payout rule set",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts",
+        "/admin/payouts/rules/example"
+      ],
+      "buttons": [
+        "Add rule",
+        "Save"
+      ],
+      "comboboxes": [
+        {
+          "name": "ruleType"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/payouts/rules/example",
+      "title": "Payout rules example",
+      "purpose": "Example/docs for payout rules",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts/rules"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Likely documentation page",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse",
+      "title": "Pulse",
+      "purpose": "Rep/ops health dashboard hub",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/pulse/goals",
+        "/admin/pulse/health",
+        "/admin/pulse/scores",
+        "/admin/pulse/signals"
+      ],
+      "buttons": [
+        "Refresh"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "dateRange"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "Hub; signals page captured for Adam Scott",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/goals",
+      "title": "Pulse goals",
+      "purpose": "Goal targets vs attainment",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/pulse"
+      ],
+      "buttons": [
+        "Edit goals"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/health",
+      "title": "Pulse health",
+      "purpose": "Aggregate health indicators",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/pulse"
+      ],
+      "buttons": [],
+      "comboboxes": [
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/scores",
+      "title": "Pulse scores",
+      "purpose": "Composite rep scores",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/pulse",
+        "/admin/pulse/signals"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/signals",
+      "title": "Pulse signals",
+      "purpose": "Rep KPI signals (reorder, doors, fees, revenue)",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "pulse-signals-AdamScott-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/pulse",
+        "/admin/pulse/scores"
+      ],
+      "buttons": [],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "Adam Scott sample"
+        },
+        {
+          "name": "dateRange"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "Captured Adam Scott Jun19\u2013Sep16 KPIs as signal dict; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "pulse-signals-AdamScott-live.json"
+      ]
+    },
+    {
+      "path": "/admin/receipts",
+      "title": "Receipts",
+      "purpose": "Receipt archive",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/payments",
+        "/admin/deposits"
+      ],
+      "buttons": [
+        "Upload",
+        "Export"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/rep-assignments",
+      "title": "Rep assignments",
+      "purpose": "Primary/covering/delegate store assignments",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "assignments-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/rep-assignments/relationships",
+        "/admin/retail-stores",
+        "/admin/locations"
+      ],
+      "buttons": [
+        "Assign",
+        "Bulk edit",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role",
+          "options": [
+            "Primary",
+            "Covering",
+            "Delegate"
+          ]
+        },
+        {
+          "name": "rep"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "assignments",
+          "headers": [
+            "Rep",
+            "Store Name",
+            "City",
+            "State",
+            "Account",
+            "Role",
+            "From",
+            "To"
+          ]
+        }
+      ],
+      "notes": "11,314 primary \u00b7 27 covering \u00b7 464 delegate \u00b7 ~227 pages; page-1 sample only; twin page missing at map time",
+      "pagination": "approx 227 pages (50-row sample)",
+      "dataDeps": [
+        "assignments-page1-live.json"
+      ]
+    },
+    {
+      "path": "/admin/rep-assignments/relationships",
+      "title": "Assignment relationships",
+      "purpose": "Covering/delegate relationship graph",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add relationship"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/retail-stores",
+      "title": "Retail stores",
+      "purpose": "Door/store CRM list (distinct from Shopify stores)",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/locations",
+        "/admin/accounts",
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add store",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "retailStores",
+          "headersHint": [
+            "Store",
+            "Account",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "No dedicated live dump; overlaps assignments",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/sales-status",
+      "title": "Sales status",
+      "purpose": "Location sales status board",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations",
+        "/locations/sales-status"
+      ],
+      "buttons": [
+        "Update status",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/settlements",
+      "title": "Settlements",
+      "purpose": "Brand settlement batches",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/settlements/batch/preview",
+        "/admin/commissions",
+        "/admin/payouts"
+      ],
+      "buttons": [
+        "Create batch",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "period"
+        },
+        {
+          "name": "brand"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "settlements",
+          "headersHint": [
+            "ID",
+            "Period",
+            "Brand",
+            "Gross",
+            "Net",
+            "Status"
+          ]
+        }
+      ],
+      "notes": "Twin demo seed only",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/settlements/batch/preview",
+      "title": "Settlement batch preview",
+      "purpose": "Preview settlement batch before commit",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Commit",
+        "Cancel"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/shopify",
+      "title": "Shopify health",
+      "purpose": "Per-store install/scopes health",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "shopify-health-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/shopify/apps",
+        "/admin/shopify/test",
+        "/admin/stores"
+      ],
+      "buttons": [
+        "Install",
+        "Reconnect",
+        "Test",
+        "Sync"
+      ],
+      "comboboxes": [
+        {
+          "name": "statusFilter"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "shops",
+          "headers": [
+            "Store",
+            "Domain",
+            "Scopes",
+            "Status",
+            "Install"
+          ]
+        }
+      ],
+      "notes": "9/29 healthy \u00b7 20 need attention",
+      "pagination": null,
+      "dataDeps": [
+        "shopify-health-live.json"
+      ]
+    },
+    {
+      "path": "/admin/shopify/apps",
+      "title": "Shopify apps",
+      "purpose": "Partner app install management",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Install app",
+        "Rotate credentials"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/shopify/test",
+      "title": "Shopify test",
+      "purpose": "Connectivity/scopes test harness",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Run test"
+      ],
+      "comboboxes": [
+        {
+          "name": "shop"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/stores",
+      "title": "Brand stores (Shopify)",
+      "purpose": "Brand Shopify store registry",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "stores-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/shopify",
+        "/admin/stores/:id"
+      ],
+      "buttons": [
+        "Add store",
+        "Open"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "stores",
+          "headers": [
+            "Name",
+            "Shop Domain",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "29 stores captured; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "stores-live.json"
+      ]
+    },
+    {
+      "path": "/admin/users",
+      "title": "Users",
+      "purpose": "User/role directory",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "users-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Invite user",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "users",
+          "headers": [
+            "Name",
+            "Email",
+            "Last Seen",
+            "Role",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "189 users captured",
+      "pagination": null,
+      "dataDeps": [
+        "users-live.json"
+      ]
+    },
+    {
+      "path": "/admin/warehouses",
+      "title": "Warehouses",
+      "purpose": "Rep/central warehouse directory",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "warehouses-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/users"
+      ],
+      "buttons": [
+        "Add warehouse",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "warehouses",
+          "headers": [
+            "Warehouse",
+            "Address",
+            "City",
+            "State",
+            "ZIP",
+            "Phone",
+            "Status",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "60 warehouses captured",
+      "pagination": null,
+      "dataDeps": [
+        "warehouses-live.json"
+      ]
+    },
+    {
+      "path": "/inventory",
+      "title": "Rep inventory",
+      "purpose": "Rep view of on-hand stock",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/inventory/ledgers",
+        "/inventory/transfers",
+        "/inventory/performance"
+      ],
+      "buttons": [
+        "Transfer",
+        "Request stock"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "levels",
+          "headersHint": [
+            "Product",
+            "SKU",
+            "On hand",
+            "Available"
+          ]
+        }
+      ],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/inventory/ledgers",
+      "title": "Rep ledgers",
+      "purpose": "Rep-facing ledger view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/inventory/performance",
+      "title": "Rep inventory performance",
+      "purpose": "Rep sell-through view",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/inventory/transfers",
+      "title": "Rep transfers",
+      "purpose": "Rep transfer list",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/inventory/transfers/create",
+        "/inventory/transfers/preview"
+      ],
+      "buttons": [
+        "Create"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/inventory/transfers/create",
+      "title": "Create transfer",
+      "purpose": "Rep create transfer form",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory/transfers"
+      ],
+      "buttons": [
+        "Submit",
+        "Cancel"
+      ],
+      "comboboxes": [
+        {
+          "name": "from"
+        },
+        {
+          "name": "to"
+        },
+        {
+          "name": "sku"
+        }
+      ],
+      "forms": [
+        {
+          "name": "createTransfer",
+          "fields": [
+            "from",
+            "to",
+            "sku",
+            "qty"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/inventory/transfers/preview",
+      "title": "Transfer preview",
+      "purpose": "Preview transfer before submit",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/inventory/transfers"
+      ],
+      "buttons": [
+        "Confirm",
+        "Back"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/merchandising",
+      "title": "Field merchandising",
+      "purpose": "Rep field visit / survey embed",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/merchandising"
+      ],
+      "buttons": [
+        "Start visit",
+        "Submit"
+      ],
+      "comboboxes": [
+        {
+          "name": "store"
+        },
+        {
+          "name": "program"
+        }
+      ],
+      "forms": [
+        {
+          "name": "visit",
+          "fields": [
+            "answers",
+            "photos"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "Often external merch app; twin iframes MERCH_APP_URL",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/orders",
+      "title": "Rep orders",
+      "purpose": "Rep order list",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/orders/drafts",
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Create order"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "Detail paths /orders/:uuid seen in admin scrape",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/orders/drafts",
+      "title": "Rep order drafts",
+      "purpose": "Rep drafts",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/orders"
+      ],
+      "buttons": [
+        "Submit draft"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/retail-stores",
+      "title": "Rep retail stores",
+      "purpose": "Rep door list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/stores",
+        "/locations/sales-status"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/stores",
+      "title": "Rep stores",
+      "purpose": "Rep-facing store list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/retail-stores"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/locations/sales-status",
+      "title": "Location sales status (rep)",
+      "purpose": "Rep sales status for locations",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/sales-status"
+      ],
+      "buttons": [
+        "Update"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/test/dashboard",
+      "title": "Test dashboard",
+      "purpose": "Internal test route",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Dev/test only",
+      "pagination": null,
+      "dataDeps": []
+    }
+  ]
+}

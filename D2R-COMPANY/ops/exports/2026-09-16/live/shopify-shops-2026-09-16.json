@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:15.860Z",
+    "url": "https://app.direct2retailers.com/admin/shopify",
+    "title": "Direct2Retailers",
+    "module": "/admin/shopify",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Store",
+      "Domain",
+      "Scopes",
+      "Status",
+      "Install"
+    ]
+  },
+  "rowCount": 29,
+  "rows": [
+    {
+      "Store": "AirGlobal",
+      "Domain": "airglobal-2.myshopify.com",
+      "Scopes": "0 / 32",
+      "Status": "Not installed",
+      "Install": ""
+    },
+    {
+      "Store": "Holy! Water",
+      "Domain": "199a5e-11.myshopify.com",
+      "Scopes": "0 / 32",
+      "Status": "Unreachable",
+      "Install": ""
+    },
+    {
+      "Store": "Lucy",
+      "Domain": "lucy-wholesale.myshopify.com",
+      "Scopes": "0 / 32",
+      "Status": "Unreachable",
+      "Install": ""
+    },
+    {
+      "Store": "Ongo Energy Spray",
+      "Domain": "ongo-energy-spray.myshopify.com",
+      "Scopes": "0 / 32",
+      "Status": "Unreachable",
+      "Install": ""
+    },
+    {
+      "Store": "Bangers",
+      "Domain": "pzjt8f-sy.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Fireball",
+      "Domain": "0dbqxn-qg.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Mock Pouch",
+      "Domain": "mockpouch.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "My Instant IV",
+      "Domain": "my-instant-iv.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Newtrition",
+      "Domain": "d6511f-4.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Rebel",
+      "Domain": "rebelsuppsfl.myshopify.com",
+      "Scopes": "27 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "High-Not",
+      "Domain": "68d4d2.myshopify.com",
+      "Scopes": "29 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Rocket Fuel",
+      "Domain": "rocketfuelshop.myshopify.com",
+      "Scopes": "29 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "TRĒ House",
+      "Domain": "d2r-tre-house.myshopify.com",
+      "Scopes": "29 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Happie",
+      "Domain": "urc7sq-08.myshopify.com",
+      "Scopes": "30 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "McBee Farms",
+      "Domain": "a71bd9.myshopify.com",
+      "Scopes": "30 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Mr Vapor",
+      "Domain": "5bhnn1-dt.myshopify.com",
+      "Scopes": "30 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Riize",
+      "Domain": "riize-dev.myshopify.com",
+      "Scopes": "30 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Sesh",
+      "Domain": "seshb2bus.myshopify.com",
+      "Scopes": "30 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Glassy",
+      "Domain": "itn90x-0s.myshopify.com",
+      "Scopes": "31 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "Mini Melt",
+      "Domain": "wh0y5t-y6.myshopify.com",
+      "Scopes": "31 / 32",
+      "Status": "Missing scopes",
+      "Install": ""
+    },
+    {
+      "Store": "ALP",
+      "Domain": "karpatt.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "Beach Bark",
+      "Domain": "the-beach-bark-brittle-company.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "Dialed Gum",
+      "Domain": "0488ab.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "Dime Bags",
+      "Domain": "dwexfr-if.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "FÜM",
+      "Domain": "f-m-united-kingdom.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "Joey",
+      "Domain": "sasur5-ib.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "K Bar",
+      "Domain": "jenx6w-mu.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "Lucy (New!)",
+      "Domain": "ca6rad-1m.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    },
+    {
+      "Store": "X Mood Drinks",
+      "Domain": "xmooddrinks.myshopify.com",
+      "Scopes": "32 / 32",
+      "Status": "Healthy",
+      "Install": ""
+    }
+  ],
+  "bodyTextPreview": "Shopify Apps\n\nLive API scope health across every connected store. 9 of 29 healthy · 20 need attention.\n\nStore\tDomain\tScopes\tStatus\tInstall\nAirGlobal\tairglobal-2.myshopify.com\t0 / 32\tNot installed\t\n\nHoly! Water\t199a5e-11.myshopify.com\t0 / 32\tUnreachable\t\n\nLucy\tlucy-wholesale.myshopify.com\t0 / 32\tUnreachable\t\n\nOngo Energy Spray\tongo-energy-spray.myshopify.com\t0 / 32\tUnreachable\t\n\nBangers\tpzjt8f-sy.myshopify.com\t27 / 32\tMissing scopes\t\n\nFireball\t0dbqxn-qg.myshopify.com\t27 / 32\tMissing scopes\t\n\nMock Pouch\tmockpouch.myshopify.com\t27 / 32\tMissing scopes\t\n\nMy Instant IV\tmy-instant-iv.myshopify.com\t27 / 32\tMissing scopes\t\n\nNewtrition\td6511f-4.myshopify.com\t27 / 32\tMissing scopes\t\n\nRebel\trebelsuppsfl.myshopify.com\t27 / 32\tMissing scopes\t\n\nHigh-Not\t68d4d2.myshopify.com\t29 / 32\tMissing scopes\t\n\nRocket Fuel\trocketfuelshop.myshopify.com\t29 / 32\tMissing scopes\t\n\nTRĒ House\td2r-tre-house.myshopify.com\t29 / 32\tMissing scopes\t\n\nHappie\turc7sq-08.myshopify.com\t30 / 32\tMissing scopes\t\n\nMcBee Farms\ta71bd9.myshopify.com\t30 / 32\tMissing scopes\t\n\nMr Vapor\t5bhnn1-dt.myshopify.com\t30 / 32\tMissing scopes\t\n\nRiize\triize-dev.myshopify.com\t30 / 32\tMissing scopes\t\n\nSesh\tseshb2bus.myshopify.com\t30 / 32\tMissing scopes\t\n\nGlassy\titn90x-0s.myshopify.com\t31 / 32\tMissing scopes\t\n\nMini Melt\twh0y5t-y6.myshopify.com\t31 / 32\tMissing scopes\t\n\nALP\tkarpatt.myshopify.com\t32 / 32\tHealthy\t\n\nBeach Bark\tthe-beach-bark-brittle-company.myshopify.com\t32 / 32\tHealthy\t\n\nDialed Gum\t0488ab.myshopify.com\t32 / 32\tHealthy\t\n\nDime Bags\tdwexfr-if.myshopify.com\t32 / 32\tHealthy\t\n\nFÜM\tf-m-united-kingdom.myshopify.com\t32 / 32\tHealthy\t\n\nJoey\tsasur5-ib.myshopify.com\t32 / 32\tHealthy\t\n\nK Bar\tjenx6w-mu.myshopify.com\t32 / 32\tHealthy\t\n\nLucy (New!)\tca6rad-1m.myshopify.com\t32 / 32\tHealthy\t\n\nX Mood Drinks\txmooddrinks.myshopify.com\t32 / 32\tHealthy\t"
+}

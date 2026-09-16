@@ -1,0 +1,348 @@
+{
+  "meta": {
+    "domain": "orders",
+    "generatedAt": "2026-09-16T20:00:00.000Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "interactionFidelity": "mixed-live-and-inferred",
+    "browserScrapeThisPass": false,
+    "sources": [
+      "D2R-COMPANY/ops/exports/2026-09-16/live/orders-page1-live.json",
+      "D2R-COMPANY/ops/exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+      "D2R-COMPANY/ops/SITE-MAP-INTERACTIONS.json",
+      "d2r-app/src/app/admin/orders/page.tsx"
+    ]
+  },
+  "domainNav": {
+    "admin": [
+      { "path": "/admin/orders", "label": "Orders" },
+      { "path": "/admin/orders/drafts", "label": "Drafts" }
+    ],
+    "rep": [
+      { "path": "/orders", "label": "Orders" },
+      { "path": "/orders/drafts", "label": "Drafts" }
+    ]
+  },
+  "sharedFilters": {
+    "adminOrdersList": [
+      {
+        "id": "store",
+        "label": "Store",
+        "type": "combobox",
+        "interactionSource": "inferred",
+        "optionsHint": "29 brand stores from /admin/stores (e.g. ALP, FÜM, Lucy (New!), McBee Farms, X Mood Drinks)",
+        "optionsSource": "stores-live.json"
+      },
+      {
+        "id": "fulfillment",
+        "label": "Fulfillment",
+        "type": "combobox",
+        "interactionSource": "inferred-from-column-values",
+        "options": ["All", "Fulfilled", "Unfulfilled"],
+        "observedValues": ["Fulfilled", "Unfulfilled"]
+      },
+      {
+        "id": "user",
+        "label": "User",
+        "type": "combobox",
+        "interactionSource": "inferred",
+        "alias": "salesRep",
+        "optionsHint": "Sales reps / platform users (~189); column header on table is 'Sales Rep'",
+        "optionsSource": "users-live.json"
+      },
+      {
+        "id": "search",
+        "label": "Search",
+        "type": "text",
+        "interactionSource": "inferred",
+        "fieldsHint": ["PO Number", "Account", "Customer", "Location"]
+      },
+      {
+        "id": "dateRange",
+        "label": "Date range",
+        "type": "combobox-or-date-picker",
+        "interactionSource": "inferred",
+        "appliesTo": "Created",
+        "notes": "Not confirmed in capture; common on sibling admin tables"
+      }
+    ],
+    "repOrdersList": [
+      {
+        "id": "store",
+        "label": "Store",
+        "type": "combobox",
+        "interactionSource": "inferred"
+      },
+      {
+        "id": "fulfillment",
+        "label": "Fulfillment",
+        "type": "combobox",
+        "interactionSource": "inferred",
+        "options": ["All", "Fulfilled", "Unfulfilled"]
+      },
+      {
+        "id": "search",
+        "label": "Search",
+        "type": "text",
+        "interactionSource": "inferred"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "path": "/admin/orders",
+      "title": "Orders",
+      "role": "admin",
+      "purpose": "Brand-routed PO list with fulfillment status across all reps",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "orders-page1-live.json",
+      "twinPage": "d2r-app/src/app/admin/orders/page.tsx",
+      "twinCoverage": "stub-in-twin",
+      "links": [
+        "/admin/orders/drafts",
+        "/orders/{uuid}"
+      ],
+      "buttons": [
+        { "label": "Create order", "interactionSource": "inferred" },
+        { "label": "Export", "interactionSource": "inferred", "notes": "Filtered CSV/Excel expected" },
+        { "label": "Filter", "interactionSource": "inferred", "notes": "May be implicit combobox apply" }
+      ],
+      "filters": ["store", "fulfillment", "user", "search", "dateRange"],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [{ "name": "q", "type": "text" }]
+        }
+      ],
+      "tables": [
+        {
+          "name": "orders",
+          "headers": [
+            "PO Number",
+            "Store",
+            "Account",
+            "Customer",
+            "Location",
+            "Fulfillment",
+            "ETA",
+            "Total",
+            "Sales Rep",
+            "Created"
+          ],
+          "rowLink": {
+            "column": "PO Number",
+            "hrefPattern": "/orders/{uuid}",
+            "example": "/orders/d0e37f34-47a0-4230-86c7-3bbb6349e160"
+          },
+          "sortDefault": { "column": "Created", "direction": "desc" }
+        }
+      ],
+      "pagination": {
+        "rowsPerPage": 20,
+        "approxPages": 1034,
+        "pagesHint": "1\n2\n3\nMore pages\n1034",
+        "estimatedTotalRows": 20680,
+        "capturedPages": [1],
+        "uiPattern": "numbered-pages-with-more-pages-jump"
+      },
+      "export": {
+        "available": true,
+        "interactionSource": "inferred",
+        "scope": "current-filter-result-set",
+        "formatHint": "CSV or Excel"
+      },
+      "dataDeps": [
+        "orders-page1-live.json",
+        "stores-live.json",
+        "users-live.json"
+      ],
+      "notes": "Page 1 captured 2026-09-16; ~20k PO scale. Twin uses wrong column set and simplified OrderRow model."
+    },
+    {
+      "path": "/admin/orders/drafts",
+      "title": "Order drafts",
+      "role": "admin",
+      "purpose": "Unsubmitted POs awaiting rep/admin submit to brand routing",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": ["/admin/orders", "/orders/{uuid}"],
+      "buttons": [
+        { "label": "Submit", "interactionSource": "inferred" },
+        { "label": "Delete draft", "interactionSource": "inferred" },
+        { "label": "Create order", "interactionSource": "inferred" }
+      ],
+      "filters": ["store", "user", "search"],
+      "forms": [],
+      "tables": [
+        {
+          "name": "drafts",
+          "headersHint": [
+            "Draft",
+            "Store",
+            "Account",
+            "Sales Rep",
+            "Total",
+            "Updated",
+            "Actions"
+          ]
+        }
+      ],
+      "pagination": {
+        "rowsPerPage": null,
+        "approxPages": null,
+        "notes": "Unknown; likely smaller than main orders list"
+      },
+      "export": {
+        "available": false,
+        "interactionSource": "inferred"
+      },
+      "dataDeps": [],
+      "notes": "No live row capture. Route confirmed in URLS.txt."
+    },
+    {
+      "path": "/orders",
+      "title": "Rep orders",
+      "role": "rep",
+      "purpose": "Rep-scoped PO list; same schema as admin orders filtered to current user",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": ["/orders/drafts", "/orders/{uuid}"],
+      "buttons": [
+        { "label": "Create order", "interactionSource": "inferred" }
+      ],
+      "filters": ["store", "fulfillment", "search"],
+      "forms": [],
+      "tables": [
+        {
+          "name": "orders",
+          "headers": [
+            "PO Number",
+            "Store",
+            "Account",
+            "Customer",
+            "Location",
+            "Fulfillment",
+            "ETA",
+            "Total",
+            "Sales Rep",
+            "Created"
+          ],
+          "headersSource": "inferred-from-admin-capture",
+          "rowLink": {
+            "column": "PO Number",
+            "hrefPattern": "/orders/{uuid}"
+          }
+        }
+      ],
+      "pagination": {
+        "rowsPerPage": 20,
+        "approxPages": null,
+        "notes": "Rep-scoped; much smaller than admin 1034 pages"
+      },
+      "export": {
+        "available": false,
+        "interactionSource": "inferred",
+        "notes": "Export may be admin-only"
+      },
+      "dataDeps": ["orders-page1-live.json"],
+      "notes": "Detail paths /orders/:uuid confirmed via admin list _links. Signed-out HTML redirects to Clerk login."
+    },
+    {
+      "path": "/orders/drafts",
+      "title": "Rep order drafts",
+      "role": "rep",
+      "purpose": "Rep-owned draft POs before submit",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": ["/orders"],
+      "buttons": [
+        { "label": "Submit draft", "interactionSource": "inferred" },
+        { "label": "Delete draft", "interactionSource": "inferred" }
+      ],
+      "filters": ["store", "search"],
+      "forms": [],
+      "tables": [
+        {
+          "name": "drafts",
+          "headersHint": ["Draft", "Store", "Account", "Updated", "Total", "Actions"]
+        }
+      ],
+      "pagination": null,
+      "export": { "available": false },
+      "dataDeps": [],
+      "notes": "No live capture."
+    },
+    {
+      "path": "/orders/:uuid",
+      "title": "Order detail",
+      "role": "shared",
+      "purpose": "Single PO detail — lines, fulfillment, customer, timeline",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred-from-row-links",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": ["/admin/orders", "/orders", "/admin/diagnostics/order-timeline"],
+      "buttons": [],
+      "filters": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "export": { "available": false },
+      "dataDeps": [],
+      "notes": "Linked from PO Number on admin list; layout not captured."
+    }
+  ],
+  "liveCaptureSchema": {
+    "file": "orders-page1-live.json",
+    "meta": {
+      "url": "https://app.direct2retailers.com/admin/orders",
+      "capturedAt": "2026-09-16T19:44:27.932Z",
+      "page": 1,
+      "approxPages": 1034,
+      "count": 20
+    },
+    "headers": [
+      "PO Number",
+      "Store",
+      "Account",
+      "Customer",
+      "Location",
+      "Fulfillment",
+      "ETA",
+      "Total",
+      "Sales Rep",
+      "Created"
+    ],
+    "rowShape": {
+      "displayKeys": [
+        "PO Number",
+        "Store",
+        "Account",
+        "Customer",
+        "Location",
+        "Fulfillment",
+        "ETA",
+        "Total",
+        "Sales Rep",
+        "Created"
+      ],
+      "_links": [{ "t": "string", "h": "/orders/{uuid}" }]
+    },
+    "page1Stats": {
+      "stores": ["ALP", "FÜM", "Lucy (New!)", "McBee Farms", "X Mood Drinks"],
+      "fulfillment": { "Fulfilled": 15, "Unfulfilled": 5 },
+      "uniqueReps": 11,
+      "createdDates": ["9/16/2026"]
+    }
+  }
+}

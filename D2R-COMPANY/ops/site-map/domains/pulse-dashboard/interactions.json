@@ -1,0 +1,383 @@
+{
+  "meta": {
+    "domain": "pulse-dashboard",
+    "generatedAt": "2026-09-16T19:55:00.000Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "mapper": "pulse-dashboard-ui-mapper",
+    "interactionFidelity": "mixed",
+    "browserScrapeThisPass": false,
+    "notes": "Signals KPIs from live capture; dashboard and pulse sub-routes inferred from SITE-MAP-INTERACTIONS + route discovery"
+  },
+  "captures": [
+    {
+      "file": "pulse-signals-AdamScott-live.json",
+      "path": "/admin/pulse/signals",
+      "rep": "Adam Scott",
+      "range": "Jun 19 – Sep 16",
+      "capturedAt": "2026-09-16T19:46:17.875Z"
+    }
+  ],
+  "routes": [
+    {
+      "path": "/admin/dashboard",
+      "title": "Admin dashboard",
+      "purpose": "Company-wide ops KPIs, activity feed, module quick links",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "twinPath": "d2r-app/src/app/admin/dashboard/page.tsx",
+      "links": [
+        "/admin/inventory",
+        "/admin/inventory/ledgers",
+        "/admin/orders",
+        "/admin/merchandising",
+        "/admin/shopify",
+        "/admin/pulse",
+        "/admin/reports"
+      ],
+      "buttons": [
+        "Refresh"
+      ],
+      "comboboxes": [
+        {
+          "name": "dateRange",
+          "optionsHint": "7d, 30d, QTD, custom"
+        }
+      ],
+      "forms": [],
+      "kpiCards": [
+        {
+          "name": "valueHeld",
+          "labelHint": "Value held",
+          "sample": "$892,447",
+          "source": "ledger-performance-live.json"
+        },
+        {
+          "name": "unitsHeld",
+          "labelHint": "Units held",
+          "sample": "97149",
+          "source": "ledger-performance-live.json"
+        },
+        {
+          "name": "sellThrough",
+          "labelHint": "Sell-through",
+          "sample": "20%",
+          "source": "ledger-performance-live.json"
+        },
+        {
+          "name": "quiet8PlusDays",
+          "labelHint": "Quiet stock (8+ days)",
+          "sample": "47 of 53",
+          "source": "ledger-performance-live.json"
+        },
+        {
+          "name": "warehouses",
+          "labelHint": "Warehouses",
+          "sample": "60",
+          "source": "warehouses-live.json"
+        }
+      ],
+      "tables": [
+        {
+          "name": "activity",
+          "headersHint": [
+            "Event",
+            "Actor",
+            "When"
+          ]
+        }
+      ],
+      "notes": "No dedicated dashboard KPI capture; metrics inferred from ledger summary. P2 priority in export pass.",
+      "pagination": null,
+      "dataDeps": [
+        "ledger-performance-live.json",
+        "warehouses-live.json"
+      ]
+    },
+    {
+      "path": "/admin/pulse",
+      "title": "Pulse",
+      "purpose": "Rep health analytics hub with shared rep/date filters and sub-route navigation",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "twinPath": "d2r-app/src/app/admin/pulse/page.tsx",
+      "links": [
+        "/admin/pulse/goals",
+        "/admin/pulse/health",
+        "/admin/pulse/scores",
+        "/admin/pulse/signals"
+      ],
+      "buttons": [
+        "Refresh"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "~189 users from users-live.json"
+        },
+        {
+          "name": "dateRange",
+          "optionsHint": "Preset ranges; signals sample used Jun 19 – Sep 16"
+        }
+      ],
+      "forms": [],
+      "subNav": [
+        {
+          "label": "Goals",
+          "href": "/admin/pulse/goals"
+        },
+        {
+          "label": "Health",
+          "href": "/admin/pulse/health"
+        },
+        {
+          "label": "Scores",
+          "href": "/admin/pulse/scores"
+        },
+        {
+          "label": "Signals",
+          "href": "/admin/pulse/signals"
+        }
+      ],
+      "tables": [],
+      "notes": "Twin collapses hub + signals into one page; live exposes four child routes.",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/signals",
+      "title": "Pulse signals",
+      "purpose": "Rep KPI signal cards: reorder, doors, orders, score, stores, revenue mix, fees",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "pulse-signals-AdamScott-live.json",
+      "twinPage": false,
+      "twinPath": null,
+      "links": [
+        "/admin/pulse",
+        "/admin/pulse/scores"
+      ],
+      "buttons": [],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "Adam Scott in capture; full rep list",
+          "sample": "Adam Scott"
+        },
+        {
+          "name": "dateRange",
+          "sample": "Jun 19 – Sep 16"
+        }
+      ],
+      "forms": [],
+      "kpiCards": [
+        {
+          "key": "reorderRate",
+          "labelHint": "Reorder rate",
+          "sample": "97%",
+          "format": "percentage"
+        },
+        {
+          "key": "reorderMissRate",
+          "labelHint": "Reorder miss rate",
+          "sample": "90%",
+          "format": "percentage"
+        },
+        {
+          "key": "newDoors",
+          "labelHint": "New doors",
+          "sample": 2,
+          "format": "integer"
+        },
+        {
+          "key": "orders",
+          "labelHint": "Orders",
+          "sample": 78,
+          "format": "integer"
+        },
+        {
+          "key": "score",
+          "labelHint": "Pulse score",
+          "sample": 74,
+          "format": "score0-100"
+        },
+        {
+          "key": "activeStores",
+          "labelHint": "Active stores",
+          "sample": 65,
+          "format": "integer"
+        },
+        {
+          "key": "onHandShare",
+          "labelHint": "On-hand share",
+          "sample": "58%",
+          "format": "percentage"
+        },
+        {
+          "key": "revenue",
+          "labelHint": "Revenue",
+          "sample": 22408,
+          "displayHint": "$22,408",
+          "format": "currency_usd"
+        },
+        {
+          "key": "onHandFeePct",
+          "labelHint": "On-hand fee %",
+          "sample": "7%",
+          "format": "percentage"
+        },
+        {
+          "key": "dropShipFeePct",
+          "labelHint": "Drop-ship fee %",
+          "sample": "5%",
+          "format": "percentage"
+        }
+      ],
+      "tables": [],
+      "notes": "Capture is flat signals dict, not alert/event table. Twin loader incorrectly expects signals[] with severity/title/detail/at.",
+      "pagination": null,
+      "dataDeps": [
+        "pulse-signals-AdamScott-live.json",
+        "users-live.json"
+      ]
+    },
+    {
+      "path": "/admin/pulse/scores",
+      "title": "Pulse scores",
+      "purpose": "Composite rep scores ranking and export",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "twinPath": null,
+      "links": [
+        "/admin/pulse",
+        "/admin/pulse/signals"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "Filter or highlight single rep"
+        },
+        {
+          "name": "period",
+          "optionsHint": "QTD, rolling 90d, custom"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "scores",
+          "headersHint": [
+            "Rep",
+            "Score",
+            "Period",
+            "Rank",
+            "Trend"
+          ]
+        }
+      ],
+      "notes": "No live capture; score field on signals page suggests shared scoring model.",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/health",
+      "title": "Pulse health",
+      "purpose": "Aggregate health indicators (RAG / status rollups)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "twinPath": null,
+      "links": [
+        "/admin/pulse",
+        "/admin/pulse/signals"
+      ],
+      "buttons": [],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "Single rep or all reps"
+        }
+      ],
+      "forms": [],
+      "kpiCards": [
+        {
+          "name": "healthyReps",
+          "labelHint": "Healthy reps count"
+        },
+        {
+          "name": "atRiskReps",
+          "labelHint": "At-risk reps count"
+        },
+        {
+          "name": "criticalReps",
+          "labelHint": "Critical reps count"
+        }
+      ],
+      "tables": [],
+      "notes": "No live capture.",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/pulse/goals",
+      "title": "Pulse goals",
+      "purpose": "Goal targets vs attainment by rep and period",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "twinPath": null,
+      "links": [
+        "/admin/pulse"
+      ],
+      "buttons": [
+        "Edit goals"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep",
+          "optionsHint": "Scope goals to rep"
+        },
+        {
+          "name": "period",
+          "optionsHint": "Quarter or rolling window"
+        }
+      ],
+      "forms": [
+        {
+          "name": "editGoals",
+          "fieldsHint": [
+            "metric",
+            "target",
+            "period",
+            "rep"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "goals",
+          "headersHint": [
+            "Goal",
+            "Target",
+            "Actual",
+            "Attainment %",
+            "Period"
+          ]
+        }
+      ],
+      "notes": "No live capture.",
+      "pagination": null,
+      "dataDeps": []
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "capturedAt": "2026-09-16T20:19:54.686Z",
+  "summary": [
+    {
+      "module": "/admin/warehouses",
+      "file": "warehouses-all-2026-09-16.json",
+      "rows": 60,
+      "url": "https://app.direct2retailers.com/admin/warehouses"
+    },
+    {
+      "module": "/admin/inventory",
+      "file": "inventory-admin-2026-09-16.json",
+      "rows": 27,
+      "url": "https://app.direct2retailers.com/admin/inventory"
+    },
+    {
+      "module": "/admin/inventory/ledgers",
+      "file": "inventory-ledgers-2026-09-16.json",
+      "rows": 0,
+      "url": "https://app.direct2retailers.com/admin/inventory/ledgers"
+    },
+    {
+      "module": "/admin/inventory/transfers",
+      "file": "inventory-transfers-2026-09-16.json",
+      "rows": 20,
+      "url": "https://app.direct2retailers.com/admin/inventory/transfers"
+    },
+    {
+      "module": "/admin/shopify",
+      "file": "shopify-shops-2026-09-16.json",
+      "rows": 29,
+      "url": "https://app.direct2retailers.com/admin/shopify"
+    },
+    {
+      "module": "/admin/shopify/apps",
+      "file": "shopify-apps-2026-09-16.json",
+      "rows": 0,
+      "url": "https://app.direct2retailers.com/admin/shopify/apps"
+    },
+    {
+      "module": "/admin/users",
+      "file": "users-2026-09-16.json",
+      "rows": 189,
+      "url": "https://app.direct2retailers.com/admin/users"
+    },
+    {
+      "module": "/admin/businesses",
+      "file": "businesses-2026-09-16.json",
+      "rows": 51,
+      "url": "https://app.direct2retailers.com/admin/businesses"
+    },
+    {
+      "module": "/admin/retail-stores",
+      "file": "retail-stores-2026-09-16.json",
+      "rows": 50,
+      "url": "https://app.direct2retailers.com/admin/retail-stores"
+    },
+    {
+      "module": "/admin/rep-assignments",
+      "file": "rep-assignments-2026-09-16.json",
+      "rows": 50,
+      "url": "https://app.direct2retailers.com/admin/rep-assignments"
+    },
+    {
+      "module": "/admin/orders",
+      "file": "orders-2026-09-16.json",
+      "rows": 20,
+      "url": "https://app.direct2retailers.com/admin/orders"
+    },
+    {
+      "module": "/admin/merchandising",
+      "file": "merchandising-2026-09-16.json",
+      "rows": 41,
+      "url": "https://app.direct2retailers.com/admin/merchandising"
+    },
+    {
+      "module": "/admin/commissions",
+      "file": "commissions-2026-09-16.json",
+      "rows": 0,
+      "url": "https://app.direct2retailers.com/admin/commissions/review"
+    },
+    {
+      "module": "/admin/settlements",
+      "file": "settlements-2026-09-16.json",
+      "rows": 26,
+      "url": "https://app.direct2retailers.com/admin/settlements"
+    },
+    {
+      "module": "/admin/payouts",
+      "file": "payouts-2026-09-16.json",
+      "rows": 31,
+      "url": "https://app.direct2retailers.com/admin/payouts/rules/rep_commission"
+    },
+    {
+      "module": "/admin/dashboard",
+      "file": "dashboard-kpi-2026-09-16.json",
+      "rows": 0,
+      "url": "https://app.direct2retailers.com/admin/dashboard"
+    }
+  ]
+}

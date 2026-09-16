@@ -1,0 +1,502 @@
+{
+  "meta": {
+    "domain": "merchandising",
+    "generatedAt": "2026-09-16T20:00:00.000Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "fieldApp": "joey-surveys (repo root CRA app; embed via NEXT_PUBLIC_MERCH_APP_URL)",
+    "interactionSource": "live-capture-q3 + field-app-source + route-discovery",
+    "browserScrapeThisPass": false,
+    "browserBlocker": "Clerk login required; no authenticated session in this agent",
+    "primaryCapture": "exports/2026-09-16/live/merchandising-joey_circle_k-2026-Q3-live.json",
+    "seedFile": "d2r-app/data/seed/merchandising-joey_circle_k-2026-Q3.json"
+  },
+  "programs": [
+    {
+      "key": "joey_circle_k",
+      "label": "JOEY × Circle K",
+      "queryParam": "key",
+      "captured": true
+    }
+  ],
+  "periods": [
+    "2026-Q3",
+    "2026-Q2",
+    "2026-Q1",
+    "2025-Q4",
+    "2025-Q3"
+  ],
+  "defaultQuery": {
+    "key": "joey_circle_k",
+    "period": "2026-Q3"
+  },
+  "captureStats": {
+    "period": "2026-Q3",
+    "repCount": 41,
+    "totals": {
+      "assigned": 2427,
+      "completed": 98,
+      "withinWindow": 0,
+      "unpaidVisits": 99
+    },
+    "capturedAt": "2026-09-16T19:40:54.647Z"
+  },
+  "routes": [
+    {
+      "path": "/admin/merchandising",
+      "title": "Merchandising admin rollup",
+      "purpose": "Program/period rep-level visit completion and pay readiness",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "merchandising-joey_circle_k-2026-Q3-live.json",
+      "twinPage": "d2r-app/src/app/admin/merchandising/page.tsx",
+      "twinParity": "partial",
+      "queryParams": [
+        {
+          "name": "key",
+          "example": "joey_circle_k",
+          "required": false
+        },
+        {
+          "name": "period",
+          "example": "2026-Q3",
+          "required": false
+        }
+      ],
+      "comboboxes": [
+        {
+          "name": "program",
+          "bindsTo": "key",
+          "options": [
+            "joey_circle_k"
+          ],
+          "optionsHint": "may expand for future brand programs"
+        },
+        {
+          "name": "period",
+          "options": [
+            "2026-Q3",
+            "2026-Q2",
+            "2026-Q1",
+            "2025-Q4",
+            "2025-Q3"
+          ]
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Export",
+          "action": "downloadRepRollupCsv",
+          "confirmed": false
+        },
+        {
+          "label": "Pay visits",
+          "action": "payCompletedVisits",
+          "confirmed": false,
+          "notes": "Finance workflow; ties to payouts/settlements"
+        }
+      ],
+      "links": [
+        {
+          "href": "/admin/merchandising/stores",
+          "label": "Stores",
+          "context": "nav + inferred rep-row drill-down"
+        },
+        {
+          "href": "/merchandising",
+          "label": "Field merchandising",
+          "context": "rep embed entry"
+        },
+        {
+          "href": "/admin/payouts",
+          "label": "Payouts",
+          "context": "inferred from Pay visits"
+        }
+      ],
+      "tables": [
+        {
+          "name": "repRollup",
+          "headers": [
+            "Rep",
+            "Assigned",
+            "Completed",
+            "Within window",
+            "Complete %",
+            "Unpaid visits"
+          ],
+          "jsonFields": [
+            "rep",
+            "assigned",
+            "completed",
+            "withinWindow",
+            "completePct",
+            "unpaidVisits"
+          ],
+          "rowCount": 41,
+          "rowClick": {
+            "target": "/admin/merchandising/stores",
+            "params": [
+              "key",
+              "period",
+              "rep"
+            ],
+            "confirmed": false
+          }
+        }
+      ],
+      "forms": [],
+      "pagination": null,
+      "dataDeps": [
+        "merchandising-joey_circle_k-2026-Q3-live.json",
+        "merchandising-joey_circle_k-2026-Q2.json"
+      ],
+      "notes": "Visit detail not on this page; lives in field app Supabase. Twin lacks filters and action buttons."
+    },
+    {
+      "path": "/admin/merchandising/stores",
+      "title": "Merchandising stores",
+      "purpose": "Store-level assignment and visit status for program/period",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinParity": "missing",
+      "queryParams": [
+        {
+          "name": "key",
+          "example": "joey_circle_k"
+        },
+        {
+          "name": "period",
+          "example": "2026-Q3"
+        },
+        {
+          "name": "rep",
+          "example": "Adam Scott",
+          "notes": "optional filter from rollup drill-down"
+        }
+      ],
+      "comboboxes": [
+        {
+          "name": "program",
+          "bindsTo": "key"
+        },
+        {
+          "name": "period",
+          "options": [
+            "2026-Q3",
+            "2026-Q2",
+            "2026-Q1",
+            "2025-Q4",
+            "2025-Q3"
+          ]
+        },
+        {
+          "name": "rep",
+          "optionsHint": "all reps from users/assignments"
+        },
+        {
+          "name": "status",
+          "optionsHint": [
+            "pending",
+            "completed",
+            "within window"
+          ],
+          "confirmed": false
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Export",
+          "action": "downloadStoreGridCsv",
+          "confirmed": false
+        },
+        {
+          "label": "Assign",
+          "action": "reassignStoreToRep",
+          "confirmed": false
+        }
+      ],
+      "links": [
+        {
+          "href": "/admin/merchandising",
+          "label": "Rep rollup"
+        },
+        {
+          "href": "/admin/retail-stores",
+          "label": "Retail stores"
+        },
+        {
+          "href": "/admin/rep-assignments",
+          "label": "Rep assignments"
+        }
+      ],
+      "tables": [
+        {
+          "name": "stores",
+          "headersHint": [
+            "Store",
+            "Rep",
+            "Status",
+            "Completed",
+            "Last visit",
+            "Within window",
+            "Unpaid"
+          ],
+          "confirmed": false
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ],
+          "confirmed": false
+        }
+      ],
+      "pagination": {
+        "hint": "likely paginated at ~11k assignment scale",
+        "confirmed": false
+      },
+      "dataDeps": [],
+      "notes": "Route confirmed in URLS.txt; no row capture. Store list may overlap rep-assignments (11,314 primary)."
+    },
+    {
+      "path": "/merchandising",
+      "title": "Field merchandising (rep)",
+      "purpose": "Clerk-gated iframe into JOEY visit survey app",
+      "coverage": "stub-in-twin",
+      "interactionSource": "field-app-source",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/merchandising/page.tsx",
+      "twinParity": "iframe-shell-only",
+      "embed": {
+        "envVar": "NEXT_PUBLIC_MERCH_APP_URL",
+        "defaultUrl": "http://localhost:3000",
+        "iframePermissions": [
+          "geolocation",
+          "camera",
+          "microphone"
+        ],
+        "frameRequirements": [
+          "X-Frame-Options must allow twin origin",
+          "CSP frame-ancestors must include twin host"
+        ]
+      },
+      "comboboxes": [],
+      "buttons": [],
+      "links": [
+        {
+          "href": "/admin/merchandising",
+          "label": "Admin rollup",
+          "context": "admin role only"
+        }
+      ],
+      "tables": [],
+      "forms": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "Live D2R renders iframe after Clerk auth. All rep interactions occur inside embedded app.",
+      "embeddedViews": [
+        {
+          "id": "rep-route",
+          "title": "Circle K Route",
+          "source": "src/App.jsx RouteView",
+          "filters": [
+            {
+              "name": "search",
+              "type": "text",
+              "placeholder": "Search store, city, or address"
+            },
+            {
+              "name": "statusTab",
+              "type": "tabs",
+              "options": [
+                "all",
+                "todo",
+                "done"
+              ]
+            }
+          ],
+          "buttons": [
+            "Sign out",
+            "Dashboard",
+            "Sync {n}",
+            "GO (per store card)"
+          ],
+          "listItems": {
+            "type": "storeCard",
+            "fields": [
+              "site_number",
+              "address",
+              "city",
+              "state",
+              "pog_set",
+              "business_unit",
+              "status"
+            ]
+          },
+          "kpis": [
+            "completionPct",
+            "storesChecked",
+            "toGo"
+          ]
+        },
+        {
+          "id": "rep-visit",
+          "title": "Store visit (7 phases)",
+          "source": "src/App.jsx CheckView + src/lib/visitLogic.js",
+          "phases": [
+            {
+              "key": "checkin",
+              "name": "Check in"
+            },
+            {
+              "key": "find",
+              "name": "Find it"
+            },
+            {
+              "key": "stock",
+              "name": "Check and fill"
+            },
+            {
+              "key": "fix",
+              "name": "Fix it"
+            },
+            {
+              "key": "pos",
+              "name": "POS it"
+            },
+            {
+              "key": "edu",
+              "name": "Educate and price"
+            },
+            {
+              "key": "photo",
+              "name": "Photo it"
+            }
+          ],
+          "buttons": [
+            "Retry GPS",
+            "Submit",
+            "Back"
+          ],
+          "forms": [
+            {
+              "name": "visit",
+              "fields": [
+                "survey answers",
+                "pos items",
+                "photos p1-p9",
+                "gps",
+                "exception path"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "admin-review",
+          "title": "JOEY visit review portal",
+          "source": "src/components/ReviewPortal.jsx",
+          "entry": "Dashboard button (admin/manager role)",
+          "notD2rRoute": true,
+          "filters": [
+            {
+              "name": "search",
+              "type": "text"
+            },
+            {
+              "name": "division",
+              "type": "select"
+            },
+            {
+              "name": "status",
+              "type": "select",
+              "options": [
+                "",
+                "clean",
+                "not_set",
+                "missing_pos"
+              ]
+            },
+            {
+              "name": "followOnly",
+              "type": "toggle"
+            },
+            {
+              "name": "sort",
+              "type": "select",
+              "options": [
+                "date_desc",
+                "date_asc",
+                "division",
+                "status"
+              ]
+            }
+          ],
+          "buttons": [
+            "Route",
+            "Refresh",
+            "Export CSV",
+            "Sign out",
+            "Audit log",
+            "Assign store",
+            "Show 60 more"
+          ],
+          "tables": [
+            {
+              "name": "visits",
+              "columns": [
+                "date",
+                "store_number",
+                "address",
+                "division",
+                "rep_name",
+                "phaseStrip",
+                "flags"
+              ]
+            }
+          ],
+          "kpis": [
+            "visitsCompleted",
+            "joeyInSetPct",
+            "posPlacementPct",
+            "followUps",
+            "avgCompliance"
+          ]
+        }
+      ]
+    }
+  ],
+  "nav": {
+    "admin": [
+      "/admin/merchandising",
+      "/admin/merchandising/stores"
+    ],
+    "rep": [
+      "/merchandising"
+    ]
+  },
+  "crossLinks": [
+    {
+      "from": "/admin/merchandising",
+      "to": "/admin/merchandising/stores",
+      "via": "nav Stores + rep row click"
+    },
+    {
+      "from": "/admin/merchandising/stores",
+      "to": "/admin/rep-assignments",
+      "via": "Assign button / shared assignment data"
+    },
+    {
+      "from": "/merchandising",
+      "to": "field-app admin review",
+      "via": "Dashboard button inside iframe"
+    },
+    {
+      "from": "/admin/merchandising",
+      "to": "/admin/payouts",
+      "via": "Pay visits workflow"
+    }
+  ]
+}

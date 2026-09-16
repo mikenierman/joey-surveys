@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:43.575Z",
+    "url": "https://app.direct2retailers.com/admin/commissions/review",
+    "title": "Direct2Retailers",
+    "module": "/admin/commissions",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "empty",
+    "headers": []
+  },
+  "rowCount": 0,
+  "rows": [],
+  "bodyTextPreview": "Commission Review\nAdmin\n\nReview and approve order commissions, BDPs, and platform fees\n\nSeptember 2026\nFulfillment\nStore\nRep\nSearch\nOrders\n\nLoading orders…\n\nAll\nPending\nDrifted\nApproved"
+}

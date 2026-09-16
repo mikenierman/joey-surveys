@@ -1,0 +1,501 @@
+{
+  "meta": {
+    "domain": "shopify-brands",
+    "generatedAt": "2026-09-16T19:52:09.331795+00:00",
+    "liveApp": "https://app.direct2retailers.com",
+    "sources": [
+      "D2R-COMPANY/ops/exports/2026-09-16/live/shopify-health-live.json",
+      "D2R-COMPANY/ops/exports/2026-09-16/live/stores-live.json",
+      "D2R-COMPANY/ops/exports/2026-09-16/live/shopify-shops-live.json",
+      "D2R-COMPANY/ops/exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+      "D2R-COMPANY/ops/SITE-MAP-INTERACTIONS.json",
+      "d2r-app/src/app/admin/shopify/page.tsx"
+    ],
+    "interactionFidelity": "mixed \u2014 health + stores captured; apps/test inferred",
+    "browserScrapeThisPass": false
+  },
+  "nav": {
+    "platformSection": {
+      "label": "Platform",
+      "inferredFrom": "Live admin sidebar grouping (not present in twin ADMIN_NAV)",
+      "targets": [
+        {
+          "label": "Shopify",
+          "href": "/admin/shopify",
+          "children": [
+            {
+              "label": "Apps",
+              "href": "/admin/shopify/apps"
+            },
+            {
+              "label": "Test",
+              "href": "/admin/shopify/test"
+            }
+          ]
+        },
+        {
+          "label": "Brand stores",
+          "href": "/admin/stores"
+        }
+      ],
+      "twinNavGap": "Twin nav.ts only lists /admin/shopify; omits Brand stores and Platform grouping"
+    },
+    "twinAdminNav": [
+      {
+        "label": "Shopify",
+        "href": "/admin/shopify"
+      }
+    ]
+  },
+  "healthSummary": {
+    "capturedAt": "2026-09-16T19:45:36.475Z",
+    "healthy": 9,
+    "total": 29,
+    "needAttention": 20,
+    "byStatus": {
+      "Healthy": 9,
+      "Missing scopes": 16,
+      "Not installed": 1,
+      "Unreachable": 3
+    },
+    "missingScopesByGrantLevel": {
+      "27 / 32": 6,
+      "29 / 32": 3,
+      "30 / 32": 5,
+      "31 / 32": 2
+    },
+    "requiredScopeCount": 32
+  },
+  "shopRegistry": [
+    {
+      "name": "AirGlobal",
+      "domain": "airglobal-2.myshopify.com",
+      "scopes": "0 / 32",
+      "status": "Not installed",
+      "missingScopes": false,
+      "storeId": "ce79b8f1-7dd1-47dd-b2d5-7d56253a0e8b",
+      "storeHref": "/admin/stores/ce79b8f1-7dd1-47dd-b2d5-7d56253a0e8b",
+      "created": "12/3/2025"
+    },
+    {
+      "name": "Holy! Water",
+      "domain": "199a5e-11.myshopify.com",
+      "scopes": "0 / 32",
+      "status": "Unreachable",
+      "missingScopes": false,
+      "storeId": "64207f0d-5aa4-4b1a-b974-44bf26fc6bbd",
+      "storeHref": "/admin/stores/64207f0d-5aa4-4b1a-b974-44bf26fc6bbd",
+      "created": "5/13/2025"
+    },
+    {
+      "name": "Lucy",
+      "domain": "lucy-wholesale.myshopify.com",
+      "scopes": "0 / 32",
+      "status": "Unreachable",
+      "missingScopes": false,
+      "storeId": "86df0495-7798-41c7-80d5-5aa26f9438a8",
+      "storeHref": "/admin/stores/86df0495-7798-41c7-80d5-5aa26f9438a8",
+      "created": "4/13/2025"
+    },
+    {
+      "name": "Ongo Energy Spray",
+      "domain": "ongo-energy-spray.myshopify.com",
+      "scopes": "0 / 32",
+      "status": "Unreachable",
+      "missingScopes": false,
+      "storeId": "cc2e24eb-07b1-4df6-aadd-29a58a42f069",
+      "storeHref": "/admin/stores/cc2e24eb-07b1-4df6-aadd-29a58a42f069",
+      "created": "8/28/2025"
+    },
+    {
+      "name": "Bangers",
+      "domain": "pzjt8f-sy.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "60d0e6dd-ecf0-493a-b42d-bc9f7077cadf",
+      "storeHref": "/admin/stores/60d0e6dd-ecf0-493a-b42d-bc9f7077cadf",
+      "created": "11/8/2025"
+    },
+    {
+      "name": "Fireball",
+      "domain": "0dbqxn-qg.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "c3cce9ef-ca27-4788-890d-ab0ffd35ef11",
+      "storeHref": "/admin/stores/c3cce9ef-ca27-4788-890d-ab0ffd35ef11",
+      "created": "6/25/2025"
+    },
+    {
+      "name": "Mock Pouch",
+      "domain": "mockpouch.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "ab7a6c30-64a8-49ba-8bc7-1728001fd296",
+      "storeHref": "/admin/stores/ab7a6c30-64a8-49ba-8bc7-1728001fd296",
+      "created": "4/30/2025"
+    },
+    {
+      "name": "My Instant IV",
+      "domain": "my-instant-iv.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "b124ef3a-8ee1-42a7-b094-13ea566d7f78",
+      "storeHref": "/admin/stores/b124ef3a-8ee1-42a7-b094-13ea566d7f78",
+      "created": "5/16/2025"
+    },
+    {
+      "name": "Newtrition",
+      "domain": "d6511f-4.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "085344c1-ae38-4dd4-9176-35a35d34f246",
+      "storeHref": "/admin/stores/085344c1-ae38-4dd4-9176-35a35d34f246",
+      "created": "8/28/2025"
+    },
+    {
+      "name": "Rebel",
+      "domain": "rebelsuppsfl.myshopify.com",
+      "scopes": "27 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "1f77d573-69e3-4b32-bde1-0a8d7e9d475f",
+      "storeHref": "/admin/stores/1f77d573-69e3-4b32-bde1-0a8d7e9d475f",
+      "created": "6/30/2025"
+    },
+    {
+      "name": "High-Not",
+      "domain": "68d4d2.myshopify.com",
+      "scopes": "29 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "20416185-c63f-412e-bd64-5b07fcd60269",
+      "storeHref": "/admin/stores/20416185-c63f-412e-bd64-5b07fcd60269",
+      "created": "2/5/2026"
+    },
+    {
+      "name": "Rocket Fuel",
+      "domain": "rocketfuelshop.myshopify.com",
+      "scopes": "29 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "53ebc721-70aa-4765-afc4-83acbfcffb4d",
+      "storeHref": "/admin/stores/53ebc721-70aa-4765-afc4-83acbfcffb4d",
+      "created": "10/1/2025"
+    },
+    {
+      "name": "TR\u0112 House",
+      "domain": "d2r-tre-house.myshopify.com",
+      "scopes": "29 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "93c14270-b86d-4c03-a68d-8fc9f00600ca",
+      "storeHref": "/admin/stores/93c14270-b86d-4c03-a68d-8fc9f00600ca",
+      "created": "2/17/2026"
+    },
+    {
+      "name": "Happie",
+      "domain": "urc7sq-08.myshopify.com",
+      "scopes": "30 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "d0a74c0d-5868-4a99-a1ac-0367dc42cf75",
+      "storeHref": "/admin/stores/d0a74c0d-5868-4a99-a1ac-0367dc42cf75",
+      "created": "2/26/2026"
+    },
+    {
+      "name": "McBee Farms",
+      "domain": "a71bd9.myshopify.com",
+      "scopes": "30 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "c5a42fb8-8f17-4ddb-829f-e22c893740cf",
+      "storeHref": "/admin/stores/c5a42fb8-8f17-4ddb-829f-e22c893740cf",
+      "created": "3/19/2026"
+    },
+    {
+      "name": "Mr Vapor",
+      "domain": "5bhnn1-dt.myshopify.com",
+      "scopes": "30 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "bc51adf7-3dbd-47c9-a27e-27da2ddb4bf9",
+      "storeHref": "/admin/stores/bc51adf7-3dbd-47c9-a27e-27da2ddb4bf9",
+      "created": "4/2/2026"
+    },
+    {
+      "name": "Riize",
+      "domain": "riize-dev.myshopify.com",
+      "scopes": "30 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "76482eec-7e74-47d0-a144-379d802b63d4",
+      "storeHref": "/admin/stores/76482eec-7e74-47d0-a144-379d802b63d4",
+      "created": "10/1/2025"
+    },
+    {
+      "name": "Sesh",
+      "domain": "seshb2bus.myshopify.com",
+      "scopes": "30 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "10ef55d1-f4cf-4f5b-a99d-8fadcf9de4fa",
+      "storeHref": "/admin/stores/10ef55d1-f4cf-4f5b-a99d-8fadcf9de4fa",
+      "created": "4/20/2026"
+    },
+    {
+      "name": "Glassy",
+      "domain": "itn90x-0s.myshopify.com",
+      "scopes": "31 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "b273c323-0bb3-4a6a-b8d4-47a9c8101490",
+      "storeHref": "/admin/stores/b273c323-0bb3-4a6a-b8d4-47a9c8101490",
+      "created": "6/11/2026"
+    },
+    {
+      "name": "Mini Melt",
+      "domain": "wh0y5t-y6.myshopify.com",
+      "scopes": "31 / 32",
+      "status": "Missing scopes",
+      "missingScopes": true,
+      "storeId": "9cfbbb5d-b837-42c1-bd0d-38334b194c97",
+      "storeHref": "/admin/stores/9cfbbb5d-b837-42c1-bd0d-38334b194c97",
+      "created": "5/21/2026"
+    },
+    {
+      "name": "ALP",
+      "domain": "karpatt.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "5aba1a84-e66a-41a7-8db5-471861ac3c03",
+      "storeHref": "/admin/stores/5aba1a84-e66a-41a7-8db5-471861ac3c03",
+      "created": "5/21/2026"
+    },
+    {
+      "name": "Beach Bark",
+      "domain": "the-beach-bark-brittle-company.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "0cd727be-14e7-44c0-bae1-0df2a106597f",
+      "storeHref": "/admin/stores/0cd727be-14e7-44c0-bae1-0df2a106597f",
+      "created": "8/4/2026"
+    },
+    {
+      "name": "Dialed Gum",
+      "domain": "0488ab.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "dd0b2a7b-439f-42e8-83be-caf70e2e26c0",
+      "storeHref": "/admin/stores/dd0b2a7b-439f-42e8-83be-caf70e2e26c0",
+      "created": "2/5/2026"
+    },
+    {
+      "name": "Dime Bags",
+      "domain": "dwexfr-if.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "0192359b-2982-4fd3-b24c-c4d022bed233",
+      "storeHref": "/admin/stores/0192359b-2982-4fd3-b24c-c4d022bed233",
+      "created": "3/25/2026"
+    },
+    {
+      "name": "F\u00dcM",
+      "domain": "f-m-united-kingdom.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "2a61bf18-421d-471a-90be-586d9dac81f9",
+      "storeHref": "/admin/stores/2a61bf18-421d-471a-90be-586d9dac81f9",
+      "created": "5/23/2025"
+    },
+    {
+      "name": "Joey",
+      "domain": "sasur5-ib.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "23c69fdf-b728-41bf-9961-64e7782ea075",
+      "storeHref": "/admin/stores/23c69fdf-b728-41bf-9961-64e7782ea075",
+      "created": "5/17/2026"
+    },
+    {
+      "name": "K Bar",
+      "domain": "jenx6w-mu.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "5ffeafcd-63fb-4744-a44b-eb5c0a617c64",
+      "storeHref": "/admin/stores/5ffeafcd-63fb-4744-a44b-eb5c0a617c64",
+      "created": "6/11/2026"
+    },
+    {
+      "name": "Lucy (New!)",
+      "domain": "ca6rad-1m.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "16d29b63-669e-4600-a867-dde7c9f3e3a4",
+      "storeHref": "/admin/stores/16d29b63-669e-4600-a867-dde7c9f3e3a4",
+      "created": "6/30/2026"
+    },
+    {
+      "name": "X Mood Drinks",
+      "domain": "xmooddrinks.myshopify.com",
+      "scopes": "32 / 32",
+      "status": "Healthy",
+      "missingScopes": false,
+      "storeId": "845df28a-56ad-4947-8803-946e09ef27e2",
+      "storeHref": "/admin/stores/845df28a-56ad-4947-8803-946e09ef27e2",
+      "created": "6/22/2026"
+    }
+  ],
+  "routes": [
+    {
+      "path": "/admin/shopify",
+      "title": "Shopify Apps (health)",
+      "purpose": "Live API scope health across every connected brand store; install/reconnect entry points",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "shopify-health-live.json",
+      "twinPage": "d2r-app/src/app/admin/shopify/page.tsx",
+      "twinCoverage": "stub-in-twin",
+      "links": [
+        "/admin/shopify/apps",
+        "/admin/shopify/test",
+        "/admin/stores"
+      ],
+      "buttons": [
+        "Install",
+        "Reconnect",
+        "Test",
+        "Sync"
+      ],
+      "comboboxes": [
+        {
+          "name": "statusFilter",
+          "optionsHint": [
+            "All",
+            "Healthy",
+            "Missing scopes",
+            "Not installed",
+            "Unreachable"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "shops",
+          "headers": [
+            "Store",
+            "Domain",
+            "Scopes",
+            "Status",
+            "Install"
+          ]
+        }
+      ],
+      "notes": "Page H1 captured as \"Shopify Apps\". Summary: 9 of 29 healthy \u00b7 20 need attention.",
+      "pagination": null,
+      "dataDeps": [
+        "shopify-health-live.json",
+        "shopify-shops-live.json"
+      ]
+    },
+    {
+      "path": "/admin/shopify/apps",
+      "title": "Shopify apps",
+      "purpose": "Partner/custom app install management and credential rotation",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Install app",
+        "Rotate credentials"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live HTML/row capture 2026-09-16. Route in URLS.txt.",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/shopify/test",
+      "title": "Shopify test",
+      "purpose": "Per-shop connectivity and scopes test harness",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Run test"
+      ],
+      "comboboxes": [
+        {
+          "name": "shop",
+          "optionsHint": "29 brand stores by name/domain"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture. Likely runs Admin API probe for selected shop.",
+      "pagination": null,
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/stores",
+      "title": "Brand stores",
+      "purpose": "Brand Shopify store registry (name, myshopify domain, created date)",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "stores-live.json",
+      "twinPage": null,
+      "twinCoverage": "missing",
+      "links": [
+        "/admin/shopify",
+        "/admin/stores/:id"
+      ],
+      "buttons": [
+        "Add store",
+        "Open"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "stores",
+          "headers": [
+            "Name",
+            "Shop Domain",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "29 stores captured. Detail route /admin/stores/:uuid inferred from href column.",
+      "pagination": null,
+      "dataDeps": [
+        "stores-live.json",
+        "shopify-shops-live.json"
+      ]
+    }
+  ]
+}

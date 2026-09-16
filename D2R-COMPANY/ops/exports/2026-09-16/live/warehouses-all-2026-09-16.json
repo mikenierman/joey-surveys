@@ -1,0 +1,624 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:00.227Z",
+    "url": "https://app.direct2retailers.com/admin/warehouses",
+    "title": "Direct2Retailers",
+    "module": "/admin/warehouses",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Warehouse Name",
+      "Address",
+      "City",
+      "State",
+      "Zip",
+      "Phone",
+      "Status",
+      "Created"
+    ]
+  },
+  "rowCount": 60,
+  "rows": [
+    {
+      "Warehouse Name": "D2R - Adam Scott",
+      "Address": "275 South 1850 East",
+      "City": "Springville",
+      "State": "UT",
+      "Zip": "84663",
+      "Phone": "(801) 360-9967",
+      "Status": "Active",
+      "Created": "11/19/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Bobby Patel",
+      "Address": "SH 276",
+      "City": "Rockwall",
+      "State": "TX",
+      "Zip": "75032",
+      "Phone": "(832) 414-3010",
+      "Status": "Active",
+      "Created": "1/10/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Brad Kirkman",
+      "Address": "1072 Mountain Laurel Plaza",
+      "City": "Latrobe",
+      "State": "PA",
+      "Zip": "15650",
+      "Phone": "(724) 244-9766",
+      "Status": "Active",
+      "Created": "6/19/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Brent King",
+      "Address": "1250 Executive Place",
+      "City": "Geneva",
+      "State": "IL",
+      "Zip": "60134",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "4/9/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Brian Bianchi",
+      "Address": "204 Wolf Street",
+      "City": "Yorkville",
+      "State": "IL",
+      "Zip": "60560",
+      "Phone": "(847) 309-0063",
+      "Status": "Active",
+      "Created": "5/14/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Brian Phillips",
+      "Address": "7140 Wooster Pike",
+      "City": "Medina",
+      "State": "OH",
+      "Zip": "44256",
+      "Phone": "(330) 441-2008",
+      "Status": "Active",
+      "Created": "12/5/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Brian Schlautman",
+      "Address": "239 East Main Avenue",
+      "City": "Lumberton",
+      "State": "MS",
+      "Zip": "39455",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/29/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Bunty Patel",
+      "Address": "405 Pine Street",
+      "City": "Monroe",
+      "State": "LA",
+      "Zip": "71201",
+      "Phone": "(318) 572-7902",
+      "Status": "Active",
+      "Created": "12/29/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Chris Heibert",
+      "Address": "80 South 4th Street",
+      "City": "Pittsburgh",
+      "State": "PA",
+      "Zip": "15219",
+      "Phone": "(412) 260-3333",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Chris Pidruzny",
+      "Address": "1487 State Highway 248",
+      "City": "Branson",
+      "State": "MO",
+      "Zip": "65616",
+      "Phone": "(702) 332-4141",
+      "Status": "Active",
+      "Created": "11/25/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Chris Simpson",
+      "Address": "6401 Town Center Drive",
+      "City": "Raleigh",
+      "State": "NC",
+      "Zip": "27616",
+      "Phone": "(919) 247-6210",
+      "Status": "Active",
+      "Created": "4/6/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Christine Van Wart",
+      "Address": "495 Newbury Street",
+      "City": "Danvers",
+      "State": "MA",
+      "Zip": "01923",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Dana Mares",
+      "Address": "5206 Eastgate Mall",
+      "City": "San Diego",
+      "State": "CA",
+      "Zip": "92121",
+      "Phone": "(858) 829-5438",
+      "Status": "Active",
+      "Created": "6/29/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Denisa Kepier",
+      "Address": "199 Montpelier Lane",
+      "City": "Clayton",
+      "State": "NC",
+      "Zip": "27527",
+      "Phone": "(484) 312-0029",
+      "Status": "Active",
+      "Created": "11/21/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Dennis Escobar",
+      "Address": "1234 Kentucky Avenue",
+      "City": "Sheboygan",
+      "State": "WI",
+      "Zip": "53081",
+      "Phone": "(920) 889-0709",
+      "Status": "Active",
+      "Created": "4/13/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Edward Kim",
+      "Address": "320 South River Street",
+      "City": "Hackensack",
+      "State": "NJ",
+      "Zip": "07601",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "6/2/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Emily Vesnic",
+      "Address": "2600 Harte Drive",
+      "City": "Brighton",
+      "State": "MI",
+      "Zip": "48114",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/5/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Eric Miller",
+      "Address": "2899 Whiteford Road",
+      "City": "York",
+      "State": "PA",
+      "Zip": "17402",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/19/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Erica Novak",
+      "Address": "1230 Longfellow Drive",
+      "City": "Beaumont",
+      "State": "TX",
+      "Zip": "77706",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/21/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Ernie Farnen",
+      "Address": "3030 New Jersey 73",
+      "City": "Maple Shade",
+      "State": "NJ",
+      "Zip": "08052",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "2/16/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Ethan Adels",
+      "Address": "301 West Holly Street",
+      "City": "Bellingham",
+      "State": "WA",
+      "Zip": "98225",
+      "Phone": "(360) 603-2755",
+      "Status": "Active",
+      "Created": "7/2/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Gary Jurkowski",
+      "Address": "3950 Deep Rock Road",
+      "City": "Richmond",
+      "State": "VA",
+      "Zip": "23233",
+      "Phone": "(804) 519-7977",
+      "Status": "Active",
+      "Created": "12/12/2025"
+    },
+    {
+      "Warehouse Name": "D2R - James Mullen",
+      "Address": "220 101st Avenue Northwest",
+      "City": "Minneapolis",
+      "State": "MN",
+      "Zip": "55448",
+      "Phone": "(763) 226-4982",
+      "Status": "Active",
+      "Created": "1/7/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Jared Jackson",
+      "Address": "5018 Imlay City Road",
+      "City": "Attica",
+      "State": "MI",
+      "Zip": "48412",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/23/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Jerry Derigo",
+      "Address": "2108 Verot School Road",
+      "City": "Lafayette",
+      "State": "LA",
+      "Zip": "70508",
+      "Phone": "(318) 572-7902",
+      "Status": "Active",
+      "Created": "12/10/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Jim Ford",
+      "Address": "1784 Baltzley Valley Road Southeast",
+      "City": "New Philadelphia",
+      "State": "OH",
+      "Zip": "44663",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/4/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Joe Lardie",
+      "Address": "1099 Bradley Road",
+      "City": "Westlake",
+      "State": "OH",
+      "Zip": "44145",
+      "Phone": "(440) 796-1931",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Joe Van Wart",
+      "Address": "316 West Main Street",
+      "City": "Norton",
+      "State": "MA",
+      "Zip": "02766",
+      "Phone": "(617) 963-6503",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Jordan Johnson",
+      "Address": "4103 Louisiana 59",
+      "City": "Mandeville",
+      "State": "LA",
+      "Zip": "70471",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/22/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Kelly O'Connor",
+      "Address": "2710 Denton Tap Road",
+      "City": "Lewisville",
+      "State": "TX",
+      "Zip": "75067",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "5/1/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Kevin Galbreath",
+      "Address": "1120 Tennessee 76",
+      "City": "White House",
+      "State": "TN",
+      "Zip": "37188",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/9/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Kevin Patel",
+      "Address": "2514 East Piedmont Road",
+      "City": "Marietta",
+      "State": "GA",
+      "Zip": "30062",
+      "Phone": "(404) 542-3422",
+      "Status": "Active",
+      "Created": "6/19/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Luis Colon",
+      "Address": "3030 Sycamore School Road",
+      "City": "Fort Worth",
+      "State": "TX",
+      "Zip": "76133",
+      "Phone": "(682) 328-6593",
+      "Status": "Active",
+      "Created": "5/29/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Marc Stevens",
+      "Address": "670 South Gilbert Road",
+      "City": "Gilbert",
+      "State": "AZ",
+      "Zip": "85296",
+      "Phone": "(480) 772-1501",
+      "Status": "Active",
+      "Created": "6/23/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Miguel Edwards",
+      "Address": "1315 Northwest Wall Street",
+      "City": "Bend",
+      "State": "OR",
+      "Zip": "97702",
+      "Phone": "(206) 261-4096",
+      "Status": "Active",
+      "Created": "11/25/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Mike Fisher",
+      "Address": "10 Hampshire Road",
+      "City": "Salem",
+      "State": "NH",
+      "Zip": "03079",
+      "Phone": "(617) 719-7460",
+      "Status": "Active",
+      "Created": "4/7/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Mike Nierman",
+      "Address": "2600 Harte Drive",
+      "City": "Brighton",
+      "State": "MI",
+      "Zip": "48114",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "11/17/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Misty Vance",
+      "Address": "1596 East Fork 12 Pole Creek Road",
+      "City": "Dingess",
+      "State": "WV",
+      "Zip": "25671",
+      "Phone": "(304) 362-4601",
+      "Status": "Active",
+      "Created": "8/21/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Molly Flynn",
+      "Address": "1777 Union Road",
+      "City": "West Seneca",
+      "State": "NY",
+      "Zip": "14224",
+      "Phone": "(716) 473-8037",
+      "Status": "Active",
+      "Created": "6/29/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Morgan Williams",
+      "Address": "1612 General Booth Boulevard",
+      "City": "Virginia Beach",
+      "State": "VA",
+      "Zip": "23454",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/7/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Neal Batson",
+      "Address": "32000 John R Road",
+      "City": "Madison Heights",
+      "State": "MI",
+      "Zip": "48071",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Nicolas Guerrieri",
+      "Address": "2232 East Quail Avenue",
+      "City": "Phoenix",
+      "State": "AZ",
+      "Zip": "85024",
+      "Phone": "(480) 559-3000",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Patrick Orr",
+      "Address": "890 Alpine Drive",
+      "City": "Brighton",
+      "State": "MI",
+      "Zip": "48116",
+      "Phone": "+1 613 483 2691",
+      "Status": "Active",
+      "Created": "4/8/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Pete Ambrosino",
+      "Address": "6500 Manatee Avenue West",
+      "City": "Bradenton",
+      "State": "FL",
+      "Zip": "34209",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "3/11/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Rich Bonitz",
+      "Address": "7391 Rattlesnake Hammock Road",
+      "City": "Naples",
+      "State": "FL",
+      "Zip": "34113",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/29/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Ryan Cox",
+      "Address": "4004 Adeline Street",
+      "City": "Emeryville",
+      "State": "CA",
+      "Zip": "94608",
+      "Phone": "(925) 297-9962",
+      "Status": "Active",
+      "Created": "7/14/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Ryan Moore",
+      "Address": "13404 East Broncos Parkway",
+      "City": "Centennial",
+      "State": "CO",
+      "Zip": "80112",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/22/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Ryan Sage",
+      "Address": "30015 Eight Mile West",
+      "City": "Livonia",
+      "State": "MI",
+      "Zip": "48152",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "4/20/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Sasha Orr",
+      "Address": "890 Alpine Drive",
+      "City": "Danielsville",
+      "State": "PA",
+      "Zip": "18038",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "3/17/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Scott Hanslip",
+      "Address": "545 South Federal Highway",
+      "City": "Deerfield Beach",
+      "State": "FL",
+      "Zip": "33441",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "12/4/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Sean Allen",
+      "Address": "8225 South Broadway Avenue",
+      "City": "Tyler",
+      "State": "TX",
+      "Zip": "75703",
+      "Phone": "(318) 401-0019",
+      "Status": "Active",
+      "Created": "7/1/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Sefa Kirici",
+      "Address": "901 West Lake Avenue",
+      "City": "Peoria",
+      "State": "IL",
+      "Zip": "61614",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "5/1/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Shay Schnoor",
+      "Address": "5151 West 51st Street",
+      "City": "Tulsa",
+      "State": "OK",
+      "Zip": "74107",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/28/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Soliman Sayedi",
+      "Address": "Paha Circle",
+      "City": "Shakopee",
+      "State": "MN",
+      "Zip": "55379",
+      "Phone": "(952) 737-7068",
+      "Status": "Active",
+      "Created": "6/24/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Stephen Hagler",
+      "Address": "1108 Northeast Main Street",
+      "City": "Simpsonville",
+      "State": "SC",
+      "Zip": "29681",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "11/20/2025"
+    },
+    {
+      "Warehouse Name": "D2R - Tommy Joseph",
+      "Address": "109 Nicholson Road",
+      "City": "Sewickley",
+      "State": "PA",
+      "Zip": "15143",
+      "Phone": "(949) 331-2575",
+      "Status": "Active",
+      "Created": "6/19/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Tyler King",
+      "Address": "1250 Executive Place",
+      "City": "Geneva",
+      "State": "IL",
+      "Zip": "60134",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "5/22/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Vernon Tunnel",
+      "Address": "12719 Guernsey Street",
+      "City": "Jacksonville",
+      "State": "FL",
+      "Zip": "32226",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "1/7/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Vicki Van Sipe",
+      "Address": "41999 Ann Arbor Road",
+      "City": "Plymouth",
+      "State": "MI",
+      "Zip": "48170",
+      "Phone": "-",
+      "Status": "Active",
+      "Created": "3/28/2026"
+    },
+    {
+      "Warehouse Name": "D2R - Zohaeb Jilani",
+      "Address": "2312 South Division Avenue",
+      "City": "Orlando",
+      "State": "FL",
+      "Zip": "32805",
+      "Phone": "(407) 595-6095",
+      "Status": "Active",
+      "Created": "1/29/2026"
+    }
+  ],
+  "bodyTextPreview": "Warehouses\nAdmin\n\nManage all warehouses\n\n+ Add Warehouse\nWarehouse Name\tAddress\tCity\tState\tZip\tPhone\tStatus\tCreated\nD2R - Adam Scott\t275 South 1850 East\tSpringville\tUT\t84663\t(801) 360-9967\tActive\t11/19/2025\nD2R - Bobby Patel\tSH 276\tRockwall\tTX\t75032\t(832) 414-3010\tActive\t1/10/2026\nD2R - Brad Kirkman\t1072 Mountain Laurel Plaza\tLatrobe\tPA\t15650\t(724) 244-9766\tActive\t6/19/2026\nD2R - Brent King\t1250 Executive Place\tGeneva\tIL\t60134\t-\tActive\t4/9/2026\nD2R - Brian Bianchi\t204 Wolf Street\tYorkville\tIL\t60560\t(847) 309-0063\tActive\t5/14/2026\nD2R - Brian Phillips\t7140 Wooster Pike\tMedina\tOH\t44256\t(330) 441-2008\tActive\t12/5/2025\nD2R - Brian Schlautman\t239 East Main Avenue\tLumberton\tMS\t39455\t-\tActive\t12/29/2025\nD2R - Bunty Patel\t405 Pine Street\tMonroe\tLA\t71201\t(318) 572-7902\tActive\t12/29/2025\nD2R - Chris Heibert\t80 South 4th Street\tPittsburgh\tPA\t15219\t(412) 260-3333\tActive\t11/20/2025\nD2R - Chris Pidruzny\t1487 State Highway 248\tBranson\tMO\t65616\t(702) 332-4141\tActive\t11/25/2025\nD2R - Chris Simpson\t6401 Town Center Drive\tRaleigh\tNC\t27616\t(919) 247-6210\tActive\t4/6/2026\nD2R - Christine Van Wart\t495 Newbury Street\tDanvers\tMA\t01923\t-\tActive\t11/20/2025\nD2R - Dana Mares\t5206 Eastgate Mall\tSan Diego\tCA\t92121\t(858) 829-5438\tActive\t6/29/2026\nD2R - Denisa Kepier\t199 Montpelier Lane\tClayton\tNC\t27527\t(484) 312-0029\tActive\t11/21/2025\nD2R - Dennis Escobar\t1234 Kentucky Avenue\tSheboygan\tWI\t53081\t(920) 889-0709\tActive\t4/13/2026\nD2R - Edward Kim\t320 South River Street\tHackensack\tNJ\t07601\t-\tActive\t6/2/2026\nD2R - Emily Vesnic\t2600 Harte Drive\tBrighton\tMI\t48114\t-\tActive\t1/5/2026\nD2R - Eric Miller\t2899 Whiteford Road\tYork\tPA\t17402\t-\tActive\t1/19/2026\nD2R - Erica Novak\t1230 Longfellow Drive\tBeaumont\tTX\t77706\t-\tActive\t12/21/2025\nD2R - Ernie Farnen\t3030 New Jersey 73\tMaple Shade\tNJ\t08052\t-\tActive\t2/16/2026\nD2R - Ethan Adels\t301 West Holly Street\tBellingham\tWA\t98225\t(360) 603-2755\tActive\t7/2/2026\nD2R - Gary Jurkowski\t3950 Deep Rock Road\tRichmond\tVA\t23233\t(804) 519-7977\tActive\t12/12/2025\nD2R - James Mullen\t220 101st Avenue Northwest\tMinneapolis\tMN\t55448\t(763) 226-4982\tActive\t1/7/2026\nD2R - Jared Jackson\t5018 Imlay City Road\tAttica\tMI\t48412\t-\tActive\t1/23/2026\nD2R - Jerry Derigo\t2108 Verot School Road\tLafayette\tLA\t70508\t(318) 572-7902\tActive\t12/10/2025\nD2R - Jim Ford\t1784 Baltzley Valley Road Southeast\tNew Philadelphia\tOH\t44663\t-\tActive\t12/4/2025\nD2R - Joe Lardie\t1099 Bradley Road\tWestlake\tOH\t44145\t(440) 796-1931\tActive\t11/20/2025\nD2R - Joe Van Wart\t316 West Main Street\tNorton\tMA\t02766\t(617) 963-6503\tActive\t11/20/2025\nD2R - Jordan Johnson\t4103 Louisiana 59\tMandeville\tLA\t70471\t-\tActive\t12/22/2025\nD2R - Kelly O'Connor\t2710 Denton Tap Road\tLewisville\tTX\t75067\t-\tActive\t5/1/2026\nD2R - Kevin Galbreath\t1120 Tennessee 76\tWhite House\tTN\t37188\t-\tActive\t12/9/2025\nD2R - Kevin Patel\t2514 East Piedmont Road\tMarietta\tGA\t30062\t(404) 542-3422\tActive\t6/19/2026\nD2R - Luis Colon\t3030 Sycamore School Road\tFort Worth\tTX\t76133\t(682) 328-6593\tActive\t5/29/2026\nD2R - Marc Stevens\t670 South Gilbert Road\tGilbert\tAZ\t85296\t(480) 772-1501\tActive\t6/23/2026\nD2R - Miguel Edwards\t1315 Northwest Wall Street\tBend\tOR\t97702\t(206) 261-4096\tActive\t11/25/2025\nD2R - Mike Fisher\t10 Hampshire Road\tSalem\tNH\t03079\t(617) 719-7460\tActive\t4/7/2026\nD2R - Mike Nierman\t2600 Harte Drive\tBrighton\tMI\t48114\t-\tActive\t11/17/2025\nD2R - Misty Vance\t1596 East Fork 12 Pole Creek Road\tDingess\tWV\t25671\t(304) 362-4601\tActive\t8/21/2026\nD2R - Molly Flynn\t1777 Union Road\tWest Seneca\tNY\t14224\t(716) 473-8037\tActive\t6/29/2026\nD2R - Morgan Williams\t1612 General Booth Boulevard\tVirginia Beach\tVA\t23454\t-\tActive\t1/7/2026\nD2R - Neal Batson\t32000 John R Road\tMadison Heights\tMI\t48071\t-\tActive\t11/20/2025\nD2R - Nicolas Guerrieri\t2232 East Quail Avenue\tPhoenix\tAZ\t85024\t(480) 559-3000\tActive\t11/20/2025\nD2R - Patrick Orr\t890 Alpine Drive\tBrighton\tMI\t48116\t+1 613 483 2691\tActive\t4/8/2026\nD2R - Pete Ambrosino\t6500 Manatee Avenue West\tBradenton\tFL\t34209\t-\tActive\t3/11/2026\nD2R - Rich Bonitz\t7391 Rattlesnake Hammock Road\tNaples\tFL\t34113\t-\tActive\t1/29/2026\nD2R "
+}

@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-13T22:46:00.000Z",
+    "url": "https://app.direct2retailers.com/admin/inventory/refresh",
+    "title": "Brand levels",
+    "summary": "17 brand(s), 2905 inventory level(s). Shopify on-hand/available levels."
+  },
+  "brands": [
+    {"brand": "ALP", "services": 32, "levels": 834},
+    {"brand": "Bangers", "services": 17, "levels": 88},
+    {"brand": "Dialed Gum", "services": 4, "levels": 6},
+    {"brand": "Dime Bags", "services": 25, "levels": 381},
+    {"brand": "Fireball", "services": 3, "levels": 3},
+    {"brand": "FÜM", "services": 15, "levels": 194},
+    {"brand": "Joey", "services": 3, "levels": 53},
+    {"brand": "K Bar", "services": 2, "levels": 0},
+    {"brand": "Lucy (New!)", "services": 25, "levels": 447},
+    {"brand": "McBee Farms", "services": 5, "levels": 24},
+    {"brand": "Mini Melt", "services": 2, "levels": 0},
+    {"brand": "My Instant IV", "services": 10, "levels": 32},
+    {"brand": "Newtrition", "services": 1, "levels": 0},
+    {"brand": "Rebel", "services": 1, "levels": 0},
+    {"brand": "Sesh", "services": 26, "levels": 647},
+    {"brand": "TRĒ House", "services": 1, "levels": 15},
+    {"brand": "X Mood Drinks", "services": 26, "levels": 181}
+  ]
+}

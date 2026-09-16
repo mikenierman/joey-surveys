@@ -1,0 +1,24 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:54.685Z",
+    "url": "https://app.direct2retailers.com/admin/dashboard",
+    "title": "Direct2Retailers",
+    "module": "/admin/dashboard",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "kpi-text",
+    "headers": []
+  },
+  "rowCount": 8,
+  "rows": [],
+  "bodyTextPreview": "Dashboard\n\nReports & Order Management\n\nRevenue (MTD)\n$93,300.10\n-17.7% vs last month\nLast Month (Final)\n$219,701.73\n-8.3% vs month before\nRevenue (This Week)\n$19,901.11\n-51.8% vs last week\nAll-Time Revenue\n$4,445,480.90\nMonthly Revenue\n\nLast 12 months\n\nOct\nNov\nDec\nJan\nFeb\nMar\nApr\nMay\nJun\nJul\nAug\nSep\n$0.00\n$95,000.00\n$190,000.00\n$285,000.00\n$380,000.00\nWeekly Revenue Trend\n\nLast 12 weeks\n\nJul 06\nJul 13\nJul 20\nAug 03\nAug 17\nAug 31\nSep 14\n$0.00\n$25,000.00\n$50,000.00\n$75,000.00\n$100,000.00\nOrders (7d)\n179\nOrders (24h)\n27\nTotal Orders\n18332\nDraft Orders\n19978\nDaily Sales (Last 7 Days)\nSep 10\nSep 11\nSep 12\nSep 13\nSep 14\nSep 15\nSep 16\n$0.00\n$2,500.00\n$5,000.00\n$7,500.00\n$10,000.00\nOrders by Day of Week\n\nAvg orders per day\n\n30d avg\n7d avg\n90d avg\nSun\nMon\nTue\nWed\nThu\nFri\nSat\n0\n15\n30\n45\n60\nSales by Day of Week\n\nAvg revenue per day\n\n30d avg\n7d avg\n90d avg\nSun\nMon\nTue\nWed\nThu\nFri\nSat\n$0.00\n$3,000.00\n$6,000.00\n$9,000.00\n$12,000.00\nAvg Order Value (MTD)\n$223.21\n-9.0% vs last month\nAvg Items / Order\n6.34\nNew Accounts (MTD)\n2462\n+2022.4% vs last month\nUsers\n213\nTop Reps (30d)\n1. Neal Batson\n$19,005.02 (124)\n2. Denisa Keiper\n$18,623.38 (95)\n3. Chris Heibert\n$16,644.54 (67)\n4. Morgan Williams\n$13,503.50 (46)\n5. Molly Flynn\n$11,853.00 (14)\nTop Brands (30d)\n1. ALP\n$79,759.00 (269)\n2. FÜM\n$34,757.02 (95)\n3. Lucy (New!)\n$24,447.50 (181)\n4. McBee Farms\n$16,670.00 (98)\n5. TRĒ House\n$16,132.00 (25)\nRevenue by Brand (30d)\nReorder Rate (All-Time)\n47.3%\n3313 of 6998 stores\nReorders Within 30d\n32.6%\n168 of 515 stores\nDraft Conversion (All-Time)\n94.5%\n18911 of 20007 drafts · avg 40.3h\nDraft Conversion (Created 30d)\n91.8%\n793 of 864 drafts · avg 6.5h\nAvg Order Value by Brand (30d)\n\nMin 3 orders\n\n$0.00\n$200.00\n$400.00\n$600.00\n$800.00\nTRĒ House\nFÜM\nMr Vapor\nRiize\nRocketFuel\nLucy (New!)\nDialed Gum\nMy InstantIV",
+  "kpis": {
+    "revenueMtd": "93,300.10",
+    "lastMonthFinal": "219,701.73",
+    "revenueThisWeek": "19,901.11",
+    "allTimeRevenue": "4,445,480.90",
+    "orders7d": "179",
+    "orders24h": "27",
+    "totalOrders": "18332",
+    "draftOrders": "19978"
+  }
+}

@@ -1,0 +1,465 @@
+{
+  "meta": {
+    "domain": "inventory",
+    "generatedAt": "2026-09-16T20:00:00Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "routeCount": 10,
+    "sources": [
+      "exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+      "exports/2026-09-16/live/",
+      "exports/2026-09-16/from-vault-baseline-2026-09-13/{inventory,ledger}/",
+      "d2r-app/src/lib/inventory-nav.ts"
+    ],
+    "browserScrapeThisPass": false,
+    "browserBlocker": "cursor-ide-browser tab list empty; no authenticated session",
+    "interactionFidelity": "live-capture where noted; otherwise inferred-from-exports-and-vault"
+  },
+  "clusterNav": [
+    { "href": "/admin/inventory", "label": "Levels" },
+    { "href": "/admin/inventory/ledgers", "label": "Ledgers" },
+    { "href": "/admin/inventory/performance", "label": "Performance" },
+    { "href": "/admin/inventory/transfers", "label": "Transfers" },
+    { "href": "/admin/inventory/refresh", "label": "Brand levels" },
+    { "href": "/admin/inventory/audit", "label": "Audit" },
+    { "href": "/admin/warehouses", "label": "Warehouses" },
+    { "href": "/admin/businesses", "label": "Businesses" }
+  ],
+  "routes": [
+    {
+      "path": "/admin/inventory",
+      "title": "Inventory",
+      "purpose": "Consignment on-hand by brand store and rep warehouse",
+      "coverage": "captured-partial",
+      "interactionSource": "live-capture",
+      "liveCapture": "inventory-ALP-AdamScott-live.json",
+      "signedOutHtml": "admin_inventory-signedout.html",
+      "twinPage": "d2r-app/src/app/admin/inventory/page.tsx",
+      "links": [
+        "/admin/inventory/ledgers",
+        "/admin/inventory/performance",
+        "/admin/inventory/transfers",
+        "/admin/inventory/refresh",
+        "/admin/inventory/audit",
+        "/admin/warehouses"
+      ],
+      "buttons": [
+        "Export",
+        "Refresh levels",
+        "Search"
+      ],
+      "comboboxes": [
+        {
+          "name": "brandStore",
+          "label": "Store",
+          "optionsHint": "17+ brand stores (ALP, Lucy (New!), Sesh, …)",
+          "sampleValue": "ALP"
+        },
+        {
+          "name": "warehouse",
+          "label": "Warehouse",
+          "optionsHint": "60 rep warehouses",
+          "sampleValue": "D2R - Adam Scott"
+        }
+      ],
+      "forms": [
+        {
+          "name": "filters",
+          "fields": ["brandStore", "warehouse", "search"]
+        }
+      ],
+      "tables": [
+        {
+          "name": "levels",
+          "headers": [
+            "Product",
+            "Variant",
+            "SKU",
+            "On hand",
+            "Available",
+            "Committed",
+            "Incoming",
+            "Reserved",
+            "Damaged",
+            "Level GID"
+          ]
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Live sample: 27 SKUs, on-hand 211. Full dump needs store×warehouse iteration.",
+      "dataDeps": ["inventory-ALP-AdamScott-live.json", "inventory-admin-ALP-AdamScott-2026-09-13.tsv"]
+    },
+    {
+      "path": "/admin/inventory/audit",
+      "title": "Inventory audit",
+      "purpose": "Audit trail for inventory level changes and discrepancies",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": ["/admin/inventory"],
+      "buttons": ["Export", "Filter"],
+      "comboboxes": [
+        { "name": "brandStore" },
+        { "name": "warehouse" },
+        { "name": "dateRange" }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": ["sku", "q"]
+        }
+      ],
+      "tables": [
+        {
+          "name": "audit",
+          "headersHint": ["When", "SKU", "Product", "Warehouse", "Delta", "Actor", "Source"]
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Route in URLS.txt; no live row capture",
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/inventory/ledgers",
+      "title": "Ledger performance",
+      "purpose": "Rep-level consigned value, sell-through, and quiet-stock signals",
+      "coverage": "captured",
+      "interactionSource": "live-capture + vault-expanded",
+      "liveCapture": "ledger-performance-live.json",
+      "signedOutHtml": "admin_inventory_ledgers-signedout.html",
+      "twinPage": "d2r-app/src/app/admin/inventory/ledgers/page.tsx",
+      "links": [
+        "/admin/inventory",
+        "/admin/inventory/performance"
+      ],
+      "buttons": [
+        "Export",
+        "Expand",
+        "Filter"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand",
+          "optionsHint": "All brands + individual brands",
+          "sampleValue": "All brands"
+        },
+        {
+          "name": "sort",
+          "optionsHint": "Most value held, …",
+          "sampleValue": "Most value held"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "reps",
+          "headers": [
+            "Rep",
+            "Value held",
+            "Units held",
+            "Sell-through",
+            "Sold last 7d",
+            "Last sale"
+          ]
+        },
+        {
+          "name": "repProductsExpanded",
+          "headers": [
+            "Product",
+            "On hand",
+            "Received",
+            "Adjusted",
+            "Sold",
+            "Corrected",
+            "Sell-through",
+            "Age",
+            "Value"
+          ],
+          "source": "ledger-expanded-raw-2026-09-13.txt"
+        }
+      ],
+      "summaryCards": [
+        { "label": "Value held", "sample": "$892,447", "subtext": "425 unpriced items excluded" },
+        { "label": "Units held", "sample": "97149", "subtext": "On hand across every brand" },
+        { "label": "Sell-through", "sample": "20%", "subtext": "Sold against everything ever received" },
+        {
+          "label": "Quiet 8+ days",
+          "sample": "47 of 53",
+          "subtext": "No sale and no arrival in over a week"
+        }
+      ],
+      "charts": [
+        {
+          "name": "unitsSoldReceived",
+          "title": "Units sold and received across all reps",
+          "series": ["Units sold", "Units received"],
+          "range": "Last 8 weeks, next 2 projected"
+        }
+      ],
+      "pagination": "Showing 50 of 50",
+      "notes": "Expanded product rows from vault raw dump; chart not in live JSON",
+      "dataDeps": [
+        "ledger-performance-live.json",
+        "ledger-performance-all-brands-2026-09-13.json",
+        "ledger-expanded-raw-2026-09-13.txt",
+        "ledger-by-rep-brand-product-2026-09-13.tsv"
+      ]
+    },
+    {
+      "path": "/admin/inventory/performance",
+      "title": "Inventory performance",
+      "purpose": "Performance analytics sibling to ledgers (product/trend focus inferred)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": ["/admin/inventory/ledgers", "/inventory/performance"],
+      "buttons": ["Export", "Filter"],
+      "comboboxes": [
+        { "name": "brand" },
+        { "name": "rep" },
+        { "name": "period" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "performance",
+          "headersHint": ["Rep", "Brand", "Product", "On hand", "Sell-through", "Age", "Value"]
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Distinct route in bundles; likely shares ledger product dataset",
+      "dataDeps": ["ledger-by-rep-brand-product-2026-09-13.tsv"]
+    },
+    {
+      "path": "/admin/inventory/refresh",
+      "title": "Brand levels",
+      "purpose": "Shopify inventory level refresh status and on-demand re-pull",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "brand-levels-live.json",
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": ["/admin/inventory", "/admin/shopify"],
+      "buttons": ["Refresh all", "Refresh"],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brands",
+          "headers": ["Brand", "Services", "Levels", "Refresh"],
+          "rowAction": "Refresh"
+        }
+      ],
+      "summaryCards": [
+        {
+          "label": "Summary",
+          "sample": "17 brand(s), 2905 inventory level(s)",
+          "subtext": "Pulls on hand and available straight from Shopify"
+        }
+      ],
+      "pageCopy": "Re-read on hand and available for every level from Shopify. A backstop for missed inventory webhooks. Runs nightly; refresh a single brand or all of them on demand.",
+      "pagination": null,
+      "notes": "Last refresh timestamp not captured in structured JSON",
+      "dataDeps": ["brand-levels-live.json", "brand-levels-summary-2026-09-13.json"]
+    },
+    {
+      "path": "/admin/inventory/transfers",
+      "title": "Transfers",
+      "purpose": "Admin transfer queue with approve/receive workflow",
+      "coverage": "captured-partial",
+      "interactionSource": "live-capture",
+      "liveCapture": "transfers-page1-live.json",
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/inventory/transfers/page.tsx",
+      "links": [
+        "/admin/inventory/transfers/terms",
+        "/inventory/transfers/create",
+        "/inventory/transfers/{uuid}",
+        "/inventory/transfers/{uuid}/receive"
+      ],
+      "buttons": [
+        "Create transfer",
+        "Approve",
+        "Receive",
+        "Reject",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsKnown": ["NEW", "IN_PROGRESS", "READY_TO_SHIP", "TRANSFERRED"]
+        },
+        { "name": "store" },
+        { "name": "warehouse" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "transfers",
+          "headers": [
+            "Transfer ID",
+            "Store",
+            "Warehouse",
+            "Status",
+            "Items",
+            "Approved",
+            "Created",
+            "Actions"
+          ],
+          "rowActionsByStatus": {
+            "NEW": ["Approve"],
+            "IN_PROGRESS": ["Receive"],
+            "READY_TO_SHIP": [],
+            "TRANSFERRED": []
+          }
+        }
+      ],
+      "summaryCards": [],
+      "pagination": {
+        "currentPage": 1,
+        "totalPagesHint": 21,
+        "pageSize": 20,
+        "controls": ["1", "2", "3", "More pages", "21"]
+      },
+      "notes": "Detail links route to rep-facing /inventory/transfers/* not admin path",
+      "dataDeps": ["transfers-page1-live.json"]
+    },
+    {
+      "path": "/admin/inventory/transfers/terms",
+      "title": "Transfer terms",
+      "purpose": "Editable terms and conditions for transfer workflow",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": ["/admin/inventory/transfers"],
+      "buttons": ["Save", "Cancel"],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "terms",
+          "fields": ["body"]
+        }
+      ],
+      "tables": [],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "No live capture",
+      "dataDeps": []
+    },
+    {
+      "path": "/admin/warehouses",
+      "title": "Warehouses Admin",
+      "purpose": "Rep and central warehouse directory",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "warehouses-live.json",
+      "signedOutHtml": null,
+      "twinPage": "d2r-app/src/app/admin/warehouses/page.tsx",
+      "links": ["/admin/inventory", "/admin/users"],
+      "buttons": ["Add warehouse", "Export"],
+      "comboboxes": [
+        { "name": "status", "optionsHint": "Active, …" },
+        { "name": "state" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "warehouses",
+          "headers": [
+            "Warehouse",
+            "Address",
+            "City",
+            "State",
+            "ZIP",
+            "Phone",
+            "Status",
+            "Created",
+            "Rep"
+          ]
+        }
+      ],
+      "summaryCards": [],
+      "pageCopy": "Manage all warehouses",
+      "pagination": null,
+      "notes": "60 warehouses captured; all Active in sample",
+      "dataDeps": ["warehouses-live.json", "warehouses-all-2026-09-13.tsv"]
+    },
+    {
+      "path": "/admin/businesses",
+      "title": "Businesses",
+      "purpose": "Legal business entities linked to sales reps",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "businesses-live.json",
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": [
+        "/admin/businesses/{uuid}",
+        "/admin/accounts",
+        "/admin/contacts"
+      ],
+      "buttons": ["Add business", "Export"],
+      "comboboxes": [
+        { "name": "salesRep" }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "businesses",
+          "headers": [
+            "Sales Rep",
+            "Business Name",
+            "Address",
+            "Created",
+            "Actions"
+          ],
+          "rowLinks": "/admin/businesses/{uuid}"
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "51 businesses; Actions column empty in scrape (icon menu likely)",
+      "dataDeps": ["businesses-live.json"]
+    },
+    {
+      "path": "/admin/receipts",
+      "title": "Receipts",
+      "purpose": "Receipt archive for payments and deposits workflow",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "signedOutHtml": null,
+      "twinPage": null,
+      "links": ["/admin/payments", "/admin/deposits"],
+      "buttons": ["Upload", "Export"],
+      "comboboxes": [
+        { "name": "rep" },
+        { "name": "dateRange" }
+      ],
+      "forms": [
+        {
+          "name": "upload",
+          "fields": ["file", "rep", "amount", "date"]
+        }
+      ],
+      "tables": [
+        {
+          "name": "receipts",
+          "headersHint": ["Date", "Rep", "Amount", "Type", "Status", "Actions"]
+        }
+      ],
+      "summaryCards": [],
+      "pagination": null,
+      "notes": "Finance cluster route; not in inventory sub-nav; no live capture",
+      "dataDeps": []
+    }
+  ]
+}

@@ -1,0 +1,406 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:07.126Z",
+    "url": "https://app.direct2retailers.com/admin/inventory/ledgers",
+    "title": "Ledger performance",
+    "module": "/admin/inventory/ledgers",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "body-text-list",
+    "headers": [
+      "Rep",
+      "Held",
+      "UnitsLeft",
+      "SoldAllTime",
+      "SellThrough",
+      "Last7d",
+      "LastSale"
+    ]
+  },
+  "rowCount": 42,
+  "rows": [
+    {
+      "Rep": "Michael Nierman",
+      "Held": "$82,499",
+      "UnitsLeft": "15,232",
+      "SoldAllTime": "2,009",
+      "SellThrough": "12%",
+      "Last7d": "0 in 7d",
+      "LastSale": "8 days ago"
+    },
+    {
+      "Rep": "Morgan Williams",
+      "Held": "$78,622",
+      "UnitsLeft": "5,685",
+      "SoldAllTime": "2,396",
+      "SellThrough": "24%",
+      "Last7d": "113 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Neal Batson",
+      "Held": "$60,684",
+      "UnitsLeft": "3,779",
+      "SoldAllTime": "4,954",
+      "SellThrough": "42%",
+      "Last7d": "430 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Nick Guerrieri",
+      "Held": "$51,781",
+      "UnitsLeft": "3,899",
+      "SoldAllTime": "1,292",
+      "SellThrough": "18%",
+      "Last7d": "47 in 7d",
+      "LastSale": "5 days ago"
+    },
+    {
+      "Rep": "Denisa Keiper",
+      "Held": "$47,735",
+      "UnitsLeft": "4,479",
+      "SoldAllTime": "4,916",
+      "SellThrough": "36%",
+      "Last7d": "160 in 7d",
+      "LastSale": "2 days ago"
+    },
+    {
+      "Rep": "Dennis Escobar",
+      "Held": "$37,170",
+      "UnitsLeft": "5,171",
+      "SoldAllTime": "2,073",
+      "SellThrough": "29%",
+      "Last7d": "26 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Joseph Lardie",
+      "Held": "$37,050",
+      "UnitsLeft": "3,329",
+      "SoldAllTime": "768",
+      "SellThrough": "13%",
+      "Last7d": "20 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Brian Phillips",
+      "Held": "$36,853",
+      "UnitsLeft": "3,719",
+      "SoldAllTime": "59",
+      "SellThrough": "1%",
+      "Last7d": "0 in 7d",
+      "LastSale": "15 days ago"
+    },
+    {
+      "Rep": "Shay Schnoor",
+      "Held": "$31,104",
+      "UnitsLeft": "2,082",
+      "SoldAllTime": "1,343",
+      "SellThrough": "39%",
+      "Last7d": "10 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Chris Pidruzny",
+      "Held": "$29,316",
+      "UnitsLeft": "3,580",
+      "SoldAllTime": "746",
+      "SellThrough": "12%",
+      "Last7d": "0 in 7d",
+      "LastSale": "18 days ago"
+    },
+    {
+      "Rep": "Chris Heibert",
+      "Held": "$27,423",
+      "UnitsLeft": "2,818",
+      "SoldAllTime": "2,217",
+      "SellThrough": "32%",
+      "Last7d": "219 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Brian Bianchi",
+      "Held": "$25,976",
+      "UnitsLeft": "3,564",
+      "SoldAllTime": "5,722",
+      "SellThrough": "35%",
+      "Last7d": "0 in 7d",
+      "LastSale": "13 days ago"
+    },
+    {
+      "Rep": "Gary Jurkowski",
+      "Held": "$25,674",
+      "UnitsLeft": "4,535",
+      "SoldAllTime": "373",
+      "SellThrough": "8%",
+      "Last7d": "4 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Zohaeb Jilani",
+      "Held": "$25,480",
+      "UnitsLeft": "2,971",
+      "SoldAllTime": "270",
+      "SellThrough": "4%",
+      "Last7d": "58 in 7d",
+      "LastSale": "Yesterday"
+    },
+    {
+      "Rep": "James Mullen",
+      "Held": "$21,583",
+      "UnitsLeft": "2,984",
+      "SoldAllTime": "377",
+      "SellThrough": "4%",
+      "Last7d": "0 in 7d",
+      "LastSale": "13 days ago"
+    },
+    {
+      "Rep": "Brent King",
+      "Held": "$19,519",
+      "UnitsLeft": "1,838",
+      "SoldAllTime": "616",
+      "SellThrough": "14%",
+      "Last7d": "0 in 7d",
+      "LastSale": "1 month ago"
+    },
+    {
+      "Rep": "Emily Vesnic",
+      "Held": "$17,902",
+      "UnitsLeft": "3,313",
+      "SoldAllTime": "388",
+      "SellThrough": "6%",
+      "Last7d": "5 in 7d",
+      "LastSale": "6 days ago"
+    },
+    {
+      "Rep": "Joe Van Wart",
+      "Held": "$16,153",
+      "UnitsLeft": "2,448",
+      "SoldAllTime": "53",
+      "SellThrough": "2%",
+      "Last7d": "0 in 7d",
+      "LastSale": "1 month ago"
+    },
+    {
+      "Rep": "Vicki Van Sipe",
+      "Held": "$15,007",
+      "UnitsLeft": "2,613",
+      "SoldAllTime": "848",
+      "SellThrough": "16%",
+      "Last7d": "2 in 7d",
+      "LastSale": "4 days ago"
+    },
+    {
+      "Rep": "Scott Hanslip",
+      "Held": "$14,685",
+      "UnitsLeft": "2,358",
+      "SoldAllTime": "81",
+      "SellThrough": "1%",
+      "Last7d": "0 in 7d",
+      "LastSale": "8 days ago"
+    },
+    {
+      "Rep": "Kevin Galbreath",
+      "Held": "$13,799",
+      "UnitsLeft": "2,084",
+      "SoldAllTime": "716",
+      "SellThrough": "15%",
+      "Last7d": "60 in 7d",
+      "LastSale": "4 days ago"
+    },
+    {
+      "Rep": "Adam Scott",
+      "Held": "$13,568",
+      "UnitsLeft": "579",
+      "SoldAllTime": "317",
+      "SellThrough": "35%",
+      "Last7d": "157 in 7d",
+      "LastSale": "Yesterday"
+    },
+    {
+      "Rep": "Tommy Joseph",
+      "Held": "$12,161",
+      "UnitsLeft": "727",
+      "SoldAllTime": "262",
+      "SellThrough": "26%",
+      "Last7d": "200 in 7d",
+      "LastSale": "3 days ago"
+    },
+    {
+      "Rep": "Vern Tunnell",
+      "Held": "$11,193",
+      "UnitsLeft": "590",
+      "SoldAllTime": "244",
+      "SellThrough": "29%",
+      "Last7d": "42 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Luis Colon",
+      "Held": "$9,758",
+      "UnitsLeft": "1,043",
+      "SoldAllTime": "351",
+      "SellThrough": "25%",
+      "Last7d": "0 in 7d",
+      "LastSale": "15 days ago"
+    },
+    {
+      "Rep": "Jerry Derigo",
+      "Held": "$9,448",
+      "UnitsLeft": "420",
+      "SoldAllTime": "102",
+      "SellThrough": "20%",
+      "Last7d": "0 in 7d",
+      "LastSale": "1 month ago"
+    },
+    {
+      "Rep": "Brian Schlautman",
+      "Held": "$9,013",
+      "UnitsLeft": "2,253",
+      "SoldAllTime": "0",
+      "SellThrough": "0%",
+      "Last7d": "0 in 7d",
+      "LastSale": "Never sold"
+    },
+    {
+      "Rep": "Bobby Patel",
+      "Held": "$8,340",
+      "UnitsLeft": "408",
+      "SoldAllTime": "44",
+      "SellThrough": "10%",
+      "Last7d": "0 in 7d",
+      "LastSale": "1 month ago"
+    },
+    {
+      "Rep": "Chris Simpson",
+      "Held": "$8,184",
+      "UnitsLeft": "823",
+      "SoldAllTime": "779",
+      "SellThrough": "49%",
+      "Last7d": "0 in 7d",
+      "LastSale": "20 days ago"
+    },
+    {
+      "Rep": "Molly Flynn",
+      "Held": "$7,697",
+      "UnitsLeft": "394",
+      "SoldAllTime": "454",
+      "SellThrough": "54%",
+      "Last7d": "0 in 7d",
+      "LastSale": "13 days ago"
+    },
+    {
+      "Rep": "Marc Stevens",
+      "Held": "$7,647",
+      "UnitsLeft": "378",
+      "SoldAllTime": "56",
+      "SellThrough": "13%",
+      "Last7d": "0 in 7d",
+      "LastSale": "21 days ago"
+    },
+    {
+      "Rep": "Miguel Edwards",
+      "Held": "$7,507",
+      "UnitsLeft": "245",
+      "SoldAllTime": "40",
+      "SellThrough": "14%",
+      "Last7d": "0 in 7d",
+      "LastSale": "26 days ago"
+    },
+    {
+      "Rep": "Christine Van Wart",
+      "Held": "$7,384",
+      "UnitsLeft": "1,531",
+      "SoldAllTime": "102",
+      "SellThrough": "3%",
+      "Last7d": "0 in 7d",
+      "LastSale": "2 months ago"
+    },
+    {
+      "Rep": "Bunty Patel",
+      "Held": "$7,333",
+      "UnitsLeft": "258",
+      "SoldAllTime": "6",
+      "SellThrough": "2%",
+      "Last7d": "0 in 7d",
+      "LastSale": "2 months ago"
+    },
+    {
+      "Rep": "Kevin Patel",
+      "Held": "$7,091",
+      "UnitsLeft": "416",
+      "SoldAllTime": "144",
+      "SellThrough": "26%",
+      "Last7d": "0 in 7d",
+      "LastSale": "21 days ago"
+    },
+    {
+      "Rep": "Sean Allen",
+      "Held": "$6,996",
+      "UnitsLeft": "256",
+      "SoldAllTime": "125",
+      "SellThrough": "29%",
+      "Last7d": "0 in 7d",
+      "LastSale": "15 days ago"
+    },
+    {
+      "Rep": "Stephen Hagler",
+      "Held": "$6,895",
+      "UnitsLeft": "788",
+      "SoldAllTime": "2,065",
+      "SellThrough": "72%",
+      "Last7d": "62 in 7d",
+      "LastSale": "6 days ago"
+    },
+    {
+      "Rep": "Soliman Sayedi",
+      "Held": "$6,675",
+      "UnitsLeft": "253",
+      "SoldAllTime": "4",
+      "SellThrough": "2%",
+      "Last7d": "29 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Edward Kim",
+      "Held": "$6,410",
+      "UnitsLeft": "307",
+      "SoldAllTime": "271",
+      "SellThrough": "47%",
+      "Last7d": "120 in 7d",
+      "LastSale": "4 days ago"
+    },
+    {
+      "Rep": "Brad Kirkman",
+      "Held": "$5,485",
+      "UnitsLeft": "269",
+      "SoldAllTime": "165",
+      "SellThrough": "38%",
+      "Last7d": "0 in 7d",
+      "LastSale": "11 days ago"
+    },
+    {
+      "Rep": "Michael Fisher",
+      "Held": "$4,473",
+      "UnitsLeft": "690",
+      "SoldAllTime": "772",
+      "SellThrough": "21%",
+      "Last7d": "16 in 7d",
+      "LastSale": "Today"
+    },
+    {
+      "Rep": "Erica Novak",
+      "Held": "$3,507",
+      "UnitsLeft": "427",
+      "SoldAllTime": "0",
+      "SellThrough": "0%",
+      "Last7d": "0 in 7d",
+      "LastSale": "Never sold"
+    }
+  ],
+  "bodyTextPreview": "Inventory\nLedger performance\nLedger performance\n\nWhat every rep holds and how fast it is moving, counting every way stock arrives\n\nValue held\n$892,447\n425 unpriced items excluded\nUnits held\n97,149\nOn hand across every brand\nSell-through\n20%\nSold against everything ever received\nFilter\nQuiet 8 or more days\n47 of 53\nNo sale and no arrival in over a week\nUnits sold and received across all reps\nChart: All brands\nLast 8 weeks, next 2 projected\nUnits sold\nUnits received\nJul 23\nJul 30\nAug 6\nAug 13\nAug 20\nAug 27\nSep 3\nSep 10\nSep 17\nSep 24\nBrand: All brands\nSort: Most value held\nFilters\nRep\nHeld\nSold\nSell-through\nLast 8 weeks\nLast sale\nMichael Nierman\n$82,499\n15,232 units left\n2,009\nunits, all time\n12%\n0 in 7d\n8 days ago\nMorgan Williams\n$78,622\n5,685 units left\n2,396\nunits, all time\n24%\n113 in 7d\nToday\nNeal Batson\n$60,684\n3,779 units left\n4,954\nunits, all time\n42%\n430 in 7d\nToday\nNick Guerrieri\n$51,781\n3,899 units left\n1,292\nunits, all time\n18%\n47 in 7d\n5 days ago\nDenisa Keiper\n$47,735\n4,479 units left\n4,916\nunits, all time\n36%\n160 in 7d\n2 days ago\nDennis Escobar\n$37,170\n5,171 units left\n2,073\nunits, all time\n29%\n26 in 7d\nToday\nJoseph Lardie\n$37,050\n3,329 units left\n768\nunits, all time\n13%\n20 in 7d\nToday\nBrian Phillips\n$36,853\n3,719 units left\n59\nunits, all time\n1%\n0 in 7d\n15 days ago\nShay Schnoor\n$31,104\n2,082 units left\n1,343\nunits, all time\n39%\n10 in 7d\nToday\nChris Pidruzny\n$29,316\n3,580 units left\n746\nunits, all time\n12%\n0 in 7d\n18 days ago\nChris Heibert\n$27,423\n2,818 units left\n2,217\nunits, all time\n32%\n219 in 7d\nToday\nBrian Bianchi\n$25,976\n3,564 units left\n5,722\nunits, all time\n35%\n0 in 7d\n13 days ago\nGary Jurkowski\n$25,674\n4,535 units left\n373\nunits, all time\n8%\n4 in 7d\nToday\nZohaeb Jilani\n$25,480\n2,971 units left\n270\nunits, all time\n4%\n58 in 7d\nYesterday\nJames Mullen\n$21,583\n2,984 units left\n377\nunits, all time\n4%\n0 in 7d\n13 days ago\nBrent King\n$19,519\n1,838 units left\n616\nunits, all time\n14%\n0 in 7d\n1 month ago\nEmily Vesnic\n$17,902\n3,313 units left\n388\nunits, all time\n6%\n5 in 7d\n6 days ago\nJoe Van Wart\n$16,153\n2,448 units left\n53\nunits, all time\n2%\n0 in 7d\n1 month ago\nVicki Van Sipe\n$15,007\n2,613 units left\n848\nunits, all time\n16%\n2 in 7d\n4 days ago\nScott Hanslip\n$14,685\n2,358 units left\n81\nunits, all time\n1%\n0 in 7d\n8 days ago\nKevin Galbreath\n$13,799\n2,084 units left\n716\nunits, all time\n15%\n60 in 7d\n4 days ago\nAdam Scott\n$13,568\n579 units left\n317\nunits, all time\n35%\n157 in 7d\nYesterday\nTommy Joseph\n$12,161\n727 units left\n262\nunits, all time\n26%\n200 in 7d\n3 days ago\nVern Tunnell\n$11,193\n590 units left\n244\nunits, all time\n29%\n42 in 7d\nToday\nLuis Colon\n$9,758\n1,043 units left\n351\nunits, all time\n25%\n0 in 7d\n15 days ago\nJerry Derigo\n$9,448\n420 units left\n102\nunits, all time\n20%\n0 in 7d\n1 month ago\nBrian Schlautman\n$9,013\n2,253 units left\n0\nunits, all time\n0%\n0 in 7d\nNever sold\nBobby Patel\n$8,340\n408 units left\n44\nunits, all time\n10%\n0 in 7d\n1 month ago\nChris Simpson\n$8,184\n823 units left\n779\nunits, all time\n49%\n0 in 7d\n20 days ago\nMolly Flynn\n$7,697\n394 units left\n454\nunits, all time\n54%\n0 in 7d\n13 days ago\nMarc Stevens\n$7,647\n378 units left\n56\nunits, all time\n13%\n0 in 7d\n21 days ago\nMiguel Edwards\n$7,507\n245 units left\n40\nunits, all time\n14%\n0 in 7d\n26 days ago\nChristine Van Wart\n$7,384\n1,531 units left\n102\nunits, all time\n3%\n0 in 7d\n2 months ago\nBunty Patel\n$7,333\n258 units left\n6\nunits, all time\n2%\n0 in 7d\n2 months ago\nKevin Patel\n$7,091\n416 units left\n144\nunits, all time\n26%\n0 in 7d\n21 days ago\nSean Allen\n$6,996\n256 units left\n125\nunits, all time\n29%\n0 in 7d\n15 days ago\nStephen Hagler\n$6,895\n788 units left\n2,065\nunits, all time\n72%\n62 in 7d\n6 days ago\nSoliman Sayedi\n$6,675\n253 units left\n4\nunits, all time\n2%\n29 in 7d\nToday\nEdward Kim\n$6,410\n307 units left\n271\nunits, all time\n47%\n120 in 7d\n4 days ago\nBrad Kirkman\n$5,485\n269 units left\n165\nunits, all time\n38%\n0 in 7d\n11 days ago\nMichael Fisher\n$4,473\n690 units left\n772\nunits, all time\n21%\n16 in 7d\nToday\nErica Novak\n$3,507\n427 units left\n0\nunits, all time\n0%\n0 in 7d\nNever sold\n",
+  "summary": {
+    "valueHeld": 892447,
+    "unitsHeld": 97149,
+    "sellThrough": "20%"
+  }
+}

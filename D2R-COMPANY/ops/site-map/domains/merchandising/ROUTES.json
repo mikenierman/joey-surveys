@@ -1,0 +1,127 @@
+{
+  "domain": "merchandising",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "merchandising-mapper",
+    "status": "awaiting-first-pass"
+  },
+  "twinBuilder": {
+    "agent": "merchandising-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/merchandising",
+    "/admin/merchandising/stores"
+  ],
+  "routes": [
+    {
+      "path": "/admin/merchandising",
+      "title": "Merchandising admin",
+      "purpose": "Program/period rollup of rep visit completion",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "merchandising-joey_circle_k-2026-Q3-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/merchandising/stores",
+        "/merchandising"
+      ],
+      "buttons": [
+        "Export",
+        "Pay visits"
+      ],
+      "comboboxes": [
+        {
+          "name": "program",
+          "optionsHint": "joey_circle_k etc"
+        },
+        {
+          "name": "period",
+          "options": [
+            "2026-Q3",
+            "2026-Q2",
+            "2026-Q1",
+            "2025-Q4",
+            "2025-Q3"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "reps",
+          "headers": [
+            "Rep",
+            "Assigned",
+            "Completed",
+            "Within window",
+            "Complete %",
+            "Unpaid visits"
+          ]
+        }
+      ],
+      "notes": "Joey/Circle K Q3 captured (41 reps)",
+      "pagination": null,
+      "dataDeps": [
+        "merchandising-joey_circle_k-2026-Q3-live.json"
+      ],
+      "domain": "merchandising",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/merchandising/stores",
+      "title": "Merchandising stores",
+      "purpose": "Store-level merch assignment/status",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/merchandising",
+        "/admin/retail-stores"
+      ],
+      "buttons": [
+        "Export",
+        "Assign"
+      ],
+      "comboboxes": [
+        {
+          "name": "program"
+        },
+        {
+          "name": "period"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "stores",
+          "headersHint": [
+            "Store",
+            "Rep",
+            "Status",
+            "Last visit"
+          ]
+        }
+      ],
+      "notes": "No live row capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "merchandising",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "QC-007"
+    ]
+  }
+}

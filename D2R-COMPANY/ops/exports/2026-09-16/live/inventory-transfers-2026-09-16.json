@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:11.174Z",
+    "url": "https://app.direct2retailers.com/admin/inventory/transfers",
+    "title": "Direct2Retailers",
+    "module": "/admin/inventory/transfers",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Transfer ID",
+      "Store",
+      "Warehouse",
+      "Status",
+      "Items",
+      "Approved",
+      "Created",
+      "Actions"
+    ]
+  },
+  "rowCount": 20,
+  "rows": [
+    {
+      "Transfer ID": "9903431f",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "NEW",
+      "Items": "12 items (396 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve"
+    },
+    {
+      "Transfer ID": "8e1784be",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Vicki Van Sipe",
+      "Status": "NEW",
+      "Items": "10 items (180 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve"
+    },
+    {
+      "Transfer ID": "#T0055",
+      "Store": "Dime Bags",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "IN_PROGRESS",
+      "Items": "16 items (465 units)",
+      "Approved": "Approved",
+      "Created": "9/15/2026",
+      "Actions": "Receive"
+    },
+    {
+      "Transfer ID": "a8cdc93d",
+      "Store": "ALP",
+      "Warehouse": "D2R - Kevin Galbreath",
+      "Status": "NEW",
+      "Items": "22 items (396 units)",
+      "Approved": "Pending",
+      "Created": "9/15/2026",
+      "Actions": "Approve"
+    },
+    {
+      "Transfer ID": "#T0007",
+      "Store": "McBee Farms",
+      "Warehouse": "D2R - Vernon Tunnel",
+      "Status": "READY_TO_SHIP",
+      "Items": "6 items (72 units)",
+      "Approved": "Approved",
+      "Created": "9/14/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0048",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Nicolas Guerrieri",
+      "Status": "READY_TO_SHIP",
+      "Items": "4 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0054",
+      "Store": "Dime Bags",
+      "Warehouse": "D2R - Tommy Joseph",
+      "Status": "READY_TO_SHIP",
+      "Items": "17 items (972 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0067",
+      "Store": "ALP",
+      "Warehouse": "D2R - Chris Heibert",
+      "Status": "READY_TO_SHIP",
+      "Items": "17 items (365 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0066",
+      "Store": "ALP",
+      "Warehouse": "D2R - Neal Batson",
+      "Status": "READY_TO_SHIP",
+      "Items": "15 items (396 units)",
+      "Approved": "Approved",
+      "Created": "9/11/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0022",
+      "Store": "FÜM",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "IN_PROGRESS",
+      "Items": "6 items (52 units)",
+      "Approved": "Approved",
+      "Created": "9/10/2026",
+      "Actions": "Receive"
+    },
+    {
+      "Transfer ID": "#T0065",
+      "Store": "ALP",
+      "Warehouse": "D2R - Adam Scott",
+      "Status": "READY_TO_SHIP",
+      "Items": "21 items (684 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0063",
+      "Store": "ALP",
+      "Warehouse": "D2R - James Mullen",
+      "Status": "READY_TO_SHIP",
+      "Items": "4 items (72 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0064",
+      "Store": "ALP",
+      "Warehouse": "D2R - Stephen Hagler",
+      "Status": "READY_TO_SHIP",
+      "Items": "33 items (607 units)",
+      "Approved": "Approved",
+      "Created": "9/9/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0049",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Chris Pidruzny",
+      "Status": "READY_TO_SHIP",
+      "Items": "5 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/8/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0047",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "READY_TO_SHIP",
+      "Items": "19 items (428 units)",
+      "Approved": "Approved",
+      "Created": "9/8/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0006",
+      "Store": "McBee Farms",
+      "Warehouse": "D2R - Mike Fisher",
+      "Status": "TRANSFERRED",
+      "Items": "6 items (30 units)",
+      "Approved": "Approved",
+      "Created": "9/7/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0046",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Chris Heibert",
+      "Status": "READY_TO_SHIP",
+      "Items": "11 items (135 units)",
+      "Approved": "Approved",
+      "Created": "9/6/2026",
+      "Actions": ""
+    },
+    {
+      "Transfer ID": "#T0035",
+      "Store": "X Mood Drinks",
+      "Warehouse": "D2R - Mike Fisher",
+      "Status": "IN_PROGRESS",
+      "Items": "1 item (24 units)",
+      "Approved": "Approved",
+      "Created": "9/4/2026",
+      "Actions": "Receive"
+    },
+    {
+      "Transfer ID": "#T0045",
+      "Store": "Lucy (New!)",
+      "Warehouse": "D2R - Vernon Tunnel",
+      "Status": "IN_PROGRESS",
+      "Items": "5 items (90 units)",
+      "Approved": "Approved",
+      "Created": "9/3/2026",
+      "Actions": "Receive"
+    },
+    {
+      "Transfer ID": "#T0062",
+      "Store": "ALP",
+      "Warehouse": "D2R - Denisa Kepier",
+      "Status": "READY_TO_SHIP",
+      "Items": "16 items (624 units)",
+      "Approved": "Approved",
+      "Created": "9/3/2026",
+      "Actions": ""
+    }
+  ],
+  "bodyTextPreview": "Inventory Transfers\nAdmin\n\nView and manage all inventory transfers\n\nView terms\nAll Stores\nAll Stores\nALP\nAirGlobal\nBangers\nDialed Gum\nDime Bags\nFireball\nFÜM\nGlassy\nHappie\nHigh-Not\nJoey\nK Bar\nLucy\nLucy (New!)\nMcBee Farms\nMini Melt\nMr Vapor\nMy Instant IV\nNewtrition\nRebel\nRiize\nRocket Fuel\nSesh\nTRĒ House\nX Mood Drinks\nAll Warehouses\nAll Warehouses\nD2R - Adam Scott\nD2R - Bobby Patel\nD2R - Brad Kirkman\nD2R - Brent King\nD2R - Brian Bianchi\nD2R - Brian Phillips\nD2R - Brian Schlautman\nD2R - Bunty Patel\nD2R - Chris Heibert\nD2R - Chris Pidruzny\nD2R - Chris Simpson\nD2R - Christine Van Wart\nD2R - Dana Mares\nD2R - Denisa Kepier\nD2R - Dennis Escobar\nD2R - Edward Kim\nD2R - Emily Vesnic\nD2R - Eric Miller\nD2R - Erica Novak\nD2R - Ernie Farnen\nD2R - Ethan Adels\nD2R - Gary Jurkowski\nD2R - James Mullen\nD2R - Jared Jackson\nD2R - Jerry Derigo\nD2R - Jim Ford\nD2R - Joe Lardie\nD2R - Joe Van Wart\nD2R - Jordan Johnson\nD2R - Kelly O'Connor\nD2R - Kevin Galbreath\nD2R - Kevin Patel\nD2R - Luis Colon\nD2R - Marc Stevens\nD2R - Miguel Edwards\nD2R - Mike Fisher\nD2R - Mike Nierman\nD2R - Misty Vance\nD2R - Molly Flynn\nD2R - Morgan Williams\nD2R - Neal Batson\nD2R - Nicolas Guerrieri\nD2R - Patrick Orr\nD2R - Pete Ambrosino\nD2R - Rich Bonitz\nD2R - Ryan Cox\nD2R - Ryan Moore\nD2R - Ryan Sage\nD2R - Sasha Orr\nD2R - Scott Hanslip\nD2R - Sean Allen\nD2R - Sefa Kirici\nD2R - Shay Schnoor\nD2R - Soliman Sayedi\nD2R - Stephen Hagler\nD2R - Tommy Joseph\nD2R - Tyler King\nD2R - Vernon Tunnel\nD2R - Vicki Van Sipe\nD2R - Zohaeb Jilani\nAll Statuses\nAll Statuses\nNew\nApproved\nReady to Ship\nIn Progress\nIn Transit\nTransferred\nCancelled\nFilter\nTransfer ID\tStore\tWarehouse\tStatus\tItems\tApproved\tCreated\tActions\n9903431f\tLucy (New!)\tD2R - Adam Scott\tNEW\t12 items (396 units)\tPending\t9/15/2026\t\nApprove\n\n8e1784be\tLucy (New!)\tD2R - Vicki Van Sipe\tNEW\t10 items (180 units)\tPending\t9/15/2026\t\nApprove\n\n#T0055\tDime Bags\tD2R - Denisa Kepier\tIN_PROGRESS\t16 items (465 units)\tApproved\t9/15/2026\t\nReceive\n\na8cdc93d\tALP\tD2R - Kevin Galbreath\tNEW\t22 items (396 units)\tPending\t9/15/2026\t\nApprove\n\n#T0007\tMcBee Farms\tD2R - Vernon Tunnel\tREADY_TO_SHIP\t6 items (72 units)\tApproved\t9/14/2026\t\n\n#T0048\tLucy (New!)\tD2R - Nicolas Guerrieri\tREADY_TO_SHIP\t4 items (90 units)\tApproved\t9/11/2026\t\n\n#T0054\tDime Bags\tD2R - Tommy Joseph\tREADY_TO_SHIP\t17 items (972 units)\tApproved\t9/11/2026\t\n\n#T0067\tALP\tD2R - Chris Heibert\tREADY_TO_SHIP\t17 items (365 units)\tApproved\t9/11/2026\t\n\n#T0066\tALP\tD2R - Neal Batson\tREADY_TO_SHIP\t15 items (396 units)\tApproved\t9/11/2026\t\n\n#T0022\tFÜM\tD2R - Adam Scott\tIN_PROGRESS\t6 items (52 units)\tApproved\t9/10/2026\t\nReceive\n\n#T0065\tALP\tD2R - Adam Scott\tREADY_TO_SHIP\t21 items (684 units)\tApproved\t9/9/2026\t\n\n#T0063\tALP\tD2R - James Mullen\tREADY_TO_SHIP\t4 items (72 units)\tApproved\t9/9/2026\t\n\n#T0064\tALP\tD2R - Stephen Hagler\tREADY_TO_SHIP\t33 items (607 units)\tApproved\t9/9/2026\t\n\n#T0049\tLucy (New!)\tD2R - Chris Pidruzny\tREADY_TO_SHIP\t5 items (90 units)\tApproved\t9/8/2026\t\n\n#T0047\tLucy (New!)\tD2R - Denisa Kepier\tREADY_TO_SHIP\t19 items (428 units)\tApproved\t9/8/2026\t\n\n#T0006\tMcBee Farms\tD2R - Mike Fisher\tTRANSFERRED\t6 items (30 units)\tApproved\t9/7/2026\t\n\n#T0046\tLucy (New!)\tD2R - Chris Heibert\tREADY_TO_SHIP\t11 items (135 units)\tApproved\t9/6/2026\t\n\n#T0035\tX Mood Drinks\tD2R - Mike Fisher\tIN_PROGRESS\t1 item (24 units)\tApproved\t9/4/2026\t\nReceive\n\n#T0045\tLucy (New!)\tD2R - Vernon Tunnel\tIN_PROGRESS\t5 items (90 units)\tApproved\t9/3/2026\t\nReceive\n\n#T0062\tALP\tD2R - Denisa Kepier\tREADY_TO_SHIP\t16 items (624 units)\tApproved\t9/3/2026\t\n1\n2\n3\nMore pages\n21"
+}

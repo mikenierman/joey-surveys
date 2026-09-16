@@ -1,0 +1,213 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/stores",
+    "capturedAt": "2026-09-16T19:44:53.553Z",
+    "source": "live-scrape",
+    "count": 29
+  },
+  "stores": [
+    {
+      "Name": "ALP",
+      "Shop Domain": "karpatt.myshopify.com",
+      "Created": "5/21/2026",
+      "id": "5aba1a84-e66a-41a7-8db5-471861ac3c03",
+      "href": "/admin/stores/5aba1a84-e66a-41a7-8db5-471861ac3c03"
+    },
+    {
+      "Name": "AirGlobal",
+      "Shop Domain": "airglobal-2.myshopify.com",
+      "Created": "12/3/2025",
+      "id": "ce79b8f1-7dd1-47dd-b2d5-7d56253a0e8b",
+      "href": "/admin/stores/ce79b8f1-7dd1-47dd-b2d5-7d56253a0e8b"
+    },
+    {
+      "Name": "Bangers",
+      "Shop Domain": "pzjt8f-sy.myshopify.com",
+      "Created": "11/8/2025",
+      "id": "60d0e6dd-ecf0-493a-b42d-bc9f7077cadf",
+      "href": "/admin/stores/60d0e6dd-ecf0-493a-b42d-bc9f7077cadf"
+    },
+    {
+      "Name": "Beach Bark",
+      "Shop Domain": "the-beach-bark-brittle-company.myshopify.com",
+      "Created": "8/4/2026",
+      "id": "0cd727be-14e7-44c0-bae1-0df2a106597f",
+      "href": "/admin/stores/0cd727be-14e7-44c0-bae1-0df2a106597f"
+    },
+    {
+      "Name": "Dialed Gum",
+      "Shop Domain": "0488ab.myshopify.com",
+      "Created": "2/5/2026",
+      "id": "dd0b2a7b-439f-42e8-83be-caf70e2e26c0",
+      "href": "/admin/stores/dd0b2a7b-439f-42e8-83be-caf70e2e26c0"
+    },
+    {
+      "Name": "Dime Bags",
+      "Shop Domain": "dwexfr-if.myshopify.com",
+      "Created": "3/25/2026",
+      "id": "0192359b-2982-4fd3-b24c-c4d022bed233",
+      "href": "/admin/stores/0192359b-2982-4fd3-b24c-c4d022bed233"
+    },
+    {
+      "Name": "Fireball",
+      "Shop Domain": "0dbqxn-qg.myshopify.com",
+      "Created": "6/25/2025",
+      "id": "c3cce9ef-ca27-4788-890d-ab0ffd35ef11",
+      "href": "/admin/stores/c3cce9ef-ca27-4788-890d-ab0ffd35ef11"
+    },
+    {
+      "Name": "F\u00dcM",
+      "Shop Domain": "f-m-united-kingdom.myshopify.com",
+      "Created": "5/23/2025",
+      "id": "2a61bf18-421d-471a-90be-586d9dac81f9",
+      "href": "/admin/stores/2a61bf18-421d-471a-90be-586d9dac81f9"
+    },
+    {
+      "Name": "Glassy",
+      "Shop Domain": "itn90x-0s.myshopify.com",
+      "Created": "6/11/2026",
+      "id": "b273c323-0bb3-4a6a-b8d4-47a9c8101490",
+      "href": "/admin/stores/b273c323-0bb3-4a6a-b8d4-47a9c8101490"
+    },
+    {
+      "Name": "Happie",
+      "Shop Domain": "urc7sq-08.myshopify.com",
+      "Created": "2/26/2026",
+      "id": "d0a74c0d-5868-4a99-a1ac-0367dc42cf75",
+      "href": "/admin/stores/d0a74c0d-5868-4a99-a1ac-0367dc42cf75"
+    },
+    {
+      "Name": "High-Not",
+      "Shop Domain": "68d4d2.myshopify.com",
+      "Created": "2/5/2026",
+      "id": "20416185-c63f-412e-bd64-5b07fcd60269",
+      "href": "/admin/stores/20416185-c63f-412e-bd64-5b07fcd60269"
+    },
+    {
+      "Name": "Holy! Water",
+      "Shop Domain": "199a5e-11.myshopify.com",
+      "Created": "5/13/2025",
+      "id": "64207f0d-5aa4-4b1a-b974-44bf26fc6bbd",
+      "href": "/admin/stores/64207f0d-5aa4-4b1a-b974-44bf26fc6bbd"
+    },
+    {
+      "Name": "Joey",
+      "Shop Domain": "sasur5-ib.myshopify.com",
+      "Created": "5/17/2026",
+      "id": "23c69fdf-b728-41bf-9961-64e7782ea075",
+      "href": "/admin/stores/23c69fdf-b728-41bf-9961-64e7782ea075"
+    },
+    {
+      "Name": "K Bar",
+      "Shop Domain": "jenx6w-mu.myshopify.com",
+      "Created": "6/11/2026",
+      "id": "5ffeafcd-63fb-4744-a44b-eb5c0a617c64",
+      "href": "/admin/stores/5ffeafcd-63fb-4744-a44b-eb5c0a617c64"
+    },
+    {
+      "Name": "Lucy",
+      "Shop Domain": "lucy-wholesale.myshopify.com",
+      "Created": "4/13/2025",
+      "id": "86df0495-7798-41c7-80d5-5aa26f9438a8",
+      "href": "/admin/stores/86df0495-7798-41c7-80d5-5aa26f9438a8"
+    },
+    {
+      "Name": "Lucy (New!)",
+      "Shop Domain": "ca6rad-1m.myshopify.com",
+      "Created": "6/30/2026",
+      "id": "16d29b63-669e-4600-a867-dde7c9f3e3a4",
+      "href": "/admin/stores/16d29b63-669e-4600-a867-dde7c9f3e3a4"
+    },
+    {
+      "Name": "McBee Farms",
+      "Shop Domain": "a71bd9.myshopify.com",
+      "Created": "3/19/2026",
+      "id": "c5a42fb8-8f17-4ddb-829f-e22c893740cf",
+      "href": "/admin/stores/c5a42fb8-8f17-4ddb-829f-e22c893740cf"
+    },
+    {
+      "Name": "Mini Melt",
+      "Shop Domain": "wh0y5t-y6.myshopify.com",
+      "Created": "5/21/2026",
+      "id": "9cfbbb5d-b837-42c1-bd0d-38334b194c97",
+      "href": "/admin/stores/9cfbbb5d-b837-42c1-bd0d-38334b194c97"
+    },
+    {
+      "Name": "Mock Pouch",
+      "Shop Domain": "mockpouch.myshopify.com",
+      "Created": "4/30/2025",
+      "id": "ab7a6c30-64a8-49ba-8bc7-1728001fd296",
+      "href": "/admin/stores/ab7a6c30-64a8-49ba-8bc7-1728001fd296"
+    },
+    {
+      "Name": "Mr Vapor",
+      "Shop Domain": "5bhnn1-dt.myshopify.com",
+      "Created": "4/2/2026",
+      "id": "bc51adf7-3dbd-47c9-a27e-27da2ddb4bf9",
+      "href": "/admin/stores/bc51adf7-3dbd-47c9-a27e-27da2ddb4bf9"
+    },
+    {
+      "Name": "My Instant IV",
+      "Shop Domain": "my-instant-iv.myshopify.com",
+      "Created": "5/16/2025",
+      "id": "b124ef3a-8ee1-42a7-b094-13ea566d7f78",
+      "href": "/admin/stores/b124ef3a-8ee1-42a7-b094-13ea566d7f78"
+    },
+    {
+      "Name": "Newtrition",
+      "Shop Domain": "d6511f-4.myshopify.com",
+      "Created": "8/28/2025",
+      "id": "085344c1-ae38-4dd4-9176-35a35d34f246",
+      "href": "/admin/stores/085344c1-ae38-4dd4-9176-35a35d34f246"
+    },
+    {
+      "Name": "Ongo Energy Spray",
+      "Shop Domain": "ongo-energy-spray.myshopify.com",
+      "Created": "8/28/2025",
+      "id": "cc2e24eb-07b1-4df6-aadd-29a58a42f069",
+      "href": "/admin/stores/cc2e24eb-07b1-4df6-aadd-29a58a42f069"
+    },
+    {
+      "Name": "Rebel",
+      "Shop Domain": "rebelsuppsfl.myshopify.com",
+      "Created": "6/30/2025",
+      "id": "1f77d573-69e3-4b32-bde1-0a8d7e9d475f",
+      "href": "/admin/stores/1f77d573-69e3-4b32-bde1-0a8d7e9d475f"
+    },
+    {
+      "Name": "Riize",
+      "Shop Domain": "riize-dev.myshopify.com",
+      "Created": "10/1/2025",
+      "id": "76482eec-7e74-47d0-a144-379d802b63d4",
+      "href": "/admin/stores/76482eec-7e74-47d0-a144-379d802b63d4"
+    },
+    {
+      "Name": "Rocket Fuel",
+      "Shop Domain": "rocketfuelshop.myshopify.com",
+      "Created": "10/1/2025",
+      "id": "53ebc721-70aa-4765-afc4-83acbfcffb4d",
+      "href": "/admin/stores/53ebc721-70aa-4765-afc4-83acbfcffb4d"
+    },
+    {
+      "Name": "Sesh",
+      "Shop Domain": "seshb2bus.myshopify.com",
+      "Created": "4/20/2026",
+      "id": "10ef55d1-f4cf-4f5b-a99d-8fadcf9de4fa",
+      "href": "/admin/stores/10ef55d1-f4cf-4f5b-a99d-8fadcf9de4fa"
+    },
+    {
+      "Name": "TR\u0112 House",
+      "Shop Domain": "d2r-tre-house.myshopify.com",
+      "Created": "2/17/2026",
+      "id": "93c14270-b86d-4c03-a68d-8fc9f00600ca",
+      "href": "/admin/stores/93c14270-b86d-4c03-a68d-8fc9f00600ca"
+    },
+    {
+      "Name": "X Mood Drinks",
+      "Shop Domain": "xmooddrinks.myshopify.com",
+      "Created": "6/22/2026",
+      "id": "845df28a-56ad-4947-8803-946e09ef27e2",
+      "href": "/admin/stores/845df28a-56ad-4947-8803-946e09ef27e2"
+    }
+  ]
+}

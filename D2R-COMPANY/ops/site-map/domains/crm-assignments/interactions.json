@@ -1,0 +1,480 @@
+{
+  "meta": {
+    "domain": "crm-assignments",
+    "generatedAt": "2026-09-16T20:00:00.000Z",
+    "liveApp": "https://app.direct2retailers.com",
+    "routeCount": 7,
+    "interactionFidelity": "mixed — live-capture for users + rep-assignments; inferred for five CRM list routes",
+    "sources": [
+      "exports/2026-09-16/from-vault-baseline-2026-09-13/routes/URLS.txt",
+      "exports/2026-09-16/live/users-live.json",
+      "exports/2026-09-16/live/assignments-page1-live.json",
+      "SITE-MAP-INTERACTIONS.json",
+      "d2r-app twin inventory"
+    ],
+    "relatedRoutesOutOfScope": [
+      "/admin/businesses",
+      "/admin/locations/import",
+      "/admin/sales-status",
+      "/retail-stores",
+      "/locations/sales-status"
+    ],
+    "assignmentScale": {
+      "activePrimary": 11314,
+      "primary": 11314,
+      "covering": 27,
+      "delegate": 464,
+      "pagesApprox": 227,
+      "rowsPerPageApprox": 50,
+      "sampleCaptured": 50,
+      "captureFile": "assignments-page1-live.json"
+    },
+    "userScale": {
+      "total": 189,
+      "roles": {
+        "rep": 15,
+        "delegate": 17,
+        "admin": 4,
+        "brand_partner": 2,
+        "empty": 151
+      },
+      "captureFile": "users-live.json"
+    }
+  },
+  "entityGraph": {
+    "nodes": [
+      {
+        "id": "users",
+        "label": "Users",
+        "countKnown": 189,
+        "captureStatus": "captured"
+      },
+      {
+        "id": "accounts",
+        "label": "Accounts",
+        "countKnown": null,
+        "captureStatus": "mapped-ui-only"
+      },
+      {
+        "id": "contacts",
+        "label": "Contacts",
+        "countKnown": null,
+        "captureStatus": "mapped-ui-only"
+      },
+      {
+        "id": "retailStores",
+        "label": "Retail stores",
+        "countKnown": null,
+        "captureStatus": "mapped-ui-only",
+        "notes": "Physical doors; distinct from /admin/stores (Shopify)"
+      },
+      {
+        "id": "locations",
+        "label": "Locations",
+        "countKnown": null,
+        "captureStatus": "mapped-ui-only"
+      },
+      {
+        "id": "assignments",
+        "label": "Rep assignments",
+        "countKnown": 11314,
+        "captureStatus": "captured-sample"
+      },
+      {
+        "id": "relationships",
+        "label": "Assignment relationships",
+        "countKnown": null,
+        "captureStatus": "mapped-ui-only"
+      }
+    ],
+    "edges": [
+      {
+        "from": "users",
+        "to": "assignments",
+        "relation": "rep-on-store"
+      },
+      {
+        "from": "retailStores",
+        "to": "assignments",
+        "relation": "store-assigned"
+      },
+      {
+        "from": "accounts",
+        "to": "retailStores",
+        "relation": "parent-account"
+      },
+      {
+        "from": "accounts",
+        "to": "contacts",
+        "relation": "contact-at-account"
+      },
+      {
+        "from": "locations",
+        "to": "retailStores",
+        "relation": "location-master"
+      },
+      {
+        "from": "users",
+        "to": "relationships",
+        "relation": "covering-delegate-graph"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "path": "/admin/users",
+      "title": "Users",
+      "purpose": "User and role directory for reps, delegates, admins, brand partners",
+      "coverage": "captured",
+      "twinCoverage": "stub-in-twin",
+      "interactionSource": "live-capture",
+      "liveCapture": "users-live.json",
+      "twinPage": "d2r-app/src/app/admin/users/page.tsx",
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Invite user",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role",
+          "optionsHint": [
+            "rep",
+            "delegate",
+            "admin",
+            "brand_partner",
+            "(empty observed on 151/189 users)"
+          ]
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "users",
+          "headers": [
+            "Name",
+            "Email",
+            "Last Seen",
+            "Role",
+            "Created"
+          ],
+          "rowCount": 189
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [
+        "users-live.json",
+        "d2r-app/data/seed/users.json"
+      ],
+      "twinGaps": [
+        "Missing Last Seen and Created columns",
+        "Twin uses Add demo user form vs live Invite user",
+        "Twin role enum differs from live (manager/client vs delegate/brand_partner)",
+        "getSeedUsers() expects camelCase keys; seed uses live Title Case keys"
+      ],
+      "notes": "189 users captured 2026-09-16; 151 rows have empty Role"
+    },
+    {
+      "path": "/admin/accounts",
+      "title": "Accounts (CRM)",
+      "purpose": "Retail account records — parent org for stores and contacts",
+      "coverage": "mapped-ui-only",
+      "twinCoverage": "missing",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "links": [
+        "/admin/contacts",
+        "/admin/businesses",
+        "/admin/retail-stores"
+      ],
+      "buttons": [
+        "Add account",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "accounts",
+          "headersHint": [
+            "Account",
+            "Rep",
+            "City",
+            "State",
+            "Status"
+          ]
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No live capture; Account column visible on rep-assignments rows"
+    },
+    {
+      "path": "/admin/contacts",
+      "title": "Contacts",
+      "purpose": "People at accounts and businesses",
+      "coverage": "mapped-ui-only",
+      "twinCoverage": "missing",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "links": [
+        "/admin/accounts",
+        "/admin/businesses"
+      ],
+      "buttons": [
+        "Add contact",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "account"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "contacts",
+          "headersHint": [
+            "Name",
+            "Email",
+            "Phone",
+            "Account",
+            "Role"
+          ]
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No live capture"
+    },
+    {
+      "path": "/admin/retail-stores",
+      "title": "Retail stores",
+      "purpose": "Physical door / retail store CRM list (not Shopify brand stores)",
+      "coverage": "mapped-ui-only",
+      "twinCoverage": "missing",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "links": [
+        "/admin/locations",
+        "/admin/accounts",
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add store",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "retailStores",
+          "headersHint": [
+            "Store",
+            "Account",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No dedicated live dump; Store Name column on assignments implies ~11k+ doors"
+    },
+    {
+      "path": "/admin/rep-assignments",
+      "title": "Rep assignments",
+      "purpose": "Primary, covering, and delegate rep-to-store assignments with effective dates",
+      "coverage": "captured",
+      "twinCoverage": "missing",
+      "interactionSource": "live-capture",
+      "liveCapture": "assignments-page1-live.json",
+      "twinPage": null,
+      "links": [
+        "/admin/rep-assignments/relationships",
+        "/admin/retail-stores",
+        "/admin/locations"
+      ],
+      "buttons": [
+        "Assign",
+        "Bulk edit",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role",
+          "options": [
+            "Primary",
+            "Covering",
+            "Delegate"
+          ]
+        },
+        {
+          "name": "rep"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "assignments",
+          "headers": [
+            "",
+            "Rep",
+            "Store Name",
+            "City",
+            "State",
+            "Account",
+            "Role",
+            "From",
+            "To"
+          ],
+          "selectionColumn": true,
+          "rowCountKnown": 11314,
+          "sampleRowCount": 50
+        }
+      ],
+      "pagination": {
+        "pagesApprox": 227,
+        "rowsPerPageApprox": 50,
+        "sampleOnly": true
+      },
+      "dataDeps": [
+        "assignments-page1-live.json",
+        "d2r-app/data/seed/rep-assignments.json",
+        "d2r-app/data/seed/assignments.json"
+      ],
+      "scale": {
+        "activeAssignments": 11314,
+        "primary": 11314,
+        "covering": 27,
+        "delegate": 464
+      },
+      "notes": "11,314 primary assignments; page-1 sample only; checkbox column for bulk edit; open-ended To dates common"
+    },
+    {
+      "path": "/admin/rep-assignments/relationships",
+      "title": "Assignment relationships",
+      "purpose": "Covering and delegate relationship graph between reps",
+      "coverage": "mapped-ui-only",
+      "twinCoverage": "missing",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add relationship"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No live capture; complements 27 covering and 464 delegate assignment counts"
+    },
+    {
+      "path": "/admin/locations",
+      "title": "Locations",
+      "purpose": "Retail location master list",
+      "coverage": "mapped-ui-only",
+      "twinCoverage": "missing",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "links": [
+        "/admin/locations/import",
+        "/admin/retail-stores",
+        "/admin/sales-status"
+      ],
+      "buttons": [
+        "Add location",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "locations",
+          "headersHint": [
+            "Name",
+            "Address",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "pagination": null,
+      "dataDeps": [],
+      "notes": "No live capture; bulk import at /admin/locations/import"
+    }
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:47.159Z",
+    "url": "https://app.direct2retailers.com/admin/settlements",
+    "title": "Direct2Retailers",
+    "module": "/admin/settlements",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Month",
+      "Period",
+      "Inventory",
+      "Reports",
+      "Orders",
+      "Debits",
+      "Credits",
+      "Balance",
+      "Created"
+    ]
+  },
+  "rowCount": 26,
+  "rows": [
+    {
+      "Month": "September 2026",
+      "Period": "2026-09-01 — 2026-09-15",
+      "Inventory": "On Hand",
+      "Reports": "4",
+      "Orders": "23",
+      "Debits": "$2,441.31",
+      "Credits": "$2,441.31",
+      "Balance": "Balanced",
+      "Created": "9/16/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-09-01 — 2026-09-15",
+      "Inventory": "On Hand",
+      "Reports": "36",
+      "Orders": "278",
+      "Debits": "$77,748.76",
+      "Credits": "$77,748.76",
+      "Balance": "Balanced",
+      "Created": "9/16/2026"
+    },
+    {
+      "Month": "August 2026",
+      "Period": "2026-08-16 — 2026-08-31",
+      "Inventory": "On Hand",
+      "Reports": "43",
+      "Orders": "303",
+      "Debits": "$94,144.41",
+      "Credits": "$94,144.41",
+      "Balance": "Balanced",
+      "Created": "9/1/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-08-01 — 2026-08-15",
+      "Inventory": "On Hand",
+      "Reports": "41",
+      "Orders": "340",
+      "Debits": "$85,752.05",
+      "Credits": "$85,752.05",
+      "Balance": "Balanced",
+      "Created": "8/16/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-08-01 — 2026-08-31",
+      "Inventory": "On Hand",
+      "Reports": "3",
+      "Orders": "6",
+      "Debits": "$1,102.51",
+      "Credits": "$1,102.51",
+      "Balance": "Balanced",
+      "Created": "9/16/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-08-01 — 2026-08-31",
+      "Inventory": "On Hand",
+      "Reports": "2",
+      "Orders": "1",
+      "Debits": "$144.00",
+      "Credits": "$144.00",
+      "Balance": "Balanced",
+      "Created": "9/16/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-08-01 — 2026-08-31",
+      "Inventory": "Drop Ship",
+      "Reports": "64",
+      "Orders": "218",
+      "Debits": "$20,922.21",
+      "Credits": "$20,922.21",
+      "Balance": "Balanced",
+      "Created": "9/1/2026"
+    },
+    {
+      "Month": "July 2026",
+      "Period": "2026-07-16 — 2026-07-31",
+      "Inventory": "On Hand",
+      "Reports": "44",
+      "Orders": "373",
+      "Debits": "$90,573.28",
+      "Credits": "$90,573.28",
+      "Balance": "Balanced",
+      "Created": "8/1/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-07-01 — 2026-07-31",
+      "Inventory": "Drop Ship",
+      "Reports": "73",
+      "Orders": "273",
+      "Debits": "$30,640.16",
+      "Credits": "$30,640.16",
+      "Balance": "Balanced",
+      "Created": "8/3/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-07-01 — 2026-07-31",
+      "Inventory": "All",
+      "Reports": "3",
+      "Orders": "1",
+      "Debits": "$225.00",
+      "Credits": "$225.00",
+      "Balance": "Balanced",
+      "Created": "8/7/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-07-01 — 2026-07-15",
+      "Inventory": "On Hand",
+      "Reports": "45",
+      "Orders": "392",
+      "Debits": "$71,914.07",
+      "Credits": "$71,914.07",
+      "Balance": "Balanced",
+      "Created": "7/16/2026"
+    },
+    {
+      "Month": "June 2026",
+      "Period": "2026-06-16 — 2026-06-30",
+      "Inventory": "On Hand",
+      "Reports": "28",
+      "Orders": "177",
+      "Debits": "$39,651.78",
+      "Credits": "$39,651.78",
+      "Balance": "Balanced",
+      "Created": "7/2/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-06-01 — 2026-06-30",
+      "Inventory": "Drop Ship",
+      "Reports": "77",
+      "Orders": "302",
+      "Debits": "$30,102.33",
+      "Credits": "$30,102.33",
+      "Balance": "Balanced",
+      "Created": "7/2/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-06-01 — 2026-06-15",
+      "Inventory": "On Hand",
+      "Reports": "29",
+      "Orders": "106",
+      "Debits": "$22,414.01",
+      "Credits": "$22,414.01",
+      "Balance": "Balanced",
+      "Created": "6/16/2026"
+    },
+    {
+      "Month": "May 2026",
+      "Period": "2026-05-16 — 2026-06-01",
+      "Inventory": "On Hand",
+      "Reports": "26",
+      "Orders": "819",
+      "Debits": "$108,479.47",
+      "Credits": "$108,479.47",
+      "Balance": "Balanced",
+      "Created": "6/3/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-05-16 — 2026-05-31",
+      "Inventory": "On Hand",
+      "Reports": "21",
+      "Orders": "79",
+      "Debits": "$9,831.54",
+      "Credits": "$9,831.54",
+      "Balance": "Balanced",
+      "Created": "6/3/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-05-01 — 2026-05-31",
+      "Inventory": "All",
+      "Reports": "2",
+      "Orders": "1",
+      "Debits": "$1,316.70",
+      "Credits": "$1,316.70",
+      "Balance": "Balanced",
+      "Created": "6/8/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-05-01 — 2026-06-01",
+      "Inventory": "Drop Ship",
+      "Reports": "48",
+      "Orders": "1034",
+      "Debits": "$41,870.03",
+      "Credits": "$41,870.03",
+      "Balance": "Balanced",
+      "Created": "6/3/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-05-01 — 2026-05-15",
+      "Inventory": "On Hand",
+      "Reports": "31",
+      "Orders": "442",
+      "Debits": "$60,740.18",
+      "Credits": "$60,740.18",
+      "Balance": "Balanced",
+      "Created": "5/18/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-05-01 — 2026-05-31",
+      "Inventory": "Drop Ship",
+      "Reports": "77",
+      "Orders": "366",
+      "Debits": "$33,284.67",
+      "Credits": "$33,284.67",
+      "Balance": "Balanced",
+      "Created": "6/4/2026"
+    },
+    {
+      "Month": "April 2026",
+      "Period": "2026-04-16 — 2026-04-30",
+      "Inventory": "On Hand",
+      "Reports": "33",
+      "Orders": "439",
+      "Debits": "$107,218.82",
+      "Credits": "$107,218.82",
+      "Balance": "Balanced",
+      "Created": "5/1/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-04-01 — 2026-04-30",
+      "Inventory": "Drop Ship",
+      "Reports": "86",
+      "Orders": "718",
+      "Debits": "$76,805.78",
+      "Credits": "$76,805.78",
+      "Balance": "Balanced",
+      "Created": "5/4/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-04-01 — 2026-04-15",
+      "Inventory": "On Hand",
+      "Reports": "26",
+      "Orders": "232",
+      "Debits": "$56,987.91",
+      "Credits": "$56,987.91",
+      "Balance": "Balanced",
+      "Created": "4/16/2026"
+    },
+    {
+      "Month": "March 2026",
+      "Period": "2026-03-16 — 2026-03-31",
+      "Inventory": "On Hand",
+      "Reports": "31",
+      "Orders": "289",
+      "Debits": "$58,103.41",
+      "Credits": "$58,103.41",
+      "Balance": "Balanced",
+      "Created": "4/1/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-03-01 — 2026-03-15",
+      "Inventory": "On Hand",
+      "Reports": "24",
+      "Orders": "183",
+      "Debits": "$30,628.32",
+      "Credits": "$30,628.32",
+      "Balance": "Balanced",
+      "Created": "3/19/2026"
+    },
+    {
+      "Month": "",
+      "Period": "2026-03-01 — 2026-03-31",
+      "Inventory": "Drop Ship",
+      "Reports": "85",
+      "Orders": "648",
+      "Debits": "$77,109.39",
+      "Credits": "$77,109.39",
+      "Balance": "Balanced",
+      "Created": "4/2/2026"
+    }
+  ],
+  "bodyTextPreview": "Settlements\nAdmin\n\nSettlement runs for brands and reps\n\nNew Settlement\nMonth\tPeriod\tInventory\tReports\tOrders\tDebits\tCredits\tBalance\tCreated\nSeptember 2026\t2026-09-01 — 2026-09-15\tOn Hand\t4\t23\t$2,441.31\t$2,441.31\tBalanced\t9/16/2026\n\t2026-09-01 — 2026-09-15\tOn Hand\t36\t278\t$77,748.76\t$77,748.76\tBalanced\t9/16/2026\nAugust 2026\t2026-08-16 — 2026-08-31\tOn Hand\t43\t303\t$94,144.41\t$94,144.41\tBalanced\t9/1/2026\n\t2026-08-01 — 2026-08-15\tOn Hand\t41\t340\t$85,752.05\t$85,752.05\tBalanced\t8/16/2026\n\t2026-08-01 — 2026-08-31\tOn Hand\t3\t6\t$1,102.51\t$1,102.51\tBalanced\t9/16/2026\n\t2026-08-01 — 2026-08-31\tOn Hand\t2\t1\t$144.00\t$144.00\tBalanced\t9/16/2026\n\t2026-08-01 — 2026-08-31\tDrop Ship\t64\t218\t$20,922.21\t$20,922.21\tBalanced\t9/1/2026\nJuly 2026\t2026-07-16 — 2026-07-31\tOn Hand\t44\t373\t$90,573.28\t$90,573.28\tBalanced\t8/1/2026\n\t2026-07-01 — 2026-07-31\tDrop Ship\t73\t273\t$30,640.16\t$30,640.16\tBalanced\t8/3/2026\n\t2026-07-01 — 2026-07-31\tAll\t3\t1\t$225.00\t$225.00\tBalanced\t8/7/2026\n\t2026-07-01 — 2026-07-15\tOn Hand\t45\t392\t$71,914.07\t$71,914.07\tBalanced\t7/16/2026\nJune 2026\t2026-06-16 — 2026-06-30\tOn Hand\t28\t177\t$39,651.78\t$39,651.78\tBalanced\t7/2/2026\n\t2026-06-01 — 2026-06-30\tDrop Ship\t77\t302\t$30,102.33\t$30,102.33\tBalanced\t7/2/2026\n\t2026-06-01 — 2026-06-15\tOn Hand\t29\t106\t$22,414.01\t$22,414.01\tBalanced\t6/16/2026\nMay 2026\t2026-05-16 — 2026-06-01\tOn Hand\t26\t819\t$108,479.47\t$108,479.47\tBalanced\t6/3/2026\n\t2026-05-16 — 2026-05-31\tOn Hand\t21\t79\t$9,831.54\t$9,831.54\tBalanced\t6/3/2026\n\t2026-05-01 — 2026-05-31\tAll\t2\t1\t$1,316.70\t$1,316.70\tBalanced\t6/8/2026\n\t2026-05-01 — 2026-06-01\tDrop Ship\t48\t1034\t$41,870.03\t$41,870.03\tBalanced\t6/3/2026\n\t2026-05-01 — 2026-05-15\tOn Hand\t31\t442\t$60,740.18\t$60,740.18\tBalanced\t5/18/2026\n\t2026-05-01 — 2026-05-31\tDrop Ship\t77\t366\t$33,284.67\t$33,284.67\tBalanced\t6/4/2026\nApril 2026\t2026-04-16 — 2026-04-30\tOn Hand\t33\t439\t$107,218.82\t$107,218.82\tBalanced\t5/1/2026\n\t2026-04-01 — 2026-04-30\tDrop Ship\t86\t718\t$76,805.78\t$76,805.78\tBalanced\t5/4/2026\n\t2026-04-01 — 2026-04-15\tOn Hand\t26\t232\t$56,987.91\t$56,987.91\tBalanced\t4/16/2026\nMarch 2026\t2026-03-16 — 2026-03-31\tOn Hand\t31\t289\t$58,103.41\t$58,103.41\tBalanced\t4/1/2026\n\t2026-03-01 — 2026-03-15\tOn Hand\t24\t183\t$30,628.32\t$30,628.32\tBalanced\t3/19/2026\n\t2026-03-01 — 2026-03-31\tDrop Ship\t85\t648\t$77,109.39\t$77,109.39\tBalanced\t4/2/2026"
+}

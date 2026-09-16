@@ -1,0 +1,164 @@
+{
+  "domain": "shopify-brands",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "shopify-brands-mapper",
+    "status": "awaiting-first-pass"
+  },
+  "twinBuilder": {
+    "agent": "shopify-brands-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/shopify",
+    "/admin/shopify/apps",
+    "/admin/shopify/test",
+    "/admin/stores"
+  ],
+  "routes": [
+    {
+      "path": "/admin/shopify",
+      "title": "Shopify health",
+      "purpose": "Per-store install/scopes health",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "shopify-health-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/shopify/apps",
+        "/admin/shopify/test",
+        "/admin/stores"
+      ],
+      "buttons": [
+        "Install",
+        "Reconnect",
+        "Test",
+        "Sync"
+      ],
+      "comboboxes": [
+        {
+          "name": "statusFilter"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "shops",
+          "headers": [
+            "Store",
+            "Domain",
+            "Scopes",
+            "Status",
+            "Install"
+          ]
+        }
+      ],
+      "notes": "9/29 healthy \u00b7 20 need attention",
+      "pagination": null,
+      "dataDeps": [
+        "shopify-health-live.json"
+      ],
+      "domain": "shopify-brands",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/shopify/apps",
+      "title": "Shopify apps",
+      "purpose": "Partner app install management",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Install app",
+        "Rotate credentials"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "shopify-brands",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/shopify/test",
+      "title": "Shopify test",
+      "purpose": "Connectivity/scopes test harness",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Run test"
+      ],
+      "comboboxes": [
+        {
+          "name": "shop"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "shopify-brands",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/stores",
+      "title": "Brand stores (Shopify)",
+      "purpose": "Brand Shopify store registry",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "stores-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/shopify",
+        "/admin/stores/:id"
+      ],
+      "buttons": [
+        "Add store",
+        "Open"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "stores",
+          "headers": [
+            "Name",
+            "Shop Domain",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "29 stores captured; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "stores-live.json"
+      ],
+      "domain": "shopify-brands",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "QC-006"
+    ]
+  }
+}

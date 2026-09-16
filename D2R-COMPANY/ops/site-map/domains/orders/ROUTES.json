@@ -1,0 +1,171 @@
+{
+  "domain": "orders",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "orders-mapper",
+    "status": "awaiting-first-pass"
+  },
+  "twinBuilder": {
+    "agent": "orders-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/orders",
+    "/admin/orders/drafts",
+    "/admin/diagnostics/order-timeline"
+  ],
+  "routes": [
+    {
+      "path": "/admin/orders",
+      "title": "Orders",
+      "purpose": "Brand-routed PO list with fulfillment status",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "orders-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/orders/drafts",
+        "/orders"
+      ],
+      "buttons": [
+        "Create order",
+        "Export",
+        "Filter"
+      ],
+      "comboboxes": [
+        {
+          "name": "fulfillment"
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "salesRep"
+        },
+        {
+          "name": "dateRange"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "orders",
+          "headers": [
+            "PO Number",
+            "Store",
+            "Account",
+            "Customer",
+            "Location",
+            "Fulfillment",
+            "ETA",
+            "Total",
+            "Sales Rep",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "Page 1 of ~1034; detail links to /orders/:id",
+      "pagination": "approx 1034 pages (20/page sample)",
+      "dataDeps": [
+        "orders-page1-live.json"
+      ],
+      "domain": "orders",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/orders/drafts",
+      "title": "Order drafts",
+      "purpose": "Unsubmitted / draft POs",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Submit",
+        "Delete draft"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "drafts",
+          "headersHint": [
+            "Draft",
+            "Store",
+            "Rep",
+            "Updated"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "orders",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/diagnostics/order-timeline",
+      "title": "Order timeline diagnostics",
+      "purpose": "Debug order event timeline",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/orders"
+      ],
+      "buttons": [
+        "Lookup"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "lookup",
+          "fields": [
+            "orderId"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "events",
+          "headersHint": [
+            "Time",
+            "Event",
+            "Detail"
+          ]
+        }
+      ],
+      "notes": "Internal diagnostic",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "orders",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "QC-003"
+    ]
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "meta": {
+    "domain": "payouts",
+    "generatedAt": "2026-09-16T20:00:00-04:00",
+    "liveApp": "https://app.direct2retailers.com",
+    "source": "URLS.txt + SITE-MAP-INTERACTIONS.json + twin code/seed inventory",
+    "browserScrapeThisPass": false,
+    "interactionFidelity": "inferred",
+    "routeCount": 7,
+    "parentMap": "../../SITE-MAP-INTERACTIONS.json"
+  },
+  "workflow": {
+    "stages": [
+      {
+        "id": "commissions",
+        "label": "Calculate & queue",
+        "routes": ["/admin/commissions", "/admin/commissions/review"]
+      },
+      {
+        "id": "settlements",
+        "label": "Brand settlement batches",
+        "routes": ["/admin/settlements"]
+      },
+      {
+        "id": "payouts",
+        "label": "Rep disbursement",
+        "routes": ["/admin/payouts", "/admin/payouts/rules"]
+      },
+      {
+        "id": "cash_ops",
+        "label": "Inbound cash & bank reconciliation",
+        "routes": ["/admin/payments", "/admin/deposits"]
+      }
+    ],
+    "transitions": [
+      {
+        "from": "/admin/commissions",
+        "to": "/admin/commissions/review",
+        "trigger": "Select rows → Review or status filter pending_review"
+      },
+      {
+        "from": "/admin/commissions/review",
+        "to": "/admin/settlements",
+        "trigger": "Approve batch → Create settlement"
+      },
+      {
+        "from": "/admin/settlements",
+        "to": "/admin/payouts",
+        "trigger": "Close batch → Run payouts"
+      },
+      {
+        "from": "/admin/payouts",
+        "to": "/admin/payouts/rules",
+        "trigger": "Nav link Rules or rule column drill-down"
+      },
+      {
+        "from": "/admin/payments",
+        "to": "/admin/deposits",
+        "trigger": "Reconcile cleared payments into deposit"
+      }
+    ]
+  },
+  "nav": {
+    "adminPrimary": [
+      "/admin/commissions",
+      "/admin/settlements",
+      "/admin/payouts"
+    ],
+    "adminSubroutes": [
+      "/admin/commissions/review",
+      "/admin/payouts/rules",
+      "/admin/payments",
+      "/admin/deposits"
+    ],
+    "twinNavPresent": [
+      "/admin/commissions",
+      "/admin/settlements",
+      "/admin/payouts"
+    ],
+    "relatedOutsideDomain": [
+      "/admin/reports/commissions",
+      "/admin/settlements/batch/preview",
+      "/admin/payouts/rules/example",
+      "/admin/receipts"
+    ]
+  },
+  "routes": [
+    {
+      "path": "/admin/commissions",
+      "title": "Commissions",
+      "purpose": "Commission run queue — per rep × brand × period",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/admin/commissions/page.tsx",
+      "twinInteractivity": "read-only-table",
+      "links": [
+        "/admin/commissions/review",
+        "/admin/reports/commissions",
+        "/admin/settlements"
+      ],
+      "buttons": [
+        {
+          "label": "Calculate",
+          "effect": "Re-run commission engine for filtered period/brand",
+          "twinPresent": false
+        },
+        {
+          "label": "Export",
+          "effect": "Download CSV of commission lines",
+          "twinPresent": false
+        },
+        {
+          "label": "Approve",
+          "effect": "Bulk approve selected rows",
+          "twinPresent": false
+        }
+      ],
+      "comboboxes": [
+        { "name": "period", "optionsHint": ["2026-Q3", "2026-Q2", "custom"], "twinPresent": false },
+        { "name": "brand", "optionsHint": ["ALP", "JOEY"], "twinPresent": false },
+        {
+          "name": "status",
+          "optionsHint": ["pending_review", "approved", "paid", "rejected"],
+          "twinPresent": false
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "commissions",
+          "headersTwin": ["ID", "Rep", "Brand", "Period", "Amount", "Status", "Updated"],
+          "headersLiveHint": ["ID", "Rep", "Brand", "Period", "Amount", "Status"],
+          "rowActionsHint": ["Review", "Export line"],
+          "pagination": null
+        }
+      ],
+      "seedFile": "d2r-app/data/seed/commissions.json",
+      "seedRowCount": 3,
+      "dataDeps": ["orders", "inventory-ledgers", "commission-rules"],
+      "notes": "Twin StubNote: placeholder until rules import from CTO trail + live export"
+    },
+    {
+      "path": "/admin/commissions/review",
+      "title": "Commission review",
+      "purpose": "Line-level approve, reject, or adjust before settlement",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinInteractivity": null,
+      "links": ["/admin/commissions", "/admin/settlements"],
+      "buttons": [
+        { "label": "Approve", "effect": "Approve selected lines", "twinPresent": false },
+        { "label": "Reject", "effect": "Reject with reason", "twinPresent": false },
+        { "label": "Adjust", "effect": "Override amount/rate with audit note", "twinPresent": false }
+      ],
+      "comboboxes": [
+        { "name": "period", "optionsHint": ["2026-Q3", "2026-Q2"], "twinPresent": false }
+      ],
+      "forms": [
+        {
+          "name": "adjustCommission",
+          "fieldsHint": ["amount", "rate", "reason", "note"],
+          "trigger": "Adjust button on row"
+        }
+      ],
+      "tables": [
+        {
+          "name": "reviewQueue",
+          "headersLiveHint": [
+            "Rep",
+            "Brand",
+            "Period",
+            "Line item",
+            "Basis",
+            "Rate",
+            "Amount",
+            "Variance",
+            "Status"
+          ],
+          "rowActionsHint": ["Approve", "Reject", "Adjust"],
+          "pagination": null
+        }
+      ],
+      "seedFile": null,
+      "seedRowCount": 0,
+      "dataDeps": ["commissions"],
+      "notes": "No live capture; likely detail view or filtered sub-queue of /admin/commissions"
+    },
+    {
+      "path": "/admin/settlements",
+      "title": "Settlements",
+      "purpose": "Brand settlement batches — gross, adjustments, net",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/admin/settlements/page.tsx",
+      "twinInteractivity": "read-only-table",
+      "links": [
+        "/admin/settlements/batch/preview",
+        "/admin/commissions",
+        "/admin/payouts",
+        "/admin/payments"
+      ],
+      "buttons": [
+        {
+          "label": "Create batch",
+          "effect": "Open batch preview for new settlement period",
+          "twinPresent": false
+        },
+        {
+          "label": "Export",
+          "effect": "CSV of settlement batches",
+          "twinPresent": false
+        }
+      ],
+      "comboboxes": [
+        { "name": "period", "optionsHint": ["2026-09", "2026-08"], "twinPresent": false },
+        { "name": "brand", "optionsHint": ["ALP", "JOEY"], "twinPresent": false },
+        {
+          "name": "status",
+          "optionsHint": ["preview", "closed", "paid"],
+          "twinPresent": false
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "settlements",
+          "headersTwin": [
+            "ID",
+            "Period",
+            "Brand",
+            "Gross",
+            "Adjustments",
+            "Net",
+            "Status",
+            "Created"
+          ],
+          "headersLiveHint": ["ID", "Period", "Brand", "Gross", "Net", "Status"],
+          "rowActionsHint": ["Preview", "Close", "Export"],
+          "pagination": null
+        }
+      ],
+      "seedFile": "d2r-app/data/seed/settlements.json",
+      "seedRowCount": 2,
+      "dataDeps": ["commissions", "brand-sales", "orders"],
+      "notes": "Twin includes Adjustments column; confirm on live scrape"
+    },
+    {
+      "path": "/admin/payouts",
+      "title": "Payouts",
+      "purpose": "Rep payout runs — ACH/check disbursements",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": "d2r-app/src/app/admin/payouts/page.tsx",
+      "twinInteractivity": "read-only-table",
+      "links": [
+        "/admin/payouts/rules",
+        "/admin/settlements",
+        "/admin/commissions",
+        "/admin/payments"
+      ],
+      "buttons": [
+        {
+          "label": "Run payouts",
+          "effect": "Execute payout batch for closed settlements",
+          "twinPresent": false
+        },
+        {
+          "label": "Export",
+          "effect": "CSV of payout runs",
+          "twinPresent": false
+        }
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": ["scheduled", "paid", "on_hold", "failed"],
+          "twinPresent": false
+        },
+        { "name": "method", "optionsHint": ["ach", "check", "wire"], "twinPresent": false }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "payouts",
+          "headersTwin": ["ID", "Rep", "Method", "Amount", "Status", "Run date", "Rule"],
+          "headersLiveHint": ["ID", "Rep", "Method", "Amount", "Status", "Run date", "Rule"],
+          "rowActionsHint": ["Release hold", "Retry ACH", "View detail"],
+          "pagination": null
+        }
+      ],
+      "seedFile": "d2r-app/data/seed/payouts.json",
+      "seedRowCount": 3,
+      "dataDeps": ["settlements", "payout-rules", "users-banking"],
+      "notes": "Seed includes on_hold row for unknown rep — implies KYC/banking gate"
+    },
+    {
+      "path": "/admin/payouts/rules",
+      "title": "Payout rules",
+      "purpose": "Configure payout rule sets (cadence, method, thresholds)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinInteractivity": null,
+      "links": ["/admin/payouts", "/admin/payouts/rules/example"],
+      "buttons": [
+        { "label": "Add rule", "effect": "Open new rule form", "twinPresent": false },
+        { "label": "Save", "effect": "Persist rule configuration", "twinPresent": false }
+      ],
+      "comboboxes": [
+        {
+          "name": "ruleType",
+          "optionsHint": ["biweekly-standard", "manual-review", "brand-specific"],
+          "twinPresent": false
+        }
+      ],
+      "forms": [
+        {
+          "name": "payoutRule",
+          "fieldsHint": [
+            "name",
+            "cadence",
+            "method",
+            "minAmount",
+            "holdConditions",
+            "active"
+          ],
+          "trigger": "Add rule or edit row"
+        }
+      ],
+      "tables": [
+        {
+          "name": "payoutRules",
+          "headersLiveHint": [
+            "Rule name",
+            "Type",
+            "Cadence",
+            "Method",
+            "Min amount",
+            "Hold conditions",
+            "Active"
+          ],
+          "rowActionsHint": ["Edit", "Deactivate"],
+          "pagination": null
+        }
+      ],
+      "seedFile": null,
+      "seedRowCount": 0,
+      "dataDeps": [],
+      "notes": "Rule slugs in payout seed only; CTO trail may hold canonical rule definitions"
+    },
+    {
+      "path": "/admin/payments",
+      "title": "Payments",
+      "purpose": "Inbound payment records — brand remittances and manual entries",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinInteractivity": null,
+      "links": ["/admin/deposits", "/admin/receipts", "/admin/payouts", "/admin/settlements"],
+      "buttons": [
+        {
+          "label": "Record payment",
+          "effect": "Manual payment entry",
+          "twinPresent": false
+        },
+        {
+          "label": "Export",
+          "effect": "CSV of payments",
+          "twinPresent": false
+        }
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": ["pending", "cleared", "reconciled"],
+          "twinPresent": false
+        },
+        { "name": "method", "optionsHint": ["ach", "check", "wire", "card"], "twinPresent": false }
+      ],
+      "forms": [
+        {
+          "name": "recordPayment",
+          "fieldsHint": ["date", "payer", "amount", "method", "reference", "settlementLink"],
+          "trigger": "Record payment button"
+        }
+      ],
+      "tables": [
+        {
+          "name": "payments",
+          "headersLiveHint": [
+            "ID",
+            "Date",
+            "Payer",
+            "Amount",
+            "Method",
+            "Reference",
+            "Status",
+            "Linked settlement"
+          ],
+          "rowActionsHint": ["Edit", "Link settlement", "Mark cleared"],
+          "pagination": null
+        }
+      ],
+      "seedFile": null,
+      "seedRowCount": 0,
+      "dataDeps": ["settlements", "receipts"],
+      "notes": "Cash-in leg of finance domain; no twin or seed"
+    },
+    {
+      "path": "/admin/deposits",
+      "title": "Deposits",
+      "purpose": "Bank deposit tracking and reconciliation",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": null,
+      "twinInteractivity": null,
+      "links": ["/admin/payments", "/admin/receipts"],
+      "buttons": [
+        {
+          "label": "Record deposit",
+          "effect": "Log bank deposit",
+          "twinPresent": false
+        },
+        {
+          "label": "Reconcile",
+          "effect": "Match deposit to payment records",
+          "twinPresent": false
+        }
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": ["open", "reconciled", "exception"],
+          "twinPresent": false
+        }
+      ],
+      "forms": [
+        {
+          "name": "recordDeposit",
+          "fieldsHint": ["bankAccount", "depositDate", "amount", "reference"],
+          "trigger": "Record deposit button"
+        },
+        {
+          "name": "reconcileDeposit",
+          "fieldsHint": ["paymentIds", "varianceNote"],
+          "trigger": "Reconcile button on row"
+        }
+      ],
+      "tables": [
+        {
+          "name": "deposits",
+          "headersLiveHint": [
+            "ID",
+            "Bank account",
+            "Deposit date",
+            "Amount",
+            "Status",
+            "Matched payments",
+            "Variance"
+          ],
+          "rowActionsHint": ["Reconcile", "View payments", "Flag exception"],
+          "pagination": null
+        }
+      ],
+      "seedFile": null,
+      "seedRowCount": 0,
+      "dataDeps": ["payments"],
+      "notes": "Pairs with /admin/payments for full cash reconciliation loop"
+    }
+  ],
+  "coverageSummary": {
+    "captured": 0,
+    "stubInTwin": 3,
+    "mappedUiOnly": 4,
+    "missing": 0,
+    "twinPagesTotal": 3,
+    "twinInteractiveActions": 0
+  }
+}

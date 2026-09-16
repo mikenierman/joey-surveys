@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/pulse/signals",
+    "capturedAt": "2026-09-16T19:46:17.875Z",
+    "source": "live-scrape",
+    "rep": "Adam Scott",
+    "range": "Jun 19 \u2013 Sep 16"
+  },
+  "signals": {
+    "reorderRate": "97%",
+    "reorderMissRate": "90%",
+    "newDoors": 2,
+    "orders": 78,
+    "score": 74,
+    "activeStores": 65,
+    "onHandShare": "58%",
+    "revenue": 22408,
+    "onHandFeePct": "7%",
+    "dropShipFeePct": "5%"
+  }
+}

@@ -1,0 +1,84 @@
+# app.direct2retailers.com — discovered routes (2026-09-13)
+# Source: static Next.js bundles under app-code/runtime/_next (signed-out crawl).
+# Authenticated HTML/CSV capture BLOCKED: Cursor browser MCP creates tabs that vanish
+# before navigate/lock; no persistent admin session available to this agent.
+# Signed-out GETs redirect to /login?redirect_url=...
+
+## Auth / entry
+https://app.direct2retailers.com/
+https://app.direct2retailers.com/login
+https://app.direct2retailers.com/signup
+
+## Admin — Inventory / Ledger (primary backup targets)
+https://app.direct2retailers.com/admin/inventory
+https://app.direct2retailers.com/admin/inventory/audit
+https://app.direct2retailers.com/admin/inventory/ledgers
+https://app.direct2retailers.com/admin/inventory/performance
+https://app.direct2retailers.com/admin/inventory/refresh
+https://app.direct2retailers.com/admin/inventory/transfers
+https://app.direct2retailers.com/admin/inventory/transfers/terms
+
+## Admin — Merchandising
+https://app.direct2retailers.com/admin/merchandising
+https://app.direct2retailers.com/admin/merchandising/stores
+
+## Admin — Orders / Reports (related)
+https://app.direct2retailers.com/admin/orders
+https://app.direct2retailers.com/admin/orders/drafts
+https://app.direct2retailers.com/admin/reports
+https://app.direct2retailers.com/admin/reports/brand-sales
+https://app.direct2retailers.com/admin/reports/commissions
+https://app.direct2retailers.com/admin/reports/inventory-reports
+https://app.direct2retailers.com/admin/reports/rep-sales
+
+## Admin — other modules (nav map)
+https://app.direct2retailers.com/admin
+https://app.direct2retailers.com/admin/accounts
+https://app.direct2retailers.com/admin/businesses
+https://app.direct2retailers.com/admin/commissions
+https://app.direct2retailers.com/admin/commissions/review
+https://app.direct2retailers.com/admin/contacts
+https://app.direct2retailers.com/admin/dashboard
+https://app.direct2retailers.com/admin/deposits
+https://app.direct2retailers.com/admin/diagnostics/order-timeline
+https://app.direct2retailers.com/admin/emails
+https://app.direct2retailers.com/admin/files
+https://app.direct2retailers.com/admin/locations
+https://app.direct2retailers.com/admin/locations/import
+https://app.direct2retailers.com/admin/payments
+https://app.direct2retailers.com/admin/payouts
+https://app.direct2retailers.com/admin/payouts/rules
+https://app.direct2retailers.com/admin/payouts/rules/example
+https://app.direct2retailers.com/admin/pulse
+https://app.direct2retailers.com/admin/pulse/goals
+https://app.direct2retailers.com/admin/pulse/health
+https://app.direct2retailers.com/admin/pulse/scores
+https://app.direct2retailers.com/admin/pulse/signals
+https://app.direct2retailers.com/admin/receipts
+https://app.direct2retailers.com/admin/rep-assignments
+https://app.direct2retailers.com/admin/rep-assignments/relationships
+https://app.direct2retailers.com/admin/retail-stores
+https://app.direct2retailers.com/admin/sales-status
+https://app.direct2retailers.com/admin/settlements
+https://app.direct2retailers.com/admin/settlements/batch/preview
+https://app.direct2retailers.com/admin/shopify
+https://app.direct2retailers.com/admin/shopify/apps
+https://app.direct2retailers.com/admin/shopify/test
+https://app.direct2retailers.com/admin/stores
+https://app.direct2retailers.com/admin/users
+https://app.direct2retailers.com/admin/warehouses
+
+## Non-admin / rep-facing counterparts (also in bundles)
+https://app.direct2retailers.com/inventory
+https://app.direct2retailers.com/inventory/ledgers
+https://app.direct2retailers.com/inventory/performance
+https://app.direct2retailers.com/inventory/transfers
+https://app.direct2retailers.com/inventory/transfers/create
+https://app.direct2retailers.com/inventory/transfers/preview
+https://app.direct2retailers.com/merchandising
+https://app.direct2retailers.com/orders
+https://app.direct2retailers.com/orders/drafts
+https://app.direct2retailers.com/retail-stores
+https://app.direct2retailers.com/stores
+https://app.direct2retailers.com/locations/sales-status
+https://app.direct2retailers.com/test/dashboard

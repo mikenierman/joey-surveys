@@ -1,0 +1,524 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:34.485Z",
+    "url": "https://app.direct2retailers.com/admin/rep-assignments",
+    "title": "Direct2Retailers",
+    "module": "/admin/rep-assignments",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Rep",
+      "Store Name",
+      "City",
+      "State",
+      "Account",
+      "Role",
+      "From",
+      "To"
+    ]
+  },
+  "rowCount": 50,
+  "rows": [
+    {
+      "Rep": "",
+      "Store Name": "Gary Jurkowski",
+      "City": "Robious Mart",
+      "State": "Bon Air",
+      "Account": "VA",
+      "Role": "Robious Mart",
+      "From": "Primary",
+      "To": "Sep 15, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Patrick Orr",
+      "City": "Smoke 10",
+      "State": "Frederick",
+      "Account": "MD",
+      "Role": "Smoke 10",
+      "From": "Primary",
+      "To": "Sep 15, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Jay's IGA",
+      "State": "Alma",
+      "Account": "GA",
+      "Role": "Jay's IGA",
+      "From": "Primary",
+      "To": "Sep 15, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Morgan Williams",
+      "City": "Og puff Norfolk",
+      "State": "Norfolk",
+      "Account": "VA",
+      "Role": "Og tobacco vape",
+      "From": "Primary",
+      "To": "Sep 14, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Denisa Keiper",
+      "City": "Landmark",
+      "State": "Greenville",
+      "Account": "NC",
+      "Role": "Landmark",
+      "From": "Primary",
+      "To": "Sep 14, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Petro Station / VLT warehouse",
+      "State": "Jacksonville",
+      "Account": "FL",
+      "Role": "Petrol Station #7",
+      "From": "Primary",
+      "To": "Sep 14, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Petro. Express / VLT warehouse",
+      "State": "Jacksonville",
+      "Account": "FL",
+      "Role": "Petro Express",
+      "From": "Primary",
+      "To": "Sep 14, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Tommy Joseph",
+      "City": "Cigarettes 4 less",
+      "State": "Carnegie",
+      "Account": "PA",
+      "Role": "Cigarettes 4 less",
+      "From": "Primary",
+      "To": "Sep 11, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Tommy Joseph",
+      "City": "Cloud King",
+      "State": "Pittsburgh",
+      "Account": "PA",
+      "Role": "Cloud King",
+      "From": "Primary",
+      "To": "Sep 11, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Tommy Joseph",
+      "City": "Pittsburgh Smoke Shop",
+      "State": "Bellevue",
+      "Account": "PA",
+      "Role": "Pittsburgh Smoke Shop",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Shay Schnoor",
+      "City": "Strange Cloudz",
+      "State": "Joplin",
+      "Account": "MO",
+      "Role": "Strange Cloudz",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Amelia National",
+      "State": "Fernandina Beach",
+      "Account": "FL",
+      "Role": "Amelia National",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Brad Kirkman",
+      "City": "BP - Perryopolis",
+      "State": "Perryopolis",
+      "Account": "PA",
+      "Role": "BP - Perryopolis",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745200",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745200",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745146",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745146",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745134",
+      "State": "Vidalia",
+      "Account": "GA",
+      "Role": "Circle K #2745134",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745010",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745010",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745009",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745009",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745143",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745143",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745159",
+      "State": "Vidalia",
+      "Account": "GA",
+      "Role": "Circle K #2745159",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745080",
+      "State": "Ocilla",
+      "Account": "GA",
+      "Role": "Circle K #2745080",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745012",
+      "State": "Nashville",
+      "Account": "GA",
+      "Role": "Circle K #2745012",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2705392",
+      "State": "St Simons Island",
+      "Account": "GA",
+      "Role": "Circle K #2705392",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745007",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745007",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745028",
+      "State": "Patterson",
+      "Account": "GA",
+      "Role": "Circle K #2745028",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745016",
+      "State": "McRae",
+      "Account": "GA",
+      "Role": "Circle K #2745016",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745145",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745145",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745072",
+      "State": "Lumber City",
+      "Account": "GA",
+      "Role": "Circle K #2745072",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745021",
+      "State": "Mt. Vernon",
+      "Account": "GA",
+      "Role": "Circle K #2745021",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745020",
+      "State": "Pearson",
+      "Account": "GA",
+      "Role": "Circle K #2745020",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745029",
+      "State": "Kingsland",
+      "Account": "GA",
+      "Role": "Circle K #2745029",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745002",
+      "State": "Hinesville",
+      "Account": "GA",
+      "Role": "Circle K #2745002",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745088",
+      "State": "Jesup",
+      "Account": "GA",
+      "Role": "Circle K #2745088",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745061",
+      "State": "Kingsland",
+      "Account": "GA",
+      "Role": "Circle K #2745061",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745069",
+      "State": "Hazlehurst",
+      "Account": "GA",
+      "Role": "Circle K #2745069",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745001",
+      "State": "Jekyll Island",
+      "Account": "GA",
+      "Role": "Circle K #2745001",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745035",
+      "State": "Kingsland",
+      "Account": "GA",
+      "Role": "Circle K #2745035",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745042",
+      "State": "Glenwood",
+      "Account": "GA",
+      "Role": "Circle K #2745042",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745158",
+      "State": "Lake Park",
+      "Account": "GA",
+      "Role": "Circle K #2745158",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2708904",
+      "State": "Lakeland",
+      "Account": "GA",
+      "Role": "Circle K #2708904",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745099",
+      "State": "Hazlehurst",
+      "Account": "GA",
+      "Role": "Circle K #2745099",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745041",
+      "State": "Folkston",
+      "Account": "GA",
+      "Role": "Circle K #2745041",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745058",
+      "State": "Nahunta",
+      "Account": "GA",
+      "Role": "Circle K #2745058",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745048",
+      "State": "Folkston",
+      "Account": "GA",
+      "Role": "Circle K #2745048",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2707332",
+      "State": "Nicholls",
+      "Account": "GA",
+      "Role": "Circle K #2707332",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745102",
+      "State": "Hinesville",
+      "Account": "GA",
+      "Role": "Circle K #2745102",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745094",
+      "State": "Kingsland",
+      "Account": "GA",
+      "Role": "Circle K #2745094",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745038",
+      "State": "St Mary's",
+      "Account": "GA",
+      "Role": "Circle K #2745038",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745144",
+      "State": "Valdosta",
+      "Account": "GA",
+      "Role": "Circle K #2745144",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    },
+    {
+      "Rep": "",
+      "Store Name": "Vern Tunnell",
+      "City": "Circle K #2745014",
+      "State": "Waycross",
+      "Account": "GA",
+      "Role": "Circle K #2745014",
+      "From": "Primary",
+      "To": "Sep 10, 2026"
+    }
+  ],
+  "bodyTextPreview": "Rep Assignments\nAdmin\n\n11314 active assignments\n\nSelect a user\nActive\nExpired\nUpcoming\nAll\nPrimary\n11314\nCovering\n27\nDelegate\n479\nSelect assignments to manage\n\tRep\tStore Name\tCity\tState\tAccount\tRole\tFrom\tTo\n\tGary Jurkowski\tRobious Mart\tBon Air\tVA\tRobious Mart\tPrimary\tSep 15, 2026\t—\n\tPatrick Orr\tSmoke 10\tFrederick\tMD\tSmoke 10\tPrimary\tSep 15, 2026\t—\n\tVern Tunnell\tJay's IGA\tAlma\tGA\tJay's IGA\tPrimary\tSep 15, 2026\t—\n\tMorgan Williams\tOg puff Norfolk\tNorfolk\tVA\tOg tobacco vape\tPrimary\tSep 14, 2026\t—\n\tDenisa Keiper\tLandmark\tGreenville\tNC\tLandmark\tPrimary\tSep 14, 2026\t—\n\tVern Tunnell\tPetro Station / VLT warehouse\tJacksonville\tFL\tPetrol Station #7\tPrimary\tSep 14, 2026\t—\n\tVern Tunnell\tPetro. Express / VLT warehouse\tJacksonville\tFL\tPetro Express\tPrimary\tSep 14, 2026\t—\n\tTommy Joseph\tCigarettes 4 less\tCarnegie\tPA\tCigarettes 4 less\tPrimary\tSep 11, 2026\t—\n\tTommy Joseph\tCloud King\tPittsburgh\tPA\tCloud King\tPrimary\tSep 11, 2026\t—\n\tTommy Joseph\tPittsburgh Smoke Shop\tBellevue\tPA\tPittsburgh Smoke Shop\tPrimary\tSep 10, 2026\t—\n\tShay Schnoor\tStrange Cloudz\tJoplin\tMO\tStrange Cloudz\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tAmelia National\tFernandina Beach\tFL\tAmelia National\tPrimary\tSep 10, 2026\t—\n\tBrad Kirkman\tBP - Perryopolis\tPerryopolis\tPA\tBP - Perryopolis\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745200\tValdosta\tGA\tCircle K #2745200\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745146\tValdosta\tGA\tCircle K #2745146\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745134\tVidalia\tGA\tCircle K #2745134\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745010\tValdosta\tGA\tCircle K #2745010\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745009\tValdosta\tGA\tCircle K #2745009\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745143\tValdosta\tGA\tCircle K #2745143\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745159\tVidalia\tGA\tCircle K #2745159\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745080\tOcilla\tGA\tCircle K #2745080\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745012\tNashville\tGA\tCircle K #2745012\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2705392\tSt Simons Island\tGA\tCircle K #2705392\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745007\tValdosta\tGA\tCircle K #2745007\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745028\tPatterson\tGA\tCircle K #2745028\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745016\tMcRae\tGA\tCircle K #2745016\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745145\tValdosta\tGA\tCircle K #2745145\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745072\tLumber City\tGA\tCircle K #2745072\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745021\tMt. Vernon\tGA\tCircle K #2745021\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745020\tPearson\tGA\tCircle K #2745020\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745029\tKingsland\tGA\tCircle K #2745029\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745002\tHinesville\tGA\tCircle K #2745002\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745088\tJesup\tGA\tCircle K #2745088\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745061\tKingsland\tGA\tCircle K #2745061\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745069\tHazlehurst\tGA\tCircle K #2745069\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745001\tJekyll Island\tGA\tCircle K #2745001\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745035\tKingsland\tGA\tCircle K #2745035\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745042\tGlenwood\tGA\tCircle K #2745042\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745158\tLake Park\tGA\tCircle K #2745158\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2708904\tLakeland\tGA\tCircle K #2708904\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745099\tHazlehurst\tGA\tCircle K #2745099\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745041\tFolkston\tGA\tCircle K #2745041\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745058\tNahunta\tGA\tCircle K #2745058\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2745048\tFolkston\tGA\tCircle K #2745048\tPrimary\tSep 10, 2026\t—\n\tVern Tunnell\tCircle K #2707332\tNicholls\tGA\tCircle K #2707332\tPrimary\tSep 10,"
+}

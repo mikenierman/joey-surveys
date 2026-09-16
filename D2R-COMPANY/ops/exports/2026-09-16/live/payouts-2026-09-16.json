@@ -1,0 +1,334 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:50.417Z",
+    "url": "https://app.direct2retailers.com/admin/payouts/rules/rep_commission",
+    "title": "Direct2Retailers",
+    "module": "/admin/payouts",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "table",
+    "headers": [
+      "Store",
+      "Product Line",
+      "Chain",
+      "Fulfillment",
+      "Active From",
+      "Active To",
+      "Value",
+      "Recipient"
+    ]
+  },
+  "rowCount": 31,
+  "rows": [
+    {
+      "Store": "",
+      "Product Line": "ALP",
+      "Chain": "Nicotine Pouch",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "May 1, 2026",
+      "Value": "any",
+      "Recipient": "15%"
+    },
+    {
+      "Store": "",
+      "Product Line": "ALP",
+      "Chain": "Caffeine Pouch",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "May 1, 2026",
+      "Value": "any",
+      "Recipient": "15%"
+    },
+    {
+      "Store": "",
+      "Product Line": "ALP",
+      "Chain": "Drifters",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Jul 1, 2026",
+      "Value": "any",
+      "Recipient": "17%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Bangers",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Dialed Gum",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "Drop Ship",
+      "Active To": "Feb 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Dime Bags",
+      "Chain": "Dime Bags",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Mar 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Fireball",
+      "Chain": "Gummy",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "FÜM",
+      "Chain": "Lifetime",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "Jun 30, 2026",
+      "Recipient": "15%"
+    },
+    {
+      "Store": "",
+      "Product Line": "FÜM",
+      "Chain": "Zero",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "Jun 30, 2026",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "FÜM",
+      "Chain": "Default",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Jul 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Happie",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "Drop Ship",
+      "Active To": "Feb 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "High-Not",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "Drop Ship",
+      "Active To": "Mar 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "High-Not",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "Drop Ship",
+      "Active To": "Feb 1, 2026",
+      "Value": "Feb 28, 2026",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Holy! Water",
+      "Chain": "RTD",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Holy! Water",
+      "Chain": "Shots",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "30%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Joey",
+      "Chain": "Joey Pouches",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "May 1, 2026",
+      "Value": "any",
+      "Recipient": "7.710843373%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Lucy",
+      "Chain": "All",
+      "Fulfillment": "7-Eleven",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "Nov 30, 2025",
+      "Recipient": "15%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Lucy",
+      "Chain": "All",
+      "Fulfillment": "7-Eleven",
+      "Active From": "any",
+      "Active To": "Dec 1, 2025",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Lucy",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Lucy (New!)",
+      "Chain": "LUCY",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "10%"
+    },
+    {
+      "Store": "",
+      "Product Line": "McBee Farms",
+      "Chain": "Meat Sticks",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Mar 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Mr Vapor",
+      "Chain": "All Commission",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Apr 1, 2026",
+      "Value": "any",
+      "Recipient": "15%"
+    },
+    {
+      "Store": "",
+      "Product Line": "My Instant IV",
+      "Chain": "Instant IV",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Newtrition",
+      "Chain": "Energy Shot",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Ongo Energy Spray",
+      "Chain": "Energy Spray",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Rebel",
+      "Chain": "Energy Pouch",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Riize",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "40%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Rocket Fuel",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "25%"
+    },
+    {
+      "Store": "",
+      "Product Line": "Sesh",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Apr 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "TRĒ House",
+      "Chain": "All",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "Feb 1, 2026",
+      "Value": "any",
+      "Recipient": "20%"
+    },
+    {
+      "Store": "",
+      "Product Line": "X Mood Drinks",
+      "Chain": "any",
+      "Fulfillment": "any",
+      "Active From": "any",
+      "Active To": "any",
+      "Value": "any",
+      "Recipient": "20%"
+    }
+  ],
+  "bodyTextPreview": "Payout Rules\n\nManage commission, platform fee, and BDP rules across all stores\n\nExample\nRep Commissions\nMerchandising Commission Fees\nPlatform Fees\nBDP Programs\nFrom Date\nSelect start date\nTo Date\nSelect end date\nFilter\nReset\n\tStore\tProduct Line\tChain\tFulfillment\tActive From\tActive To\tValue\tRecipient\n\n\tALP\tNicotine Pouch\tany\tany\tMay 1, 2026\tany\t15%\tRep\n\n\tALP\tCaffeine Pouch\tany\tany\tMay 1, 2026\tany\t15%\tRep\n\n\tALP\tDrifters\tany\tany\tJul 1, 2026\tany\t17%\tRep\n\n\tBangers\tAll\tany\tany\tany\tany\t20%\tRep\n\n\tDialed Gum\tAll\tany\tDrop Ship\tFeb 1, 2026\tany\t20%\tRep\n\n\tDime Bags\tDime Bags \tany\tany\tMar 1, 2026\tany\t20%\tRep\n\n\tFireball\tGummy\tany\tany\tany\tany\t25%\tRep\n\n\tFÜM\tLifetime\tany\tany\tany\tJun 30, 2026\t15%\tRep\n\n\tFÜM\tZero\tany\tany\tany\tJun 30, 2026\t20%\tRep\n\n\tFÜM\tDefault\tany\tany\tJul 1, 2026\tany\t20%\tRep\n\n\tHappie\tAll\tany\tDrop Ship\tFeb 1, 2026\tany\t20%\tRep\n\n\tHigh-Not\tAll\tany\tDrop Ship\tMar 1, 2026\tany\t20%\tRep\n\n\tHigh-Not\tAll\tany\tDrop Ship\tFeb 1, 2026\tFeb 28, 2026\t25%\tRep\n\n\tHoly! Water\tRTD\tany\tany\tany\tany\t25%\tRep\n\n\tHoly! Water\tShots\tany\tany\tany\tany\t30%\tRep\n\n\tJoey\tJoey Pouches\tany\tany\tMay 1, 2026\tany\t7.710843373%\tRep\n\n\tLucy\tAll\t7-Eleven\tany\tany\tNov 30, 2025\t15%\tRep\n\n\tLucy\tAll\t7-Eleven\tany\tDec 1, 2025\tany\t20%\tRep\n\n\tLucy\tAll\tany\tany\tany\tany\t20%\tRep\n\n\tLucy (New!)\tLUCY\tany\tany\tany\tany\t10%\tRep\n\n\tMcBee Farms\tMeat Sticks\tany\tany\tMar 1, 2026\tany\t20%\tRep\n\n\tMr Vapor\tAll Commission\tany\tany\tApr 1, 2026\tany\t15%\tRep\n\n\tMy Instant IV\tInstant IV\tany\tany\tany\tany\t25%\tRep\n\n\tNewtrition\tEnergy Shot\tany\tany\tany\tany\t20%\tRep\n\n\tOngo Energy Spray\tEnergy Spray\tany\tany\tany\tany\t20%\tRep\n\n\tRebel\tEnergy Pouch\tany\tany\tany\tany\t25%\tRep\n\n\tRiize\tAll\tany\tany\tany\tany\t40%\tRep\n\n\tRocket Fuel\tAll\tany\tany\tany\tany\t25%\tRep\n\n\tSesh\tAll\tany\tany\tApr 1, 2026\tany\t20%\tRep\n\n\tTRĒ House\tAll\tany\tany\tFeb 1, 2026\tany\t20%\tRep\n\n\tX Mood Drinks\tany\tany\tany\tany\tany\t20%\tRep\nPAYOUT RULES JSON"
+}

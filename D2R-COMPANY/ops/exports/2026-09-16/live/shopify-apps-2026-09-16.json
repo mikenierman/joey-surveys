@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "capturedAt": "2026-09-16T20:19:18.933Z",
+    "url": "https://app.direct2retailers.com/admin/shopify/apps",
+    "title": "Direct2Retailers",
+    "module": "/admin/shopify/apps",
+    "source": "live-admin-scrape.mjs",
+    "extractKind": "empty",
+    "headers": []
+  },
+  "rowCount": 0,
+  "rows": [],
+  "bodyTextPreview": "Shopify App\n\nCreate and manage Shopify app credentials.\n\nShop Domain\n\nExample kitchen-sink-goods.myshopify.com\n\nClient ID\n\nShopify app client ID\n\nClient Secret\n\nShopify app secret\n\nInstall Url\nSave"
+}

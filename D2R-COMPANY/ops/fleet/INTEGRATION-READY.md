@@ -2,9 +2,10 @@
 
 Local tip: **`sandbox/integration`** (see `git rev-parse sandbox/integration`).  
 Worktree used for merges: `/private/tmp/d2r-merch-integration`.  
-**Do not push** until Traffic Controller opens a reviewed PR.
+Push target: **`origin/sandbox/integration`** (feature tip — not `main`). Owner asked to commit/push this tip; prefer PR review before merging to `main`.
 
-Smoke **PASS** · `tsc --noEmit` **PASS** · map-pack **merged**.
+Smoke **PASS** · `tsc --noEmit` **PASS** · map-pack **merged**.  
+Coexistence: merch field app stays at repo root; twin embeds it (`NEXT_PUBLIC_MERCH_APP_URL` / `/merchandising`) as a D2R function/module.
 
 ---
 

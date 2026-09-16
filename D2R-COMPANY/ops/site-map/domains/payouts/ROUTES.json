@@ -1,0 +1,604 @@
+{
+  "domain": "payouts",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "payouts-mapper",
+    "status": "complete",
+    "deliverables": [
+      "MAP.md",
+      "interactions.json",
+      "IMPROVEMENTS.md"
+    ]
+  },
+  "twinBuilder": {
+    "agent": "payouts-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/commissions",
+    "/admin/commissions/review",
+    "/admin/settlements",
+    "/admin/settlements/batch/preview",
+    "/admin/payouts",
+    "/admin/payouts/rules",
+    "/admin/payouts/rules/example",
+    "/admin/payments",
+    "/admin/deposits",
+    "/admin/receipts"
+  ],
+  "routes": [
+    {
+      "path": "/admin/commissions",
+      "title": "Commissions",
+      "purpose": "Commission run queue \u2014 per rep \u00d7 brand \u00d7 period",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/commissions/review",
+        "/admin/reports/commissions",
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Calculate",
+        "Export",
+        "Approve"
+      ],
+      "comboboxes": [
+        {
+          "name": "period",
+          "optionsHint": [
+            "2026-Q3",
+            "2026-Q2"
+          ]
+        },
+        {
+          "name": "brand",
+          "optionsHint": [
+            "ALP",
+            "JOEY"
+          ]
+        },
+        {
+          "name": "status",
+          "optionsHint": [
+            "pending_review",
+            "approved",
+            "paid",
+            "rejected"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "commissions",
+          "headersHint": [
+            "ID",
+            "Rep",
+            "Brand",
+            "Period",
+            "Amount",
+            "Status",
+            "Updated"
+          ],
+          "rowActionsHint": [
+            "Review",
+            "Export line"
+          ]
+        }
+      ],
+      "notes": "Twin read-only DataTable; seed 3 rows in commissions.json",
+      "pagination": null,
+      "dataDeps": [
+        "orders",
+        "inventory-ledgers",
+        "commission-rules"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/commissions/review",
+      "title": "Commission review",
+      "purpose": "Line-level approve, reject, or adjust before settlement",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/commissions",
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Approve",
+        "Reject",
+        "Adjust"
+      ],
+      "comboboxes": [
+        {
+          "name": "period",
+          "optionsHint": [
+            "2026-Q3",
+            "2026-Q2"
+          ]
+        }
+      ],
+      "forms": [
+        {
+          "name": "adjustCommission",
+          "fieldsHint": [
+            "amount",
+            "rate",
+            "reason",
+            "note"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "reviewQueue",
+          "headersHint": [
+            "Rep",
+            "Brand",
+            "Period",
+            "Line item",
+            "Basis",
+            "Rate",
+            "Amount",
+            "Variance",
+            "Status"
+          ],
+          "rowActionsHint": [
+            "Approve",
+            "Reject",
+            "Adjust"
+          ]
+        }
+      ],
+      "notes": "No twin page; filtered sub-queue of commissions",
+      "pagination": null,
+      "dataDeps": [
+        "commissions"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/settlements",
+      "title": "Settlements",
+      "purpose": "Brand settlement batches \u2014 gross, adjustments, net",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/settlements/batch/preview",
+        "/admin/commissions",
+        "/admin/payouts",
+        "/admin/payments"
+      ],
+      "buttons": [
+        "Create batch",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "period"
+        },
+        {
+          "name": "brand"
+        },
+        {
+          "name": "status",
+          "optionsHint": [
+            "preview",
+            "closed",
+            "paid"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "settlements",
+          "headersHint": [
+            "ID",
+            "Period",
+            "Brand",
+            "Gross",
+            "Adjustments",
+            "Net",
+            "Status",
+            "Created"
+          ],
+          "rowActionsHint": [
+            "Preview",
+            "Close",
+            "Export"
+          ]
+        }
+      ],
+      "notes": "Twin includes Adjustments column; seed 2 rows in settlements.json",
+      "pagination": null,
+      "dataDeps": [
+        "commissions",
+        "brand-sales",
+        "orders"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/settlements/batch/preview",
+      "title": "Settlement batch preview",
+      "purpose": "Preview settlement batch before commit",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Commit",
+        "Cancel"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [
+        "settlements"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/payouts",
+      "title": "Payouts",
+      "purpose": "Rep payout runs \u2014 ACH/check disbursements",
+      "coverage": "stub-in-twin",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts/rules",
+        "/admin/settlements",
+        "/admin/commissions",
+        "/admin/payments"
+      ],
+      "buttons": [
+        "Run payouts",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": [
+            "scheduled",
+            "paid",
+            "on_hold",
+            "failed"
+          ]
+        },
+        {
+          "name": "method",
+          "optionsHint": [
+            "ach",
+            "check",
+            "wire"
+          ]
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "payouts",
+          "headersHint": [
+            "ID",
+            "Rep",
+            "Method",
+            "Amount",
+            "Status",
+            "Run date",
+            "Rule"
+          ],
+          "rowActionsHint": [
+            "Release hold",
+            "Retry ACH",
+            "View detail"
+          ]
+        }
+      ],
+      "notes": "Twin read-only; seed 3 rows including on_hold in payouts.json",
+      "pagination": null,
+      "dataDeps": [
+        "settlements",
+        "payout-rules",
+        "users-banking"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/payouts/rules",
+      "title": "Payout rules",
+      "purpose": "Configure payout rule sets (cadence, method, thresholds)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts",
+        "/admin/payouts/rules/example"
+      ],
+      "buttons": [
+        "Add rule",
+        "Save"
+      ],
+      "comboboxes": [
+        {
+          "name": "ruleType",
+          "optionsHint": [
+            "biweekly-standard",
+            "manual-review",
+            "brand-specific"
+          ]
+        }
+      ],
+      "forms": [
+        {
+          "name": "payoutRule",
+          "fieldsHint": [
+            "name",
+            "cadence",
+            "method",
+            "minAmount",
+            "holdConditions",
+            "active"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "payoutRules",
+          "headersHint": [
+            "Rule name",
+            "Type",
+            "Cadence",
+            "Method",
+            "Min amount",
+            "Hold conditions",
+            "Active"
+          ],
+          "rowActionsHint": [
+            "Edit",
+            "Deactivate"
+          ]
+        }
+      ],
+      "notes": "Rule slugs in payout seed only; no rule definitions captured",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/payouts/rules/example",
+      "title": "Payout rules example",
+      "purpose": "Example/docs for payout rules",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/payouts/rules"
+      ],
+      "buttons": [],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "Likely documentation page",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "payouts",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/payments",
+      "title": "Payments",
+      "purpose": "Inbound payment records \u2014 brand remittances",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/deposits",
+        "/admin/receipts",
+        "/admin/payouts",
+        "/admin/settlements"
+      ],
+      "buttons": [
+        "Record payment",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": [
+            "pending",
+            "cleared",
+            "reconciled"
+          ]
+        },
+        {
+          "name": "method",
+          "optionsHint": [
+            "ach",
+            "check",
+            "wire",
+            "card"
+          ]
+        }
+      ],
+      "forms": [
+        {
+          "name": "recordPayment",
+          "fieldsHint": [
+            "date",
+            "payer",
+            "amount",
+            "method",
+            "reference",
+            "settlementLink"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "payments",
+          "headersHint": [
+            "ID",
+            "Date",
+            "Payer",
+            "Amount",
+            "Method",
+            "Reference",
+            "Status",
+            "Linked settlement"
+          ],
+          "rowActionsHint": [
+            "Edit",
+            "Link settlement",
+            "Mark cleared"
+          ]
+        }
+      ],
+      "notes": "Cash-in leg; no twin or seed",
+      "pagination": null,
+      "dataDeps": [
+        "settlements",
+        "receipts"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/deposits",
+      "title": "Deposits",
+      "purpose": "Bank deposit tracking and reconciliation",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/payments",
+        "/admin/receipts"
+      ],
+      "buttons": [
+        "Record deposit",
+        "Reconcile"
+      ],
+      "comboboxes": [
+        {
+          "name": "status",
+          "optionsHint": [
+            "open",
+            "reconciled",
+            "exception"
+          ]
+        }
+      ],
+      "forms": [
+        {
+          "name": "recordDeposit",
+          "fieldsHint": [
+            "bankAccount",
+            "depositDate",
+            "amount",
+            "reference"
+          ]
+        },
+        {
+          "name": "reconcileDeposit",
+          "fieldsHint": [
+            "paymentIds",
+            "varianceNote"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "deposits",
+          "headersHint": [
+            "ID",
+            "Bank account",
+            "Deposit date",
+            "Amount",
+            "Status",
+            "Matched payments",
+            "Variance"
+          ],
+          "rowActionsHint": [
+            "Reconcile",
+            "View payments",
+            "Flag exception"
+          ]
+        }
+      ],
+      "notes": "Pairs with /admin/payments for cash reconciliation",
+      "pagination": null,
+      "dataDeps": [
+        "payments"
+      ],
+      "domain": "payouts",
+      "mapperStatus": "complete",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/receipts",
+      "title": "Receipts",
+      "purpose": "Receipt archive",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/payments",
+        "/admin/deposits"
+      ],
+      "buttons": [
+        "Upload",
+        "Export"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "payouts",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "No authenticated live scrape; all interactions inferred"
+    ]
+  }
+}

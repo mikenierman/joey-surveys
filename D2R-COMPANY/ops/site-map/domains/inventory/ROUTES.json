@@ -1,0 +1,401 @@
+{
+  "domain": "inventory",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "inventory-mapper",
+    "status": "awaiting-first-pass"
+  },
+  "twinBuilder": {
+    "agent": "inventory-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/inventory",
+    "/admin/inventory/audit",
+    "/admin/inventory/ledgers",
+    "/admin/inventory/performance",
+    "/admin/inventory/refresh",
+    "/admin/inventory/transfers",
+    "/admin/inventory/transfers/terms",
+    "/admin/warehouses"
+  ],
+  "routes": [
+    {
+      "path": "/admin/inventory",
+      "title": "Inventory",
+      "purpose": "Consignment on-hand by warehouse/brand",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "inventory-ALP-AdamScott-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/ledgers",
+        "/admin/inventory/transfers",
+        "/admin/inventory/refresh",
+        "/admin/inventory/audit",
+        "/admin/inventory/performance"
+      ],
+      "buttons": [
+        "Export",
+        "Refresh levels",
+        "Search"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand/store",
+          "optionsHint": "ALP and other brand stores"
+        },
+        {
+          "name": "warehouse",
+          "optionsHint": "rep warehouses"
+        }
+      ],
+      "forms": [
+        {
+          "name": "filters",
+          "fields": [
+            "brand",
+            "warehouse",
+            "search"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "levels",
+          "headers": [
+            "Product",
+            "Variant",
+            "SKU",
+            "On hand",
+            "Available",
+            "Committed",
+            "Incoming",
+            "Reserved",
+            "Damaged"
+          ]
+        }
+      ],
+      "notes": "Live sample ALP@AdamScott only; pagination/filter iteration needed for full dump",
+      "pagination": null,
+      "dataDeps": [
+        "inventory-ALP-AdamScott-live.json"
+      ],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/audit",
+      "title": "Inventory audit",
+      "purpose": "Audit trail / discrepancy review for inventory levels",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/inventory"
+      ],
+      "buttons": [
+        "Export",
+        "Filter"
+      ],
+      "comboboxes": [
+        {
+          "name": "warehouse"
+        },
+        {
+          "name": "brand"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "audit",
+          "headersHint": [
+            "When",
+            "SKU",
+            "Warehouse",
+            "Delta",
+            "Actor"
+          ]
+        }
+      ],
+      "notes": "Route discovered in bundles; no live row capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/ledgers",
+      "title": "Inventory ledgers / performance",
+      "purpose": "Rep-level value held, sell-through, quiet stock",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "ledger-performance-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/inventory/performance"
+      ],
+      "buttons": [
+        "Export",
+        "Expand"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand",
+          "optionsHint": "all brands"
+        },
+        {
+          "name": "period"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "reps",
+          "headers": [
+            "Rep",
+            "Value held",
+            "Units held",
+            "Sell-through",
+            "Sold last 7d",
+            "Last sale"
+          ]
+        }
+      ],
+      "notes": "Captured summary + 50 reps",
+      "pagination": null,
+      "dataDeps": [
+        "ledger-performance-live.json"
+      ],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/performance",
+      "title": "Inventory performance",
+      "purpose": "Performance analytics sibling to ledgers",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/ledgers"
+      ],
+      "buttons": [
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "brand"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "performance",
+          "headersHint": [
+            "Rep",
+            "Metrics\u2026"
+          ]
+        }
+      ],
+      "notes": "Likely shares ledger performance data; no separate scrape",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/refresh",
+      "title": "Inventory refresh / brand levels",
+      "purpose": "Trigger/view Shopify inventory level refresh status per brand",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "brand-levels-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/shopify"
+      ],
+      "buttons": [
+        "Refresh all",
+        "Refresh brand"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [
+        {
+          "name": "brands",
+          "headers": [
+            "Brand",
+            "Levels",
+            "Last refresh"
+          ]
+        }
+      ],
+      "notes": "17 brands / 2905 levels summary captured; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "brand-levels-live.json"
+      ],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/transfers",
+      "title": "Transfers",
+      "purpose": "Warehouse/store inventory transfer list + approve workflow",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "transfers-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory/transfers/terms",
+        "/inventory/transfers/create"
+      ],
+      "buttons": [
+        "Create transfer",
+        "Approve",
+        "Reject",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "store"
+        },
+        {
+          "name": "warehouse"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "transfers",
+          "headers": [
+            "Transfer ID",
+            "Store",
+            "Warehouse",
+            "Status",
+            "Items",
+            "Approved",
+            "Created",
+            "Actions"
+          ]
+        }
+      ],
+      "notes": "Page 1 of ~21 captured (~20 rows)",
+      "pagination": "approx 21 pages (20/page sample)",
+      "dataDeps": [
+        "transfers-page1-live.json"
+      ],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/inventory/transfers/terms",
+      "title": "Transfer terms",
+      "purpose": "Terms/conditions for transfers",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/inventory/transfers"
+      ],
+      "buttons": [
+        "Save",
+        "Cancel"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "terms",
+          "fields": [
+            "body"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/warehouses",
+      "title": "Warehouses",
+      "purpose": "Rep/central warehouse directory",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "warehouses-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/inventory",
+        "/admin/users"
+      ],
+      "buttons": [
+        "Add warehouse",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "warehouses",
+          "headers": [
+            "Warehouse",
+            "Address",
+            "City",
+            "State",
+            "ZIP",
+            "Phone",
+            "Status",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "60 warehouses captured",
+      "pagination": null,
+      "dataDeps": [
+        "warehouses-live.json"
+      ],
+      "domain": "inventory",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "QC-001",
+      "QC-004",
+      "QC-MISS-_admin_inventory_refresh"
+    ]
+  }
+}

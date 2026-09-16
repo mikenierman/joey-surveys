@@ -1,0 +1,404 @@
+{
+  "meta": {
+    "url": "https://app.direct2retailers.com/admin/inventory/refresh",
+    "capturedAt": "2026-09-16T19:42:55.519Z",
+    "source": "live-scrape",
+    "brands": 17,
+    "levels": 2905
+  },
+  "brands": [
+    {
+      "brand": "Refresh all",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Brand levels",
+        "Re-read on hand and available for every level from Shopify. A backstop for missed inventory webhooks. Runs nightly; refresh a single brand or all of them on demand.",
+        "17 brand(s), 2905 inventory level(s). Pulls on hand and available straight from Shopify.",
+        "Refresh all",
+        "Brand\tServices\tLevels\tRefresh",
+        "ALP\t32\t834",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Refresh all",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "17 brand(s), 2905 inventory level(s). Pulls on hand and available straight from Shopify.",
+        "Refresh all",
+        "Brand\tServices\tLevels\tRefresh",
+        "ALP\t32\t834",
+        "Refresh",
+        "Bangers\t17\t88",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "ALP\t32\t834",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Brand\tServices\tLevels\tRefresh",
+        "ALP\t32\t834",
+        "Refresh",
+        "Bangers\t17\t88",
+        "Refresh",
+        "Dialed Gum\t4\t6",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Bangers\t17\t88",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Bangers\t17\t88",
+        "Refresh",
+        "Dialed Gum\t4\t6",
+        "Refresh",
+        "Dime Bags\t25\t381",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Dialed Gum\t4\t6",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Dialed Gum\t4\t6",
+        "Refresh",
+        "Dime Bags\t25\t381",
+        "Refresh",
+        "Fireball\t3\t3",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Dime Bags\t25\t381",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Dime Bags\t25\t381",
+        "Refresh",
+        "Fireball\t3\t3",
+        "Refresh",
+        "F\u00dcM\t15\t194",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Fireball\t3\t3",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Fireball\t3\t3",
+        "Refresh",
+        "F\u00dcM\t15\t194",
+        "Refresh",
+        "Joey\t3\t53",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "F\u00dcM\t15\t194",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "F\u00dcM\t15\t194",
+        "Refresh",
+        "Joey\t3\t53",
+        "Refresh",
+        "K Bar\t2\t0",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Joey\t3\t53",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Joey\t3\t53",
+        "Refresh",
+        "K Bar\t2\t0",
+        "Refresh",
+        "Lucy (New!)\t25\t447",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "K Bar\t2\t0",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "K Bar\t2\t0",
+        "Refresh",
+        "Lucy (New!)\t25\t447",
+        "Refresh",
+        "McBee Farms\t5\t24",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Lucy (New!)\t25\t447",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Lucy (New!)\t25\t447",
+        "Refresh",
+        "McBee Farms\t5\t24",
+        "Refresh",
+        "Mini Melt\t2\t0",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "McBee Farms\t5\t24",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "McBee Farms\t5\t24",
+        "Refresh",
+        "Mini Melt\t2\t0",
+        "Refresh",
+        "My Instant IV\t10\t32",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Mini Melt\t2\t0",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Mini Melt\t2\t0",
+        "Refresh",
+        "My Instant IV\t10\t32",
+        "Refresh",
+        "Newtrition\t1\t0",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "My Instant IV\t10\t32",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "My Instant IV\t10\t32",
+        "Refresh",
+        "Newtrition\t1\t0",
+        "Refresh",
+        "Rebel\t1\t0",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Newtrition\t1\t0",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Newtrition\t1\t0",
+        "Refresh",
+        "Rebel\t1\t0",
+        "Refresh",
+        "Sesh\t26\t647",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Rebel\t1\t0",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Rebel\t1\t0",
+        "Refresh",
+        "Sesh\t26\t647",
+        "Refresh",
+        "TR\u0112 House\t1\t15",
+        "Refresh"
+      ]
+    },
+    {
+      "brand": "Sesh\t26\t647",
+      "levels": null,
+      "lastRefresh": null,
+      "raw": [
+        "Refresh",
+        "Sesh\t26\t647",
+        "Refresh",
+        "TR\u0112 House\t1\t15",
+        "Refresh",
+        "X Mood Drinks\t26\t181",
+        "Refresh"
+      ]
+    }
+  ],
+  "rawChunks": [
+    [
+      "Brand levels",
+      "Re-read on hand and available for every level from Shopify. A backstop for missed inventory webhooks. Runs nightly; refresh a single brand or all of them on demand.",
+      "17 brand(s), 2905 inventory level(s). Pulls on hand and available straight from Shopify.",
+      "Refresh all",
+      "Brand\tServices\tLevels\tRefresh",
+      "ALP\t32\t834",
+      "Refresh"
+    ],
+    [
+      "17 brand(s), 2905 inventory level(s). Pulls on hand and available straight from Shopify.",
+      "Refresh all",
+      "Brand\tServices\tLevels\tRefresh",
+      "ALP\t32\t834",
+      "Refresh",
+      "Bangers\t17\t88",
+      "Refresh"
+    ],
+    [
+      "Brand\tServices\tLevels\tRefresh",
+      "ALP\t32\t834",
+      "Refresh",
+      "Bangers\t17\t88",
+      "Refresh",
+      "Dialed Gum\t4\t6",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Bangers\t17\t88",
+      "Refresh",
+      "Dialed Gum\t4\t6",
+      "Refresh",
+      "Dime Bags\t25\t381",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Dialed Gum\t4\t6",
+      "Refresh",
+      "Dime Bags\t25\t381",
+      "Refresh",
+      "Fireball\t3\t3",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Dime Bags\t25\t381",
+      "Refresh",
+      "Fireball\t3\t3",
+      "Refresh",
+      "F\u00dcM\t15\t194",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Fireball\t3\t3",
+      "Refresh",
+      "F\u00dcM\t15\t194",
+      "Refresh",
+      "Joey\t3\t53",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "F\u00dcM\t15\t194",
+      "Refresh",
+      "Joey\t3\t53",
+      "Refresh",
+      "K Bar\t2\t0",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Joey\t3\t53",
+      "Refresh",
+      "K Bar\t2\t0",
+      "Refresh",
+      "Lucy (New!)\t25\t447",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "K Bar\t2\t0",
+      "Refresh",
+      "Lucy (New!)\t25\t447",
+      "Refresh",
+      "McBee Farms\t5\t24",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Lucy (New!)\t25\t447",
+      "Refresh",
+      "McBee Farms\t5\t24",
+      "Refresh",
+      "Mini Melt\t2\t0",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "McBee Farms\t5\t24",
+      "Refresh",
+      "Mini Melt\t2\t0",
+      "Refresh",
+      "My Instant IV\t10\t32",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Mini Melt\t2\t0",
+      "Refresh",
+      "My Instant IV\t10\t32",
+      "Refresh",
+      "Newtrition\t1\t0",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "My Instant IV\t10\t32",
+      "Refresh",
+      "Newtrition\t1\t0",
+      "Refresh",
+      "Rebel\t1\t0",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Newtrition\t1\t0",
+      "Refresh",
+      "Rebel\t1\t0",
+      "Refresh",
+      "Sesh\t26\t647",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Rebel\t1\t0",
+      "Refresh",
+      "Sesh\t26\t647",
+      "Refresh",
+      "TR\u0112 House\t1\t15",
+      "Refresh"
+    ],
+    [
+      "Refresh",
+      "Sesh\t26\t647",
+      "Refresh",
+      "TR\u0112 House\t1\t15",
+      "Refresh",
+      "X Mood Drinks\t26\t181",
+      "Refresh"
+    ]
+  ]
+}

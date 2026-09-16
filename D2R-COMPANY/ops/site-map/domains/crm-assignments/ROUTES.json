@@ -1,0 +1,534 @@
+{
+  "domain": "crm-assignments",
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-09-16T19:54:06.907883+00:00",
+  "mapper": {
+    "agent": "crm-assignments-mapper",
+    "status": "awaiting-first-pass"
+  },
+  "twinBuilder": {
+    "agent": "crm-assignments-twin-builder",
+    "status": "awaiting-first-pass"
+  },
+  "ownedPaths": [
+    "/admin/accounts",
+    "/admin/businesses",
+    "/admin/contacts",
+    "/admin/locations",
+    "/admin/locations/import",
+    "/admin/retail-stores",
+    "/admin/rep-assignments",
+    "/admin/rep-assignments/relationships",
+    "/admin/sales-status",
+    "/admin/users",
+    "/admin/emails",
+    "/admin/files"
+  ],
+  "routes": [
+    {
+      "path": "/admin/accounts",
+      "title": "Accounts (CRM)",
+      "purpose": "Retail account records",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/contacts",
+        "/admin/businesses",
+        "/admin/retail-stores"
+      ],
+      "buttons": [
+        "Add account",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "rep"
+        },
+        {
+          "name": "status"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "accounts",
+          "headersHint": [
+            "Account",
+            "Rep",
+            "City",
+            "State",
+            "Status"
+          ]
+        }
+      ],
+      "notes": "No live capture; CRM module",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/businesses",
+      "title": "Businesses",
+      "purpose": "Legal/business entities linked to reps",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "businesses-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/accounts",
+        "/admin/contacts"
+      ],
+      "buttons": [
+        "Add business",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "salesRep"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "businesses",
+          "headers": [
+            "Sales Rep",
+            "Business Name",
+            "Address",
+            "Created",
+            "Actions"
+          ]
+        }
+      ],
+      "notes": "51 businesses captured; detail /admin/businesses/:id; twin page missing at map time",
+      "pagination": null,
+      "dataDeps": [
+        "businesses-live.json"
+      ],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/contacts",
+      "title": "Contacts",
+      "purpose": "People at accounts/businesses",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/accounts",
+        "/admin/businesses"
+      ],
+      "buttons": [
+        "Add contact",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "account"
+        }
+      ],
+      "forms": [],
+      "tables": [
+        {
+          "name": "contacts",
+          "headersHint": [
+            "Name",
+            "Email",
+            "Phone",
+            "Account",
+            "Role"
+          ]
+        }
+      ],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/locations",
+      "title": "Locations",
+      "purpose": "Retail location master list",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations/import",
+        "/admin/retail-stores",
+        "/admin/sales-status"
+      ],
+      "buttons": [
+        "Add location",
+        "Import",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "locations",
+          "headersHint": [
+            "Name",
+            "Address",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "No live capture; related to assignments scale",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/locations/import",
+      "title": "Locations import",
+      "purpose": "CSV/bulk location import",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations"
+      ],
+      "buttons": [
+        "Upload",
+        "Validate",
+        "Commit"
+      ],
+      "comboboxes": [],
+      "forms": [
+        {
+          "name": "import",
+          "fields": [
+            "file"
+          ]
+        }
+      ],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/retail-stores",
+      "title": "Retail stores",
+      "purpose": "Door/store CRM list (distinct from Shopify stores)",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": true,
+      "links": [
+        "/admin/locations",
+        "/admin/accounts",
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add store",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "state"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "retailStores",
+          "headersHint": [
+            "Store",
+            "Account",
+            "City",
+            "State",
+            "Rep"
+          ]
+        }
+      ],
+      "notes": "No dedicated live dump; overlaps assignments",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/rep-assignments",
+      "title": "Rep assignments",
+      "purpose": "Primary/covering/delegate store assignments",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "assignments-page1-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/rep-assignments/relationships",
+        "/admin/retail-stores",
+        "/admin/locations"
+      ],
+      "buttons": [
+        "Assign",
+        "Bulk edit",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role",
+          "options": [
+            "Primary",
+            "Covering",
+            "Delegate"
+          ]
+        },
+        {
+          "name": "rep"
+        },
+        {
+          "name": "state"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "assignments",
+          "headers": [
+            "Rep",
+            "Store Name",
+            "City",
+            "State",
+            "Account",
+            "Role",
+            "From",
+            "To"
+          ]
+        }
+      ],
+      "notes": "11,314 primary \u00b7 27 covering \u00b7 464 delegate \u00b7 ~227 pages; page-1 sample only; twin page missing at map time",
+      "pagination": "approx 227 pages (50-row sample)",
+      "dataDeps": [
+        "assignments-page1-live.json"
+      ],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/rep-assignments/relationships",
+      "title": "Assignment relationships",
+      "purpose": "Covering/delegate relationship graph",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Add relationship"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/sales-status",
+      "title": "Sales status",
+      "purpose": "Location sales status board",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [
+        "/admin/locations",
+        "/locations/sales-status"
+      ],
+      "buttons": [
+        "Update status",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "status"
+        },
+        {
+          "name": "rep"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/users",
+      "title": "Users",
+      "purpose": "User/role directory",
+      "coverage": "captured",
+      "interactionSource": "live-capture",
+      "liveCapture": "users-live.json",
+      "twinPage": true,
+      "links": [
+        "/admin/rep-assignments"
+      ],
+      "buttons": [
+        "Invite user",
+        "Export"
+      ],
+      "comboboxes": [
+        {
+          "name": "role"
+        }
+      ],
+      "forms": [
+        {
+          "name": "search",
+          "fields": [
+            "q"
+          ]
+        }
+      ],
+      "tables": [
+        {
+          "name": "users",
+          "headers": [
+            "Name",
+            "Email",
+            "Last Seen",
+            "Role",
+            "Created"
+          ]
+        }
+      ],
+      "notes": "189 users captured",
+      "pagination": null,
+      "dataDeps": [
+        "users-live.json"
+      ],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "exists-needs-qc"
+    },
+    {
+      "path": "/admin/emails",
+      "title": "Emails",
+      "purpose": "Outbound email log / templates",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [
+        "Resend",
+        "Preview"
+      ],
+      "comboboxes": [
+        {
+          "name": "template"
+        }
+      ],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    },
+    {
+      "path": "/admin/files",
+      "title": "Files",
+      "purpose": "Uploaded file browser",
+      "coverage": "mapped-ui-only",
+      "interactionSource": "inferred",
+      "liveCapture": null,
+      "twinPage": false,
+      "links": [],
+      "buttons": [
+        "Upload",
+        "Download",
+        "Delete"
+      ],
+      "comboboxes": [],
+      "forms": [],
+      "tables": [],
+      "notes": "No live capture",
+      "pagination": null,
+      "dataDeps": [],
+      "domain": "crm-assignments",
+      "mapperStatus": "seeded-from-canonical",
+      "twinBuilderStatus": "pending"
+    }
+  ],
+  "qc": {
+    "accepted": false,
+    "lastReviewedAt": null,
+    "blockingIssues": [
+      "QC-002"
+    ]
+  }
+}
