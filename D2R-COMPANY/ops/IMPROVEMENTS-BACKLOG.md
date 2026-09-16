@@ -242,3 +242,15 @@ Parity shipped offline: `/admin/inventory/ledgers` + `/admin/inventory/refresh`.
 4. **Zero-level brand registry flags** — K Bar, Mini Melt, Newtrition, Rebel show services >0 with levels=0; link to Shopify health.
 5. **Ledger chart + rep expand** — Ship 8-week sold/received chart and product-line expand after time-series capture.
 6. **Clarify Ledgers vs Performance** — Merge or rename cluster entries so SKU vs rep questions have one obvious path.
+
+---
+
+## Inventory transfers (`sandbox/inventory/transfers-admin` — 2026-09-16)
+
+Parity delivered in twin: `/admin/inventory/transfers` (+ rep `/inventory/transfers` mirror) from `transfers.json` / live page1 — columns Transfer ID, Store, Warehouse, Status, Items, Approved, Created, Actions; offline sample banner (page 1 of ~21).
+
+### P1 — Workflow & IA
+
+- **Admin detail route for transfers** — Transfer ID links go to rep `/inventory/transfers/:uuid`, dropping admin chrome/context; open admin detail or drawer instead.
+- **Bulk approve / reject on queue** — ~400+ transfers across 21 pages; many NEW + Pending on a single day; multi-select + audit trail.
+- **Normalize Transfer ID display** — mix of short hex (`9903431f`) and human labels (`#T0055`); stable public ID + searchable UUID.
