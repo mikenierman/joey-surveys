@@ -8,7 +8,7 @@ Local-only integration tip. **Do not push** until Traffic Controller opens a rev
 
 | Field | Value |
 |-------|-------|
-| Integration tip | `3499bc3` |
+| Integration tip (end of wave 1) | `e45bc08` (log) / prior merge `3499bc3` |
 | Base | `main` @ `f08a83c` |
 | Worktree | `/private/tmp/d2r-merch-integration` (local) |
 
@@ -25,45 +25,75 @@ Local-only integration tip. **Do not push** until Traffic Controller opens a rev
 |------|------------|
 | `D2R-COMPANY/ops/IMPROVEMENTS-BACKLOG.md` (add/add) | Kept **both**: shell Nav/shell section (HEAD) + traffic-controller domain/fleet rollup (`89b722f`). |
 
-No conflicts on shell source (`nav.ts`, layout, middleware, `ui.tsx`).
+### QC (wave 1)
 
-### Not merged (deferred)
+Smoke **FAIL** (0/21 seeds, 0/23 pages, missing `data.ts`). `tsc` **FAIL** (`@/lib/auth` missing). Expected for shell-only tip.
 
-Inventory / merch / orders / shopify / pulse / payouts / CRM / reports / rep-facing map-pack — left on their sandbox tips.
+---
 
-### QC — `node scripts/qc-twin-smoke.mjs` (integration tip)
+## Wave 2–4 — 2026-09-16 (data → merch → inventory)
 
-**FAIL** (exit 1). Expected: wave 1 only brings shell + smoke harness; domain pages/seeds live on later sandboxes.
+| Field | Value |
+|-------|-------|
+| Integration tip | `2b76e3a` |
+| Worktree | `/private/tmp/d2r-merch-integration` |
+
+### Merged
+
+| Branch | Tip | Result |
+|--------|-----|--------|
+| `sandbox/data/foundation` | `24617d9` | Fast-forward → `24617d9`. `data.ts` / `auth.ts` / `store.ts` + shopify/webhooks lib deps, DEV_AUTH login + Clerk login component, 21 seed JSON, Next `package.json`/`tsconfig` scaffolding, `.env.example` (placeholders only). |
+| `sandbox/merch/admin-q3-table` | `af91c3a` | Merge → `a226a4f`. Admin Q3 rollup + period switcher; live columns. Backlog add/add kept integration + appended admin Q3 deferred. |
+| `sandbox/merch/rep-facing-shell` | `28b1aa6` | Merge → `8cfa730`. Rep `/merchandising` list/status shell. Backlog kept ours. |
+| `sandbox/inventory/admin-levels-table` | `00b0784` | Merge → `230cf19`. Levels table live columns; backlog append levels deferred. |
+| `sandbox/inventory/warehouses-businesses` | `2813564` | Merge → `4e7cf64`. Warehouses + businesses admin pages. |
+| `sandbox/inventory/ledgers-brand-levels` | `cc76792` | Merge → `b7946d8`. Ledgers + brand-levels refresh. **Also carried** early Shopify health/stores pages + `api/webhooks/shopify` + sync stubs (overlap with shopify wave — resolve carefully when merging stores-and-health / webhooks). |
+| `sandbox/inventory/transfers-admin` | `bd00d64` | Merge → `2b76e3a`. Admin + rep transfers pages. |
+
+### Conflicts
+
+All conflicts were `IMPROVEMENTS-BACKLOG.md` add/add. Resolution pattern: keep integration HEAD, append unique `##` sections from incoming.
+
+No source conflicts on merch/inventory page files (disjoint adds). Prefer live column parity already encoded in sandbox tips.
+
+### Registered — not merged yet
+
+| Branch | Tip | When to merge |
+|--------|-----|---------------|
+| `sandbox/shopify/stores-and-health` | `65619d7` | Shopify wave **first** (may partially overlap files already landed via ledgers tip — expect content conflicts). |
+| `sandbox/shopify/webhooks-automation-logs` | `a0da9c7` | Shopify wave **after** `stores-and-health`. HMAC → runtime ops/install logs; admin install+automation UI; POST automations; CLI; gitignored `data/runtime/*`. Parent lineage from stores-and-health. **Not pushed. Do not merge during data/merch/inventory.** |
+
+See `BRANCH-MATRIX.md` / `MERGE-ORDER.md` wave 6.4.
+
+### Still deferred (later waves)
+
+Orders, pulse, payouts, CRM, reports, rep-facing map-pack, link-crawl QA — leave on sandbox tips. Full `stores-and-health` + `webhooks-automation-logs` wait for shopify wave even though ledgers pre-landed some shopify paths.
+
+### QC — `node scripts/qc-twin-smoke.mjs` (tip `2b76e3a`)
+
+**FAIL** (exit 1) — seeds + libs green; remaining page gaps are later waves:
 
 | Category | Present | Missing |
 |----------|---------|---------|
-| Seeds (21) | 0 | all 21 under `data/seed/` |
-| Pages (23) | 0 | all 23 required `page.tsx` routes |
-| Shared libs | `src/lib/nav.ts` | `src/lib/data.ts` |
+| Seeds (21) | **21** | 0 |
+| Shared libs | `nav.ts`, **`data.ts`** | — |
+| Pages (23) | 10 | 13: `page.tsx`, `admin/dashboard`, `admin/orders`, `admin/pulse`, `admin/pulse/signals`, `admin/payouts`, `admin/commissions`, `admin/settlements`, `admin/users`, `admin/rep-assignments`, `admin/reports`, `inventory`, `orders` |
 
-Live export dir under `D2R-COMPANY/ops/exports/2026-09-16/live` not present in this worktree (optional for smoke).
+Cleared vs wave 1: all seeds, login, merch (admin+rep), inventory cluster, warehouses, shopify/stores (via ledgers tip).
 
-### QC — `npx tsc --noEmit` (integration tip)
+### QC — `npx tsc --noEmit` (tip `2b76e3a`, `node_modules` symlinked from shared checkout)
 
-**FAIL** (exit 2) when borrowing `package.json` / `node_modules` from the dirty shared checkout (integration tip has no app scaffold):
+**PASS** (exit 0). Auth/data foundation unblocks shell + merged domain pages.
 
-- `src/app/admin/layout.tsx` → cannot find `@/lib/auth`
-- `src/components/ui.tsx` → cannot find `@/lib/auth`
+### Wave 3 / next recommendation
 
-Shell alone does not ship `auth` or the rest of the Next app; full `tsc` waits on wave 2+ / base app skeleton.
+1. **Orders wave** (`sandbox/orders/admin-list-sample` `a3dfd19`) — clears admin/rep orders smoke misses; disjoint from shopify.
+2. **Pulse + payouts + CRM + reports** — clear remaining smoke pages.
+3. **Shopify wave (serialize):** merge `sandbox/shopify/stores-and-health` (`65619d7`) first (expect conflicts with ledgers-prelanded shopify paths), **then** `sandbox/shopify/webhooks-automation-logs` (`a0da9c7`). Do **not** merge webhooks before stores-and-health.
+4. Optional: root `page.tsx` + `admin/dashboard` from pulse sandbox (`9aeb28f`).
 
-### Shared dirty checkout (reference only — not this tip)
+---
 
-Smoke still **FAIL**: missing transfers / warehouses / orders / payouts / commissions / settlements / reports pages (domain sandboxes not on shared tree). Confirms wave-1-only tip is the correct merge target.
+## Wave 1 historical notes
 
-### Wave 2 recommendation
-
-Per `MERGE-ORDER.md` / `BRANCH-MATRIX.md`:
-
-1. **`sandbox/data/seed-shape-normalize`** (planned) — land `src/lib/data.ts` live-shaped getters; hard gate for table UIs.
-2. **`sandbox/data/ingest-live-2026-09-16`** (planned) — seeds from `exports/.../live/` (clears 21 seed misses).
-3. Then **Wave 3 merch** (`sandbox/merch/admin-q3-table` `af91c3a`, `sandbox/merch/rep-facing-shell` `28b1aa6`) before inventory — independent once seeds exist.
-4. **Wave 4 inventory** cluster after data (`00b0784`, `2813564`, `cc76792`, `bd00d64`).
-5. Optional shell follow-up: `sandbox/shell/dev-auth-login` (wave 1.2) if local audit login still blocked — can parallel data but prefer before heavy UI QC.
-
-Do **not** merge domain UI before data loaders; pulse (`9aeb28f`) explicitly depends on shell + `@/lib/data`.
+(See prior tip `e45bc08` commit for wave-1 QC narrative.)

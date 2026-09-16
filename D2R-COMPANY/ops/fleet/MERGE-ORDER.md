@@ -85,11 +85,14 @@ Depends on: Wave 2. Can merge in parallel with Wave 4 if paths stay disjoint.
 
 | Order | Branch example |
 |-------|----------------|
-| 6.1 | `sandbox/shopify/health-table` |
-| 6.2 | `sandbox/shopify/brand-stores-registry` |
+| 6.1 | `sandbox/shopify/stores-and-health` (`65619d7`) — preferred actual tip covering health + brand stores |
+| 6.2 | `sandbox/shopify/health-table` / `brand-stores-registry` (planned names; skip if 6.1 already landed paths) |
 | 6.3 | `sandbox/shopify/sync-status-stub` |
+| 6.4 | `sandbox/shopify/webhooks-automation-logs` (`a0da9c7`) — **merge only after 6.1** (`stores-and-health`) |
 
 Depends on: Wave 2. Prefer after inventory refresh page (4.5) if linking health → brand levels; otherwise parallel OK.
+
+**Registered (do not merge early):** `sandbox/shopify/webhooks-automation-logs` @ `a0da9c7` depends on `sandbox/shopify/stores-and-health` @ `65619d7`. Parent lineage is from stores-and-health. Keep out of data/merch/inventory integration waves.
 
 ---
 

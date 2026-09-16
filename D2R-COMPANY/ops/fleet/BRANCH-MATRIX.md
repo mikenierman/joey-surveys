@@ -32,9 +32,11 @@ Integration target (until cutover): prefer merging sandboxes into `main` only vi
 | `sandbox/orders/admin-po-table` | Admin orders PO columns = live | 5 Orders | admin/orders, orders-table, orders seed | delete / revert | inventory wave start OK in parallel after data |
 | `sandbox/orders/drafts-and-detail` | Drafts list + `/orders/[id]` seed detail | 5 Orders | drafts, [id], create-order-form | delete / revert | admin-po-table |
 | `sandbox/orders/rep-orders-parity` | Rep `/orders` mirrors admin columns | 5 Orders | app/orders | delete / revert | drafts-and-detail |
-| `sandbox/shopify/health-table` | Shopify health 9/29 table from seed | 6 Shopify | admin/shopify, shopify seeds | delete / revert | orders (or parallel after data) |
-| `sandbox/shopify/brand-stores-registry` | `/admin/stores` from stores seed | 6 Shopify | admin/stores | delete / revert | health-table |
+| `sandbox/shopify/health-table` | Shopify health 9/29 table from seed (planned name) | 6 Shopify | admin/shopify, shopify seeds | delete / revert | orders (or parallel after data) |
+| `sandbox/shopify/stores-and-health` | **Actual tip `65619d7`** — Brand stores + Shopify health from vault seeds | 6 Shopify | admin/shopify, admin/stores, shopify seeds, shopify.ts | delete / revert | data loaders; before webhooks |
+| `sandbox/shopify/brand-stores-registry` | `/admin/stores` from stores seed (planned; may be covered by stores-and-health) | 6 Shopify | admin/stores | delete / revert | health-table / stores-and-health |
 | `sandbox/shopify/sync-status-stub` | Sync/status API stubs offline-safe | 6 Shopify | api/shopify, shopify.ts | delete / revert | brand-stores |
+| `sandbox/shopify/webhooks-automation-logs` | **Registered tip `a0da9c7`** — HMAC webhook → runtime ops/install logs; `/admin/shopify` install+automation UI; POST automations (brand-levels / inventory-sync / scope-health); CLI scripts; gitignored `data/runtime/*`. Parent: `stores-and-health`. **Not pushed.** | 6 Shopify | api/webhooks, admin/shopify logs UI, automations routes, scripts, `.gitignore` runtime | delete / revert | **AFTER** `sandbox/shopify/stores-and-health` (`65619d7`) |
 | `sandbox/pulse/signals-kpis` | `/admin/pulse/signals` live KPI shape | 7 Pulse | pulse pages, pulse components, seed | delete / revert | shopify optional |
 | `sandbox/pulse/dashboard-hub` | Dashboard cards from available seeds | 7 Pulse | admin/dashboard | delete / revert | signals-kpis |
 | `sandbox/payouts/tables-seed` | Payouts/rules/commissions/settlements seed tables | 8 Payouts | payouts/commissions/settlements pages + seeds | delete / revert | pulse |
