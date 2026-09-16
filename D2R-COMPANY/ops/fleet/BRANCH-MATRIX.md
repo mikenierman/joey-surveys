@@ -38,7 +38,7 @@ Wave 1 shell → data → merch → inventory → orders → shopify → pulse �
 | 11 | `sandbox/pulse/dashboard-signals` | `9aeb28f` | Dashboard + pulse signals/goals/scores/health stubs | 7 | High — also depends on `@/lib/data` / PulseKpiGrid (shell/data) | `git revert 9aeb28f` · **merge after shell+data** |
 | 12 | `sandbox/payouts/reports-shell` | `edaf36d` | Commissions/payouts/settlements/reports offline shells | 8 | High | `git revert edaf36d` |
 | 13 | `sandbox/crm/users-and-assignments` | `9e37b1b` | Users (189) + rep-assignments sample + 11314 banner | 9 | High | `git revert 9e37b1b` |
-| 14 | `sandbox/rep-facing/map-pack` | _(docs commit on branch)_ | Rep-facing MAP/interactions/IMPROVEMENTS/TWIN-STATUS | docs | Low — docs only | `git branch -D sandbox/rep-facing/map-pack` |
+| 14 | `sandbox/rep-facing/map-pack` | `b5cd315` | Rep-facing + reports map packs + fleet registry/QC board | docs | Low — docs only | `git branch -D sandbox/rep-facing/map-pack` · `git revert b5cd315` |
 
 ### Drop / audit cheatsheet
 
