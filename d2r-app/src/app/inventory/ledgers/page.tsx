@@ -6,25 +6,29 @@ import {
   StubNote,
   ClusterNav,
   DataTable,
+  OfflineScopeBanner,
 } from '@/components/ui';
 import { REP_INVENTORY_NAV } from '@/lib/rep-inventory-nav';
 import { getLedgerBrandRows } from '@/lib/data';
+import { resolveRepScope, scopeMatchesRep } from '@/lib/rep-scope';
 
 export default async function RepLedgersPage() {
   const user = await getSessionUser();
   if (!user) redirect('/login');
-  const rows = getLedgerBrandRows().slice(0, 40);
+  const scope = resolveRepScope(user);
+  const rows = getLedgerBrandRows().filter((r) => scopeMatchesRep(r.rep, scope));
 
   return (
     <AppShell user={user}>
       <PageTitle
         title="Ledgers"
-        subtitle="Rep-facing brand ledger proxy from seed"
+        subtitle={`Brand ledger for ${scope.matchedName}`}
       />
+      <OfflineScopeBanner text={scope.scopeBanner} />
       <ClusterNav items={REP_INVENTORY_NAV} current="/inventory/ledgers" />
       <StubNote>
-        Offline mirror of <code>/inventory/ledgers</code>. Full admin ledgers live
-        at <code>/admin/inventory/ledgers</code>.
+        Offline mirror of <code>/inventory/ledgers</code> filtered to{' '}
+        {scope.matchedName}. Admin: <code>/admin/inventory/ledgers</code>.
       </StubNote>
       <DataTable
         headers={['Rep', 'Brand', 'Value held', 'Units', 'Sell-through']}
@@ -37,7 +41,7 @@ export default async function RepLedgersPage() {
                 r.unitsHeld ?? '—',
                 r.sellThrough ?? '—',
               ])
-            : [['—', 'No ledger rows in seed', '—', '—', '—']]
+            : [['—', `No ledger rows for ${scope.matchedName}`, '—', '—', '—']]
         }
       />
     </AppShell>

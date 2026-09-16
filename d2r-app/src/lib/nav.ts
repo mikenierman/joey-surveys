@@ -168,8 +168,15 @@ export const ADMIN_NAV: NavLink[] = ADMIN_NAV_GROUPS.flatMap((g) =>
  * Flat top-nav links — cluster pages also use REP_INVENTORY_NAV.
  */
 export const REP_NAV: NavLink[] = [
-  { href: '/inventory', label: 'My inventory' },
+  { href: '/inventory', label: 'Inventory' },
+  { href: '/inventory/ledgers', label: 'Ledgers' },
+  { href: '/inventory/performance', label: 'Performance' },
   { href: '/inventory/transfers', label: 'Transfers' },
+  { href: '/inventory/transfers/create', label: 'Create transfer' },
   { href: '/orders', label: 'Orders' },
+  { href: '/orders/drafts', label: 'Drafts' },
   { href: '/merchandising', label: 'Merchandising' },
+  { href: '/retail-stores', label: 'Retail stores' },
+  { href: '/stores', label: 'Stores' },
+  { href: '/locations/sales-status', label: 'Sales status' },
 ];

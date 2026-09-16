@@ -17,6 +17,20 @@ function linkActive(pathname: string, href: string): boolean {
   return path === target;
 }
 
+/** Longest-prefix active for flat rep top-nav (e.g. /inventory/transfers/uuid → Transfers). */
+function repLinkActive(pathname: string, href: string, allHrefs: string[]): boolean {
+  const path = pathname.replace(/\/$/, '') || '/';
+  const target = href.replace(/\/$/, '') || '/';
+  if (path === target) return true;
+  if (!path.startsWith(`${target}/`)) return false;
+  const longerOwns = allHrefs.some((h) => {
+    const other = h.replace(/\/$/, '') || '/';
+    if (other === target || other.length <= target.length) return false;
+    return path === other || path.startsWith(`${other}/`);
+  });
+  return !longerOwns;
+}
+
 function AdminSidebarNav({ pendingLane }: { pendingLane?: string | null }) {
   const pathname = usePathname() || '';
   const activePath = pendingLane || pathname;
@@ -104,10 +118,11 @@ function SidebarLink({
 
 function RepTopNav() {
   const pathname = usePathname() || '';
+  const hrefs = REP_NAV.map((item) => item.href);
   return (
     <nav className="mx-auto flex max-w-7xl gap-1 overflow-x-auto px-2 pb-2">
       {REP_NAV.map((item) => {
-        const active = linkActive(pathname, item.href);
+        const active = repLinkActive(pathname, item.href, hrefs);
         return (
           <Link
             key={item.href}

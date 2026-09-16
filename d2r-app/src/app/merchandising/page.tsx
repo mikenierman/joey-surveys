@@ -1,6 +1,12 @@
 import { redirect } from 'next/navigation';
 import { getSessionUser } from '@/lib/auth';
-import { AppShell, PageTitle, StatCard, StubNote } from '@/components/ui';
+import {
+  AppShell,
+  PageTitle,
+  StatCard,
+  StubNote,
+  OfflineScopeBanner,
+} from '@/components/ui';
 import { MerchPeriodSwitcher } from '@/components/merch-period-switcher';
 import { MerchRepTable } from '@/components/merch-rep-table';
 import {
@@ -13,6 +19,7 @@ import {
   normalizeMerchPeriod,
   type MerchRep,
 } from '@/lib/merchandising';
+import { resolveRepScope } from '@/lib/rep-scope';
 import { MerchRouteShell } from './route-shell';
 import {
   getMerchRouteStores,
@@ -48,6 +55,7 @@ export default async function MerchandisingEmbedPage({
   const seededPeriods = getMerchSeedPeriods();
   const merchUrl = process.env.NEXT_PUBLIC_MERCH_APP_URL;
   const { stores, demoMappedTo, source } = getMerchRouteStores(user);
+  const scope = resolveRepScope(user);
 
   return (
     <AppShell user={user}>
@@ -55,6 +63,7 @@ export default async function MerchandisingEmbedPage({
         title="Field merchandising"
         subtitle={merchProgramSubtitle(program, period)}
       />
+      <OfflineScopeBanner text={scope.scopeBanner} />
       <MerchPeriodSwitcher
         allPeriods={allPeriods}
         seededPeriods={seededPeriods}

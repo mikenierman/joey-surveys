@@ -1,21 +1,38 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getSessionUser } from '@/lib/auth';
-import { AppShell, PageTitle, StubNote, DataTable } from '@/components/ui';
+import {
+  AppShell,
+  PageTitle,
+  StubNote,
+  DataTable,
+  OfflineScopeBanner,
+} from '@/components/ui';
 import { getOrderDrafts } from '@/lib/data';
+import { resolveRepScope, scopeMatchesRep } from '@/lib/rep-scope';
 
 export default async function RepOrderDraftsPage() {
   const user = await getSessionUser();
   if (!user) redirect('/login');
 
+  const scope = resolveRepScope(user);
   const { headers, drafts } = getOrderDrafts('rep');
-  const mine = drafts.filter((d) => !d.Rep || d.Rep === user.name);
+  const mine = drafts.filter((d) => {
+    const rep = d.Rep || d.rep || '';
+    if (!rep) return false;
+    return scopeMatchesRep(rep, scope);
+  });
 
   return (
     <AppShell user={user}>
-      <PageTitle title="Order drafts" subtitle="Rep drafts (offline twin)" />
+      <PageTitle
+        title="Order drafts"
+        subtitle={`Drafts for ${scope.matchedName}`}
+      />
+      <OfflineScopeBanner text={scope.scopeBanner} />
       <StubNote>
-        Stub for <code>/orders/drafts</code> — no live capture. Submit draft is disabled.{' '}
+        Stub for <code>/orders/drafts</code> — no live capture. Submit draft is
+        disabled.{' '}
         <Link className="underline" href="/orders">
           Back to orders
         </Link>
@@ -35,7 +52,8 @@ export default async function RepOrderDraftsPage() {
         />
       ) : (
         <p className="text-sm text-stone-600">
-          No draft rows for {user.name}. Expected columns: {headers.join(', ')}.
+          No draft rows for {scope.matchedName}. Expected columns:{' '}
+          {headers.join(', ')}.
         </p>
       )}
     </AppShell>

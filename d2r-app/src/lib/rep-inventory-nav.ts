@@ -5,4 +5,5 @@ export const REP_INVENTORY_NAV = [
   { href: '/inventory/performance', label: 'Performance' },
   { href: '/inventory/transfers', label: 'Transfers' },
   { href: '/inventory/transfers/create', label: 'Create transfer' },
+  { href: '/inventory/transfers/preview', label: 'Preview' },
 ];
