@@ -10,30 +10,30 @@ Offline twin navigability for sidebar, cluster subnavs, and domain map routes.
 
 | Link | Status | Notes |
 |------|--------|-------|
-| `/admin/accounts` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/accounts` | ok | table shell — accounts derived from assignment sample |
 | `/admin/businesses` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/commissions` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/commissions/review` | missing→fixed | page added/restored on link-crawl branch |
-| `/admin/contacts` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/contacts` | ok | table shell — honest empty (no contacts seed) |
 | `/admin/dashboard` | ok | seed table or prior sandbox page |
-| `/admin/deposits` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/diagnostics/order-timeline` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/emails` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/files` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/deposits` | ok | offline scaffold table + banner |
+| `/admin/diagnostics/order-timeline` | ok | minimal events stub table |
+| `/admin/emails` | ok | minimal outbound log stub |
+| `/admin/files` | ok | minimal file browser stub |
 | `/admin/inventory` | ok | seed table or prior sandbox page |
 | `/admin/inventory/audit` | ok | seed table or prior sandbox page |
 | `/admin/inventory/ledgers` | ok | seed table or prior sandbox page |
 | `/admin/inventory/performance` | ok | seed table or prior sandbox page |
 | `/admin/inventory/refresh` | ok | seed table or prior sandbox page |
 | `/admin/inventory/transfers` | missing→fixed | page added/restored on link-crawl branch |
-| `/admin/inventory/transfers/terms` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/locations` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/locations/import` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/inventory/transfers/terms` | ok | terms versions + placeholder body |
+| `/admin/locations` | ok | table shell — doors derived from assignment sample |
+| `/admin/locations/import` | ok | import stub (Upload/Validate/Commit disabled) |
 | `/admin/merchandising` | ok | seed table or prior sandbox page |
-| `/admin/merchandising/stores` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/merchandising/stores` | ok | store grid shell — empty (no store-level capture) |
 | `/admin/orders` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/orders/drafts` | missing→fixed | page added/restored on link-crawl branch |
-| `/admin/payments` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/payments` | ok | offline scaffold table + banner |
 | `/admin/payouts` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/payouts/rules` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/payouts/rules/example` | missing→fixed | page added/restored on link-crawl branch |
@@ -42,16 +42,16 @@ Offline twin navigability for sidebar, cluster subnavs, and domain map routes.
 | `/admin/pulse/health` | ok | seed table or prior sandbox page |
 | `/admin/pulse/scores` | ok | seed table or prior sandbox page |
 | `/admin/pulse/signals` | ok | seed table or prior sandbox page |
-| `/admin/receipts` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/receipts` | ok | offline scaffold table + banner |
 | `/admin/rep-assignments` | ok | seed table or prior sandbox page |
-| `/admin/rep-assignments/relationships` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/rep-assignments/relationships` | ok | stub table — honest empty (schema not captured) |
 | `/admin/reports` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/reports/brand-sales` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/reports/commissions` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/reports/inventory-reports` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/reports/rep-sales` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/retail-stores` | ok | seed table or prior sandbox page |
-| `/admin/sales-status` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/sales-status` | ok | table shell — honest empty (no status seed) |
 | `/admin/settlements` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/settlements/batch/preview` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/shopify` | ok | seed table or prior sandbox page |
@@ -75,7 +75,7 @@ Offline twin navigability for sidebar, cluster subnavs, and domain map routes.
 ## Peripheral / optional
 
 - `/signup`, `/test/dashboard`, non-admin `/stores` — mapped in rep-facing pack but outside admin audit chrome.
-- Payments/deposits/receipts/accounts/contacts/locations remain **stub** (PendingLane) until CRM/finance lanes seed tables.
+- Payments/deposits/receipts remain **stub** (PendingLane) until finance lanes seed tables. CRM accounts/contacts/locations/sales-status/relationships + merch stores are table shells (seed-derived or honest empty).
 
 ## Verification
 

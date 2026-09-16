@@ -71,28 +71,9 @@ Unmerged sandbox (not on integration): `git branch -D sandbox/<area>/<single-iss
 
 ---
 
-## 16 intentional PendingLane stubs (rebuild later)
+## PendingLane stubs
 
-From `d2r-app/src/lib/nav.ts` → `PENDING_ADMIN_PATHS` / `PENDING_LANE_TITLES` (middleware → admin `PendingLane`):
-
-| Path | Title |
-|------|-------|
-| `/admin/accounts` | Accounts |
-| `/admin/contacts` | Contacts |
-| `/admin/locations` | Locations |
-| `/admin/locations/import` | Import locations |
-| `/admin/sales-status` | Sales status |
-| `/admin/rep-assignments/relationships` | Relationships |
-| `/admin/merchandising/stores` | Merchandising stores |
-| `/admin/inventory/transfers/terms` | Transfer terms |
-| `/admin/shopify/apps` | Shopify apps |
-| `/admin/shopify/test` | Shopify test |
-| `/admin/payments` | Payments |
-| `/admin/deposits` | Deposits |
-| `/admin/receipts` | Receipts |
-| `/admin/emails` | Emails |
-| `/admin/files` | Files |
-| `/admin/diagnostics/order-timeline` | Order timeline |
+`PENDING_ADMIN_PATHS` is **empty** — cash ops, Shopify apps/test, transfer terms, emails/files, order timeline, and CRM/locations/merch stores all have offline stub or table-shell pages.
 
 Audit: [`LINK-AUDIT.md`](./LINK-AUDIT.md).
 

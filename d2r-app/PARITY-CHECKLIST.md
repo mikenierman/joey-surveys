@@ -18,7 +18,7 @@ Aligned with [`D2R-COMPANY/ops/SITE-MAP.md`](../D2R-COMPANY/ops/SITE-MAP.md) and
 | P0 | Transfer terms | `/admin/inventory/transfers/terms` | Missing | mapped-ui-only |
 | P0 | Warehouses | `/admin/warehouses` | Done (60) | captured |
 | P0 | Merchandising admin | `/admin/merchandising` | Done (Q3; period UI partial) | captured |
-| P0 | Merch stores | `/admin/merchandising/stores` | Missing | mapped-ui-only |
+| P0 | Merch stores | `/admin/merchandising/stores` | Scaffold (empty grid; no store capture) | mapped-ui-only |
 | P0 | Merch field embed | `/merchandising` | Done (iframe) | stub-in-twin |
 | P0 | Shopify health + sync | `/admin/shopify` | Done (health table + sync) | captured |
 | P0 | Shopify apps / test | `/admin/shopify/apps`, `/test` | Missing | mapped-ui-only |
@@ -29,9 +29,9 @@ Aligned with [`D2R-COMPANY/ops/SITE-MAP.md`](../D2R-COMPANY/ops/SITE-MAP.md) and
 | P1 | Order timeline diag | `/admin/diagnostics/order-timeline` | Missing | mapped-ui-only |
 | P1 | Businesses | `/admin/businesses` | Done (51) | captured |
 | P1 | Rep assignments | `/admin/rep-assignments` | Done (page-1 / 11k prod) | captured |
-| P1 | Assignment relationships | `/admin/rep-assignments/relationships` | Missing | mapped-ui-only |
+| P1 | Assignment relationships | `/admin/rep-assignments/relationships` | Scaffold (empty stub table) | mapped-ui-only |
 | P1 | Retail stores | `/admin/retail-stores` | Partial (derived sample) | mapped-ui-only |
-| P1 | Accounts / contacts / locations | `/admin/accounts` etc. | Missing | mapped-ui-only |
+| P1 | Accounts / contacts / locations | `/admin/accounts` etc. | Scaffold (accounts/locations derived; contacts empty; import stub) | mapped-ui-only |
 | P1 | Reports hub + children | `/admin/reports/*` | Scaffold | stub-in-twin |
 | P2 | Commissions (+ review) | `/admin/commissions*` | Scaffold | stub / mapped |
 | P2 | Settlements (+ batch preview) | `/admin/settlements*` | Scaffold | stub / mapped |

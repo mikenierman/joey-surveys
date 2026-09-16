@@ -748,3 +748,64 @@ export function getRetailStores(): {
     derived: true,
   };
 }
+
+export type AccountRow = {
+  account: string;
+  rep: string;
+  city: string;
+  state: string;
+  status: string;
+};
+
+/** Accounts derived from assignment sample until accounts export exists. */
+export function getAccounts(): {
+  meta?: Record<string, unknown>;
+  accounts: AccountRow[];
+  derived: boolean;
+} {
+  const { meta, assignments } = getRepAssignments();
+  const byKey = new Map<string, AccountRow>();
+  for (const a of assignments) {
+    const key = a.account.trim().toLowerCase();
+    if (!key) continue;
+    const existing = byKey.get(key);
+    const preferPrimary = !existing || a.role === 'Primary';
+    if (!preferPrimary && existing) continue;
+    byKey.set(key, {
+      account: a.account,
+      rep: a.rep || '—',
+      city: a.city || '—',
+      state: a.state || '—',
+      status: 'Active',
+    });
+  }
+  const accounts = [...byKey.values()].sort((a, b) =>
+    a.account.localeCompare(b.account, undefined, { sensitivity: 'base' })
+  );
+  return { meta, accounts, derived: true };
+}
+
+export type LocationRow = {
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  rep: string;
+};
+
+/** Location master derived from retail-store sample until locations export exists. */
+export function getLocations(): {
+  meta?: Record<string, unknown>;
+  locations: LocationRow[];
+  derived: boolean;
+} {
+  const { meta, stores } = getRetailStores();
+  const locations = stores.map((s) => ({
+    name: s.store,
+    address: '—',
+    city: s.city,
+    state: s.state,
+    rep: s.rep,
+  }));
+  return { meta, locations, derived: true };
+}

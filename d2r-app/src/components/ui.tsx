@@ -254,9 +254,11 @@ export function StatCard({ label, value }: { label: string; value: string }) {
 export function DataTable({
   headers,
   rows,
+  emptyMessage = 'No rows',
 }: {
   headers: string[];
   rows: Array<Array<string | number | null | undefined>>;
+  emptyMessage?: string;
 }) {
   return (
     <div className="overflow-auto rounded-xl border border-stone-200 bg-white shadow-sm">
@@ -271,15 +273,26 @@ export function DataTable({
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, i) => (
-            <tr key={i} className="border-t border-stone-100">
-              {row.map((cell, j) => (
-                <td key={j} className="px-3 py-2 whitespace-nowrap">
-                  {cell ?? '—'}
-                </td>
-              ))}
+          {rows.length === 0 ? (
+            <tr>
+              <td
+                className="px-3 py-8 text-center text-stone-500"
+                colSpan={headers.length}
+              >
+                {emptyMessage}
+              </td>
             </tr>
-          ))}
+          ) : (
+            rows.map((row, i) => (
+              <tr key={i} className="border-t border-stone-100">
+                {row.map((cell, j) => (
+                  <td key={j} className="px-3 py-2 whitespace-nowrap">
+                    {cell ?? '—'}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
@@ -290,6 +303,16 @@ export function StubNote({ children }: { children: React.ReactNode }) {
   return (
     <div className="mb-4 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-950">
       {children}
+    </div>
+  );
+}
+
+/** Shown when offline rep identity is demo-mapped or fuzzy-matched. */
+export function OfflineScopeBanner({ text }: { text: string | null | undefined }) {
+  if (!text) return null;
+  return (
+    <div className="mb-4 rounded-lg border border-sky-300 bg-sky-50 px-3 py-2 text-sm text-sky-950">
+      {text}
     </div>
   );
 }
