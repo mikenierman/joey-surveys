@@ -222,13 +222,23 @@ Baseline: **9/29 healthy · 20 need attention** (2026-09-16).
 
 - Per-shop webhook registration audit · webhook DLQ/replay · Owner Week 0 `SHOPIFY_*` env (`ops/runbooks/SHOPIFY-SHOPS.md`)
 
+### Live reliability — webhooks + automation (append 2026-09-16)
+
+Twin shipped HMAC verify + runtime ops/install logs + offline automation stubs (`sandbox/shopify/webhooks-automation-logs`). Still needed on **live**:
+
+1. **Scope gate before refresh/sync** — Block inventory/order jobs when shop is under 32/32; surface missing scope *names* (not just counts).
+2. **Webhook miss alerts** — Alert when expected `inventory_levels/update` / `orders/*` go silent beyond N hours; DLQ + replay UI.
+3. **HMAC / secret rotation runbook** — Dual-secret verify window; alert on 401 spike.
+4. **Multi-shop automation fan-out** — Nightly brand-levels + inventory sync per healthy shop (twin is single-env stub).
+5. **Install audit → Slack/Pager** — Uninstall or Healthy→Missing scopes within 15m; digest for Unreachable cluster.
+6. **CRON_SECRET + Vercel cron** — Wire production schedules to `/api/shopify/automations/*` with auth + retention on ops JSONL.
+
 ### Append log
 
 | Date | Lane | Note |
 |------|------|------|
 | 2026-09-16 | sandbox/shopify/stores-and-health | Appended Shopify scope reliability as prime improvement; twin stores + health pages wired offline (no tokens) |
-
----
+| 2026-09-16 | sandbox/shopify/webhooks-automation-logs | Twin: webhook HMAC + runtime ops/install logs + brand-levels/inventory/scope-health stubs; live reliability items above |
 
 ---
 

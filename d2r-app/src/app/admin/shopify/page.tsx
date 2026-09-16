@@ -7,6 +7,11 @@ import {
   getShopifyShops,
 } from '@/lib/shopify';
 import { listRecentWebhookEvents } from '@/lib/webhooks';
+import {
+  getOpsLogPaths,
+  listAutomationRuns,
+  listInstallLogs,
+} from '@/lib/ops-logs';
 import { ShopifyHealthTable } from './health-table';
 
 export default function ShopifyAdminPage() {
@@ -14,7 +19,10 @@ export default function ShopifyAdminPage() {
   const { shops: registry } = getShopifyShops();
   const status = getShopifyStatus();
   const recent = listRecentWebhookEvents(10);
+  const installLogs = listInstallLogs(25);
+  const automationRuns = listAutomationRuns(15);
   const lastSync = status.lastSync;
+  const paths = getOpsLogPaths();
 
   const healthy = health.meta?.healthy ?? 0;
   const total = health.meta?.total ?? health.shops.length;
@@ -37,7 +45,8 @@ export default function ShopifyAdminPage() {
         <Link href="/admin/stores" className="underline">
           Brand stores
         </Link>
-        .
+        . Runtime logs:{' '}
+        <code>{paths.eventsJsonl}</code> (gitignored).
       </StubNote>
 
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -67,6 +76,56 @@ export default function ShopifyAdminPage() {
             s.created || '—',
           ])}
         />
+      </div>
+
+      <div className="mb-8 rounded-xl border border-stone-200 bg-white p-4 text-sm">
+        <h2 className="font-medium">Install / auth / scope logs</h2>
+        <p className="mt-1 text-stone-600">
+          Read-only. Seed samples + runtime{' '}
+          <code>{paths.installLogs}</code>.
+        </p>
+        {installLogs.length === 0 ? (
+          <p className="mt-2 text-stone-600">No install logs yet.</p>
+        ) : (
+          <DataTable
+            headers={['When', 'Shop', 'Event', 'Status', 'Scopes', 'Note']}
+            rows={installLogs.map((e) => [
+              e.timestamp,
+              e.shopDomain,
+              e.event,
+              e.status,
+              e.scopesSummary,
+              e.note || '—',
+            ])}
+          />
+        )}
+      </div>
+
+      <div className="mb-8 rounded-xl border border-stone-200 bg-white p-4 text-sm">
+        <h2 className="font-medium">Automation runs</h2>
+        <p className="mt-1 text-stone-600">
+          Stubs: <code>POST /api/shopify/automations/brand-levels</code>,{' '}
+          <code>POST /api/shopify/automations/inventory-sync</code>, or{' '}
+          <code>npm run automation:brand-levels</code> /{' '}
+          <code>npm run automation:inventory-sync</code>.
+        </p>
+        {automationRuns.length === 0 ? (
+          <p className="mt-2 text-stone-600">
+            No automation runs yet — trigger a stub to populate{' '}
+            <code>{paths.automationRuns}</code>.
+          </p>
+        ) : (
+          <DataTable
+            headers={['When', 'Job', 'Status', 'Shop', 'Message']}
+            rows={automationRuns.map((r) => [
+              r.timestamp,
+              r.job,
+              r.status,
+              r.shopDomain || '—',
+              r.message,
+            ])}
+          />
+        )}
       </div>
 
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

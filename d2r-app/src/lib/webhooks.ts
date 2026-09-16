@@ -17,6 +17,7 @@ export type WebhookEventRecord = {
   note?: string;
 };
 
+/** Per-event JSON under data/webhook-events/ (gitignored). */
 const eventsDir = () => dataPath('webhook-events');
 const indexPath = () => dataPath('webhook-events', '_index.json');
 
@@ -55,7 +56,10 @@ export function persistWebhookEvent(record: WebhookEventRecord): {
   }
   ensureDir(eventsDir());
   const safeTopic = record.topic.replace(/[^a-z0-9/_-]/gi, '_').replace(/\//g, '-');
-  const file = path.join(eventsDir(), `${record.receivedAt.replace(/[:.]/g, '-')}_${safeTopic}_${record.id}.json`);
+  const file = path.join(
+    eventsDir(),
+    `${record.receivedAt.replace(/[:.]/g, '-')}_${safeTopic}_${record.id}.json`
+  );
   writeJsonFile(file, record);
   index.byWebhookId[record.id] = file;
   index.count += 1;
@@ -71,6 +75,7 @@ export function getWebhookStats() {
     count: index.count || files.length,
     lastReceivedAt: index.lastReceivedAt,
     files: files.length,
+    path: 'data/webhook-events/',
   };
 }
 
@@ -112,6 +117,11 @@ export function handleWebhookTopic(topic: string): {
       return {
         handled: true,
         note: 'App uninstall recorded — clear tokens in env before next sync.',
+      };
+    case 'app/scopes_update':
+      return {
+        handled: true,
+        note: 'Scope change recorded — run scope-health check on /admin/shopify.',
       };
     default:
       return { handled: false, note: `Unhandled topic ${topic}; raw event stored.` };
