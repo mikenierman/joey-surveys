@@ -93,7 +93,7 @@ Cleared vs wave 1: all seeds, login, merch (admin+rep), inventory cluster, wareh
 
 | Field | Value |
 |-------|-------|
-| Integration tip | `fb3495c` |
+| Integration tip | `b3ee8de` (QC log; link-crawl merge `fb3495c`) |
 | Worktree | `/private/tmp/d2r-merch-integration` |
 | Base (start of wave 3) | `eb39d09` |
 
