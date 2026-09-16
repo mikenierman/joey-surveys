@@ -181,3 +181,15 @@ Deferred from this parity branch:
 - **P2** Seed periods `2026-Q1` / `2025-Q4` / `2025-Q3` (disabled in switcher until exports exist)
 - **P2** Re-scrape Q2 live (vault baseline is all zeros)
 - **P0** Visit-level detail stays in field merch app / iframe — not admin rollup
+
+---
+
+## Inventory — levels table (`/admin/inventory`)
+
+_Appended 2026-09-16 · sandbox/inventory/admin-levels-table_
+
+1. **Zero-on-hand SKUs clutter the levels table** — ALP @ Adam Scott sample: many of 27 SKUs show 0 on hand / 0 available. No default hide for dead SKUs when reviewing active consignment.
+2. **No full-matrix export** — Levels requires manual store × warehouse filter iteration (~17 × 60). Audits need CSV/API “all warehouses × brands.”
+3. **Level GID is support-facing noise for most operators** — Useful for Shopify debugging; consider hide-behind “advanced” or copy-to-clipboard instead of a primary column.
+4. **Adjust action path unclear from capture** — Offline twin stubs Adjust per row; live adjust/reconcile flow should be documented and ideally linked from audit + transfers.
+5. **Webhook-miss backstop** — Manual Brand levels refresh exists because inventory webhooks fail; levels page should surface refresh age / stale warnings next to Export/Refresh.
