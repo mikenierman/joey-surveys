@@ -12,7 +12,8 @@ export default function ShopifyTestPage() {
   );
 
   const resultRows = sample.map((s) => {
-    const h = byDomain.get(s.domain.toLowerCase());
+    const domain = (s.domain || '').toLowerCase();
+    const h = domain ? byDomain.get(domain) : undefined;
     const status = !h
       ? 'not in health seed'
       : h.Status === 'Healthy'

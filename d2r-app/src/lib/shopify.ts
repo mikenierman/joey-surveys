@@ -46,14 +46,31 @@ export type ShopifyShopRow = {
   created?: string;
 };
 
+/** Normalize Title-Case / camelCase health rows from live scrapes. */
+function normalizeHealthRow(raw: Record<string, unknown>): ShopifyHealthRow {
+  const domain = String(raw.Domain ?? raw.domain ?? '');
+  const store = String(raw.Store ?? raw.store ?? raw.Name ?? raw.name ?? '');
+  const scopes = String(raw.Scopes ?? raw.scopes ?? '');
+  const status = String(raw.Status ?? raw.status ?? '');
+  const install = raw.Install ?? raw.install;
+  return {
+    Store: store,
+    Domain: domain,
+    Scopes: scopes,
+    Status: status,
+    Install: install != null ? String(install) : undefined,
+    missingScopes: Boolean(raw.missingScopes),
+  };
+}
+
 /** Offline scope-health table from vault scrape (no tokens). */
 export function getShopifyHealth(): ShopifyHealthSnapshot {
   const data = readSeedStore<{
     meta?: ShopifyHealthSnapshot['meta'];
     headers?: string[];
-    shops?: ShopifyHealthRow[];
+    shops?: Record<string, unknown>[];
   }>('shopify-health.json', {});
-  const shops = data.shops || [];
+  const shops = (data.shops || []).map(normalizeHealthRow);
   const healthy =
     data.meta?.healthy ??
     shops.filter((s) => s.Status === 'Healthy').length;
