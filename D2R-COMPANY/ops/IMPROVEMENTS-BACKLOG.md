@@ -13,7 +13,6 @@ Product upgrades for the **live** Direct2Retailers system. Twin agents rebuild p
 3. **Unify Brands vs Platform → Brand stores** — Live nav lists Brand stores under both Brands and Platform. One canonical entry (Platform) with a deep link from Brands—or a Brands hub that embeds health—would stop operators opening the wrong “stores” list (Shopify registry vs retail doors).
 
 ---
-
 ## Orders (`sandbox/orders/admin-list-sample` — 2026-09-16)
 
 Parity delivered in twin: admin list from `orders.json` with live headers + offline sample banner (page 1 of ~1034); drafts route stub.
@@ -107,7 +106,6 @@ Parity delivered in twin: rep `/merchandising` offline shell with period rollup 
 - **Offline queue count in D2R shell header** — pending sync chip outside iframe.
 - **Deep link store card → visit** — pass site_number + period into field app URL.
 - **Program picker** — support multi-program beyond `joey_circle_k`.
-
 
 ---
 
