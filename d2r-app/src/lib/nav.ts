@@ -17,38 +17,15 @@ export type NavGroup = {
 
 /**
  * Live-mapped routes that do not yet have a twin page — middleware → pending lane.
- * CRM/locations + merch stores promoted to table shells — removed from this list.
+ * Empty: cash ops, Shopify apps/test, transfer terms, emails/files, order timeline,
+ * and CRM/locations/merch stores all have offline stub or table-shell pages.
  */
-export const PENDING_ADMIN_PATHS: string[] = [
-  // Inventory / platform gaps
-  '/admin/inventory/transfers/terms',
-  '/admin/shopify/apps',
-  '/admin/shopify/test',
-  // Finance cash ops (outside payouts lane seeds)
-  '/admin/payments',
-  '/admin/deposits',
-  '/admin/receipts',
-  // Misc admin
-  '/admin/emails',
-  '/admin/files',
-  '/admin/diagnostics/order-timeline',
-];
+export const PENDING_ADMIN_PATHS: string[] = [];
 // Note: /admin/pulse/{goals,health,scores} owned by pulse lane — not pending.
 // Inventory levels/warehouses/businesses/transfers owned by inventory lanes.
-// CRM/locations + merch stores owned by table-shell pages (seed or honest empty).
 
 /** Live H1 / sidebar labels for pending-lane chrome (match SITE-MAP.md). */
-export const PENDING_LANE_TITLES: Record<string, string> = {
-  '/admin/inventory/transfers/terms': 'Transfer terms',
-  '/admin/shopify/apps': 'Shopify apps',
-  '/admin/shopify/test': 'Shopify test',
-  '/admin/payments': 'Payments',
-  '/admin/deposits': 'Deposits',
-  '/admin/receipts': 'Receipts',
-  '/admin/emails': 'Emails',
-  '/admin/files': 'Files',
-  '/admin/diagnostics/order-timeline': 'Order timeline',
-};
+export const PENDING_LANE_TITLES: Record<string, string> = {};
 
 export function isPendingAdminPath(pathname: string): boolean {
   const path = pathname.replace(/\/$/, '') || '/';

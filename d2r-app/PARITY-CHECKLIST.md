@@ -15,18 +15,18 @@ Aligned with [`D2R-COMPANY/ops/SITE-MAP.md`](../D2R-COMPANY/ops/SITE-MAP.md) and
 | P0 | Performance | `/admin/inventory/performance` | Partial | mapped-ui-only |
 | P0 | Brand levels refresh | `/admin/inventory/refresh` | Done | captured |
 | P0 | Transfers | `/admin/inventory/transfers` | Done (live headers) | captured |
-| P0 | Transfer terms | `/admin/inventory/transfers/terms` | Missing | mapped-ui-only |
+| P0 | Transfer terms | `/admin/inventory/transfers/terms` | Scaffold (versions + placeholder body) | mapped-ui-only |
 | P0 | Warehouses | `/admin/warehouses` | Done (60) | captured |
 | P0 | Merchandising admin | `/admin/merchandising` | Done (Q3; period UI partial) | captured |
 | P0 | Merch stores | `/admin/merchandising/stores` | Scaffold (empty grid; no store capture) | mapped-ui-only |
 | P0 | Merch field embed | `/merchandising` | Done (iframe) | stub-in-twin |
 | P0 | Shopify health + sync | `/admin/shopify` | Done (health table + sync) | captured |
-| P0 | Shopify apps / test | `/admin/shopify/apps`, `/test` | Missing | mapped-ui-only |
+| P0 | Shopify apps / test | `/admin/shopify/apps`, `/test` | Scaffold (no secrets; health-seed test) | mapped-ui-only |
 | P0 | Brand stores | `/admin/stores` | Done (29) | captured |
 | P0 | Users | `/admin/users` | Done (189 seed) | captured |
 | P1 | Orders | `/admin/orders` | Done (page-1 live headers) | captured |
 | P1 | Order drafts | `/admin/orders/drafts` | Scaffold | mapped-ui-only |
-| P1 | Order timeline diag | `/admin/diagnostics/order-timeline` | Missing | mapped-ui-only |
+| P1 | Order timeline diag | `/admin/diagnostics/order-timeline` | Scaffold (sample events) | mapped-ui-only |
 | P1 | Businesses | `/admin/businesses` | Done (51) | captured |
 | P1 | Rep assignments | `/admin/rep-assignments` | Done (page-1 / 11k prod) | captured |
 | P1 | Assignment relationships | `/admin/rep-assignments/relationships` | Scaffold (empty stub table) | mapped-ui-only |
@@ -36,7 +36,7 @@ Aligned with [`D2R-COMPANY/ops/SITE-MAP.md`](../D2R-COMPANY/ops/SITE-MAP.md) and
 | P2 | Commissions (+ review) | `/admin/commissions*` | Scaffold | stub / mapped |
 | P2 | Settlements (+ batch preview) | `/admin/settlements*` | Scaffold | stub / mapped |
 | P2 | Payouts (+ rules) | `/admin/payouts*` | Scaffold | stub / mapped |
-| P2 | Payments / deposits / receipts | `/admin/payments` etc. | Missing | mapped-ui-only |
+| P2 | Payments / deposits / receipts | `/admin/payments` etc. | Scaffold (offline sample rows) | mapped-ui-only |
 | P2 | Pulse hub + signals | `/admin/pulse`, `/signals` | Done (KPI capture) | captured / stub |
 | P2 | Pulse goals / health / scores | `/admin/pulse/*` | Missing (nav stubs) | mapped-ui-only |
 | P0 | Rep inventory / transfers | `/inventory*` | Partial | stub / mapped |

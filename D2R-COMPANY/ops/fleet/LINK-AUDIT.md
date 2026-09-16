@@ -55,8 +55,8 @@ Offline twin navigability for sidebar, cluster subnavs, and domain map routes.
 | `/admin/settlements` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/settlements/batch/preview` | missing→fixed | page added/restored on link-crawl branch |
 | `/admin/shopify` | ok | seed table or prior sandbox page |
-| `/admin/shopify/apps` | stub | PENDING_ADMIN_PATHS → PendingLane |
-| `/admin/shopify/test` | stub | PENDING_ADMIN_PATHS → PendingLane |
+| `/admin/shopify/apps` | ok | credential form stub (no secrets) + shop registry |
+| `/admin/shopify/test` | ok | connectivity harness from health seed |
 | `/admin/stores` | ok | seed table or prior sandbox page |
 | `/admin/users` | ok | seed table or prior sandbox page |
 | `/admin/warehouses` | missing→fixed | page added/restored on link-crawl branch |
@@ -75,7 +75,7 @@ Offline twin navigability for sidebar, cluster subnavs, and domain map routes.
 ## Peripheral / optional
 
 - `/signup`, `/test/dashboard`, non-admin `/stores` — mapped in rep-facing pack but outside admin audit chrome.
-- Payments/deposits/receipts remain **stub** (PendingLane) until finance lanes seed tables. CRM accounts/contacts/locations/sales-status/relationships + merch stores are table shells (seed-derived or honest empty).
+- Payments/deposits/receipts, Shopify apps/test, transfer terms, emails/files, and order timeline are **offline stubs** (tables + banners; no live finance/mail capture). CRM accounts/contacts/locations/sales-status/relationships + merch stores are table shells (seed-derived or honest empty). `PENDING_ADMIN_PATHS` is empty.
 
 ## Verification
 
