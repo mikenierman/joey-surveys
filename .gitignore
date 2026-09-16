@@ -10,3 +10,6 @@ yarn-error.log*
 build/
 dist/
 .DS_Store
+
+# Local secure backup vault (do not commit)
+D2R-SECURE-BACKUP/

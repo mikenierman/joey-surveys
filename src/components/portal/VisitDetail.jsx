@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { POS_ITEMS, POS_OPTS, requiredPhotoDefs } from '../../lib/visitLogic';
 import { resolveDivision, visitDurationMinutes } from '../../lib/reviewMetrics';
+import { scoreVisit } from '../../lib/compliance';
 
 function yn(val) {
   if (val === 'yes' || val === true) return <span className="fv good">Yes</span>;
@@ -83,7 +84,11 @@ export function VisitDetail({ visit, storeBySite, open, onClose }) {
     const division = resolveDivision(visit, storeBySite || new Map());
     const photos = visit.photo_urls || {};
     const defs = requiredPhotoDefs(sd);
-    return { sd, store, date, duration, division, photos, defs };
+    const compliance =
+      visit.compliance_score != null
+        ? { score: visit.compliance_score, band: scoreVisit(visit).band }
+        : scoreVisit(visit);
+    return { sd, store, date, duration, division, photos, defs, compliance };
   }, [visit, storeBySite]);
 
   if (!visit || !meta) {
@@ -95,7 +100,7 @@ export function VisitDetail({ visit, storeBySite, open, onClose }) {
     );
   }
 
-  const { sd, store, date, duration, division, photos, defs } = meta;
+  const { sd, store, date, duration, division, photos, defs, compliance } = meta;
   const inSet = sd.present === 'yes';
   const skipStock = sd.present === 'no';
 
@@ -120,8 +125,13 @@ export function VisitDetail({ visit, storeBySite, open, onClose }) {
               <br />
               REP {(visit.rep_name || '—').toUpperCase()} · {fmtDateTime(date).toUpperCase()}
               {duration != null ? ` · ${duration} MIN IN STORE` : ''}
+              {visit.dwell_seconds != null
+                ? ` · DWELL ${Math.round(visit.dwell_seconds / 60)} MIN`
+                : ''}
               <br />
               GPS {formatGps(visit, sd)}
+              <br />
+              COMPLIANCE {compliance.score} · {compliance.band.label.toUpperCase()}
             </div>
           </div>
           <button type="button" className="rp-pclose" onClick={onClose} aria-label="Close">

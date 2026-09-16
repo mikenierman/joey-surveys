@@ -1,10 +1,13 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import {
+  flushPendingVisits,
   loadStores,
   loadVisits,
+  pendingSyncCount,
   storeIsDone,
   submitVisit,
+  updateVisitStatus,
 } from './lib/data';
 import {
   PHASES,
@@ -12,6 +15,7 @@ import {
   POS_OPTS,
   compressImageFile,
   currentCycleKey,
+  dwellSeconds,
   freshVisit,
   formatLastVisitChip,
   requiredPhotoDefs,
@@ -22,9 +26,20 @@ import {
   GPS_STATUS,
   captureGps,
   evaluateLocation,
+  geofenceGate,
   locationBannerCopy,
 } from './lib/gps';
 import { uploadVisitPhotos } from './lib/photos';
+import { analyzePhotoDataUrl } from './lib/photoQuality';
+import { complianceScoreFromFlags } from './lib/compliance';
+import { auditLogin, auditLogout, auditStatusChange, auditVisitSubmit } from './lib/audit';
+import { loadProgramConfig, getCachedProgram } from './lib/programConfig';
+import { pogUrlForSet, sellSheetUrl } from './lib/mediaLibrary';
+import {
+  applyLocalAssignments,
+  sortStoresForRoute,
+  writeLocalAssignment,
+} from './lib/dispatch';
 import ReviewPortal from './components/ReviewPortal';
 
 const DEMO_PASSWORD = 'demo';
@@ -96,6 +111,11 @@ export default function JoeyApp() {
   const [bootLoading, setBootLoading] = useState(false);
   const [toast, setToast] = useState('');
   const [selectedVisit, setSelectedVisit] = useState(null);
+  const [pendingSync, setPendingSync] = useState(0);
+  const [program, setProgram] = useState(getCachedProgram());
+  const [online, setOnline] = useState(
+    typeof navigator === 'undefined' ? true : navigator.onLine
+  );
   const cycleKey = currentCycleKey();
 
   const showToast = useCallback((msg) => {
@@ -103,22 +123,42 @@ export default function JoeyApp() {
     setTimeout(() => setToast(''), 2800);
   }, []);
 
+  const refreshPending = useCallback(() => {
+    setPendingSync(pendingSyncCount());
+  }, []);
+
   const refreshData = useCallback(async () => {
     setBootLoading(true);
     try {
-      const [{ stores: s, source }, visitsData] = await Promise.all([
+      const [{ stores: s, source }, visitsData, prog] = await Promise.all([
         loadStores(),
         loadVisits(),
+        loadProgramConfig(),
       ]);
-      setStores(s);
+      setStores(applyLocalAssignments(s));
       setVisits(visitsData);
       setDataSource(source);
+      setProgram(prog);
+      setPendingSync(pendingSyncCount());
     } catch (e) {
       showToast(e.message || 'Error loading data');
     } finally {
       setBootLoading(false);
     }
   }, [showToast]);
+
+  const tryFlushQueue = useCallback(async () => {
+    if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+      refreshPending();
+      return;
+    }
+    const result = await flushPendingVisits({ uploadVisitPhotos });
+    refreshPending();
+    if (result.flushed > 0) {
+      showToast(`Synced ${result.flushed} visit${result.flushed === 1 ? '' : 's'}`);
+      await refreshData();
+    }
+  }, [refreshPending, showToast, refreshData]);
 
   useEffect(() => {
     const user = localStorage.getItem('joey_user');
@@ -131,6 +171,21 @@ export default function JoeyApp() {
     }
   }, [refreshData]);
 
+  useEffect(() => {
+    const onOnline = () => {
+      setOnline(true);
+      tryFlushQueue();
+    };
+    const onOffline = () => setOnline(false);
+    window.addEventListener('online', onOnline);
+    window.addEventListener('offline', onOffline);
+    if (navigator.onLine) tryFlushQueue();
+    return () => {
+      window.removeEventListener('online', onOnline);
+      window.removeEventListener('offline', onOffline);
+    };
+  }, [tryFlushQueue]);
+
   const myStores = useMemo(() => {
     if (!currentUser) return [];
     const email = (currentUser.email || '').toLowerCase();
@@ -138,9 +193,12 @@ export default function JoeyApp() {
       return stores;
     }
     if (email === DEMO_REP) {
-      return demoRouteStores(stores);
+      return sortStoresForRoute(demoRouteStores(stores), null);
     }
-    return stores.filter((s) => (s.assigned_to || '').toLowerCase() === email);
+    return sortStoresForRoute(
+      stores.filter((s) => (s.assigned_to || '').toLowerCase() === email),
+      null
+    );
   }, [stores, currentUser, userType]);
 
   const stats = useMemo(() => {
@@ -178,12 +236,13 @@ export default function JoeyApp() {
         return;
       }
       const role = roleForEmail(e);
-      const userObj = { email: e, name: displayName(e) };
+      const userObj = { email: e, name: displayName(e), role };
       localStorage.setItem('joey_user', JSON.stringify(userObj));
       localStorage.setItem('joey_user_type', role);
       setCurrentUser(userObj);
       setUserType(role);
       setView(homeViewForRole(role));
+      auditLogin({ email: e, role });
       await refreshData();
       showToast(`Welcome, ${userObj.name}`);
     } finally {
@@ -192,6 +251,7 @@ export default function JoeyApp() {
   };
 
   const handleLogout = () => {
+    auditLogout(currentUser?.email);
     localStorage.removeItem('joey_user');
     localStorage.removeItem('joey_user_type');
     setCurrentUser(null);
@@ -226,9 +286,18 @@ export default function JoeyApp() {
   };
 
   const handleSubmit = async () => {
-    const err = validateVisit(v);
+    const requireNote = program?.geofence?.requireExceptionNoteOnMismatch !== false;
+    const err = validateVisit(v, { requireGeofenceNote: requireNote });
     if (err) {
       showToast(err);
+      return;
+    }
+    const gate = geofenceGate(v, {
+      hardBlock: !!program?.geofence?.hardBlockSubmit,
+      requireNote,
+    });
+    if (gate.blocked) {
+      showToast(gate.reason);
       return;
     }
     setLoading(true);
@@ -249,7 +318,11 @@ export default function JoeyApp() {
           };
         }
       }
+      const checkedOutAt = new Date().toISOString();
+      visitState = { ...visitState, checkedOutAt };
       const flags = visitFlags(visitState);
+      const compliance_score = complianceScoreFromFlags(flags, visitState);
+      const dwell_seconds = dwellSeconds(visitState);
       const isException =
         visitState.exception === 'closed' || visitState.exception === 'inaccessible';
       const isRefusal = visitState.exception === 'refused';
@@ -269,22 +342,27 @@ export default function JoeyApp() {
         business_unit: activeStore.business_unit,
         pog_set: activeStore.pog_set,
         reset_date: activeStore.reset_date,
-        visit_date: new Date().toISOString(),
+        visit_date: checkedOutAt,
         cycle_key: cycleKey,
+        program_id: program?.id || 'joey-circlek',
         rep_name: currentUser.name,
         submitted_by: currentUser.email,
         status: isException ? 'exception' : isRefusal ? 'in_review' : 'submitted',
         followup,
         flags,
+        compliance_score,
+        dwell_seconds,
         survey_data,
         photo_urls,
         gps: visitState.gps,
       };
-      const { synced } = await submitVisit(payload);
+      const { visit, synced } = await submitVisit(payload);
+      auditVisitSubmit(visit || payload, { synced });
+      refreshPending();
       showToast(
         synced
           ? `CK #${activeStore.site_number} submitted`
-          : `CK #${activeStore.site_number} saved (will sync)`
+          : `CK #${activeStore.site_number} saved offline — will sync`
       );
       setView('route');
       setActiveStore(null);
@@ -294,6 +372,24 @@ export default function JoeyApp() {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleIssueStatus = async (visitId, nextStatus) => {
+    const prev = visits.find((x) => x.id === visitId);
+    const from = prev?.issue_status || prev?.status || null;
+    await updateVisitStatus(visitId, prev?.status || 'in_review', {
+      issue_status: nextStatus,
+      issue_assignee: currentUser?.email || null,
+    });
+    auditStatusChange(visitId, from, nextStatus, currentUser?.email);
+    showToast(`Issue → ${nextStatus}`);
+    await refreshData();
+  };
+
+  const handleAssignStore = (siteNumber, email) => {
+    writeLocalAssignment(siteNumber, email);
+    setStores((prev) => applyLocalAssignments(prev));
+    showToast(`Assigned CK #${siteNumber}`);
   };
 
   if (view === 'login') {
@@ -308,6 +404,7 @@ export default function JoeyApp() {
         stores={stores}
         cycleKey={cycleKey}
         dataSource={dataSource}
+        program={program}
         onLogout={handleLogout}
         onBackToRoute={() => setView('route')}
         selectedVisit={selectedVisit}
@@ -316,6 +413,9 @@ export default function JoeyApp() {
         showToast={showToast}
         bootLoading={bootLoading}
         onRefresh={refreshData}
+        onIssueStatus={handleIssueStatus}
+        onAssignStore={handleAssignStore}
+        currentUser={currentUser}
       />
     );
   }
@@ -327,7 +427,11 @@ export default function JoeyApp() {
         setV={setV}
         activeStore={activeStore}
         visits={visits}
-        validate={() => validateVisit(v)}
+        validate={() =>
+          validateVisit(v, {
+            requireGeofenceNote: program?.geofence?.requireExceptionNoteOnMismatch !== false,
+          })
+        }
         onSubmit={handleSubmit}
         onRetryGps={() => refreshVisitGps(activeStore)}
         onBack={() => {
@@ -336,6 +440,7 @@ export default function JoeyApp() {
         }}
         loading={loading}
         toast={toast}
+        program={program}
       />
     );
   }
@@ -358,6 +463,10 @@ export default function JoeyApp() {
       onAdminClick={() => setView('admin')}
       onLogout={handleLogout}
       toast={toast}
+      pendingSync={pendingSync}
+      online={online}
+      onFlush={tryFlushQueue}
+      program={program}
     />
   );
 }
@@ -456,6 +565,10 @@ function RouteView({
   onAdminClick,
   onLogout,
   toast,
+  pendingSync = 0,
+  online = true,
+  onFlush,
+  program,
 }) {
   const pct = stats.total > 0 ? Math.round((100 * stats.done) / stats.total) : 0;
   const circ = 2 * Math.PI * 50;
@@ -469,9 +582,24 @@ function RouteView({
           <p className="rep-name">
             {currentUser?.name} · {cycleKey}
             {dataSource ? ` · ${dataSource}` : ''}
+            {program?.brand ? ` · ${program.brand}` : ''}
           </p>
         </div>
         <div className="header-buttons">
+          {pendingSync > 0 ? (
+            <button
+              type="button"
+              className="admin-btn sync-pending"
+              onClick={onFlush}
+              title="Flush offline queue"
+            >
+              {online ? `Sync ${pendingSync}` : `Offline · ${pendingSync}`}
+            </button>
+          ) : (
+            <span className={`sync-chip ${online ? 'ok' : 'off'}`}>
+              {online ? 'Online' : 'Offline'}
+            </span>
+          )}
           {userType === 'manager' || userType === 'admin' ? (
             <button className="admin-btn" onClick={onAdminClick}>
               Dashboard
@@ -658,15 +786,26 @@ function PhaseHead({ phase, status }) {
 function PhotoCapture({ id, label, photo, onCapture, onClear }) {
   const inputRef = useRef(null);
   const [busy, setBusy] = useState(false);
+  const [qualityMsg, setQualityMsg] = useState(null);
 
   const onFile = async (e) => {
     const file = e.target.files?.[0];
     e.target.value = '';
     if (!file) return;
     setBusy(true);
+    setQualityMsg(null);
     try {
       const compressed = await compressImageFile(file);
-      onCapture(id, compressed);
+      let quality = null;
+      try {
+        quality = await analyzePhotoDataUrl(compressed.dataUrl);
+      } catch {
+        /* quality optional */
+      }
+      const next = { ...compressed, quality };
+      onCapture(id, next);
+      if (quality && !quality.ok) setQualityMsg(quality.message);
+      else setQualityMsg(null);
     } catch (err) {
       alert(err.message || 'Photo failed');
     } finally {
@@ -675,8 +814,9 @@ function PhotoCapture({ id, label, photo, onCapture, onClear }) {
   };
 
   if (photo?.dataUrl) {
+    const q = photo.quality;
     return (
-      <div className="photo-slot captured has-img">
+      <div className={`photo-slot captured has-img${q && !q.ok ? ' quality-warn' : ''}`}>
         <img src={photo.dataUrl} alt={label} />
         <button type="button" className="retake" onClick={() => onClear(id)}>
           RETAKE
@@ -688,6 +828,9 @@ function PhotoCapture({ id, label, photo, onCapture, onClear }) {
             minute: '2-digit',
           })}
         </span>
+        {q && !q.ok ? (
+          <span className="quality-hint">{q.message || 'Retake recommended'}</span>
+        ) : null}
       </div>
     );
   }
@@ -702,6 +845,7 @@ function PhotoCapture({ id, label, photo, onCapture, onClear }) {
       <span className="cam">{busy ? '…' : '📷'}</span>
       <span className="slot-label">{label}</span>
       <span className="req">REQUIRED · CAMERA</span>
+      {qualityMsg ? <span className="quality-hint">{qualityMsg}</span> : null}
       <input
         ref={inputRef}
         type="file"
@@ -725,9 +869,19 @@ function CheckView({
   onBack,
   loading,
   toast,
+  program,
 }) {
   const [showEscape, setShowEscape] = useState(false);
   const [refSheet, setRefSheet] = useState(null); // 'pog' | 'sell' | null
+  const [dwellTick, setDwellTick] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setDwellTick((n) => n + 1), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const dwell = dwellSeconds(v) ?? 0;
+  void dwellTick; // re-render ticker
 
   const setF = (field, val) => {
     setV((prev) => {
@@ -906,6 +1060,19 @@ function CheckView({
 
       <LocationBanner v={v} onRetry={onRetryGps} />
 
+      {v.locationMismatch && !isExceptionPath ? (
+        <div className="geo-note-panel">
+          <label htmlFor="geo-exception-note">Location mismatch note (required)</label>
+          <textarea
+            id="geo-exception-note"
+            className={(v.exceptionNote || '').trim().length < 3 ? 'needed' : ''}
+            placeholder="Why is GPS outside the store radius? (parking lot, GPS drift, …)"
+            value={v.exceptionNote}
+            onChange={(e) => setV((p) => ({ ...p, exceptionNote: e.target.value }))}
+          />
+        </div>
+      ) : null}
+
       {isExceptionPath ? (
         <div className="visit-content">
           <div className="phase-card">
@@ -928,6 +1095,9 @@ function CheckView({
         <div className="meta-row">
           <span className="meta-chip">{visitDateLabel}</span>
           <span className="meta-chip">{startedLabel}</span>
+          <span className="meta-chip">
+            On site {Math.floor(dwell / 60)}:{String(dwell % 60).padStart(2, '0')}
+          </span>
           <span className="meta-chip">POG Set {activeStore?.pog_set || '—'}</span>
           <span className="meta-chip">
             {activeStore?.reset_date
@@ -1434,17 +1604,20 @@ function CheckView({
                     : ''}
                   .
                 </p>
-                <p className="muted">
-                  JOEY-provided POG page images will appear here once supplied. Until then,
-                  use this set number to match the physical backbar.
-                </p>
+                <img
+                  className="ref-media"
+                  src={pogUrlForSet(activeStore?.pog_set, program)}
+                  alt={`POG set ${activeStore?.pog_set || ''}`}
+                />
               </div>
             ) : (
               <div className="ref-body">
                 <p>Use the JOEY sell sheet while educating the manager or clerk.</p>
-                <p className="muted">
-                  JOEY-provided sell sheet pages will appear here once supplied.
-                </p>
+                <img
+                  className="ref-media"
+                  src={sellSheetUrl(program)}
+                  alt="JOEY sell sheet"
+                />
               </div>
             )}
           </div>

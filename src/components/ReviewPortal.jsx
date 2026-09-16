@@ -5,6 +5,9 @@ import {
   enrichVisitRow,
   filterAndSortVisits,
 } from '../lib/reviewMetrics';
+import { buildIssueQueue, scoreVisit } from '../lib/compliance';
+import { territorySummary } from '../lib/dispatch';
+import { readAuditEvents } from '../lib/audit';
 import { Button } from './ui/button';
 import { DivisionBars, KpiDash, StorePulse } from './portal/KpiDash';
 import { VisitTable } from './portal/VisitTable';
@@ -25,6 +28,7 @@ export default function ReviewPortal({
   stores,
   cycleKey,
   dataSource,
+  program,
   onLogout,
   onBackToRoute,
   selectedVisit,
@@ -33,6 +37,9 @@ export default function ReviewPortal({
   showToast,
   bootLoading,
   onRefresh,
+  onIssueStatus,
+  onAssignStore,
+  currentUser,
 }) {
   const isClient = mode === 'client';
   const [filters, setFilters] = useState({
@@ -43,6 +50,9 @@ export default function ReviewPortal({
     sort: 'date_desc',
   });
   const [shown, setShown] = useState(PAGE);
+  const [assignSite, setAssignSite] = useState('');
+  const [assignEmail, setAssignEmail] = useState('');
+  const [showAudit, setShowAudit] = useState(false);
 
   const metrics = useMemo(
     () => computeReviewMetrics(stores, visits, cycleKey),
@@ -55,6 +65,21 @@ export default function ReviewPortal({
     );
     return filterAndSortVisits(enriched, filters);
   }, [metrics, filters]);
+
+  const issues = useMemo(() => buildIssueQueue(visits), [visits]);
+  const territories = useMemo(() => territorySummary(stores).slice(0, 8), [stores]);
+  const auditEvents = useMemo(
+    () => (showAudit ? readAuditEvents().slice(0, 40) : []),
+    [showAudit, visits]
+  );
+
+  const avgCompliance = useMemo(() => {
+    const scored = (metrics.cycleVisits || []).map((v) =>
+      v.compliance_score != null ? v.compliance_score : scoreVisit(v).score
+    );
+    if (!scored.length) return null;
+    return Math.round(scored.reduce((a, b) => a + b, 0) / scored.length);
+  }, [metrics]);
 
   useEffect(() => {
     setShown(PAGE);
@@ -94,11 +119,12 @@ export default function ReviewPortal({
               <img className="rp-logo-joey" src="/branding/joey-logo.png" alt="JOEY" />
             </div>
             <div className="rp-titleblock">
-              <h1>JOEY × Circle K Merchandising</h1>
+              <h1>{program?.name || 'JOEY × Circle K Merchandising'}</h1>
               <div className="rp-sub">
                 {isClient
                   ? 'VISIT REVIEW PORTAL · CLIENT (READ-ONLY)'
                   : 'VISIT REVIEW PORTAL · ADMIN'}
+                {program?.id ? ` · ${program.id}` : ''}
               </div>
             </div>
           </div>
@@ -107,12 +133,20 @@ export default function ReviewPortal({
             <div className="rp-chip">
               {metrics.assigned.toLocaleString()} STORES ASSIGNED
             </div>
+            {avgCompliance != null ? (
+              <div className="rp-chip">AVG COMPLIANCE {avgCompliance}</div>
+            ) : null}
             {!isClient && dataSource ? (
               <div className="rp-chip">{String(dataSource).toUpperCase()}</div>
             ) : null}
             {!isClient ? (
               <Button variant="outline" onClick={onBackToRoute}>
                 Route
+              </Button>
+            ) : null}
+            {!isClient ? (
+              <Button variant="outline" onClick={() => setShowAudit((s) => !s)}>
+                {showAudit ? 'Hide audit' : 'Audit log'}
               </Button>
             ) : null}
             <Button variant="outline" onClick={onRefresh}>
@@ -131,6 +165,115 @@ export default function ReviewPortal({
           activeDivision={filters.division}
           onSelect={onDivisionSelect}
         />
+
+        {!isClient && territories.length > 0 ? (
+          <section className="rp-panel-block">
+            <h2 className="rp-section-title">Territories / dispatch</h2>
+            <div className="rp-territory-grid">
+              {territories.map((t) => (
+                <div key={t.division} className="rp-territory-card">
+                  <strong>{t.division}</strong>
+                  <span>
+                    {t.count} stores · {t.repCount} reps
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="rp-assign-row">
+              <input
+                placeholder="Site #"
+                value={assignSite}
+                onChange={(e) => setAssignSite(e.target.value)}
+              />
+              <input
+                placeholder="Rep email"
+                value={assignEmail}
+                onChange={(e) => setAssignEmail(e.target.value)}
+              />
+              <Button
+                variant="outline"
+                onClick={() => {
+                  if (!assignSite.trim()) return;
+                  onAssignStore?.(assignSite.trim(), assignEmail.trim().toLowerCase());
+                  setAssignSite('');
+                  setAssignEmail('');
+                }}
+              >
+                Assign store
+              </Button>
+            </div>
+          </section>
+        ) : null}
+
+        {!isClient && issues.length > 0 ? (
+          <section className="rp-panel-block">
+            <h2 className="rp-section-title">Open issues ({issues.length})</h2>
+            <div className="rp-issue-list">
+              {issues.slice(0, 12).map((issue) => (
+                <div key={issue.id} className="rp-issue-row">
+                  <button
+                    type="button"
+                    className="rp-issue-main"
+                    onClick={() => setSelectedVisit(issue.visit)}
+                  >
+                    <strong>CK #{issue.store_number}</strong>
+                    <span className={`rp-score ${issue.band.key}`}>
+                      Score {issue.score} · {issue.band.label}
+                    </span>
+                    <span className="rp-issue-flags">
+                      {(issue.flags || []).slice(0, 3).join(' · ') || 'Follow-up'}
+                    </span>
+                  </button>
+                  <select
+                    value={issue.status}
+                    onChange={(e) => onIssueStatus?.(issue.id, e.target.value)}
+                    aria-label="Issue status"
+                  >
+                    <option value="open">Open</option>
+                    <option value="in_progress">In progress</option>
+                    <option value="closed">Closed</option>
+                  </select>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
+        {showAudit && !isClient ? (
+          <section className="rp-panel-block">
+            <h2 className="rp-section-title">Audit log (local)</h2>
+            <ul className="rp-audit-list">
+              {auditEvents.length === 0 ? (
+                <li>No events yet</li>
+              ) : (
+                auditEvents.map((ev) => (
+                  <li key={ev.id}>
+                    <code>{ev.at}</code> · {ev.type}
+                    {ev.actor ? ` · ${ev.actor}` : ''}
+                    {ev.store_number ? ` · CK#${ev.store_number}` : ''}
+                    {ev.from && ev.to ? ` · ${ev.from}→${ev.to}` : ''}
+                  </li>
+                ))
+              )}
+            </ul>
+            <p className="rp-muted">
+              Signed in as {currentUser?.email || '—'} ({currentUser?.role || mode})
+            </p>
+          </section>
+        ) : null}
+
+        {program?.phases?.length ? (
+          <section className="rp-panel-block">
+            <h2 className="rp-section-title">Survey config ({program.id})</h2>
+            <div className="rp-phase-pills">
+              {program.phases.map((p) => (
+                <span key={p.key} className="rp-chip">
+                  {p.num} {p.name}
+                </span>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <VisitTable
           rows={rows}

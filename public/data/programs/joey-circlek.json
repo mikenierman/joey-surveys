@@ -1,0 +1,31 @@
+{
+  "id": "joey-circlek",
+  "name": "JOEY × Circle K Merchandising",
+  "brand": "JOEY",
+  "client": "joeypouches.com",
+  "chain": "Circle K",
+  "version": 1,
+  "cycle": "quarterly",
+  "media": {
+    "sellSheet": "/media/joey/sell-sheet.svg",
+    "pogBase": "/media/joey/pog"
+  },
+  "geofence": {
+    "softRadiusM": 500,
+    "hardBlockSubmit": false,
+    "requireExceptionNoteOnMismatch": true
+  },
+  "roles": {
+    "clientDomains": ["joeypouches.com"],
+    "adminEmails": ["mike@direct2retailers.com"]
+  },
+  "phases": [
+    { "key": "checkin", "num": "01", "name": "Check in" },
+    { "key": "find", "num": "02", "name": "Find it" },
+    { "key": "stock", "num": "03", "name": "Check and fill" },
+    { "key": "fix", "num": "04", "name": "Fix it" },
+    { "key": "pos", "num": "05", "name": "POS it" },
+    { "key": "edu", "num": "06", "name": "Educate and price" },
+    { "key": "photo", "num": "07", "name": "Photo it" }
+  ]
+}

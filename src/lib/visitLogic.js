@@ -219,7 +219,7 @@ export const PHASES = [
   { key: 'photo', num: '07', name: 'Photo it', st: phasePhoto },
 ];
 
-export function validateVisit(v) {
+export function validateVisit(v, opts = {}) {
   if (v.exception === 'closed' || v.exception === 'inaccessible' || v.exception === 'refused') {
     if (v.exception === 'refused' && v.exceptionNote.trim() === '') {
       return 'Refusal: add a short note (clerk / reason)';
@@ -232,7 +232,24 @@ export function validateVisit(v) {
       return `${p.name}: complete required answers`;
     }
   }
+  // Soft geofence: require note when mismatched (presence proof)
+  if (opts.requireGeofenceNote && v.locationMismatch) {
+    const note = (v.exceptionNote || v.followNote || '').trim();
+    if (note.length < 3) {
+      return 'Location mismatch: add a short note explaining why GPS is off-store';
+    }
+  }
   return null;
+}
+
+/** Dwell / time-on-site seconds from startedAt (+ optional heartbeat). */
+export function dwellSeconds(v, now = Date.now()) {
+  const start = v?.startedAt ? new Date(v.startedAt).getTime() : null;
+  if (!start || Number.isNaN(start)) return null;
+  const end = v?.checkedOutAt ? new Date(v.checkedOutAt).getTime() : now;
+  const sec = Math.round((end - start) / 1000);
+  if (sec < 0 || sec > 24 * 3600) return null;
+  return sec;
 }
 
 export function currentCycleKey(date = new Date()) {

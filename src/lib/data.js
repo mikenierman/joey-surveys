@@ -97,6 +97,105 @@ export function storeIsDone(store, visits, cycleKey = currentCycleKey()) {
   );
 }
 
+export function pendingSyncCount() {
+  return readLocalVisits().filter((v) => v._pending || v.status === 'pending_sync').length;
+}
+
+export function listPendingVisits() {
+  return readLocalVisits().filter((v) => v._pending || v.status === 'pending_sync');
+}
+
+/**
+ * Flush offline queue when back online.
+ * Re-uploads data-URL photos when possible, then inserts to Supabase.
+ */
+export async function flushPendingVisits({ uploadVisitPhotos } = {}) {
+  const pending = listPendingVisits();
+  if (!pending.length) {
+    return { flushed: 0, failed: 0, remaining: 0 };
+  }
+  if (!supabase || (typeof navigator !== 'undefined' && navigator.onLine === false)) {
+    return { flushed: 0, failed: 0, remaining: pending.length };
+  }
+
+  let flushed = 0;
+  let failed = 0;
+  const kept = [];
+  const all = readLocalVisits();
+  const pendingIds = new Set(pending.map((v) => v.id));
+
+  for (const visit of pending) {
+    try {
+      let photo_urls = visit.photo_urls || {};
+      const needsUpload = Object.values(photo_urls).some(
+        (u) => typeof u === 'string' && u.startsWith('data:')
+      );
+      if (needsUpload && typeof uploadVisitPhotos === 'function') {
+        // Rebuild photo objects for uploader
+        const photos = {};
+        Object.entries(photo_urls).forEach(([id, url]) => {
+          if (typeof url === 'string' && url.startsWith('data:')) {
+            photos[id] = { dataUrl: url, capturedAt: visit.created_at };
+          } else if (typeof url === 'string') {
+            photos[id] = url;
+          }
+        });
+        const up = await uploadVisitPhotos({
+          cycleKey: visit.cycle_key,
+          storeNumber: visit.store_number,
+          photos,
+        });
+        photo_urls = up.photo_urls;
+      }
+
+      const { _pending, ...rest } = visit;
+      const row = {
+        ...rest,
+        photo_urls,
+        status: visit.exception ? 'exception' : 'submitted',
+      };
+      delete row.id;
+      const { data, error } = await supabase.from('visits').insert([row]).select().single();
+      if (error) {
+        if (/duplicate|unique/i.test(error.message || '')) {
+          flushed += 1;
+          continue;
+        }
+        throw error;
+      }
+      if (data) flushed += 1;
+      else throw new Error('no data');
+    } catch {
+      failed += 1;
+      kept.push(visit);
+    }
+  }
+
+  const others = all.filter((v) => !pendingIds.has(v.id));
+  writeLocalVisits([...kept, ...others]);
+  return { flushed, failed, remaining: kept.length };
+}
+
+export async function updateVisitStatus(visitId, status, patch = {}) {
+  if (!visitId) throw new Error('Missing visit id');
+  if (supabase && !String(visitId).startsWith('local-')) {
+    const { data, error } = await supabase
+      .from('visits')
+      .update({ status, ...patch })
+      .eq('id', visitId)
+      .select()
+      .single();
+    if (!error && data) return { visit: data, synced: true };
+  }
+  const local = readLocalVisits();
+  const next = local.map((v) =>
+    v.id === visitId ? { ...v, status, ...patch } : v
+  );
+  writeLocalVisits(next);
+  const visit = next.find((v) => v.id === visitId);
+  return { visit, synced: false };
+}
+
 export async function submitVisit(payload) {
   const cycle_key = payload.cycle_key || currentCycleKey();
   const row = {

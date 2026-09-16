@@ -175,6 +175,28 @@ export function formatDistance(meters) {
   return `${(meters / 1609.344).toFixed(1)} mi`;
 }
 
+/**
+ * Soft geofence by default. When hardBlock is true and store has coords,
+ * mismatch without an exception note should block submit (caller enforces).
+ */
+export function geofenceGate(v, { hardBlock = false, requireNote = true } = {}) {
+  if (!v?.locationMismatch) {
+    return { blocked: false, reason: null };
+  }
+  if (!hardBlock) {
+    return { blocked: false, reason: null };
+  }
+  const note = (v.exceptionNote || v.followNote || '').trim();
+  if (requireNote && note.length < 3) {
+    return {
+      blocked: true,
+      reason:
+        'You are outside the store radius. Add a short exception note (or move closer) before submitting.',
+    };
+  }
+  return { blocked: false, reason: null };
+}
+
 export function locationBannerCopy(v) {
   const status = v?.gpsStatus || GPS_STATUS.PENDING;
   const dist = formatDistance(v?.gpsDistanceM);
@@ -206,7 +228,7 @@ export function locationBannerCopy(v) {
         title: dist
           ? `Location mismatch · ${dist} from store`
           : 'Location mismatch',
-        body: 'Outside the expected store radius. Visit flagged LOCATION_MISMATCH (not blocked).',
+        body: 'Outside the expected store radius. Flagged LOCATION_MISMATCH — add a short note before submit.',
       };
     case GPS_STATUS.DENIED:
       return {
