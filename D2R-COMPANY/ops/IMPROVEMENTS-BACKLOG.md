@@ -352,3 +352,15 @@ When mapping, add bullets to domain `IMPROVEMENTS.md`. TC copies P0/P1 into this
 3. **Cash-ops shells** — Live nav `/admin/payments`, `/admin/deposits`, `/admin/receipts` remain mapped-ui-only (out of this sandbox).
 4. **Interactive money actions** — Approve/Reject/Adjust, Run payouts, Commit settlement are offline-labeled stubs only.
 5. **Report runner exports** — Brand/rep sales still use ledger proxies; need dedicated brand-sales / rep-sales captures. Client-side period/brand/status filters still placeholder “All”.
+
+---
+
+## Append · 2026-09-16 · gap audit (`ops/fleet/GAP-AUDIT-2026-09-16.md`)
+
+Live-system items surfaced by the offline twin gap audit (not already covered above as primary bullets):
+
+1. **Upgrade Next.js off `15.5.7`** — lockfile marks this release deprecated (security-update-2025-12-11); ship ≥15.5.9 (or current patched 15.x) before any company Vercel staging deploy.
+2. **Commissions live scrape unblock** — `/admin/commissions` stuck on “Loading orders…” (0 rows in 2026-09-16 capture); fix live review loader or export path so weekly finance truth can replace twin scaffold seeds.
+3. **Authenticated pagination / export jobs** — same Top-5 theme, restated for cutover: orders ~1034 pages, assignments ~227 / 11k+, transfers ~21, inventory full warehouse×brand matrix — page-1 samples are audit blockers, not just UX debt.
+
+See also twin-only gaps in `ops/fleet/GAP-AUDIT-2026-09-16.md` (do not implement those in live product PRs).
