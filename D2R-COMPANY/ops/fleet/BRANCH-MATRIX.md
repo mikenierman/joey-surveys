@@ -44,6 +44,7 @@ Integration target (until cutover): prefer merging sandboxes into `main` only vi
 | `sandbox/crm/rep-assignments-page1` | Assignments page-1 columns from seed | 9 CRM | rep-assignments, assignments seed | delete / revert | users-table |
 | `sandbox/crm/retail-stores-stub` | Retail stores / businesses listing | 9 CRM | retail-stores, businesses (coord inventory if shared) | delete / revert | rep-assignments |
 | `sandbox/reports/hub-and-runners` | Reports hub + four runners seed-backed stubs | 10 Reports | admin/reports/** | delete / revert | crm |
+| `sandbox/qa/link-crawl-build` | **Registered tip `65b3ad4`** — nav 1:1 crawlable audit; `LINK-AUDIT.md`; 21 restored routes; 16 intentional `PendingLane` stubs. Cut from older integration `3499bc3` (not current tip). **tsc + qc-twin-smoke PASS on branch tip. Not pushed.** | 11 QA | `LINK-AUDIT.md`, PendingLane titles, restored route stubs, root/`orders`/`inventory` shells | delete / revert | **AFTER** wave 3 domain merges (orders → shopify → pulse/CRM/payouts). Prefer link-audit + PendingLane titles; keep newer wave2/3 domain pages on conflict. |
 
 ---
 
