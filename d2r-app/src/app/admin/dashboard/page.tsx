@@ -1,13 +1,45 @@
 import Link from 'next/link';
 import { PageTitle, StatCard, StubNote } from '@/components/ui';
 import { PulseKpiGrid } from '@/components/pulse-kpi-grid';
+import { DashboardTabs } from '@/components/dashboard-tabs';
+import { MerchEmbed } from '@/components/merch-embed';
 import {
   formatPulseSignalValue,
   getDashboardKpis,
   getInventorySample,
 } from '@/lib/data';
+import { getMerchAppUrl } from '@/lib/merch-app-url';
 
-export default function AdminDashboardPage() {
+export default async function AdminDashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const { tab: tabParam } = await searchParams;
+  const tab = tabParam === 'merchandising' ? 'merchandising' : 'overview';
+
+  if (tab === 'merchandising') {
+    const merchUrl = getMerchAppUrl();
+    return (
+      <div>
+        <PageTitle
+          title="Admin dashboard"
+          subtitle="Merchandising field app (JOEY × Circle K)."
+        />
+        <DashboardTabs active="merchandising" />
+        <StubNote>
+          Full visit engine (GPS, photos, 7-phase survey) embeds from{' '}
+          <code>{merchUrl}</code>. Admin rollup stays at{' '}
+          <Link href="/admin/merchandising" className="underline">
+            Programs
+          </Link>
+          .
+        </StubNote>
+        <MerchEmbed heightClass="h-[80vh]" />
+      </div>
+    );
+  }
+
   const kpis = getDashboardKpis();
   const inv = getInventorySample();
   const skuCount = inv.items.length;
@@ -23,6 +55,7 @@ export default function AdminDashboardPage() {
         title="Admin dashboard"
         subtitle="Ops overview from live continuity exports (2026-09-16)."
       />
+      <DashboardTabs active="overview" />
       <StubNote>
         Offline twin — ledger + Adam Scott pulse KPIs from{' '}
         <code>pulse-signals.json</code>. No dedicated dashboard capture yet; company
@@ -117,16 +150,12 @@ export default function AdminDashboardPage() {
               </Link>
             </li>
             <li>
-              <Link href="/admin/pulse/scores">Pulse scores (stub)</Link>
+              <Link href="/admin/dashboard?tab=merchandising">
+                Merchandising (field app tab)
+              </Link>
             </li>
             <li>
-              <Link href="/admin/pulse/goals">Pulse goals (stub)</Link>
-            </li>
-            <li>
-              <Link href="/admin/pulse/health">Pulse health (stub)</Link>
-            </li>
-            <li>
-              <Link href="/admin/merchandising">Merchandising / JOEY</Link>
+              <Link href="/admin/merchandising">Merchandising programs (rollup)</Link>
             </li>
             <li>
               <Link href="/admin/shopify">Shopify connection</Link>
@@ -136,7 +165,8 @@ export default function AdminDashboardPage() {
         <div className="rounded-xl border border-stone-200 bg-white p-4 text-sm text-stone-600">
           <h2 className="font-medium text-stone-900">Parity status</h2>
           <p className="mt-2">
-            Dashboard: ledger + platform snapshot + Adam Scott pulse sample.
+            Dashboard: ledger + platform snapshot + Adam Scott pulse sample + Merchandising
+            tab (full field app iframe).
           </p>
           <p className="mt-1">
             Pulse signals: full 10-KPI dict offline. Goals / scores / health: stub

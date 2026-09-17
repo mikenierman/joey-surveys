@@ -101,6 +101,7 @@ export const ADMIN_NAV_GROUPS: NavGroup[] = [
   {
     label: 'Merchandising',
     items: [
+      { href: '/admin/dashboard?tab=merchandising', label: 'Field app' },
       { href: '/admin/merchandising', label: 'Programs' },
       { href: '/admin/merchandising/stores', label: 'Stores' },
     ],

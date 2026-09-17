@@ -20,6 +20,8 @@ import {
   type MerchRep,
 } from '@/lib/merchandising';
 import { resolveRepScope } from '@/lib/rep-scope';
+import { getMerchAppUrl } from '@/lib/merch-app-url';
+import { MerchEmbed } from '@/components/merch-embed';
 import { MerchRouteShell } from './route-shell';
 import {
   getMerchRouteStores,
@@ -53,7 +55,7 @@ export default async function MerchandisingEmbedPage({
   const repRow = resolveRepRow(reps, user);
   const allPeriods = getMerchPeriodOptions(program);
   const seededPeriods = getMerchSeedPeriods();
-  const merchUrl = process.env.NEXT_PUBLIC_MERCH_APP_URL;
+  const merchUrl = getMerchAppUrl();
   const { stores, demoMappedTo, source } = getMerchRouteStores(user);
   const scope = resolveRepScope(user);
 
@@ -113,19 +115,9 @@ export default async function MerchandisingEmbedPage({
         </p>
       )}
 
-      {merchUrl ? (
-        <div className="mt-6 overflow-hidden rounded-xl border border-stone-300 bg-white shadow-sm">
-          <div className="border-b border-stone-200 bg-stone-50 px-3 py-2 text-xs uppercase tracking-wide text-stone-500">
-            Live field app (online only)
-          </div>
-          <iframe
-            title="JOEY merchandising"
-            src={merchUrl}
-            className="h-[70vh] w-full border-0"
-            allow="geolocation; camera; microphone"
-          />
-        </div>
-      ) : null}
+      <div className="mt-6">
+        <MerchEmbed title="JOEY merchandising" heightClass="h-[70vh]" />
+      </div>
     </AppShell>
   );
 }

@@ -1,6 +1,8 @@
 import { PageTitle, StatCard, StubNote } from '@/components/ui';
 import { MerchPeriodSwitcher } from '@/components/merch-period-switcher';
 import { MerchRepTable } from '@/components/merch-rep-table';
+import { MerchEmbed } from '@/components/merch-embed';
+import { getMerchAppUrl } from '@/lib/merch-app-url';
 import {
   getMerchPeriodOptions,
   getMerchProgram,
@@ -21,7 +23,7 @@ export default async function AdminMerchandisingPage({
   const reps = getMerchReps(program);
   const allPeriods = getMerchPeriodOptions(program);
   const seededPeriods = getMerchSeedPeriods();
-  const merchUrl = process.env.NEXT_PUBLIC_MERCH_APP_URL;
+  const merchUrl = getMerchAppUrl();
 
   const totals = reps.reduce(
     (acc, r) => ({
@@ -50,9 +52,9 @@ export default async function AdminMerchandisingPage({
         basePath="/admin/merchandising"
       />
       <StubNote>
-        Admin rollup from vault export — offline-safe. Field visits run in the merch
-        module{merchUrl ? ` (${merchUrl})` : ''}; embed at <code>/merchandising</code>{' '}
-        when online. Periods without vault files are shown disabled.
+        Admin rollup from vault export — offline-safe. Full field app embeds below from{' '}
+        <code>{merchUrl}</code> (also on Dashboard → Merchandising tab). Periods without
+        vault files are shown disabled.
       </StubNote>
       {reps.length ? (
         <>
@@ -71,6 +73,12 @@ export default async function AdminMerchandisingPage({
           <code>data/seed/merchandising-joey_circle_k-{period}.json</code>.
         </p>
       )}
+      <div className="mt-8">
+        <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-stone-500">
+          Field app
+        </h2>
+        <MerchEmbed heightClass="h-[70vh]" />
+      </div>
     </div>
   );
 }
