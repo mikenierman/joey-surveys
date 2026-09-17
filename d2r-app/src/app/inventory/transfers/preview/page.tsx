@@ -44,7 +44,19 @@ export default async function TransferPreviewPage() {
         .
       </StubNote>
       <div className="rounded-xl border border-dashed border-stone-300 bg-white px-4 py-10 text-center text-sm text-stone-500">
-        Preview line items PendingLane — awaiting transfer create/preview capture.
+        <p className="mb-3 font-medium text-stone-700">Transfer preview (offline stub)</p>
+        <p className="mb-4">
+          Line items, qty, and warehouse confirm will appear here after create/preview
+          capture. Submit stays disabled in the twin.
+        </p>
+        <div className="mx-auto max-w-md overflow-hidden rounded border border-stone-200 text-left">
+          <div className="grid grid-cols-3 gap-2 border-b border-stone-200 bg-stone-50 px-3 py-2 text-xs uppercase tracking-wide text-stone-500">
+            <span>SKU</span>
+            <span>Qty</span>
+            <span>Warehouse</span>
+          </div>
+          <div className="px-3 py-6 text-center text-stone-400">No preview rows</div>
+        </div>
       </div>
     </AppShell>
   );

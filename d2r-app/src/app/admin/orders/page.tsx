@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { PageTitle, StubNote } from '@/components/ui';
 import { CreateOrderForm } from '@/components/create-order-form';
 import { OrdersTable } from '@/components/orders-table';
+import { SampleDepthBanner } from '@/components/sample-depth-banner';
 import { getOrdersSnapshot } from '@/lib/data';
 
 export default function OrdersPage() {
@@ -10,6 +11,7 @@ export default function OrdersPage() {
   const page = meta?.page ?? 1;
   const approxPages = meta?.approxPages ?? 1034;
   const pageHint = `page ${page} of ~${approxPages}`;
+  const approxProdRows = approxPages * 20;
 
   return (
     <div>
@@ -21,15 +23,26 @@ export default function OrdersPage() {
             : `Offline sample · ${pageHint} · ${orders.length} rows`
         }
       />
+      <SampleDepthBanner
+        page={page}
+        totalPages={approxPages}
+        sampleRows={orders.length}
+        prodTotal={approxProdRows}
+        unit="orders"
+        seedFile="orders.json"
+        extra={
+          <>
+            Filters, export, and pagination are stubbed.{' '}
+            <Link className="underline" href="/admin/orders/drafts">
+              View drafts
+            </Link>
+            .
+          </>
+        }
+      />
       <StubNote>
-        Offline sample from <code>orders.json</code> — {pageHint} (
-        {orders.length} rows). Live headers: PO Number, Store, Account, Customer,
-        Location, Fulfillment, ETA, Total, Sales Rep, Created. Filters, export, and
-        pagination are stubbed.{' '}
-        <Link className="underline" href="/admin/orders/drafts">
-          View drafts
-        </Link>
-        .
+        Live headers: PO Number, Store, Account, Customer, Location, Fulfillment, ETA,
+        Total, Sales Rep, Created.
       </StubNote>
       <div className="mb-4 flex flex-wrap gap-2 text-sm">
         <span className="rounded border border-stone-300 bg-white px-2 py-1 text-stone-600">

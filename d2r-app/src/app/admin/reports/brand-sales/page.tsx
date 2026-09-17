@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageTitle, StubNote, StatCard, DataTable } from '@/components/ui';
+import { ReportProxyBanner } from '@/components/report-proxy-banner';
 import { getLedgerBrandRows, getLedgerPerformance } from '@/lib/data';
 
 export default function BrandSalesReportPage() {
@@ -24,9 +25,13 @@ export default function BrandSalesReportPage() {
         title="Brand sales"
         subtitle="Derived from consignment ledger until Shopify order sync"
       />
+      <ReportProxyBanner
+        proxyOf="consignment ledger brand rollups"
+        seedHint="ledger-by-rep-brand.json"
+      />
       <StubNote>
-        Offline mirror of <code>/admin/reports/brand-sales</code>. Uses vault ledger brand rollups
-        as stand-in analytics until live brand-sales export.
+        Offline mirror of <code>/admin/reports/brand-sales</code>. Stand-in analytics until live
+        brand-sales export.
       </StubNote>
       <div className="mb-4 flex flex-wrap gap-2 text-sm">
         <Link

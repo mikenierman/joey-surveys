@@ -9,6 +9,7 @@ import {
   FilterSubmit,
   FilterReset,
 } from '@/components/ui';
+import { SampleDepthBanner } from '@/components/sample-depth-banner';
 import { INVENTORY_CLUSTER_NAV } from '@/lib/inventory-nav';
 import { getTransferMeta, getTransfers } from '@/lib/data';
 
@@ -59,10 +60,17 @@ export default async function AdminTransfersPage({
         subtitle="Admin transfer queue — approve / receive workflow"
       />
       <ClusterNav items={INVENTORY_CLUSTER_NAV} current="/admin/inventory/transfers" />
+      <SampleDepthBanner
+        page={page}
+        totalPages={totalPages}
+        sampleRows={sampleCount}
+        prodTotal={totalPages * 20}
+        unit="transfers"
+        seedFile="transfers.json"
+        extra="Approve / Receive / Export / Create are display-only until write paths are wired."
+      />
       <StubNote>
-        Offline sample: page {page} of ~{totalPages} ({sampleCount} rows from live scrape).
-        Production holds ~{totalPages * 20}+ transfers across pagination. Approve / Receive /
-        Export / Create are display-only in the twin until write paths are wired.
+        Admin transfer queue — filters apply to the offline sample only.
       </StubNote>
       <FilterBar>
         <FilterField

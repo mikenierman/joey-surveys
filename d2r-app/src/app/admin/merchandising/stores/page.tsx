@@ -10,6 +10,8 @@ import {
   StubNote,
 } from '@/components/ui';
 import { MerchPeriodSwitcher } from '@/components/merch-period-switcher';
+import { MerchEmbed } from '@/components/merch-embed';
+import { getMerchAppUrl } from '@/lib/merch-app-url';
 import {
   getMerchPeriodOptions,
   getMerchProgram,
@@ -55,6 +57,14 @@ export default async function MerchandisingStoresPage({
   const programKey =
     params.program ||
     String(program?.meta?.programKey || 'joey_circle_k');
+  const merchUrl = getMerchAppUrl();
+  const hasFilters = Boolean(
+    params.rep || params.status || (params.q && params.q.trim())
+  );
+
+  const emptyMessage = hasFilters
+    ? `No store rows match these filters (rep=${params.rep || 'any'}, status=${params.status || 'any'}, q=${params.q || '—'}). Store-level seed still missing — filters are UI-only.`
+    : 'No store-level merch capture seeded. Scrape /admin/merchandising/stores (authenticated) into data/seed, or use the field app embed below for live visits.';
 
   return (
     <div>
@@ -69,23 +79,26 @@ export default async function MerchandisingStoresPage({
         basePath="/admin/merchandising/stores"
       />
       <StubNote>
-        Store-level grid shell for <code>/admin/merchandising/stores</code>. Rep
-        rollup exists at{' '}
-        <Link href={`/admin/merchandising?period=${encodeURIComponent(period)}`} className="underline">
-          /admin/merchandising
+        Store grid for <code>/admin/merchandising/stores</code>. Program rollup ({' '}
+        <Link
+          href={`/admin/merchandising?period=${encodeURIComponent(period)}`}
+          className="underline"
+        >
+          Programs
+        </Link>
+        , {reps.length} reps in {period}) is seeded; <strong>store-level rows are not</strong>.
+        Filters below preserve URL state for parity but do not query a dump yet. Field visits:{' '}
+        <Link href="/admin/dashboard?tab=merchandising" className="underline">
+          Dashboard → Merchandising
         </Link>{' '}
-        ({reps.length} reps for {period}), but no live store-level capture was
-        exported — table is intentionally empty. Program / period / rep filters
-        are stubs until a stores dump lands.
+        or open <code>{merchUrl}</code>.
       </StubNote>
       <FilterBar>
         <FilterField
           label="Program"
           name="program"
           defaultValue={programKey}
-          options={[
-            { value: 'joey_circle_k', label: 'JOEY × Circle K' },
-          ]}
+          options={[{ value: 'joey_circle_k', label: 'JOEY × Circle K' }]}
         />
         <FilterField
           label="Period"
@@ -120,11 +133,39 @@ export default async function MerchandisingStoresPage({
           <FilterReset href="/admin/merchandising/stores" />
         </FilterActions>
       </FilterBar>
+      <p className="mb-2 text-xs text-stone-500">
+        Active filters: program=<strong>{programKey}</strong> · period=
+        <strong>{period}</strong>
+        {params.rep ? (
+          <>
+            {' '}
+            · rep=<strong>{params.rep}</strong>
+          </>
+        ) : null}
+        {params.status ? (
+          <>
+            {' '}
+            · status=<strong>{params.status}</strong>
+          </>
+        ) : null}
+        {params.q ? (
+          <>
+            {' '}
+            · q=<strong>{params.q}</strong>
+          </>
+        ) : null}
+      </p>
       <DataTable
         headers={[...LIVE_HEADERS]}
         rows={[]}
-        emptyMessage="No store-level merch capture — scrape /admin/merchandising/stores for offline rows."
+        emptyMessage={emptyMessage}
       />
+      <div className="mt-8">
+        <h2 className="mb-2 text-sm font-medium uppercase tracking-wide text-stone-500">
+          Field app (until stores dump lands)
+        </h2>
+        <MerchEmbed heightClass="h-[60vh]" />
+      </div>
     </div>
   );
 }

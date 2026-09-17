@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageTitle, DataTable, StubNote } from '@/components/ui';
+import { ReportProxyBanner } from '@/components/report-proxy-banner';
 import { getLedgerPerformance } from '@/lib/data';
 
 export default function RepSalesReportPage() {
@@ -8,9 +9,13 @@ export default function RepSalesReportPage() {
   return (
     <div>
       <PageTitle title="Rep sales" subtitle="Sell-through and recent movement by rep" />
+      <ReportProxyBanner
+        proxyOf="ledger performance sell-through metrics"
+        seedHint="ledger-performance.json"
+      />
       <StubNote>
-        Offline mirror of <code>/admin/reports/rep-sales</code>. Proxy metrics from ledger
-        performance export until live rep-sales report capture.
+        Offline mirror of <code>/admin/reports/rep-sales</code>. Proxy until live rep-sales
+        report capture.
       </StubNote>
       <div className="mb-4 flex flex-wrap gap-2 text-sm">
         <Link

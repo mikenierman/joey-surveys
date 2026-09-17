@@ -59,11 +59,15 @@ const REQUIRED_PAGES = [
   'admin/inventory/refresh/page.tsx',
   'admin/warehouses/page.tsx',
   'admin/merchandising/page.tsx',
+  'admin/merchandising/stores/page.tsx',
   'admin/orders/page.tsx',
   'admin/shopify/page.tsx',
   'admin/stores/page.tsx',
   'admin/pulse/page.tsx',
   'admin/pulse/signals/page.tsx',
+  'admin/pulse/goals/page.tsx',
+  'admin/pulse/health/page.tsx',
+  'admin/pulse/scores/page.tsx',
   'admin/payouts/page.tsx',
   'admin/commissions/page.tsx',
   'admin/settlements/page.tsx',
@@ -71,13 +75,45 @@ const REQUIRED_PAGES = [
   'admin/rep-assignments/page.tsx',
   'admin/reports/page.tsx',
   'inventory/page.tsx',
+  'inventory/transfers/preview/page.tsx',
   'orders/page.tsx',
   'merchandising/page.tsx',
+  'stores/page.tsx',
 ];
 
 const SHARED_LIBS = [
   'src/lib/nav.ts',
   'src/lib/data.ts',
+  'src/lib/merch-app-url.ts',
+  'src/components/merch-embed.tsx',
+  'src/components/dashboard-tabs.tsx',
+  'src/components/sample-depth-banner.tsx',
+  'src/components/report-proxy-banner.tsx',
+  'src/components/pulse-filter-chrome.tsx',
+];
+
+/** Source strings that must appear in key pages (iframe / proxy honesty). */
+const REQUIRED_SNIPPETS = [
+  {
+    file: 'src/app/admin/dashboard/page.tsx',
+    needle: 'tab=merchandising',
+    label: 'dashboard merchandising tab',
+  },
+  {
+    file: 'src/app/admin/dashboard/page.tsx',
+    needle: 'MerchEmbed',
+    label: 'dashboard MerchEmbed',
+  },
+  {
+    file: 'src/components/merch-embed.tsx',
+    needle: 'iframe',
+    label: 'merch embed iframe',
+  },
+  {
+    file: 'src/lib/merch-app-url.ts',
+    needle: 'joey-surveys.vercel.app',
+    label: 'default merch host',
+  },
 ];
 
 function exists(relFromRoot) {
@@ -100,6 +136,18 @@ for (const lib of SHARED_LIBS) {
   if (!exists(lib)) missing.push(`lib: ${lib}`);
 }
 
+for (const snip of REQUIRED_SNIPPETS) {
+  const abs = path.join(root, snip.file);
+  if (!fs.existsSync(abs)) {
+    missing.push(`snippet-file: ${snip.file} (${snip.label})`);
+    continue;
+  }
+  const body = fs.readFileSync(abs, 'utf8');
+  if (!body.includes(snip.needle)) {
+    missing.push(`snippet: ${snip.label} — missing "${snip.needle}" in ${snip.file}`);
+  }
+}
+
 const liveExportHint = path.join(
   root,
   '..',
@@ -115,6 +163,8 @@ console.log('qc-twin-smoke — D2R offline twin');
 console.log(`root: ${root}`);
 console.log(`seeds checked: ${REQUIRED_SEEDS.length}`);
 console.log(`pages checked: ${REQUIRED_PAGES.length}`);
+console.log(`libs checked: ${SHARED_LIBS.length}`);
+console.log(`snippets checked: ${REQUIRED_SNIPPETS.length}`);
 console.log(`live export dir present: ${liveOk ? 'yes' : 'no (optional for this smoke)'}`);
 
 if (missing.length) {

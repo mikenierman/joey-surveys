@@ -33,8 +33,9 @@ export default async function RepStoresPage() {
       />
       <OfflineScopeBanner text={scope.scopeBanner} />
       <StubNote>
-        Rep-facing brand list from seed <code>stores.json</code> (Shopify registry). Admin twin:{' '}
-        <code>/admin/stores</code>.
+        Rep-facing brand list from seed <code>stores.json</code> (Shopify registry). Same
+        columns as admin <code>/admin/stores</code>; scoped by ledger brands when matched.
+        Detail routes are not built in the twin yet.
         {filtered
           ? ` Filtered to brands held by ${scope.matchedName} in ledger seed.`
           : scope.brands.length

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageTitle, StubNote, DataTable } from '@/components/ui';
+import { ReportProxyBanner } from '@/components/report-proxy-banner';
 import { getInventorySample } from '@/lib/data';
 
 export default function InventoryReportsPage() {
@@ -8,9 +9,13 @@ export default function InventoryReportsPage() {
   return (
     <div>
       <PageTitle title="Inventory reports" subtitle="On-hand vs available (sample warehouse)" />
+      <ReportProxyBanner
+        proxyOf="single-warehouse inventory sample"
+        seedHint="inventory-sample.json"
+      />
       <StubNote>
         Offline mirror of <code>/admin/reports/inventory-reports</code>. Expand with full warehouse
-        exports; sample SKUs stand in until live report runner capture.
+        exports before treating as live.
       </StubNote>
       <div className="mb-4 flex flex-wrap gap-2 text-sm">
         <Link

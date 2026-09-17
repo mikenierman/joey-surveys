@@ -1,5 +1,6 @@
 import { PageTitle, StubNote, DataTable } from '@/components/ui';
 import { PulseKpiGrid } from '@/components/pulse-kpi-grid';
+import { PulseFilterChrome } from '@/components/pulse-filter-chrome';
 import {
   getPulseSignalsCapture,
   getPulseSignalKpis,
@@ -28,20 +29,12 @@ export default function PulseSignalsPage() {
       <StubNote>
         Live route <code>/admin/pulse/signals</code> — KPI dict (not alert rows) from{' '}
         <code>pulse-signals.json</code>. Adam Scott sample: Jun 19 – Sep 16. Rep and
-        date-range comboboxes mapped but not wired for multi-rep yet.
+        date-range comboboxes share Pulse filter chrome but are not multi-rep yet.
       </StubNote>
-
-      <div className="mb-4 flex flex-wrap gap-3 text-xs text-stone-600">
-        <span>
-          Rep: <strong>{meta?.rep || '—'}</strong>
-        </span>
-        <span>
-          Range: <strong>{meta?.range || '—'}</strong>
-        </span>
-        <span className="rounded border border-dashed border-stone-300 px-2 py-0.5 text-stone-500">
-          Refresh (offline)
-        </span>
-      </div>
+      <PulseFilterChrome
+        repLabel={meta?.rep || 'Adam Scott (sample)'}
+        periodLabel={meta?.range || '—'}
+      />
 
       {kpis ? (
         <>

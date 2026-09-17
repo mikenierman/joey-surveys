@@ -95,19 +95,18 @@ When company Clerk is ready: set both keys + add `app-staging.direct2retailers.c
 ### Done (helper)
 
 - Confirmed preferred name **`app-staging`** from `OWNER-INFRA-SETUP.md`
-- Confirmed env / DEV_AUTH vs Clerk from `.env.example` + auth code
-- Confirmed auth proxy fix (`X-Forwarded-Host` / `X-Forwarded-Proto`) present in `sandbox/integration` worktree (**uncommitted** — not pushed)
-- Created Vercel project **`d2r-app-staging`** under Chris’s team (separate from Mike’s `joey-surveys`)
-- Linked `.vercel/project.json` for `d2r-app` (gitignored; safe to keep local)
-- Did **not** change live DNS, did **not** reconfigure `joey-surveys`, did **not** commit/push
+- Staging project **`d2r-app-staging`** live; production alias includes **`d2r.liprz.com`** when DNS Valid
+- Auth proxy fix + Merchandising dashboard tab on `sandbox/integration`
+- Root `vercel.json` + `public/_headers` frame-ancestors for JOEY host
+- **`vercel git connect` attempted** — blocked until Chris adds a **GitHub Login Connection** on Vercel ([docs](https://vercel.com/docs/accounts/create-an-account#login-methods-and-connections)). Until then: `cd d2r-app && npx vercel --prod`
 
 ### Chris / client must click
 
 1. Confirm which registrar/DNS host actually serves `direct2retailers.com` (GoDaddy vs Squarespace NS)
-2. Add **CNAME** `app-staging` → Vercel target
-3. In Vercel: connect GitHub Login Connection (if Git deploys needed), set **Root Directory `d2r-app`**, Production/Preview branch `sandbox/integration`
+2. Add **CNAME** `app-staging` → Vercel target (and keep `d2r` on liprz.com if using temp URL)
+3. In Vercel: complete **GitHub Login Connection**, then `vercel git connect` (Root Directory **`d2r-app`**, branch `sandbox/integration`)
 4. Add domain `app-staging.direct2retailers.com` in the **staging** project only
-5. First deploy + Mike login smoke test
+5. Mike smoke: login → Dashboard → **Merchandising** tab
 6. Later: move project to company Vercel team / Direct2Retailers GitHub org
 
 ---

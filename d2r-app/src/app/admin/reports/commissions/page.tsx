@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PageTitle, StubNote, StatCard, DataTable } from '@/components/ui';
+import { ReportProxyBanner } from '@/components/report-proxy-banner';
 import { getCommissions } from '@/lib/data';
 
 function money(n: number) {
@@ -23,9 +24,13 @@ export default function CommissionsReportPage() {
   return (
     <div>
       <PageTitle title="Commissions report" subtitle="Aggregated from commission seed" />
+      <ReportProxyBanner
+        proxyOf="commission seed scaffold (live capture was empty)"
+        seedHint="commissions.json"
+      />
       <StubNote>
-        Offline mirror of <code>/admin/reports/commissions</code>. Rollups derive from{' '}
-        <code>commissions.json</code> until live export replaces seed.
+        Offline mirror of <code>/admin/reports/commissions</code>. Not finance truth until live
+        export replaces seed.
       </StubNote>
       <div className="mb-4 flex flex-wrap gap-2 text-sm">
         <Link

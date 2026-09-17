@@ -70,7 +70,7 @@ export default function ReviewPortal({
   const territories = useMemo(() => territorySummary(stores).slice(0, 8), [stores]);
   const auditEvents = useMemo(
     () => (showAudit ? readAuditEvents().slice(0, 40) : []),
-    [showAudit, visits]
+    [showAudit]
   );
 
   const avgCompliance = useMemo(() => {

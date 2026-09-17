@@ -1,0 +1,5 @@
+# Headers for JOEY field app (CRA) when served from this repo root on Vercel.
+# Allows the failsafe twin to iframe the merch app on staging hosts.
+#
+# Content-Security-Policy
+Content-Security-Policy: frame-ancestors 'self' https://d2r-app-staging.vercel.app https://d2r.liprz.com http://localhost:3001 http://127.0.0.1:3001 http://localhost:3011 http://127.0.0.1:3011

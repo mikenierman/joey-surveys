@@ -1,4 +1,5 @@
 import { PageTitle, StubNote, StatCard, DataTable } from '@/components/ui';
+import { SampleDepthBanner } from '@/components/sample-depth-banner';
 import { getRepAssignments } from '@/lib/data';
 
 export default function RepAssignmentsPage() {
@@ -21,11 +22,22 @@ export default function RepAssignmentsPage() {
         title="Rep assignments"
         subtitle={`Offline sample · ${assignments.length} of ${active || '—'} active (page 1 of ~${pages || '?'})`}
       />
+      <SampleDepthBanner
+        page={1}
+        totalPages={pages || 227}
+        sampleRows={assignments.length}
+        prodTotal={active || null}
+        unit="assignments"
+        seedFile="rep-assignments.json"
+        extra={
+          sampleCount
+            ? `Capture meta sampleCount=${sampleCount}. Full dump (~${pages || 227} pages) still needed before cutover.`
+            : undefined
+        }
+      />
       <StubNote>
-        Live export captured page 1 only (<code>rep-assignments.json</code>
-        {sampleCount ? ` · sampleCount ${sampleCount}` : ''}). Full paginated dump (~
-        {pages || 227} pages) still needed before cutover — see IMPROVEMENTS-BACKLOG
-        (assignment scale / export).
+        Live export captured page 1 only. See IMPROVEMENTS-BACKLOG (assignment scale /
+        export).
       </StubNote>
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Active (prod)" value={active ? active.toLocaleString() : '—'} />

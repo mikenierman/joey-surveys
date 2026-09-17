@@ -1,4 +1,5 @@
 import { PageTitle, StubNote } from '@/components/ui';
+import { PulseFilterChrome } from '@/components/pulse-filter-chrome';
 import { PulseNav, type PulseNavKey } from './pulse-nav';
 
 export function PulseStubPage({
@@ -20,20 +21,9 @@ export function PulseStubPage({
       <PulseNav current={current} />
       <StubNote>
         Offline placeholder for <code>{current}</code>. {purpose} Seed from a live scrape
-        before wiring filters or export.
+        before wiring filters or export. Shared filter chrome matches Signals / hub pattern.
       </StubNote>
-
-      <div className="mb-4 flex flex-wrap gap-3 text-xs text-stone-600">
-        <span>
-          Rep: <strong>All reps</strong> (stub)
-        </span>
-        <span>
-          Period: <strong>—</strong> (stub)
-        </span>
-        <span className="rounded border border-dashed border-stone-300 px-2 py-0.5 text-stone-500">
-          Refresh (offline)
-        </span>
-      </div>
+      <PulseFilterChrome />
 
       <div className="overflow-x-auto rounded-xl border border-dashed border-stone-300 bg-white">
         <table className="min-w-full text-left text-sm">
