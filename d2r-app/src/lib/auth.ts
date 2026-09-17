@@ -19,6 +19,21 @@ export function sessionCookieName() {
   return COOKIE;
 }
 
+/** Public origin for redirects behind tunnels/proxies (not req.url → localhost). */
+export function requestOrigin(req: Request): string {
+  const xfProto = req.headers.get('x-forwarded-proto')?.split(',')[0]?.trim();
+  const xfHost = req.headers.get('x-forwarded-host')?.split(',')[0]?.trim();
+  const host = xfHost || req.headers.get('host') || '127.0.0.1:3000';
+  const proto = xfProto || (host.includes('localhost') || host.startsWith('127.') ? 'http' : 'https');
+  return `${proto}://${host}`;
+}
+
+export function homePathForRole(role: DevUser['role']): string {
+  if (role === 'admin' || role === 'manager') return '/admin/dashboard';
+  if (role === 'client') return '/admin/merchandising';
+  return '/merchandising';
+}
+
 export function authMode(): 'dev' | 'clerk' {
   if (
     process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY &&
@@ -65,7 +80,12 @@ export async function getSessionUser(): Promise<DevUser | null> {
   const raw = jar.get(COOKIE)?.value;
   if (!raw) return null;
   try {
-    return JSON.parse(decodeURIComponent(raw)) as DevUser;
+    // Accept plain JSON or legacy encodeURIComponent(JSON) cookie values.
+    try {
+      return JSON.parse(raw) as DevUser;
+    } catch {
+      return JSON.parse(decodeURIComponent(raw)) as DevUser;
+    }
   } catch {
     return null;
   }
